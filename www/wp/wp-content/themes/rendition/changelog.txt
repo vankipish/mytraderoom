@@ -1,0 +1,53 @@
+Theme Name:   Rendition
+File Name:    Changelog
+Tested up to: 4.1.2
+Stable tag:	  1.1.0
+
+== Changelog ==
+
+= 1.1.0 =
+* Fixed: Implemented security patch related to add_query_arg()
+
+= 1.0.9 =
+* Fixed bug on header color not applying to site description.
+* Moved font from @import to a proper enqueue function callback.
+* Added support for the new core wp_title() function.
+
+= 1.0.8 =
+* Fixed bug on Tab2 textarea not returning the content as it should.
+* Added option to show header tabs sitewide
+* Added option to show/hide site description
+* Fixed bug with Forum page not rendering correctly.
+* Added styles for BBPress to closely match theme design.
+* Minor CSS adjustments
+
+= 1.0.7 =
+* Prefixed variables outside of functions/class calls to fall inline with TRT guidelines.
+* Fixed bug on header tab4 where the phone numbers were being returned as a url.
+* Added a link and notes for FontAwesome in the Customizer.
+* Added a note in readme.txt re Bootstrap menu top level limitations.
+* Added a rendition.po file to aid with theme translation.
+
+= 1.0.6 =
+* Updated font license and copyright
+
+= 1.0.5 =
+* Fixed Fonts error
+* Fixed error on non existence CSS file.
+
+= 1.0.4 =
+* Fixed bug in home.php.
+* Changed the "or" class to avoid errors on some server settings.
+
+= 1.0.3 =
+* Minor bug fixes on header-tabs.php's output
+
+= 1.0.2 =
+* Added the missing sanitization for textareas
+* Minor code adjustments
+
+= 1.0.1 =
+* Minor template, CSS code adjustments and initial bug fixes.
+
+= 1.0.0 =
+* Initial Release 

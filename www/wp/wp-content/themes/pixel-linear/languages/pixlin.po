@@ -1,0 +1,428 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. Text in function
+#: functions.options.php:1
+msgid "Blog Layout"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Click on button to enable Social Icons at bottom"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Click on button to enable slider on homepage"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Copyright Text"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Copyright information goes here"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Custom Ads"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Custom CSS"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Disable"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Enable"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Enable 3 Box On Homepage"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Enable Slider"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Enable Social Icons"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Facebook"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Favicon"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Featured Hero Unit"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Footer Logo"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Footer Settings"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Footer Tracking Code"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "General"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Google+"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Header Tracking Code"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Home Settings"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Facebook icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Google+ icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Instagram icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Linkedin icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Pinterest icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Reddit icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Stumbleupon icon. Leave blank to hide "
+"icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Tumblr icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Insert your custom link to show the Twitter icon. Leave blank to hide icon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Instagram"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Latest Blog Post"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Linkedin"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Main Layout"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Main Logo"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Paste your Google Analytics (or other) tracking code here. This will be "
+"added into the footer template of your theme."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Paste your Google Analytics (or other) tracking code here. This will be "
+"added into the header template of your theme."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Pinterest"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Quickly add some CSS to your theme by adding it to this block.<br> Use !"
+"important to override properties."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Reddit"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Select full width or Boxed layout for pages."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Select layout for Blog Page with left, right Sidebar. Use widgets to add "
+"contents on sidebars"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Slider Options"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Social Icons"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Social Settings"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Stumbleupon"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Tracking Code"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Tumblr"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Twitter"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Unlimited slider with drag and drop sortings."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Upload or past the URL for your custom favicon."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Upload your footer logo here."
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid ""
+"Use this field to upload your custom logo for use in the theme header. "
+"(Recommended 200px x 40px)"
+msgstr ""
+
+#. Text in function
+#: functions.options.php:1
+msgid "Use widgets to add content in 3 boxex"
+msgstr ""
+
+#. Text in echo
+#: options.php:68
+msgid "Options Reset"
+msgstr ""
+
+#. Text in echo
+#: options.php:43 options.php:67
+msgid "Save All Changes"
+msgstr ""
+
+#. Text in echo
+#: header.php:98
+msgid "<h2>Pixel Linear</h2>"
+msgstr ""
+
+#. Text in echo
+#: functions.php:224
+msgid " ("
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid ""
+"<div class=\"read-more\"><p>Read more &#8250;</p></div><!-- end of .read-"
+"more -->"
+msgstr ""
+
+#. Text in echo
+#: functions.php:224
+msgid "<ul class=\"breadcrumb\">"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Box One"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Box Three"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Box Two"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Footer Column 1"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Footer Column 2"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Footer Column 3"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Footer Column 4"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Left Sidebar"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Left Sidebar Contents"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Page"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Right Sidebar"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Right Sidebar Contents"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Search results for &#39;"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Three Box Content"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "Untitled"
+msgstr ""
+
+#. Text in function
+#: functions.php:224
+msgid "footer.php"
+msgstr ""
+
+#. Text in echo
+#: cmb_Meta_Box_types.php:250
+msgid "Add Row"
+msgstr ""
+
+#. Text in echo
+#: cmb_Meta_Box_types.php:306
+msgid "Remove"
+msgstr ""

@@ -1,0 +1,318 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "MyLiveChat - Free Live Chat"
+msgstr ""
+
+#. Short description.
+msgid "This plugin integrates your Wordpress with My LiveChat - an application for live chat, help desk, online customer service and support. Install it Free"
+msgstr ""
+
+#. Screenshot description.
+msgid "Chat window: A chat with a MyLiveChat operator."
+msgstr ""
+
+#. Screenshot description.
+msgid "Chat window: Embedded Chat."
+msgstr ""
+
+#. Screenshot description.
+msgid "Mobile Console."
+msgstr ""
+
+#. Screenshot description.
+msgid "Proactive Chat Invitation."
+msgstr ""
+
+#. Screenshot description.
+msgid "Real-Time Visitor Monitoring."
+msgstr ""
+
+#. Screenshot description.
+msgid "Login Window"
+msgstr ""
+
+#. Screenshot description.
+msgid "In-Page Chat."
+msgstr ""
+
+#. Screenshot description.
+msgid "Chat Box."
+msgstr ""
+
+#. Found in description list item.
+msgid "My LiveChat is powered by Cute Chat, the #1 web chat software."
+msgstr ""
+
+#. Found in description list item.
+msgid "Powered by a reliable chat engine. It's still being actively developed."
+msgstr ""
+
+#. Found in description list item.
+msgid "It can support hundreds of web chat rooms and thousands of visitors."
+msgstr ""
+
+#. Found in description list item.
+msgid "Customize button and window to match the look of your site"
+msgstr ""
+
+#. Found in description list item.
+msgid "A series of professionally designed built-in templates are also provided."
+msgstr ""
+
+#. Found in description list item.
+msgid "It only takes a few minutes!"
+msgstr ""
+
+#. Found in description list item.
+msgid "During the free trial period all features are fully available."
+msgstr ""
+
+#. Found in description list item.
+msgid "When you subscribe, all customizations and settings will remain."
+msgstr ""
+
+#. Found in description list item.
+msgid "We offer more features with lower price. "
+msgstr ""
+
+#. Found in description list item.
+msgid "It is the best value you can find on the Internet! "
+msgstr ""
+
+#. Found in description list item.
+msgid "Free version is also available!"
+msgstr ""
+
+#. Found in description list item.
+msgid "Hosted on MyLiveChat's servers for maximum performance"
+msgstr ""
+
+#. Found in description list item.
+msgid "Support thousands of visitors without any degradation in response time."
+msgstr ""
+
+#. Found in description list item.
+msgid "Free version is limited to 1 agent and 1 department."
+msgstr ""
+
+#. Found in description list item.
+msgid "Upgrade for additional capacity and support"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "My LiveChat is a free, fastest, high performance and most user-friendly <a href=\"https://mylivechat.com\" title=\"Live Chat Software\">live chat software</a> solution. It allows you to live chat with website visitors, monitor site traffic, and analyze visitors web activities, including their search engine and keyword usage."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Visitors to your web site simply click a Live Help button and are connected with one of your representatives. Your representative then assists the visitor by providing information, links, graphics, or even guiding them through your web site."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The My Live Chat solution is provided on an Application Service Provider (ASP) basis. This means there is no hardware to install and you can get started instantly."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>It is 100% Free!</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "It's hard to believe that such a polished, professional and popular product can be free. At My Live Chat, we use the most effective technologies to provide highest quality at minimum price. This is why we are able to offer you totally free edition and low-priced premium version."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Higher Conversion</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Invite website visitors to chat with you in a private, one-on-one environment. Proactive invitations turn more visitors into buyers and decrease number of customers who leave without purchase."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Live Visitor Monitoring</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Allows real time traffic monitoring, see who is browsing your site. Monitor real time traffic, see visitors path, referrers, current page. Find the visitors with the best potential and invite them to chat."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Plugin Highlights:</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>High Reliability, Scalability and High Load Support</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>Flexible Customization</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>Easy to install</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>Reasonable Prices</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>Hosted Solution</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong><em>Free</em></strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Try MyLiveChat now! Sign up here: https://www.mylivechat.com/Register.aspx"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Take a tour to see why you need My LiveChat on your website: https://mylivechat.com/screenshots.aspx"
+msgstr ""
+
+#. Found in installation list item.
+msgid "If you don't already have MyLiveChat installed, go to Dashboard -&gt; Plugins -&gt; Add New."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Search for \"MyLiveChat\" in the box provided, and click \"Install Now.\""
+msgstr ""
+
+#. Found in installation list item.
+msgid "After the installation finishes, click \"Activate\" and you're ready to work with MyLiveChat!"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click the \"MyLiveChat\" menu on the left."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Follow the instructions."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "It's very simple. Just follow the easy steps listed below:"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New version."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Wordpress 4.3 is supported."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Screenshots are updated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Wordpress 4.0 is supported."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved readme.txt. Live Chat Support forum is added."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Embedded Chat window UI is supported. Web Agent Console and Mac Agent Console are avaiable!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved readme.txt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Rewrote whole plugin code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed readme.txt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "First plugin version"
+msgstr ""
+
+#. Found in faq header.
+msgid "Is it Free to use?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Do I get [live chat](https://mylivechat.com \"Live Chat Software\") feature for free?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why it is free?"
+msgstr ""
+
+#. Found in faq header.
+msgid "What makes My LiveChat different from other live chat companies?"
+msgstr ""
+
+#. Found in faq header.
+msgid "What is the minimum contract period?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can you do proactive chats and site monitoring with My Live Chat?"
+msgstr ""
+
+#. Found in faq header.
+msgid "I have multiple websites I would like to support. Is this possible with My LiveChat?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I host My LiveChat on my own servers?"
+msgstr ""
+
+#. Found in faq header.
+msgid "It doesn't work yet, what to do?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes. If you're looking for a live chat option, but just aren't ready for a paid edition then My Live Chat Free version is the perfect way to go. With inserting a simple piece of HTML code, a floating chat button that doesn't interfere with your website design, and key features to help you do chat right, you'll be chatting to your website visitors without any cost."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes. All our users can use live chat feature for free."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "At My Live Chat, we use the most effective technologies to provide highest quality at minimum price. This is why we are able to offer you totally free edition of live chat software and low-priced premium version."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Live chat systems can become very complex and difficult to use. We've engineered My LiveChat so that anyone can use it, from the first time they log into the system. My LiveChat is powered by Cute Chat, the #1 web chat software. It can support hundreds of web chat rooms and thousands of visitors without any degradation in response time. It's still being actively developed."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "There is no minimum contract period. You can cancel the service at any time."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes, you can monitor visitors on your website in real-time. You can also send \"proactive\" chat invitations to those visitors."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes, with My LiveChat's visitor tracking software, you will know which URL they are coming from, before you start any chat sessions."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "No. My LiveChat is a fully hosted, subscription based software service. My Live Chat can take care of all server, network and code update issues seamlessly. This allows your organization more time to spend on your core competencies. If you want to a live chat software hosted in your own server, please check <a href=\"http://cutesoft.net/live-support/\">Cute Live Support</a>."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Please visit http://mylivechat.com to chat with one of our support agents, post a question in <a href=\"http://forums.mylivechat.com\" title=\"live chat support forum\">live chat support forum</a>  or send us an email at support@mylivechat.com and we will help you with the installation."
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Usage"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "After installing and configuring the plugin, you can take chats by logging into the agent console or web agent console. Once you log into the agent console MyLiveChat detects your status and changes the chat widget status on your wordpress site to \"live\" mode so your visitors can directly chat with your from your website."
+msgstr ""
