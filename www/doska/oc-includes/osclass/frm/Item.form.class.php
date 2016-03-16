@@ -452,9 +452,7 @@
             if($item==null) { $item = osc_item(); };
             if( Session::newInstance()->_getForm('Newprice') != "" ) {
                 $item['i_Newprice'] = Session::newInstance()->_getForm('Newprice');
-                //добавил сюда попытку создания Minprice
-                $item['i_Minprice'] = $item['i_Newprice']-10;
-            }
+                }
             //Здесь предлагается ваша новая цена из расчета старая - 10%
             parent::generic_input_text('Newprice', (isset($item['i_price'])) ? osc_prepare_price($item['i_price']-$item['i_price']*0.1) : null);
         }

@@ -32,7 +32,7 @@
                 parent::generic_input_hidden("id", $commentId);
             }
         }
-     // поменял title на newprice
+
         static public function title_input_text($comment = null)
         {
             $commentTitle = '';
@@ -43,6 +43,20 @@
                 $commentTitle = Session::newInstance()->_getForm('commentTitle');
             }
             parent::generic_input_text("title", $commentTitle, null, false);
+        }
+
+        // поменял title на newprice
+        static public function newprice_input_text($comment = null,$minPrice)
+        {
+
+            $Newprice = '';
+            if( isset($comment['s_Newprice']) ) {
+                $commentTitle = $comment['s_Newprice'];
+            }
+            if(Session::newInstance()->_getForm('commentNewprice') != '') {
+                $commentNewprice = Session::newInstance()->_getForm('commentNewprice');
+            }
+            parent::generic_input_text("Newprice", ($minPrice-$minPrice*0.1), null, false);
         }
 
         static public function author_input_text($comment = null)

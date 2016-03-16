@@ -70,18 +70,27 @@
       <ul class="item-header">
         <li>
           <?php if( osc_price_enabled_at_items() ) { ?>
-          <i class="fa fa-money"></i><?php echo osc_item_formated_price(); ?>
+          <i class="fa fa-money"></i>
+            Начальная цена:
+            <?php echo osc_item_formated_price(); ?>
           <?php } ?>
         </li>
         <!-- Добавил еще одно поле для мин.предложенной цены-->
+        <?php $newPrices = array();?>
         <li>
-          <?php if( osc_price_enabled_at_items() ) { ?>
-            <i class="fa fa-money"></i>
 
-              <?php echo (float) osc_item_field("i_price");
+            <i class="fa fa-money"></i>
+              Минимальная предложенная цена:
+              <?php  while ( osc_has_item_comments() ) {  //для каждого коммента
+              array_push($newPrices, osc_comment_title()); //цена предложения (хранится в title) заносится в массив $newPrices
+              }
+              View::newInstance()->_reset('comments'); // счетчик комментов возвращается на 1 элемент, т.к. ф-я используется далее при выводе комментов
+            // Добавил здесь расчет минимальной цены предложения
+            echo ($minPrice=min($newPrices)) ; //рассчитывается и выводится минимальная цена предложения
+            // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
+              echo osc_item_field("fk_c_currency_code");
               ?>
 
-          <?php } ?>
         </li>
 
         <li>
@@ -164,7 +173,7 @@
         <?php osc_run_hook('location'); ?>
       </div>
     </div>
-    <div class="block_list">
+   <!-- <div class="block_list">
       <div id="useful_info">
         <h1 class="title">
           <?php _e('Useful information', OSCLASSWIZARDS_THEME_FOLDER); ?>
@@ -185,15 +194,16 @@
         </ul>
       </div>
     </div>
+    -->
     <?php if( osc_comments_enabled() ) { ?>
     <?php if( osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ) { ?>
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        <?php _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
+        Предложения
       </h2>
       <?php }
-	  
+
 	  ?>
       <ul id="comment_error_list">
       </ul>
@@ -202,7 +212,9 @@
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
         <div class="comment">
-          <h4><?php echo osc_comment_title(); ?> <em>
+          <h4><?php echo (float) osc_comment_title();
+              array_push($newPrices,osc_comment_title())
+            ?> <em>
             <?php _e("by", OSCLASSWIZARDS_THEME_FOLDER); ?>
             <?php echo osc_comment_author_name(); ?>:</em></h4>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
@@ -219,7 +231,7 @@
       <div class="comment_form">
         <div class="title">
           <h1>
-            <?php _e('Leave your comment (spam and offensive messages will be removed)', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            Оставьте Ваше ценовое предложение
           </h1>
         </div>
         <div class="resp-wrapper">
@@ -256,17 +268,30 @@
 
                 </label>
                 <!--  <div class="controls">
-                  <?php CommentForm::title_input_text(); ?>
+                  <?php CommentForm::title_input_text();
+                ItemForm::New_price_input_text();?>
                  </div>-->
 
-              <!--Сюда я вставил контрол из ввода цены-->
+              <!--Добавил сюда контрол из ввода цены-->
                 <div class="controls">
                   <ul class="row">
                     <li class="col-sm-5 col-md-5">
-                      <?php ItemForm::New_price_input_text(); ?>
+                      <?php CommentForm::newprice_input_text(null,$minPrice);?>
+                      <!-- ItemForm::New_price_input_text();-->
+                      <!--
+                      <input name="newPrice" type="text" value="<?php
+                             $Newprice=$minPrice-$minPrice*0.1;
+                              echo $Newprice;
+                      echo osc_comment_title();
+                      ?>">;
+                      -->
+
+
+
                     </li>
                     <li class="col-sm-7 col-md-7">
-                      <?php ItemForm::currency_select(); ?>
+                    <!--Здесь выводится валюта = указанной при размещении об.-->
+                      <input type="text" value="<?php echo osc_item_field("fk_c_currency_code") ?>" disabled>
                     </li>
                   </ul>
                 </div>
