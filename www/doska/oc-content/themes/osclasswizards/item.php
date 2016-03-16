@@ -75,6 +75,8 @@
             <?php echo osc_item_formated_price(); ?>
           <?php } ?>
         </li>
+        <?php if( osc_count_item_comments() >= 1 )
+      {?>
         <!-- Добавил еще одно поле для мин.предложенной цены-->
         <?php $newPrices = array();?>
         <li>
@@ -90,9 +92,8 @@
             // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
               echo osc_item_field("fk_c_currency_code");
               ?>
-
         </li>
-
+      <?php }; ?>
         <li>
           <?php if ( osc_item_pub_date() !== '' ) { printf( __('<i class="fa fa-calendar-o"></i> Published date: %1$s', OSCLASSWIZARDS_THEME_FOLDER), osc_format_date( osc_item_pub_date() ) ); } ?>
         </li>
@@ -272,22 +273,16 @@
                 ItemForm::New_price_input_text();?>
                  </div>-->
 
-              <!--Добавил сюда контрол из ввода цены-->
+              <!--Добавил сюда контрол из ввода цены, если объявление новое оно расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text-->
                 <div class="controls">
                   <ul class="row">
                     <li class="col-sm-5 col-md-5">
-                      <?php CommentForm::newprice_input_text(null,$minPrice);?>
-                      <!-- ItemForm::New_price_input_text();-->
-                      <!--
-                      <input name="newPrice" type="text" value="<?php
-                             $Newprice=$minPrice-$minPrice*0.1;
-                              echo $Newprice;
-                      echo osc_comment_title();
-                      ?>">;
-                      -->
-
-
-
+                      <?php if( osc_count_item_comments() >= 1 )
+                          {
+                            CommentForm::newprice_input_text(null,$minPrice);
+                          }
+                            else  ItemForm::New_price_input_text();
+                      ?>
                     </li>
                     <li class="col-sm-7 col-md-7">
                     <!--Здесь выводится валюта = указанной при размещении об.-->

@@ -45,7 +45,7 @@
             parent::generic_input_text("title", $commentTitle, null, false);
         }
 
-        // поменял title на newprice
+        // поменял title на newprice, получилась ф-я для ввода новой цены предложения из расчета -10% от предыдущей минимальной
         static public function newprice_input_text($comment = null,$minPrice)
         {
 
