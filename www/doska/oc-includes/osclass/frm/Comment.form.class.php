@@ -56,7 +56,7 @@
             if(Session::newInstance()->_getForm('commentNewprice') != '') {
                 $commentNewprice = Session::newInstance()->_getForm('commentNewprice');
             }
-            parent::generic_input_text("Newprice", ($minPrice-$minPrice*0.1), null, false);
+            parent::generic_input_text("Newprice", (Round ($minPrice-$minPrice*0.1)), null, false);
         }
 
         static public function author_input_text($comment = null)

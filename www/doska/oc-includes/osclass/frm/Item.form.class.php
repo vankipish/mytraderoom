@@ -454,7 +454,7 @@
                 $item['i_Newprice'] = Session::newInstance()->_getForm('Newprice');
                 }
             //Здесь предлагается ваша новая цена из расчета старая - 10%
-            parent::generic_input_text('Newprice', (isset($item['i_price'])) ? osc_prepare_price($item['i_price']-$item['i_price']*0.1) : null);
+            parent::generic_input_text('Newprice', (isset($item['i_price'])) ? round(osc_prepare_price($item['i_price']-$item['i_price']*0.1)) : null);
         }
 
         static public function currency_select($currencies = null, $item = null) {

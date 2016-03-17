@@ -273,10 +273,11 @@
                 ItemForm::New_price_input_text();?>
                  </div>-->
 
-              <!--Добавил сюда контрол из ввода цены, если объявление новое оно расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text-->
+              <!--Добавил сюда контрол из ввода цены -->
                 <div class="controls">
                   <ul class="row">
                     <li class="col-sm-5 col-md-5">
+                      <!-- если объявление новое цена предложения расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text -->
                       <?php if( osc_count_item_comments() >= 1 )
                           {
                             CommentForm::newprice_input_text(null,$minPrice);
@@ -286,7 +287,7 @@
                     </li>
                     <li class="col-sm-7 col-md-7">
                     <!--Здесь выводится валюта = указанной при размещении об.-->
-                      <input type="text" value="<?php echo osc_item_field("fk_c_currency_code") ?>" disabled>
+                      <input type="text" style="background-color: gainsboro " value="<?php echo osc_item_field("fk_c_currency_code") ?>" disabled>
                     </li>
                   </ul>
                 </div>
