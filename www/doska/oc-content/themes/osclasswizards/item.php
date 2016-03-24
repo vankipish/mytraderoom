@@ -83,7 +83,7 @@
 
             <i class="fa fa-money"></i>
               Минимальная предложенная цена:
-              <?php  while ( osc_has_item_comments() ) {  //для каждого коммента
+              <?php  while ( osc_has_item_comments() ) {  //для каждого коммента + здесь берутся значения из базы
               array_push($newPrices, osc_comment_title()); //цена предложения (хранится в title) заносится в массив $newPrices
               }
               View::newInstance()->_reset('comments'); // счетчик комментов возвращается на 1 элемент, т.к. ф-я используется далее при выводе комментов
@@ -213,6 +213,7 @@
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
         <div class="comment">
+
           <h4><?php echo (float) osc_comment_title();
               array_push($newPrices,osc_comment_title())
             ?> <em>
@@ -266,13 +267,8 @@
                 <label class="control-label" for="title">
                   <!--     <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>-->
                   Ваша цена
-
                 </label>
-                <!--  <div class="controls">
-                  <?php CommentForm::title_input_text();
-                ItemForm::New_price_input_text();?>
-                 </div>-->
-
+               
               <!--Добавил сюда контрол из ввода цены -->
                 <div class="controls">
                   <ul class="row">

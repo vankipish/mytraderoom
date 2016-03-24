@@ -984,7 +984,7 @@
 
             if( $mComments->insert($aComment) ) {
                 $commentID = $mComments->dao->insertedId();
-                //тут
+
 
                 if($status_num == 2 && $userId != null) { // COMMENT IS ACTIVE
                     $user = User::newInstance()->findByPrimaryKey($userId);

@@ -641,7 +641,7 @@
      * @return int
      */
     function osc_item_total_comments() {
-        return ItemComment::newInstance()->totalComments( osc_item_id() );
+        return ItemComment::newInstance()->totalComments;
     }
 
     /**

@@ -125,6 +125,8 @@
                                 'b_active'      => 1,
                                 'b_enabled'     => 1);
             $this->dao->where($conditions);
+          //Добавил сюда сортировку комментов по цене предложений(в ячейке s_title)
+            $this->dao->orderBy("s_title",'ASC');
 
             if( $page !== 'all' && $commentsPerPage > 0 ) {
                 $this->dao->limit(($page*$commentsPerPage), $commentsPerPage);

@@ -88,6 +88,7 @@
             $this->db_errno = $this->db->connect_errno;
             $this->debug('Connected to \'' . $this->dbName . '\': [DBHOST] = ' . $this->dbHost . ' | [DBUSER] = ' . $this->dbUser);
             $this->db->set_charset('utf8');
+
         }
 
         /**
