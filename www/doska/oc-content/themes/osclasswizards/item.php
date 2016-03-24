@@ -88,7 +88,8 @@
               }
               View::newInstance()->_reset('comments'); // счетчик комментов возвращается на 1 элемент, т.к. ф-я используется далее при выводе комментов
             // Добавил здесь расчет минимальной цены предложения
-            echo ($minPrice=min($newPrices)) ; //рассчитывается и выводится минимальная цена предложения
+              $minPrice=min($newPrices);
+              echo ("$minPrice ") ; //рассчитывается и выводится минимальная цена предложения
             // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
               echo osc_item_field("fk_c_currency_code");
               ?>
@@ -206,9 +207,7 @@
       <?php }
 
 	  ?>
-      <ul id="comment_error_list">
-      </ul>
-      <?php CommentForm::js_validation(); ?>
+
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
@@ -235,6 +234,9 @@
           <h1>
             Оставьте Ваше ценовое предложение
           </h1>
+            <ul style="margin-top: 10px" id="comment_error_list"> </ul>
+            <?php CommentForm::js_validation(); ?>
+
         </div>
         <div class="resp-wrapper">
           <form action="<?php echo osc_base_url(true); ?>" method="post" name="comment_form" id="comment_form">

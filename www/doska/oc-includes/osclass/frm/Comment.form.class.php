@@ -106,11 +106,16 @@
             rules: {
                 body: {
                     required: true,
-                    minlength: 1
+                    minlength: 1,
+                    maxlength: 500
                 },
                 authorEmail: {
                     required: true,
                     email: true
+                },
+                Newprice: {
+                    required: true,
+                    digits: true
                 }
             },
             messages: {
@@ -120,7 +125,12 @@
                 },
                 body: {
                     required: "<?php _e("Comment: this field is required"); ?>.",
-                    minlength: "<?php _e("Comment: this field is required"); ?>."
+                    minlength: "<?php _e("Comment: this field is required"); ?>.",
+                    maxlength: "Воу воу"
+            },
+                Newprice: {
+                    required: "Введите цену за которую готовы выполнить заказ",
+                    digits:   "Введите число"
                 }
             },
             wrapper: "li",
