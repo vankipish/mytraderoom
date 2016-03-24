@@ -46,17 +46,19 @@
         }
 
         // поменял title на newprice, получилась ф-я для ввода новой цены предложения из расчета -10% от предыдущей минимальной
-        static public function newprice_input_text($comment = null,$minPrice)
+        static public function New_price_fromMin_input_text($comment = null,$minPrice)
         {
-
-            $Newprice = '';
-            if( isset($comment['s_Newprice']) ) {
-                $commentTitle = $comment['s_Newprice'];
-            }
-            if(Session::newInstance()->_getForm('commentNewprice') != '') {
-                $commentNewprice = Session::newInstance()->_getForm('commentNewprice');
-            }
             parent::generic_input_text("Newprice", (Round ($minPrice-$minPrice*0.1)), null, false);
+        }
+    // добавил сюда функцию из класса itemForm
+        static public function New_price_input_text($item = null)
+        {
+            if($item==null) { $item = osc_item(); };
+            if( Session::newInstance()->_getForm('Newprice') != "" ) {
+                $item['i_Newprice'] = Session::newInstance()->_getForm('Newprice');
+            }
+            //Здесь предлагается ваша новая цена из расчета старая - 10%
+            parent::generic_input_text('Newprice', (isset($item['i_price'])) ? round(osc_prepare_price($item['i_price']-$item['i_price']*0.1)) : null);
         }
 
         static public function author_input_text($comment = null)

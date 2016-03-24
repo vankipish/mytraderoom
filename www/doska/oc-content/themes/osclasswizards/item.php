@@ -268,7 +268,7 @@
                   <!--     <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>-->
                   Ваша цена
                 </label>
-               
+
               <!--Добавил сюда контрол из ввода цены -->
                 <div class="controls">
                   <ul class="row">
@@ -276,9 +276,9 @@
                       <!-- если объявление новое цена предложения расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text -->
                       <?php if( osc_count_item_comments() >= 1 )
                           {
-                            CommentForm::newprice_input_text(null,$minPrice);
+                                  CommentForm::New_price_fromMin_input_text(null,$minPrice);
                           }
-                            else  ItemForm::New_price_input_text();
+                            else  CommentForm::New_price_input_text();
                       ?>
                     </li>
                     <li class="col-sm-7 col-md-7">
