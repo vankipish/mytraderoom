@@ -73,6 +73,23 @@
             parent::generic_input_text("authorName", $commentAuthorName, null, false);
         }
 
+        /**
+         * @param null $comment
+         */
+        static public function phone_input_text($comment = null)
+        {
+            $commentAuthorPhone = '';
+            if( isset($comment['s_author_phone']) ) {
+                $commentAuthorPhone = $comment['s_author_phone'];
+            }
+            if(Session::newInstance()->_getForm('commentAuthorPhone') != '') {
+                $commentAuthorPhone = Session::newInstance()->_getForm('commentAuthorPhone');
+            }
+            parent::generic_input_text("authorPhone", $commentAuthorPhone, null, false);
+        }
+
+
+
         static public function email_input_text($comment = null)
         {
             $commentAuthorEmail = '';

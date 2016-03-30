@@ -705,6 +705,15 @@
     }
 
     /**
+     * Gets author phone of current comment
+     *
+     * @return string
+     */
+    function osc_comment_author_phone() {
+        return (string) osc_comment_field("s_author_phone");
+    }
+
+    /**
      * Gets author email of current comment
      *
      * @return string

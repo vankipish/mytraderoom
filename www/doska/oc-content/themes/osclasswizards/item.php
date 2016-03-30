@@ -217,7 +217,8 @@
               array_push($newPrices,osc_comment_title())
             ?> <em>
             <?php _e("by", OSCLASSWIZARDS_THEME_FOLDER); ?>
-            <?php echo osc_comment_author_name(); ?>:</em></h4>
+            <?php echo osc_comment_author_name(); ?><br>
+              Телефон: <?php echo osc_comment_author_phone(); ?>:</em></h4>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
           <p> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
@@ -264,6 +265,16 @@
                   <?php CommentForm::email_input_text(); ?>
                 </div>
               </div>
+<!--// добавил поле ввода номера телефона-->
+                <div class="form-group">
+                  <label class="control-label" for="authorPhone">
+                    Ваш номер телефона:
+                  </label>
+                  <div class="controls">
+                    <?php CommentForm::phone_input_text(); ?>
+                  </div>
+                </div>
+
               <?php }; ?>
               <div class="form-group">
                 <label class="control-label" for="title">
