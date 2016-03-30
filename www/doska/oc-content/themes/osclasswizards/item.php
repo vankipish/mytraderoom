@@ -202,7 +202,7 @@
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        Предложения
+        Предложения <?php //var_dump(osc_comment())?>
       </h2>
       <?php }
 
@@ -213,12 +213,18 @@
         <?php while ( osc_has_item_comments() ) { ?>
         <div class="comment">
 
-          <h4><?php echo (float) osc_comment_title();
+          <h4 style="margin-bottom: 3px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_field("fk_c_currency_code");
               array_push($newPrices,osc_comment_title())
-            ?> <em>
-            <?php _e("by", OSCLASSWIZARDS_THEME_FOLDER); ?>
-            <?php echo osc_comment_author_name(); ?><br>
-              Телефон: <?php echo osc_comment_author_phone(); ?>:</em></h4>
+            ?></h4> <em>
+            <b style="font-weight: normal">От</b>
+            <b style="font-weight: bold; font-size: larger ">
+             <?php echo osc_comment_author_name(); ?></em></b>
+              <?php
+                  if (osc_comment_author_phone()){ ?>
+                     <h6> <?php echo osc_comment_author_phone(); ?></h6>
+                <?php } else { ?>
+                      :
+              <?php   }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
           <p> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">

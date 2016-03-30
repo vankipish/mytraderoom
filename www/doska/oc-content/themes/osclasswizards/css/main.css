@@ -388,7 +388,9 @@ h4 em {font-size: 11px;display: block;font-style: normal;margin: 5px 0 0;font-we
 }
 .comment h4 {line-height: 25px;
 }
-.comment h4:before {content: "\f0e6";font-family: 'FontAwesome';margin: 0 10px 0 0;
+.comment h4:before {content: "\f0d6";font-family: 'FontAwesome';margin: 0 10px 0 0;
+}
+.comment h6:before {content: "\f095";font-family: 'FontAwesome';margin: 0 5px 0 0;
 }
 /*dashboard*/
 .user_menu li a {padding: 5px 10px;margin-bottom: 1px;display: block;
