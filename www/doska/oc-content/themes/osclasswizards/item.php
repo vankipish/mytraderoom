@@ -67,7 +67,7 @@
         </a> </strong> </p>
       <?php } ?>
       <h1 class="title title_code"> <strong><?php echo osc_item_title(); ?></strong> </h1>
-      <ul class="item-header">
+      <ul class="item-header" style="margin-bottom: 1px">
         <li>
           <?php if( osc_price_enabled_at_items() ) { ?>
           <i class="fa fa-money"></i>
@@ -109,6 +109,7 @@
         </li>
         <?php }; ?>
       </ul>
+
       <?php if( osc_images_enabled_at_items() ) { ?>
       <div class="item-photos">
         <div class="row">
@@ -124,17 +125,19 @@
               <?php } ?>
             </div>
           </div>
-          <?php } else{?>
-          <div class="col-md-10"> <a href="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" class="main-photo" title="<?php echo osc_esc_html(__('Image', OSCLASSWIZARDS_THEME_FOLDER)); ?> 1 / 1"> <img class="img-responsive" src="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" alt="<?php echo osc_item_title(); ?>" title="<?php echo osc_item_title(); ?>" /> </a></div>
+          <?php
+        } else{?>
+          <!--<div class="col-md-10"> <a href="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" class="main-photo" title="<?php echo osc_esc_html(__('Image', OSCLASSWIZARDS_THEME_FOLDER)); ?> 1 / 1"> <img class="img-responsive" src="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" alt="<?php echo osc_item_title(); ?>" title="<?php echo osc_item_title(); ?>" /> </a></div>
           <div class="col-md-2">
             <div class="thumbs"> <a href="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" class="fancybox" data-fancybox-group="group" title="<?php echo osc_esc_html(__('Image', OSCLASSWIZARDS_THEME_FOLDER)); ?> 1 / 1"> <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" width="75" alt="<?php echo osc_item_title(); ?>" title="<?php echo osc_item_title(); ?>" class="img-responsive"/> </a> </div>
-          </div>
+          </div>-->
           <?php } ?>
         </div>
       </div>
       <?php } ?>
       <div id="description">
-        <p><?php echo osc_item_description(); ?></p>
+        <p style="font-weight:bold;    margin-bottom: 1px">Описание:</p>
+        <p style="background-color: white; border-style: dashed; padding: 5px; margin-right: 20px"><?php echo "   ".osc_item_description(); ?></p>
         <div id="custom_fields">
           <?php if( osc_count_item_meta() >= 1 ) { ?>
           <br />
@@ -148,7 +151,7 @@
           <?php } ?>
         </div>
         <?php osc_run_hook('item_detail', osc_item() ); ?>
-        <ul class="contact_button">
+        <ul class="contact_button"">
           <li>
             <?php if( !osc_item_is_expired () ) { ?>
             <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
@@ -169,7 +172,7 @@
           </li>
           <?php } ?>
           <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
-            <?php _e('See all ads from this advertiser', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            смотреть другие заказы автора
             </a> </li>
         </ul>
         <?php osc_run_hook('location'); ?>
@@ -378,7 +381,7 @@
 <?php if( osc_count_items() > 0 ) { ?>
 <div class="similar_ads">
   <h2 class="title">
-    <?php _e('Related listings', OSCLASSWIZARDS_THEME_FOLDER); ?>
+    Похожие заказы
   </h2>
   <?php
 		View::newInstance()->_exportVariableToView("listType", 'items');

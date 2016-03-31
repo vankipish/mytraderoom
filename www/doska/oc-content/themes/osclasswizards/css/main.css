@@ -319,13 +319,13 @@ li.premium .ribbon {display: block;
 }
 .contact_button li {display: inline-block;margin: 0 10px 10px 0;
 }
-.contact_button a {display: block;vertical-align: middle;font-size: 15px;font-weight: 700;text-transform: uppercase;height: 35px;line-height: 35px;padding: 0 20px;
+.contact_button a {display: block;vertical-align: middle;font-size: 12px;font-weight: 400;text-transform: uppercase;height: 25px;line-height: 25px;padding: 0 15px;
 }
 .contact_button {margin: 20px 0 0;
 }
 .contact_button strong {display: block;margin-bottom: 5px;text-align: center;
 }
-#contact .name {font-weight: 800;
+#contact .name {font-weight: 700;
 }
 .similar_ads {margin: 20px 0;
 }
