@@ -91,7 +91,7 @@
               $minPrice=min($newPrices);
               echo ("$minPrice ") ; //рассчитывается и выводится минимальная цена предложения
             // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
-              echo osc_item_field("fk_c_currency_code");
+              echo osc_item_currency_symbol();
               ?>
         </li>
       <?php }; ?>
@@ -213,7 +213,8 @@
         <?php while ( osc_has_item_comments() ) { ?>
         <div class="comment">
 
-          <h4 style="margin-bottom: 3px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_field("fk_c_currency_code");
+          <div style="border-bottom: ridge" >
+          <h4 style="margin-bottom: 3px; margin-top: 10px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
               array_push($newPrices,osc_comment_title())
             ?></h4> <em>
             <b style="font-weight: normal">От</b>
@@ -226,14 +227,15 @@
                       :
               <?php   }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
+          </div>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
           <p> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a> </p>
           <?php } ?>
-        </div>
-        <?php } ?>
+         <?php } ?>
         <div class="pagination"> <?php echo osc_comments_pagination(); ?> </div>
+        </div>
       </div>
       <?php } ?>
       <div class="comment_form">

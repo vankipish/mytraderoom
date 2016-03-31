@@ -558,7 +558,7 @@ select {-webkit-appearance: none;appearance: none;
 }
 .search_filter li li a:hover, #related-searches li a:hover, #tab_filter ul li a:hover {background-color: #21292d;
 }
-.comment h4:before {color: #e0e0e0;
+.comment h4:before {color: #7a7a7a;
 }
 #form_vh_map {background-color: #000;
 }
