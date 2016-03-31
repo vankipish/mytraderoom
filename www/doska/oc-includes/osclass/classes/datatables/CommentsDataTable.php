@@ -72,6 +72,7 @@
             $this->addColumn('bulkactions', '<input id="check_all" type="checkbox" />');
             $this->addColumn('author', __('Author'));
             $this->addColumn('comment', __('Comment'));
+            $this->addColumn('price', __('Цена'));
             $this->addColumn('date', __('Date'));
 
             $dummy = &$this;
@@ -132,7 +133,8 @@
                     $row['author'] = $aRow['s_author_name'] . ' (<a target="_blank" href="' . osc_item_url() . '">' . osc_item_title() . '</a>)'. $actions;
                     $row['comment'] = $aRow['s_body'];
                     $row['date'] = osc_format_date($aRow['dt_pub_date']);
-
+                    //Добавил запрос к ячейке с ценой
+                    $row['price'] = $aRow['s_title'];
                     $row = osc_apply_filter('comments_processing_row', $row, $aRow);
 
                     $this->addRow($row);

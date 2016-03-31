@@ -63,7 +63,7 @@
             <div class="form-row">
                 <div class="form-label"><?php _e('Title'); ?></div>
                 <div class="form-controls">
-                    <?php CommentForm::title_input_text($comment); ?>
+                   <?php CommentForm::title_input_text($comment); ?>
                 </div>
             </div>
             <div class="form-row">
