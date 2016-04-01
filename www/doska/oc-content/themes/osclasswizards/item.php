@@ -223,7 +223,7 @@
             ?></h4> <em>
             <b style="font-weight: normal">От</b>
             <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
-
+            <a>(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
               <?php
                   if (osc_comment_author_phone()){ ?>
                      <h6> <?php echo osc_comment_author_phone(); ?></h6>
