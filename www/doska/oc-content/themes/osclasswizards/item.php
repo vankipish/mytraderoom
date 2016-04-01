@@ -125,6 +125,7 @@
               <?php } ?>
             </div>
           </div>
+
           <?php
         } else{?>
           <!--<div class="col-md-10"> <a href="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" class="main-photo" title="<?php echo osc_esc_html(__('Image', OSCLASSWIZARDS_THEME_FOLDER)); ?> 1 / 1"> <img class="img-responsive" src="<?php echo osc_current_web_theme_url('images/no_photo.gif'); ?>" alt="<?php echo osc_item_title(); ?>" title="<?php echo osc_item_title(); ?>" /> </a></div>
@@ -151,7 +152,7 @@
           <?php } ?>
         </div>
         <?php osc_run_hook('item_detail', osc_item() ); ?>
-        <ul class="contact_button"">
+        <ul class="contact_button">
           <li>
             <?php if( !osc_item_is_expired () ) { ?>
             <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
@@ -221,8 +222,8 @@
               array_push($newPrices,osc_comment_title())
             ?></h4> <em>
             <b style="font-weight: normal">От</b>
-            <b style="font-weight: bold; font-size: larger ">
-             <?php echo osc_comment_author_name(); ?></em></b>
+            <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+
               <?php
                   if (osc_comment_author_phone()){ ?>
                      <h6> <?php echo osc_comment_author_phone(); ?></h6>
@@ -236,6 +237,7 @@
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a> </p>
           <?php } ?>
+          </div>
          <?php } ?>
         <div class="pagination"> <?php echo osc_comments_pagination(); ?> </div>
         </div>
@@ -334,7 +336,7 @@
     </div>
     <?php } ?>
     <?php } ?>
-  </div>
+  
   <div class="col-sm-5 col-md-4">
     <?php
 		if(function_exists('show_qrcode')){
