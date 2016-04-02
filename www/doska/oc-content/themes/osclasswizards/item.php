@@ -241,8 +241,9 @@
          <?php } ?>
         <div class="pagination"> <?php echo osc_comments_pagination(); ?> </div>
         </div>
-      </div>
       <?php } ?>
+    </div>
+
       <div class="comment_form">
         <div class="title">
           <h1>
