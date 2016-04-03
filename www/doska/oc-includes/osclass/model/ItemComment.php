@@ -275,6 +275,36 @@
         }
 
         /**
+         * @param $id
+         * @return mixed
+         */
+        function get_min_price($id)  // для класса коментов, $id - получаю для текущего объекта
+        {
+            $result = array();
+
+            $this->dao->select('s_title');  // здесь хранится цена предложения
+            $this->dao->from($this->getTableName()); //обращается к таблице с коментами
+            $conditions = array('fk_i_item_id'  => $id,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1,  //проверка комент активен
+                                'b_enabled'     => 1);  //проверка коменты включены
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $allprices = $result->result(); //делает нормальный массив из запроса (многомерный)
+            $prices = array(); //создаю новый массив где будут только цифры цен
+                    foreach ($allprices as $price){
+                        array_push($prices,$price['s_title']);  //записываю в созданый массив цены предложений
+                    }
+            $minPrice=min($prices);                     //вычисляю минимальную цену предложения
+            $array_set = array('min_Price' => $minPrice);   //даю имя ячейке с этой ценой
+            $array_conditions = array('pk_i_id' => $id);    //создаю условие для where - для id объекта = текущему id..
+            $this->dao->update(DB_TABLE_PREFIX.'t_item', $array_set, $array_conditions); //обновляется значение min_Price в базе
+
+            return $minPrice;
+        }
+        
+        
+        
+        /**
          * Extends an array of comments with title / description
          *
          * @access private
@@ -315,6 +345,11 @@
             }
             return $results;
         }
+
+        /**
+         * @param $item
+         */
+        
 
         /**
          * Return comments on command
