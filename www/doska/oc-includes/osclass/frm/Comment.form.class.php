@@ -132,7 +132,8 @@
                 },
                 Newprice: {
                     required: true,
-                    digits: true
+                    digits: true,
+                    min: 1
                 }
             },
             messages: {
@@ -143,11 +144,12 @@
                 body: {
                     required: "<?php _e("Comment: this field is required"); ?>.",
                     minlength: "<?php _e("Comment: this field is required"); ?>.",
-                    maxlength: "Воу воу"
+                    maxlength: "Воу воу, краткость - сестра таланта"
             },
                 Newprice: {
                     required: "Введите цену за которую готовы выполнить заказ",
-                    digits:   "Введите число"
+                    digits:   "Введите число",
+                    min: "Предлагаемая цена не может быть меньше 1 рубля"
                 }
             },
             wrapper: "li",

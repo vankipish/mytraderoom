@@ -270,6 +270,12 @@
            else return (float) osc_item_field("i_price");
     }
 
+    function osc_item_min_price() {
+        if(osc_item_field("min_Price")=='') return null;
+        if(osc_item_field("min_Price")<'') return null;
+        else return (float) osc_item_field("min_Price");
+    }
+
     /**
      * Gets formated price of current item
      *
@@ -1126,6 +1132,29 @@
         $currencyFormat = str_replace('{CURRENCY}', $symbol, $currencyFormat);
         return osc_apply_filter('item_price', $currencyFormat );
     }
+
+    /**
+     * Функция для формата цены минимального предложения
+     * Formats the price using the appropiate currency.
+     *
+     * @param float $price
+     * @return string
+     */
+    function osc_format_min_price($minPrice, $symbol = null) {
+
+        if ($minPrice === null) return  osc_apply_filter('Нет предложений','Вы можете стать первым');
+        if ($minPrice == 0) return ('Нет предложений');
+    
+        if($symbol==null) { $symbol = osc_item_currency_symbol(); }
+
+        //$minPrice = $minPrice/1000000;
+
+        $currencyFormat = osc_locale_currency_format();
+        $currencyFormat = str_replace('{NUMBER}', number_format($minPrice, osc_locale_num_dec(), osc_locale_dec_point(), osc_locale_thousands_sep()), $currencyFormat);
+        $currencyFormat = str_replace('{CURRENCY}', $symbol, $currencyFormat);
+        return osc_apply_filter('item_min_Price', $currencyFormat );
+    }
+
 
     /**
      * Gets number of items

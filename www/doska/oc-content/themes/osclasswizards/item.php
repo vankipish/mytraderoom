@@ -80,19 +80,9 @@
         <!-- Добавил еще одно поле для мин.предложенной цены-->
         <?php $newPrices = array();?>
         <li>
-
             <i class="fa fa-money"></i>
               Минимальная предложенная цена:
-              <?php  while ( osc_has_item_comments() ) {  //для каждого коммента + здесь берутся значения из базы
-              array_push($newPrices, osc_comment_title()); //цена предложения (хранится в title) заносится в массив $newPrices
-              }
-              View::newInstance()->_reset('comments'); // счетчик комментов возвращается на 1 элемент, т.к. ф-я используется далее при выводе комментов
-            // Добавил здесь расчет минимальной цены предложения
-              $minPrice=min($newPrices);
-              echo ("$minPrice ") ; //рассчитывается и выводится минимальная цена предложения
-            // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
-              echo osc_item_currency_symbol();
-              ?>
+          <?php echo osc_format_min_price(osc_item_min_price())?>
         </li>
       <?php }; ?>
         <li>
@@ -303,7 +293,7 @@
                       <!-- если объявление новое цена предложения расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text -->
                       <?php if( osc_count_item_comments() >= 1 )
                           {
-                                  CommentForm::New_price_fromMin_input_text(null,$minPrice);
+                                  CommentForm::New_price_fromMin_input_text(null,osc_item_min_price());
                           }
                             else  CommentForm::New_price_input_text();
                       ?>
