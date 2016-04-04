@@ -197,7 +197,7 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения
-        <?php var_dump //(ItemComment::newInstance()->get_min_price((osc_item_id())))?>
+        <?php //var_dump (ItemComment::newInstance()->get_min_price((osc_item_id())))?>
       </h2>
       <?php }
 

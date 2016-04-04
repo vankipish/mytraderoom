@@ -273,7 +273,7 @@
     function osc_item_min_price() {
         if(osc_item_field("min_Price")=='') return null;
         if(osc_item_field("min_Price")<'') return null;
-        else return (float) osc_item_field("min_Price");
+        else return (float) ItemComment::newInstance()->get_min_price((osc_item_id()));
     }
 
     /**

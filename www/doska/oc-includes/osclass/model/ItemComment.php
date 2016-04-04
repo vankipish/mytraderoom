@@ -294,12 +294,16 @@
                     foreach ($allprices as $price){
                         array_push($prices,$price['s_title']);  //записываю в созданый массив цены предложений
                     }
+          if (!$prices == 0) {
             $minPrice=min($prices);                     //вычисляю минимальную цену предложения
             $array_set = array('min_Price' => $minPrice);   //даю имя ячейке с этой ценой
             $array_conditions = array('pk_i_id' => $id);    //создаю условие для where - для id объекта = текущему id..
             $this->dao->update(DB_TABLE_PREFIX.'t_item', $array_set, $array_conditions); //обновляется значение min_Price в базе
 
             return $minPrice;
+          }
+          else
+            return 0;
         }
         
         
