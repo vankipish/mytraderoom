@@ -486,6 +486,15 @@
          * @param type $newIsExpired
          * @param type $location
          */
+     /*   public function add_min_price ($minPrice)
+        {
+                $minPrice = ItemComment::newInstance()->getAllComments()
+                $this->manager->insert(array(
+                's_body'             => $minPrice,
+                   ));
+
+        }
+     */
         private function _updateStats($result, $old_item, $oldIsExpired, $old_item_location, $aItem, $newIsExpired, $location)
         {
             if($result==1 && $old_item['b_enabled']==1 && $old_item['b_active']==1 && $old_item['b_spam']==0) {
@@ -886,7 +895,6 @@
          */
         public function add_comment()
         {
-
             if(!osc_comments_enabled()) {
                 return 7;
                             }

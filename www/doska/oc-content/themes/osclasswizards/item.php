@@ -206,7 +206,8 @@
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        Предложения <?php //var_dump(osc_comment())?>
+        Предложения
+        <?php var_dump //(ItemComment::newInstance()->get_min_price((osc_item_id())))?>
       </h2>
       <?php }
 
@@ -223,13 +224,12 @@
             ?></h4> <em>
             <b style="font-weight: normal">От</b>
             <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+            <p style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</p>
 
               <?php
                   if (osc_comment_author_phone()){ ?>
                      <h6> <?php echo osc_comment_author_phone(); ?></h6>
-                <?php } else { ?>
-                      :
-              <?php   }   ?>
+                <?php }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           </div>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
