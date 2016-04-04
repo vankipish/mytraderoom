@@ -35,14 +35,14 @@ msgstr "<strong>Посмотрите</strong>  в самых популярны�
 
 #: admin/ads.php:29
 msgid "Ads management"
-msgstr "Управление объявлениями"
+msgstr "Управление заданиями"
 
 #: admin/ads.php:33
 msgid ""
 "In this section you can configure your site to display ads and start "
 "generating revenue."
 msgstr ""
-"В этом разделе вы можете настроить ваш сайт для показа объявлений и начать "
+"В этом разделе вы можете настроить ваш сайт для показа заданий и начать "
 "получать доход."
 
 #: admin/ads.php:33
@@ -51,7 +51,7 @@ msgid ""
 "copy and paste here the provided code for ads."
 msgstr ""
 "Если вы используете онлайн-рекламную площадку, например, Google Adsense, "
-"скопируйте и вставьте сюда предоставленный код для объявлений."
+"скопируйте и вставьте сюда предоставленный код для заданий."
 
 #: admin/ads.php:39
 msgid "Header Ad"
@@ -59,48 +59,48 @@ msgstr "Реклама в заголовке "
 
 #: admin/ads.php:43
 msgid "This ad will be shown at the top of your website."
-msgstr "Это объявление будет показано в верхней части вашего сайта."
+msgstr "Это задание будет показано в верхней части вашего сайта."
 
 #: admin/ads.php:47
 msgid "Homepage Ad"
-msgstr "Объявления на главной"
+msgstr "задания на главной"
 
 #: admin/ads.php:51
 msgid ""
 "This ad will be shown on the main site of your website. It will appear at "
 "the bottom of your site homepage."
 msgstr ""
-"Это объявление будет показано на главном станице вашего сайта. Он появится в "
+"Это задание будет показано на главном станице вашего сайта. Он появится в "
 "нижней части главной страницы сайта."
 
 #: admin/ads.php:55
 msgid "Search results Ad (top of the page)"
-msgstr "Результаты поиска объявление (верхняя часть страницы)"
+msgstr "Результаты поиска задание (верхняя часть страницы)"
 
 #: admin/ads.php:59
 msgid "This ad will be shown on top of the search results of your site."
 msgstr ""
-"Это объявление будет показано на верхней части результатов поиска вашего "
+"Это задание будет показано на верхней части результатов поиска вашего "
 "сайта."
 
 #: admin/ads.php:63
 msgid "Search results Ad (bottom of the page)"
-msgstr "Результаты поиска объявление (внизу страницы)"
+msgstr "Результаты поиска задание (внизу страницы)"
 
 #: admin/ads.php:67
 msgid "This ad will be shown among the search results of your site."
-msgstr "Это объявление будет показано среди результатов поиска вашего сайта."
+msgstr "Это задание будет показано среди результатов поиска вашего сайта."
 
 #: admin/ads.php:71
 msgid "Sidebar Ad"
-msgstr "Боковая панель объявления"
+msgstr "Боковая панель задания"
 
 #: admin/ads.php:75
 msgid ""
 "This ad will be shown at the right sidebar of your website, on the product "
 "detail page."
 msgstr ""
-"Это объявление будет показано на правой боковой панели вашего сайта, на "
+"Это задание будет показано на правой боковой панели вашего сайта, на "
 "странице подробнее о продукте."
 
 #: admin/ads.php:79 admin/category-icons.php:56 admin/facebook.php:93
@@ -164,7 +164,7 @@ msgstr "Показать страницу Сообщений"
 
 #: admin/facebook.php:75
 msgid "Show On Item Sidebar"
-msgstr "Показать объявления на боковой панели"
+msgstr "Показать задания на боковой панели"
 
 #: admin/facebook.php:84
 msgid "Show On Search Sidebar"
@@ -331,7 +331,7 @@ msgstr "Приветственное сообщение"
 
 #: admin/settings.php:89
 msgid "Show lists as"
-msgstr "Показать список объявлений как"
+msgstr "Показать список заданий как"
 
 #: admin/settings.php:94
 msgid "Grid"
@@ -359,7 +359,7 @@ msgstr ""
 
 #: admin/templates-home.php:62 admin/templates-search.php:32
 msgid "Premium listings shown"
-msgstr "Премиум объявления показаны"
+msgstr "Премиум задания показаны"
 
 #: admin/templates-home.php:70
 msgid "Subcategories limit "
@@ -395,7 +395,7 @@ msgstr "Популярные города предел"
 
 #: admin/templates-item-post.php:26
 msgid "Item post page settings"
-msgstr "Настройки страницы объявлений"
+msgstr "Настройки страницы заданий"
 
 #: admin/templates-item-post.php:32
 msgid "Category multiple selects"
@@ -620,7 +620,7 @@ msgstr "Контакты"
 
 #: footer.php:77 header.php:101
 msgid "Publish your ad for free"
-msgstr "Опубликовать объявление бесплатно "
+msgstr "Опубликовать задание "
 
 #: footer.php:82
 #, php-format
@@ -641,15 +641,15 @@ msgstr "Категории"
 
 #: functions.php:318
 msgid "See more listings..."
-msgstr "Посмотреть все объявления"
+msgstr "Посмотреть все задания"
 
 #: functions.php:426 item-post.php:56
 msgid "Publish a listing"
-msgstr "Опубликовать объявление"
+msgstr "Опубликовать задание"
 
 #: functions.php:427
 msgid "Edit your listing"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: functions.php:428 item-send-friend.php:35
 msgid "Send to a friend"
@@ -683,7 +683,7 @@ msgstr "Аккаунт"
 
 #: functions.php:435 functions.php:473 search.php:136 user-alerts.php:73
 msgid "Listings"
-msgstr "Объявления"
+msgstr "задания"
 
 #: functions.php:436 functions.php:478 user-alerts.php:32 user-alerts.php:52
 msgid "Alerts"
@@ -897,7 +897,7 @@ msgstr "Цена"
 
 #: item-post.php:125
 msgid "Listing Location"
-msgstr "Местоположение объявления"
+msgstr "Местоположение задания"
 
 #: item-post.php:129 search-sidebar.php:58 user-profile.php:88
 msgid "Country"
@@ -933,7 +933,7 @@ msgstr "E-mail"
 
 #: item-post.php:206
 msgid "Show e-mail on the listing page"
-msgstr "Показать электронную почту в объявлении"
+msgstr "Показать электронную почту в задании"
 
 #: item-post.php:228 user-change_email.php:73 user-change_password.php:83
 #: user-change_username.php:119 user-profile.php:146
@@ -962,17 +962,17 @@ msgstr "Тема (опционально)"
 
 #: item-sidebar.php:33
 msgid "The listing is expired. You can't contact the publisher."
-msgstr "Объявление не актуально. Вы не можете связаться с автором."
+msgstr "Задание не актуально. Вы не можете связаться с автором."
 
 #: item-sidebar.php:37
 msgid "It's your own listing, you can't contact the publisher."
-msgstr "Это ваше собственное объявление, и вы не можете связаться с автором."
+msgstr "Это ваше собственное задание, и вы не можете связаться с автором."
 
 #: item-sidebar.php:41
 msgid ""
 "You must log in or register a new account in order to contact the advertiser"
 msgstr ""
-"Вы должны войти или зарегистрироваться чтобы связаться с автором объявления"
+"Вы должны войти или зарегистрироваться чтобы связаться с автором задания"
 
 #: item-sidebar.php:60
 #, php-format
@@ -1011,7 +1011,7 @@ msgstr "Помощь"
 #: loop-user-public-grid.php:198 loop-user-public-list.php:73
 #: loop-user-public-list.php:131 loop-user-public-list.php:190 main.php:81
 msgid "Edit item"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: item.php:77
 #, php-format
@@ -1123,7 +1123,7 @@ msgstr "Пометить как оскорбительное"
 
 #: item.php:316
 msgid "Related listings"
-msgstr "Похожие объявления"
+msgstr "Похожие задания"
 
 #: loop-grid.php:66 loop-list.php:72 loop-search-grid.php:71
 #: loop-search-grid.php:129 loop-search-grid.php:182 loop-search-list.php:73
@@ -1156,19 +1156,19 @@ msgstr "Активировать"
 
 #: main.php:46
 msgid "Premium Listings"
-msgstr "Премиум объявления"
+msgstr "Премиум задания"
 
 #: main.php:108
 msgid "Latest Listings"
-msgstr "Последние объявления"
+msgstr "Последние задания"
 
 #: main.php:114
 msgid "There aren't listings available at this moment"
-msgstr "Объявлений пока нет"
+msgstr "заданий пока нет"
 
 #: main.php:124
 msgid "See all listings"
-msgstr "Посмотреть все объявления"
+msgstr "Посмотреть все задания"
 
 #: main.php:131
 #, php-format
@@ -1193,7 +1193,7 @@ msgstr "Показать только"
 
 #: search-sidebar.php:90
 msgid "listings with pictures"
-msgstr "Объявления с фотографиями"
+msgstr "задания с фотографиями"
 
 #: search-sidebar.php:103
 msgid "Min"
@@ -1227,11 +1227,11 @@ msgstr "Hет результатов, соответствующих \"%s\""
 #: search.php:86
 #, php-format
 msgid "%1$d - %2$d of %3$d listings"
-msgstr "%1$d - %2$d из %3$d объявлений"
+msgstr "%1$d - %2$d из %3$d заданий"
 
 #: search.php:123
 msgid "Premium listings"
-msgstr "Премиум объявления"
+msgstr "Премиум задания"
 
 #: search.php:151
 msgid "Other searches that may interest you"
@@ -1304,11 +1304,11 @@ msgstr "Восстановить Ваш пароль"
 
 #: user-items.php:58
 msgid "My listings"
-msgstr "Мои объявления"
+msgstr "Мои задания"
 
 #: user-items.php:62
 msgid "No listings have been added yet"
-msgstr "Объявления ещё не были добавлены"
+msgstr "задания ещё не были добавлены"
 
 #: user-login.php:35
 msgid "Please Login"
@@ -1360,7 +1360,7 @@ msgstr "Описание пользователя"
 
 #: user-public-profile.php:101
 msgid "Latest listings"
-msgstr "Последние объявления"
+msgstr "Последние задания"
 
 #: user-recover.php:55
 msgid "Send me a new password"

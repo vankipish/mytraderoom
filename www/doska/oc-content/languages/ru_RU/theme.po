@@ -236,7 +236,7 @@ msgstr "Зарегистрироваться"
 
 #: footer.php:50 header.php:60
 msgid "Publish your ad for free"
-msgstr "Опубликовать объявление"
+msgstr "Опубликовать задание"
 
 #: footer.php:65 functions.php:376 user-public-sidebar.php:26
 msgid "Contact"
@@ -252,11 +252,11 @@ msgstr "например, программист PHP"
 
 #: functions.php:357 item-post.php:40
 msgid "Publish a listing"
-msgstr "Опубликовать объявление"
+msgstr "Опубликовать задание"
 
 #: functions.php:358
 msgid "Edit your listing"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: functions.php:359 item-send-friend.php:31
 msgid "Send to a friend"
@@ -466,11 +466,11 @@ msgstr "Пометить как оскорбительное"
 
 #: item-sidebar.php:52
 msgid "The listing is expired. You can't contact the publisher."
-msgstr "Объявление не актуально. Вы не можете связаться с автором."
+msgstr "Задание не актуально. Вы не можете связаться с автором."
 
 #: item-sidebar.php:56
 msgid "It's your own listing, you can't contact the publisher."
-msgstr "Это ваше собственное объявление, и вы не можете связаться с автором."
+msgstr "Это ваше собственное задание, и вы не можете связаться с автором."
 
 #: item-sidebar.php:60
 msgid ""
@@ -901,7 +901,7 @@ msgid ""
 "above the search results. Note that the size of the ad has to be 728x90 "
 "pixels."
 msgstr ""
-"Это объявление будет показано в верхней части вашего сайта, рядом с "
+"Это задание будет показано в верхней части вашего сайта, рядом с "
 "названием сайта и над результатами поиска. Следует отметить, что размер "
 "объявления должен быть 728x90 пикселей."
 
@@ -915,7 +915,7 @@ msgid ""
 "at the top and bottom of your site homepage. Note that the size of the ad "
 "has to be 728x90 pixels."
 msgstr ""
-"Это объявление будет показано на главной странице вашего сайта. Объявление "
+"Это задание будет показано на главной странице вашего сайта. Задание "
 "будет отображаться как в верхней, так и нижней частях главной страницы "
 "сайта. Следует отметить, что размер объявления должен быть 728x90 пикселей."
 
@@ -928,7 +928,7 @@ msgid ""
 "This ad will be shown on top of the search results of your site. Note that "
 "the size of the ad has to be 728x90 pixels."
 msgstr ""
-"Это объявление будет показываться в верхней части результатов поиска сайта. "
+"Это задание будет показываться в верхней части результатов поиска сайта. "
 "Следует отметить, что размер объявления должен быть 728x90 пикселей."
 
 #: admin/settings.php:108
@@ -940,7 +940,7 @@ msgid ""
 "This ad will be shown among the search results of your site. Note that the "
 "size of the ad has to be 728x90 pixels."
 msgstr ""
-"Это объявление будет показываться среди результатов поиска вашего сайта. "
+"Это задание будет показываться среди результатов поиска вашего сайта. "
 "Следует отметить, что размер объявления должен быть 728x90 пикселей."
 
 #: admin/settings.php:116
@@ -952,7 +952,7 @@ msgid ""
 "This ad will be shown at the right sidebar of your website, on the product "
 "detail page. Note that the size of the ad has to be 300x350 pixels."
 msgstr ""
-"Это объявление будет показываться в правой боковой панели вашего сайта, на "
+"Это задание будет показываться в правой боковой панели вашего сайта, на "
 "странице подробнее о товаре. Следует отметить, что размер объявления должен "
 "быть 300x350 пикселей."
 
