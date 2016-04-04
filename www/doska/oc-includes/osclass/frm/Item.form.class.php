@@ -632,6 +632,17 @@
             parent::generic_input_text('contactEmail', (isset($item['s_contact_email'])) ? $item['s_contact_email'] : null);
             return true;
         }
+
+        static public function contact_phone_text($item = null) {
+            if($item==null) { $item = osc_item(); };
+            if( Session::newInstance()->_getForm('contactPhone') != "" ) {
+                $item['s_contact_phone'] = Session::newInstance()->_getForm('contactPhone');
+            }
+            parent::generic_input_text('contactPhone', (isset($item['s_contact_phone'])) ? $item['s_contact_phone'] : null);
+            return true;
+        }
+
+
         // NOTHING TO DO
         static public function user_data_hidden() {
             if(isset($_SESSION['userId']) && $_SESSION['userId']!=null) {
@@ -647,14 +658,24 @@
         static public function show_email_checkbox($item = null) {
             if($item==null) { $item = osc_item(); };
             if( Session::newInstance()->_getForm('showEmail') != 0) {
-                $item['b_show_email'] = Session::newInstance()->_getForm('showEmail');
+            $item['b_show_email'] = Session::newInstance()->_getForm('showEmail');
             }
             parent::generic_input_checkbox('showEmail', '1', (isset($item['b_show_email']) ) ? $item['b_show_email'] : false );
             return true;
+            }
+
+        static public function show_phone_checkbox($item = null) {
+            if($item==null) { $item = osc_item(); };
+            if( Session::newInstance()->_getForm('showPhone') != 0) {
+                $item['b_show_phone'] = Session::newInstance()->_getForm('showPhone');
+            }
+            parent::generic_input_checkbox('showPhone', '1', (isset($item['b_show_phone']) ) ? $item['b_show_phone'] : false );
+            return true;
         }
 
-        static public function location_javascript_new($path = "front") {
-?>
+
+            static public function location_javascript_new($path = "front") {
+            ?>
 <script type="text/javascript">
     $(document).ready(function(){
 

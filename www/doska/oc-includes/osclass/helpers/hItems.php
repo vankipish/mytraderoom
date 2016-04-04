@@ -415,6 +415,16 @@
     }
 
     /**
+     * Gets true if can show email user at frontend, else return false
+     *
+     * @return boolean
+     */
+    function osc_item_show_phone() {
+        return (boolean) osc_item_field("b_show_phone");
+    }
+
+
+    /**
      * Gets zip code of current item
      *
      * @return string
@@ -664,6 +674,10 @@
             return (int) $page-1;
         }
     }
+
+    function osc_item_contact_phone() {
+        return (string) osc_item_field("s_contact_phone");
+        }
 
     ///////////////////////
     // HELPERS FOR ITEMS //

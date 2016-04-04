@@ -57,8 +57,16 @@
     <h3 class="name"><i class="fa fa-user"></i><?php printf('%s', osc_item_contact_name()); ?></h3>
     <?php } ?>
     <?php if( osc_item_show_email() ) { ?>
-    <p class="email"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
+    <p class="email" style="margin: 0px"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
     <?php } ?>
+    <?php  var_dump(osc_item_show_phone()) ?>
+      <?php if( osc_item_show_phone() ) {
+        $phoneuser = osc_item_contact_phone();
+
+      if ($phoneuser != "") { ?>
+        <i class="fa fa-phone"style="margin-top: 0px; margin-bottom: 10px "></i><a><?php echo"  ". $phoneuser; ?></a>
+      <?php }} ?>
+
     <?php if ( osc_user_phone() != '' ) { ?>
     <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
     <?php } ?>

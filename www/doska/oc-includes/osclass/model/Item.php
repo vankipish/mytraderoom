@@ -70,6 +70,7 @@
                 'fk_c_currency_code',
                 's_contact_name',
                 's_contact_email',
+                's_contact_phone',
                 'b_premium',
                 's_ip',
                 'b_enabled',

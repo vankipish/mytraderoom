@@ -82,6 +82,14 @@
                           <?php ItemForm::contact_email_text(); ?>
                       </div>
                   </div>
+
+                  <div class="control-group" style="margin-bottom: 10px">
+                      <label class="control-label" for="contactPhone"><?php echo "Номер телефона"?></label>
+                      <div class="controls">
+                          <?php ItemForm::contact_phone_text(); ?>
+                      </div>
+                  </div>
+
                   <div class="form-group">
                       <div class="controls checkbox">
                           <?php ItemForm::show_email_checkbox(); ?>
@@ -90,6 +98,16 @@
                           </label>
                       </div>
                   </div>
+
+                  <div class="form-group">
+                      <div class="controls checkbox">
+                          <?php ItemForm::show_phone_checkbox(); ?>
+                          <label for="showPhone">
+                              Показать номер телефона в объявлении
+                          </label>
+                      </div>
+                  </div>
+
               </div>
               <?php
           }

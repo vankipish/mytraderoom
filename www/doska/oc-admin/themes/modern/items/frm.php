@@ -212,6 +212,14 @@ function customPageHeader() { ?>
                                     <label><?php _e('E-mail'); ?></label>
                                     <?php ItemForm::contact_email_text(); ?>
                                 </div>
+
+                                <?php if( osc_item_user_id() == null ) { ?>
+                                    <div class="input-has-placeholder input-separate-top">
+                                        <label><?php _e('Телефон'); ?></label>
+                                        <?php ItemForm::contact_phone_text(); ?>
+                                    </div>
+                                <?php } ?>
+
                                 <?php if(!$new_item) { ?>
                                 <div class="input-has-placeholder input-separate-top">
                                     <label><?php _e('Ip Address'); ?></label>
