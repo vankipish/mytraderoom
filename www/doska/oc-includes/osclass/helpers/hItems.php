@@ -1142,8 +1142,8 @@
      */
     function osc_format_min_price($minPrice, $symbol = null) {
 
-        if ($minPrice === null) return  osc_apply_filter('Нет предложений','Вы можете стать первым');
-        if ($minPrice == 0) return ('Нет предложений');
+        if ($minPrice === null) return  osc_apply_filter('нет предложений','Вы можете стать первым');
+        if ($minPrice == 0) return ('нет предложений');
     
         if($symbol==null) { $symbol = osc_item_currency_symbol(); }
 
