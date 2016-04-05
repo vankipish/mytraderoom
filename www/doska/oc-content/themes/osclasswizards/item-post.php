@@ -64,7 +64,7 @@
           <?php if(!osc_is_web_user_logged_in() ) { ?>
               <div class="box seller_info">
                   <h2>
-                      Данные заказчика
+                      Ваши контакты
                   </h2>
                   <div class="form-group">
                       <label class="control-label" for="contactName">

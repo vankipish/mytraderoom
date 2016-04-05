@@ -197,7 +197,6 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения
-        <?php //var_dump (ItemComment::newInstance()->get_min_price((osc_item_id())))?>
       </h2>
       <?php }
 
@@ -210,12 +209,12 @@
 
           <div style="border-bottom: ridge" >
           <h4 style="margin-bottom: 3px; margin-top: 10px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
-              array_push($newPrices,osc_comment_title())
+              // Проверить не будет ли ошибок : array_push($newPrices,osc_comment_title())
             ?></h4> <em>
-            <b style="font-weight: normal">От</b>
-            <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
-            <p style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</p>
+            <a style="font-weight: normal">От</a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
 
+            <p style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</p>
+            <h5> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
                   if (osc_comment_author_phone()){ ?>
                      <h6> <?php echo osc_comment_author_phone(); ?></h6>
