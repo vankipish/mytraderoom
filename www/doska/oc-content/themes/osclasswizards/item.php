@@ -143,7 +143,7 @@
         </div>
         <?php osc_run_hook('item_detail', osc_item() ); ?>
         <ul class="contact_button">
-          <li>
+       <!-- <li> Закоментил, нафиг надо
             <?php if( !osc_item_is_expired () ) { ?>
             <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
             <?php     if(osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ) { ?>
@@ -153,7 +153,7 @@
             <?php     } ?>
             <?php     } ?>
             <?php } ?>
-          </li>
+          </li> -->
           <li><a href="<?php echo osc_item_send_friend_url(); ?>" rel="nofollow">
             <?php _e('Share', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a></li>
@@ -163,7 +163,7 @@
           </li>
           <?php } ?>
           <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
-            смотреть другие заказы автора
+            смотреть другие объявления автора
             </a> </li>
         </ul>
         <?php osc_run_hook('location'); ?>
@@ -196,7 +196,9 @@
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        Предложения
+        Предложения<?php
+        var_dump(Session::newInstance()->_get($user['s_email']));
+        // _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
       </h2>
       <?php }
 
@@ -208,16 +210,16 @@
         <div class="comment">
 
           <div style="border-bottom: ridge" >
-          <h4 style="margin-bottom: 3px; margin-top: 10px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
+          <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
               // Проверить не будет ли ошибок : array_push($newPrices,osc_comment_title())
             ?></h4> <em>
             <a style="font-weight: normal">От</a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
 
-            <p style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</p>
-            <h5> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
+            <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
+            <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
-                  if (osc_comment_author_phone()){ ?>
-                     <h6> <?php echo osc_comment_author_phone(); ?></h6>
+                  if (osc_comment_author_phone() or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) )){ ?>
+                     <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
                 <?php }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           </div>
