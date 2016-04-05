@@ -79,7 +79,7 @@
             $aItem['price']    = !is_null($aItem['price']) ? strip_tags( trim( $aItem['price'] ) ) : $aItem['price'];
             $contactName       = strip_tags( trim( $aItem['contactName'] ) );
             $contactEmail      = strip_tags( trim( $aItem['contactEmail'] ) );
-            $contactPhone      = trim( $aItem['contactPhone'] );
+            $contactPhone      = strip_tags(trim( $aItem['contactPhone'] ) );
             $aItem['cityArea'] = osc_sanitize_name( strip_tags( trim( $aItem['cityArea'] ) ) );
             $aItem['address']  = osc_sanitize_name( strip_tags( trim( $aItem['address'] ) ) );
 
