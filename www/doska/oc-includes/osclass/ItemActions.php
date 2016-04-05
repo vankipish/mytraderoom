@@ -192,6 +192,7 @@
                     'b_active'              => ($active=='ACTIVE'?1:0),
                     'b_enabled'             => $enabled,
                     'b_show_email'          => $aItem['showEmail'],
+                    'b_show_phone'          => $aItem['showPhone'],
                     'b_spam'                => $is_spam,
                     's_ip'                  => $aItem['s_ip']
                 ));
@@ -420,6 +421,7 @@
                     ,'i_price'            => $aItem['price']
                     ,'fk_c_currency_code' => $aItem['currency']
                     ,'b_show_email'       => $aItem['showEmail']
+                    ,'b_show_phone'       => $aItem['showPhone']
                 );
 
                 // only can change the user if you're an admin
@@ -428,6 +430,8 @@
                     $aUpdate['s_contact_name']  = $aItem['contactName'];
                     $aUpdate['s_contact_email'] = $aItem['contactEmail'];
                     $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
+                    $aUpdate['b_show_phone']    = $aItem['showPhone'];
+
 
                 } else {
                     $aUpdate['s_ip'] = $aItem['s_ip'];
@@ -490,15 +494,7 @@
          * @param type $newIsExpired
          * @param type $location
          */
-     /*   public function add_min_price ($minPrice)
-        {
-                $minPrice = ItemComment::newInstance()->getAllComments()
-                $this->manager->insert(array(
-                's_body'             => $minPrice,
-                   ));
 
-        }
-     */
         private function _updateStats($result, $old_item, $oldIsExpired, $old_item_location, $aItem, $newIsExpired, $location)
         {
             if($result==1 && $old_item['b_enabled']==1 && $old_item['b_active']==1 && $old_item['b_spam']==0) {
@@ -1176,6 +1172,7 @@
             $aItem['address']       = Params::getParam('address');
             $aItem['currency']      = Params::getParam('currency');
             $aItem['showEmail']     = (Params::getParam('showEmail') != '') ? 1 : 0;
+            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;
             $aItem['title']         = Params::getParam('title');
             $aItem['description']   = Params::getParam('description');
             $aItem['photos']        = Params::getFiles('photos');

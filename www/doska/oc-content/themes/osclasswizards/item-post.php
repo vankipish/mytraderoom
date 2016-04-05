@@ -98,7 +98,7 @@
                           </label>
                       </div>
                   </div>
-            <!--показывать телефон?-->
+            
                   <div class="form-group">
                       <div class="controls checkbox">
                           <?php ItemForm::show_phone_checkbox(); ?>

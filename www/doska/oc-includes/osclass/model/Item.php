@@ -78,6 +78,7 @@
                 'b_spam',
                 's_secret',
                 'b_show_email',
+                'b_show_phone',
                 'dt_expiration'
             );
             $this->setFields($array_fields);
