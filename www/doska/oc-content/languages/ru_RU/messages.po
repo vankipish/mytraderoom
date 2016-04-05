@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Flash Messages package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-05 18:23+0400\n"
+"PO-Revision-Date: 2016-04-05 23:17+0400\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -165,7 +165,7 @@ msgstr "Комментарий не был добавлен вами. Вы не 
 
 #: oc-admin/comments.php:195 oc-includes/osclass/controller/item.php:559
 msgid "The comment has been deleted"
-msgstr "Комментарий был удален"
+msgstr "Предложение было удалено"
 
 #: oc-includes/osclass/controller/login.php:25
 #: oc-includes/osclass/controller/register.php:26

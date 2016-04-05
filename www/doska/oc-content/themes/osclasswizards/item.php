@@ -197,8 +197,9 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения<?php
-        var_dump(Session::newInstance()->_get($user['s_email']));
+        //var_dump( User::newInstance()->findByPrimaryKey( osc_item_user_id() ));
         // _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
+
       </h2>
       <?php }
 
@@ -253,6 +254,7 @@
               <?php if(osc_is_web_user_logged_in()) { ?>
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
+              <input type="hidden" name="authorPhone" value="<?php echo osc_logged_user_phone();?>" />
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
