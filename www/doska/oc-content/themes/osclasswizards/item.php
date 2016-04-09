@@ -254,7 +254,13 @@
               <?php if(osc_is_web_user_logged_in()) { ?>
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
-              <input type="hidden" name="authorPhone" value="<?php echo osc_logged_user_phone();?>" />
+                <div class="form-group">
+                  <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
+                    <div class="controls">
+                      <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                    </div>
+                </div>
+
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
@@ -330,7 +336,7 @@
     </div>
     <?php } ?>
     <?php } ?>
-  <!-- тут был лишний тег у меня-->
+
   <div class="col-sm-5 col-md-4">
     <?php
 		if(function_exists('show_qrcode')){
