@@ -254,12 +254,20 @@
               <?php if(osc_is_web_user_logged_in()) { ?>
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
-                <div class="form-group">
+                <!--<div class="form-group">    -->
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
-                    <div class="controls">
-                      <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
-                    </div>
-                </div>
+              <!-- <div class="controls"> -->
+                      
+
+
+                      <?php CommentForm::js_show_or_hide(); ?>
+
+                
+
+
+
+                      <!--  </div>  -->
+                <!-- </div>   -->
 
               <?php } else { ?>
               <div class="form-group">
