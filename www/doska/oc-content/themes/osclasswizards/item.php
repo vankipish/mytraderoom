@@ -80,19 +80,9 @@
         <!-- Добавил еще одно поле для мин.предложенной цены-->
         <?php $newPrices = array();?>
         <li>
-
             <i class="fa fa-money"></i>
               Минимальная предложенная цена:
-              <?php  while ( osc_has_item_comments() ) {  //для каждого коммента + здесь берутся значения из базы
-              array_push($newPrices, osc_comment_title()); //цена предложения (хранится в title) заносится в массив $newPrices
-              }
-              View::newInstance()->_reset('comments'); // счетчик комментов возвращается на 1 элемент, т.к. ф-я используется далее при выводе комментов
-            // Добавил здесь расчет минимальной цены предложения
-              $minPrice=min($newPrices);
-              echo ("$minPrice ") ; //рассчитывается и выводится минимальная цена предложения
-            // Сюда надо как-то вставить валюту = валюте объявления, ниже по коду валюту предложения надо сделать так же
-              echo osc_item_currency_symbol();
-              ?>
+          <?php echo osc_format_min_price(osc_item_min_price())?>
         </li>
       <?php }; ?>
         <li>
@@ -153,7 +143,7 @@
         </div>
         <?php osc_run_hook('item_detail', osc_item() ); ?>
         <ul class="contact_button">
-          <li>
+       <!-- <li> Закоментил, нафиг надо
             <?php if( !osc_item_is_expired () ) { ?>
             <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
             <?php     if(osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ) { ?>
@@ -163,7 +153,7 @@
             <?php     } ?>
             <?php     } ?>
             <?php } ?>
-          </li>
+          </li> -->
           <li><a href="<?php echo osc_item_send_friend_url(); ?>" rel="nofollow">
             <?php _e('Share', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a></li>
@@ -173,7 +163,7 @@
           </li>
           <?php } ?>
           <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
-            смотреть другие заказы автора
+            смотреть другие объявления автора
             </a> </li>
         </ul>
         <?php osc_run_hook('location'); ?>
@@ -206,7 +196,10 @@
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        Предложения <?php //var_dump(osc_comment())?>
+        Предложения<?php
+        //var_dump( User::newInstance()->findByPrimaryKey( osc_item_user_id() ));
+        // _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
+
       </h2>
       <?php }
 
@@ -218,18 +211,17 @@
         <div class="comment">
 
           <div style="border-bottom: ridge" >
-          <h4 style="margin-bottom: 3px; margin-top: 10px "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
-              array_push($newPrices,osc_comment_title())
+          <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
+              // Проверить не будет ли ошибок : array_push($newPrices,osc_comment_title())
             ?></h4> <em>
-            <b style="font-weight: normal">От</b>
-            <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+            <a style="font-weight: normal">От</a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
 
+            <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
+            <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
-                  if (osc_comment_author_phone()){ ?>
-                     <h6> <?php echo osc_comment_author_phone(); ?></h6>
-                <?php } else { ?>
-                      :
-              <?php   }   ?>
+                  if (osc_comment_author_phone() or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) )){ ?>
+                     <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
+                <?php }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           </div>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
@@ -241,8 +233,9 @@
          <?php } ?>
         <div class="pagination"> <?php echo osc_comments_pagination(); ?> </div>
         </div>
-      </div>
       <?php } ?>
+    </div>
+
       <div class="comment_form">
         <div class="title">
           <h1>
@@ -261,6 +254,21 @@
               <?php if(osc_is_web_user_logged_in()) { ?>
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
+                <!--<div class="form-group">    -->
+                  <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
+              <!-- <div class="controls"> -->
+                      
+
+
+                      <?php CommentForm::js_show_or_hide(); ?>
+
+                
+
+
+
+                      <!--  </div>  -->
+                <!-- </div>   -->
+
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
@@ -302,7 +310,7 @@
                       <!-- если объявление новое цена предложения расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text -->
                       <?php if( osc_count_item_comments() >= 1 )
                           {
-                                  CommentForm::New_price_fromMin_input_text(null,$minPrice);
+                                  CommentForm::New_price_fromMin_input_text(null,osc_item_min_price());
                           }
                             else  CommentForm::New_price_input_text();
                       ?>
@@ -336,7 +344,7 @@
     </div>
     <?php } ?>
     <?php } ?>
-  <!-- тут был лишний тег у меня-->
+
   <div class="col-sm-5 col-md-4">
     <?php
 		if(function_exists('show_qrcode')){

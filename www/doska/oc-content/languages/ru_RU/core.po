@@ -2,17 +2,18 @@
 # This file is distributed under the same license as the Core package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-11 13:53+0300\n"
+"PO-Revision-Date: 2016-04-05 19:37+0400\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7\n"
 "Project-Id-Version: Core\n"
 "POT-Creation-Date: \n"
 "Last-Translator: Osclass <info@os-class.ru>\n"
 "Language-Team: \n"
+"Language: ru_RU\n"
 
 #: oc-admin/themes/modern/items/reported.php:140
 #: oc-includes/osclass/classes/datatables/ItemsDataTable.php:328
@@ -624,9 +625,9 @@ msgid ""
 "listings published. You can also filter by several parameters: user, region, "
 "city, etc."
 msgstr ""
-"Управление заданиями на сайте: изменять, удалять или блокировать "
-"последние задания. Вы можете также фильтровать по нескольким параметрам: "
-"пользователь, область, город, и т.д."
+"Управление заданиями на сайте: изменять, удалять или блокировать последние "
+"задания. Вы можете также фильтровать по нескольким параметрам: пользователь, "
+"область, город, и т.д."
 
 #: oc-admin/themes/modern/items/index.php:225
 #: oc-admin/themes/modern/items/index.php:324
@@ -657,8 +658,7 @@ msgstr "Вы действительно хотите удалить все по�
 #: oc-admin/themes/modern/items/reported.php:141
 msgid ""
 "Are you sure you want to clear the spam reportings of the selected items?"
-msgstr ""
-"Вы действительно хотите удалить пометки о спаме из выбранных заданий?"
+msgstr "Вы действительно хотите удалить пометки о спаме из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:142
 msgid ""
@@ -694,9 +694,9 @@ msgid ""
 "register in order to publish something, the number of pictures allowed for "
 "each listing, etc."
 msgstr ""
-"Изменить общие параметры для ваших заданий. Решите, должны ли "
-"пользователи регистрироваться для публикации заданий. Укажите разрешенное "
-"количество фотографий для каждого задания и т.д."
+"Изменить общие параметры для ваших заданий. Решите, должны ли пользователи "
+"регистрироваться для публикации заданий. Укажите разрешенное количество "
+"фотографий для каждого задания и т.д."
 
 #: oc-admin/themes/modern/items/settings.php:83
 msgid "If the value is set to zero, there is no wait period"
@@ -707,8 +707,8 @@ msgid ""
 "After %s validated listings the user doesn't need to validate the listings "
 "any more"
 msgstr ""
-"После %s подтверждений  заданий, пользователю больше не нужно "
-"подтверждать задания."
+"После %s подтверждений  заданий, пользователю больше не нужно подтверждать "
+"задания."
 
 #: oc-admin/themes/modern/items/settings.php:127
 msgid "Allow attached files in contact publisher form"
@@ -882,8 +882,8 @@ msgid ""
 "inappropriate or doesn’t match the listing."
 msgstr ""
 "Управление изображениями, которые пользователи загрузили вместе с их "
-"заданиями. Вы можете их удалить, не удаляя всё задание, если "
-"изображение является неуместным или не соответствуют заданию."
+"заданиями. Вы можете их удалить, не удаляя всё задание, если изображение "
+"является неуместным или не соответствуют заданию."
 
 #: oc-admin/themes/modern/media/index.php:57
 msgid "Delete media"
@@ -1055,26 +1055,23 @@ msgstr ""
 msgid ""
 "Listings shown in RSS feed: this field must only contain numeric characters"
 msgstr ""
-"Количество заданий для показа в RSS-ленте: это поле должно содержать "
-"только цифры"
+"Количество заданий для показа в RSS-ленте: это поле должно содержать только "
+"цифры"
 
 #: oc-admin/themes/modern/settings/index.php:68
 msgid "Latest listings shown: this field is required"
 msgstr ""
-"Количество последних заданий для показа: это поле обязательно для "
-"заполнения"
+"Количество последних заданий для показа: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/index.php:69
 msgid "Latest listings shown: this field must only contain numeric characters"
 msgstr ""
-"Количество последних задания для показа: в этом поле должны быть только "
-"цифры"
+"Количество последних задания для показа: в этом поле должны быть только цифры"
 
 #: oc-admin/themes/modern/settings/index.php:73
 msgid "The search page shows: this field must only contain numeric characters"
 msgstr ""
-"Показывать заданий на странице поиска: в этом поле должны быть только "
-"цифры"
+"Показывать заданий на странице поиска: в этом поле должны быть только цифры"
 
 #: oc-admin/themes/modern/settings/index.php:133
 msgid ""
@@ -1189,8 +1186,8 @@ msgid ""
 "watermark, etc."
 msgstr ""
 "В управлении настройками изображений пользователи могут загружать картинки "
-"вместе с заданиями. Вы можете ограничить их размер, количество "
-"изображений в задании, включить водяные знаки и т.д."
+"вместе с заданиями. Вы можете ограничить их размер, количество изображений в "
+"задании, включить водяные знаки и т.д."
 
 #: oc-admin/themes/modern/settings/media.php:174
 msgid "Image sizes"
@@ -1382,9 +1379,8 @@ msgid ""
 "Save a backup of all of your site's information: listings, users and "
 "configuration. You can save a backup on your server or on your computer."
 msgstr ""
-"Сохранить резервную копию всей информации с сайта: задания, пользователи "
-"и настройки. Вы можете сохранить резервную копию на сервере или на "
-"компьютере."
+"Сохранить резервную копию всей информации с сайта: задания, пользователи и "
+"настройки. Вы можете сохранить резервную копию на сервере или на компьютере."
 
 #: oc-admin/themes/modern/tools/backup.php:68
 msgid ""
@@ -1888,8 +1884,7 @@ msgstr "Описание должно быть больше"
 
 #: oc-includes/osclass/frm/Item.form.class.php:1185
 msgid "Sorry, you have reached the maximum number of images per listing"
-msgstr ""
-"К сожалению, Вы добавили максимальное количество изображений в задании"
+msgstr "К сожалению, Вы добавили максимальное количество изображений в задании"
 
 #: oc-includes/osclass/frm/Language.form.class.php:138
 msgid "Number of decimals: this field must only contain numeric characters"
@@ -2166,8 +2161,8 @@ msgid ""
 "Description of the example ad. Insert here some usefull description of your "
 "ad."
 msgstr ""
-"Описание примера задания. Вставьте здесь некоторые полезные описания "
-"вашего задания."
+"Описание примера задания. Вставьте здесь некоторые полезные описания вашего "
+"задания."
 
 #: oc-includes/osclass/installer/basic_data.php:106
 msgid "Example author"
@@ -3013,9 +3008,9 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #: oc-admin/admins.php:322 oc-admin/admins.php:362 oc-admin/comments.php:257
-#: oc-admin/items.php:822 oc-admin/languages.php:366
-#: oc-admin/languages.php:422 oc-admin/media.php:135 oc-admin/pages.php:277
-#: oc-admin/plugins.php:333 oc-admin/themes/modern/admins/index.php:175
+#: oc-admin/items.php:822 oc-admin/languages.php:366 oc-admin/languages.php:422
+#: oc-admin/media.php:135 oc-admin/pages.php:277 oc-admin/plugins.php:333
+#: oc-admin/themes/modern/admins/index.php:175
 #: oc-admin/themes/modern/admins/index.php:186
 #: oc-admin/themes/modern/appearance/index.php:107
 #: oc-admin/themes/modern/appearance/widgets.php:87
@@ -3341,8 +3336,7 @@ msgstr "Вернуться к %s"
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: oc-admin/gui/login.php:47
-#: oc-admin/themes/modern/settings/mailserver.php:133
+#: oc-admin/gui/login.php:47 oc-admin/themes/modern/settings/mailserver.php:133
 #: oc-admin/themes/modern/users/frm.php:296
 #: oc-includes/osclass/install-functions.php:651
 #: oc-includes/osclass/install-functions.php:760
@@ -3492,8 +3486,7 @@ msgstr "Тип Администратора <em>(обязательно)</em>"
 msgid "Current password"
 msgstr "Текущий пароль"
 
-#: oc-admin/gui/forgot_password.php:46
-#: oc-admin/themes/modern/admins/frm.php:96
+#: oc-admin/gui/forgot_password.php:46 oc-admin/themes/modern/admins/frm.php:96
 #: oc-admin/themes/modern/users/frm.php:298
 msgid "New password"
 msgstr "Новый пароль"
@@ -5209,8 +5202,7 @@ msgstr "URL отмеченного задания: это поле обязат�
 #: oc-admin/themes/modern/settings/permalinks.php:234
 #: oc-admin/themes/modern/settings/permalinks.php:235
 msgid "Listing send friend url: this field is required"
-msgstr ""
-"URL задания для отправки друзьям: это поле обязательно для заполнения"
+msgstr "URL задания для отправки друзьям: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:238
 #: oc-admin/themes/modern/settings/permalinks.php:239
@@ -5240,8 +5232,7 @@ msgstr "URL заданий для удаления: это поле обязат
 #: oc-admin/themes/modern/settings/permalinks.php:258
 #: oc-admin/themes/modern/settings/permalinks.php:259
 msgid "Delete listing resource url: this field is required"
-msgstr ""
-"URL ресурсов заданий для удаления: это поле обязательно для заполнения"
+msgstr "URL ресурсов заданий для удаления: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:262
 #: oc-admin/themes/modern/settings/permalinks.php:263
@@ -6694,64 +6685,64 @@ msgstr "Более высокая цена первой"
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "January"
-msgstr "Январь"
+msgstr "Января"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "February"
-msgstr "Февраль"
+msgstr "Февраля"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "March"
-msgstr "Март"
+msgstr "Марта"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "April"
-msgstr "Апрель"
+msgstr "Апреля"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/frm/Field.form.class.php:31
 #: oc-includes/osclass/helpers/hUtils.php:137
 #: oc-includes/osclass/helpers/hUtils.php:138
 msgid "May"
-msgstr "Май"
+msgstr "Мая"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "June"
-msgstr "Июнь"
+msgstr "Июня"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "July"
-msgstr "Июль"
+msgstr "Июля"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "August"
-msgstr "Август"
+msgstr "Августа"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "September"
-msgstr "Сентябрь"
+msgstr "Сентября"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "October"
-msgstr "Октябрь"
+msgstr "Октября"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "November"
-msgstr "Ноябрь"
+msgstr "Ноября"
 
 #: oc-includes/osclass/frm/Field.form.class.php:30
 #: oc-includes/osclass/helpers/hUtils.php:137
 msgid "December"
-msgstr "Декабрь"
+msgstr "Декабря"
 
 #: oc-includes/osclass/frm/Field.form.class.php:31
 #: oc-includes/osclass/helpers/hUtils.php:138
