@@ -79,6 +79,7 @@
             $aItem['price']    = !is_null($aItem['price']) ? strip_tags( trim( $aItem['price'] ) ) : $aItem['price'];
             $contactName       = strip_tags( trim( $aItem['contactName'] ) );
             $contactEmail      = strip_tags( trim( $aItem['contactEmail'] ) );
+            $contactPhone      = strip_tags(trim( $aItem['contactPhone'] ) );
             $aItem['cityArea'] = osc_sanitize_name( strip_tags( trim( $aItem['cityArea'] ) ) );
             $aItem['address']  = osc_sanitize_name( strip_tags( trim( $aItem['address'] ) ) );
 
@@ -186,10 +187,12 @@
                     'fk_c_currency_code'    => $aItem['currency'],
                     's_contact_name'        => $contactName,
                     's_contact_email'       => $contactEmail,
+                    's_contact_phone'       => $contactPhone,
                     's_secret'              => $code,
                     'b_active'              => ($active=='ACTIVE'?1:0),
                     'b_enabled'             => $enabled,
                     'b_show_email'          => $aItem['showEmail'],
+                    'b_show_phone'          => $aItem['showPhone'],
                     'b_spam'                => $is_spam,
                     's_ip'                  => $aItem['s_ip']
                 ));
@@ -401,6 +404,7 @@
                     $aItem['userId']      = $aItem['userId'];
                     $aItem['contactName'] = $user['s_name'];
                     $aItem['contactEmail'] = $user['s_email'];
+                    $aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
                 } else {
                     $aItem['userId']      = NULL;
                 }
@@ -417,6 +421,7 @@
                     ,'i_price'            => $aItem['price']
                     ,'fk_c_currency_code' => $aItem['currency']
                     ,'b_show_email'       => $aItem['showEmail']
+                    ,'b_show_phone'       => $aItem['showPhone']
                 );
 
                 // only can change the user if you're an admin
@@ -424,6 +429,9 @@
                     $aUpdate['fk_i_user_id']    = $aItem['userId'];
                     $aUpdate['s_contact_name']  = $aItem['contactName'];
                     $aUpdate['s_contact_email'] = $aItem['contactEmail'];
+                    $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
+                    $aUpdate['b_show_phone']    = $aItem['showPhone'];
+
 
                 } else {
                     $aUpdate['s_ip'] = $aItem['s_ip'];
@@ -486,6 +494,7 @@
          * @param type $newIsExpired
          * @param type $location
          */
+
         private function _updateStats($result, $old_item, $oldIsExpired, $old_item_location, $aItem, $newIsExpired, $location)
         {
             if($result==1 && $old_item['b_enabled']==1 && $old_item['b_active']==1 && $old_item['b_spam']==0) {
@@ -886,7 +895,6 @@
          */
         public function add_comment()
         {
-
             if(!osc_comments_enabled()) {
                 return 7;
                             }
@@ -1108,9 +1116,11 @@
                 $aItem['contactEmail']  = $data['s_email'];
                 Params::setParam('contactName', $data['s_name']);
                 Params::setParam('contactEmail', $data['s_email']);
+                Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
             } else {
                 $aItem['contactName']   = Params::getParam('contactName');
                 $aItem['contactEmail']  = Params::getParam('contactEmail');
+                $aItem['contactPhone']  = Params::getParam('contactPhone');
             }
             $aItem['userId']        = $userId;
 
@@ -1162,6 +1172,7 @@
             $aItem['address']       = Params::getParam('address');
             $aItem['currency']      = Params::getParam('currency');
             $aItem['showEmail']     = (Params::getParam('showEmail') != '') ? 1 : 0;
+            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;
             $aItem['title']         = Params::getParam('title');
             $aItem['description']   = Params::getParam('description');
             $aItem['photos']        = Params::getFiles('photos');

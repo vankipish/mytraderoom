@@ -128,7 +128,7 @@
   </div>
   <?php if(osc_get_preference('show_popular', 'osclasswizards_theme') == '1'){?>
   <div id="tab_filter">
-    <h2 class="title"> <?php echo sprintf(__('Popular in %s', OSCLASSWIZARDS_THEME_FOLDER), osc_page_title()) ; ?> </h2>
+    <h2 class="title"> <?php echo sprintf('Популярные на '), osc_page_title() ; ?> </h2>
     <?php if(osclasswizards_show_popular_searches() ){ ?>
     <section id='Searches'>
       <div class="popular_cities">

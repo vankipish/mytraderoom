@@ -98,7 +98,7 @@
       <div class="publish">
         <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
         <a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
-        <?php _e('Publish your ad for free', OSCLASSWIZARDS_THEME_FOLDER);?>
+          <?php _e("Publish your ad for free",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
         </a>
         <?php } ?>
       </div>

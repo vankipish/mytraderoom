@@ -30,7 +30,7 @@ if(View::newInstance()->_exists('listType')){
 <ul class="listings_list listing-card" id="listing-card-list">
   <?php
 	$i = 0;
-
+	
 	//latest items
 	if($type == 'latestItems'){
 
@@ -62,10 +62,12 @@ if(View::newInstance()->_exists('listType')){
                 <?php } ?>
                 </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"> <?php echo osc_format_price(osc_item_price()); ?></span>
+                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
+                  <!-- Добавил строку для вывода минимальной цены-->
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
-              <p><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>
+              <p style="margin-bottom: 0px"><?php echo osc_highlight( osc_item_description() ,150) ; ?></p>
               <?php $admin = false; ?>
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
@@ -86,11 +88,11 @@ if(View::newInstance()->_exists('listType')){
       </div>
     </div>
   </li>
-  <?php
+  <?php	
         }
 
-    }
-
+    } 
+		
 	// premium items
 	elseif($type == 'premiums'){
 		while ( osc_has_premiums() ) {
@@ -114,17 +116,19 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_premium_url() ; ?>" title="<?php echo osc_esc_html(osc_premium_title()) ; ?>"><?php echo osc_premium_title() ; ?></a></h4>
-
+             
               <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_premium_category_id() ); ?>"></i> <?php echo osc_premium_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_premium_city(); ?>
                 <?php if(osc_premium_region()!='') { ?>
                 (<?php echo osc_premium_region(); ?>)
                 <?php } ?>
                 </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_premium_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"><?php echo osc_format_price(osc_premium_price(), osc_premium_currency_symbol()); ?></span>
+                <span class="currency-value" style="margin: 0px"><?php echo "Начальная цена: ". osc_format_price(osc_premium_price(), osc_premium_currency_symbol()); ?></span>
+                  <!-- Добавил строку для вывода минимальной цены-->
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
-              <p><?php echo osc_highlight( osc_premium_description(), 250 ); ?></p>
+              <p style= "margin-bottom: 0px"><?php echo osc_highlight( osc_premium_description(), 150 ); ?></p>
               <?php $admin = false; ?>
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_premium_edit_url(); ?>" rel="nofollow">
@@ -175,18 +179,19 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
-
+             
               <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
                 <?php if( osc_item_region()!='' ) { ?>
                 (<?php echo osc_item_region(); ?>)
                 <?php } ?>
                 </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"> <?php echo "Начальная цена: ".osc_format_price(osc_item_price()); ?></span>
-                <span class="currency-value"> <?php echo "Минимальная цена: ".osc_format_price(osc_item_price()); ?></span>
+                <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
+                <!-- Добавил строку для вывода минимальной цены-->
+                <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
-              <p><?php //echo osc_highlight( osc_item_description() ,250) ; ?></p>
+              <p style="margin-bottom: 0px"><?php echo osc_highlight( osc_item_description() ,150) ; ?></p>
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
               <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>

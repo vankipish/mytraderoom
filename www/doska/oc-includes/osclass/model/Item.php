@@ -70,6 +70,7 @@
                 'fk_c_currency_code',
                 's_contact_name',
                 's_contact_email',
+                's_contact_phone',
                 'b_premium',
                 's_ip',
                 'b_enabled',
@@ -77,6 +78,7 @@
                 'b_spam',
                 's_secret',
                 'b_show_email',
+                'b_show_phone',
                 'dt_expiration'
             );
             $this->setFields($array_fields);

@@ -57,14 +57,20 @@
     <h3 class="name"><i class="fa fa-user"></i><?php printf('%s', osc_item_contact_name()); ?></h3>
     <?php } ?>
     <?php if( osc_item_show_email() ) { ?>
-    <p class="email"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
+    <p class="email" style="margin: 0px"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
     <?php } ?>
+      <?php if( osc_item_show_phone() ) {
+        $phoneuser = osc_item_contact_phone();
+      if ($phoneuser != "") { ?>
+        <i class="fa fa-phone"style="margin-top: 0px"></i><a><?php echo"  ". $phoneuser; ?></a>
+      <?php }} ?>
+
     <?php if ( osc_user_phone() != '' ) { ?>
     <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
     <?php } ?>
     <ul id="error_list">
     </ul>
-    <form action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" id="contact_form" <?php if(osc_item_attachment()) { echo 'enctype="multipart/form-data"'; };?> >
+    <form style="margin-top: 15px" action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" id="contact_form" <?php if(osc_item_attachment()) { echo 'enctype="multipart/form-data"'; };?> >
       <?php osc_prepare_user_info(); ?>
       <input type="hidden" name="action" value="contact_post" />
       <input type="hidden" name="page" value="item" />

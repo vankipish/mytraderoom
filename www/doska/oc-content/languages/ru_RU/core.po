@@ -105,7 +105,7 @@ msgstr "Выберите опцию"
 
 #: oc-admin/themes/modern/items/index.php:325
 msgid "Item ID"
-msgstr "ID объявления"
+msgstr "ID задания"
 
 #: oc-admin/languages.php:418 oc-admin/languages.php:419
 #: oc-admin/languages.php:420 oc-admin/languages.php:421
@@ -228,7 +228,7 @@ msgstr "Должно быть изображение в формате  .PNG"
 
 #: oc-admin/themes/modern/settings/permalinks.php:591
 msgid "User listings"
-msgstr "Объявления пользователя"
+msgstr "задания пользователя"
 
 #: oc-admin/themes/modern/upgrade/index.php:65
 msgid "Upgrade now"
@@ -374,7 +374,7 @@ msgid ""
 "files"
 msgstr ""
 "Администраторы имеют полный контроль над системой, в то время как "
-"модераторам разрешено только редактирование объявлений, комментариев и "
+"модераторам разрешено только редактирование заданий, комментариев и "
 "мультимедийных файлов"
 
 #: oc-admin/themes/modern/admins/frm.php:91
@@ -406,11 +406,11 @@ msgstr ""
 "Добавить пользователей, которые могут управлять своей страницей. Вы можете "
 "добавить администраторов или модераторов: администраторы имеют доступ ко "
 "всей панели администратора в то время как модераторы могут изменять только "
-"объявления и просматривать статистику."
+"задания и просматривать статистику."
 
 #: oc-admin/themes/modern/items/frm.php:261
 msgid "Update expiration?"
-msgstr "Обновить актуальный срок объявления?"
+msgstr "Обновить актуальный срок задания?"
 
 #: oc-admin/themes/modern/admins/index.php:164
 msgid "Delete admin"
@@ -525,9 +525,9 @@ msgid ""
 "category, all listings associated will also be deleted!"
 msgstr ""
 "Добавить, изменить или удалить категории и подкатегории, в которых "
-"пользователи могут размещать объявления. Изменить порядок разделов с помощью "
+"пользователи могут размещать задания. Изменить порядок разделов с помощью "
 "перетаскивания. <strong>Будьте внимательны</strong>: Если вы удалите "
-"категории, все объявления в них также будут удалены!"
+"категории, все задания в них также будут удалены!"
 
 #: oc-admin/themes/modern/categories/index.php:99
 msgid "Note: You must expand the category in order to make it a subcategory."
@@ -549,7 +549,7 @@ msgid ""
 "<strong>WARNING</strong>: This will also delete the listings under that "
 "category. This action cannot be undone. Are you sure you want to continue?"
 msgstr ""
-"<strong>ВНИМАНИЕ</strong>: Это действие также удалит объявления в этой "
+"<strong>ВНИМАНИЕ</strong>: Это действие также удалит задания в этой "
 "категории. Это действие нельзя отменить. Вы действительно хотите продолжить?"
 
 #: oc-admin/themes/modern/comments/frm.php:74
@@ -561,7 +561,7 @@ msgid ""
 "Manage the comments that users publish on the listings on your site. You can "
 "also edit, delete, activate or block comments."
 msgstr ""
-"Управление комментариями, которые сделаны пользователями к объявлениям. Вы  "
+"Управление комментариями, которые сделаны пользователями к заданиям. Вы  "
 "можете редактировать, удалять, активировать или заблокировать комментарии."
 
 #: oc-admin/themes/modern/items/frm.php:217
@@ -588,7 +588,7 @@ msgid ""
 "careful</strong>: don't modify any of the words that appear within brackets."
 msgstr ""
 "Изменение сообщений при регистрации пользователей вашего сайта, когда кто-то "
-"задёт вопрос по их объявлению или восстановление ​​пароля ... <strong>Будьте "
+"задёт вопрос по их заданию или восстановление ​​пароля ... <strong>Будьте "
 "внимательны</strong>: Не изменяйте слова которые в скобках."
 
 #: oc-admin/themes/modern/emails/index.php:32
@@ -610,8 +610,8 @@ msgid ""
 "listings or fuel type in car listings, for example."
 msgstr ""
 "Создание нового поля для пользователей заполняется когда они публикуют "
-"объявление. Вы можете потребовать дополнительную информацию, такую ​​как "
-"количество спален в недвижимости или вида топлива в объявлении по продаже "
+"задание. Вы можете потребовать дополнительную информацию, такую ​​как "
+"количество спален в недвижимости или вида топлива в задании по продаже "
 "автомобилей."
 
 #: oc-admin/themes/modern/functions.php:63
@@ -624,8 +624,8 @@ msgid ""
 "listings published. You can also filter by several parameters: user, region, "
 "city, etc."
 msgstr ""
-"Управление объявлениями на сайте: изменять, удалять или блокировать "
-"последние объявления. Вы можете также фильтровать по нескольким параметрам: "
+"Управление заданиями на сайте: изменять, удалять или блокировать "
+"последние задания. Вы можете также фильтровать по нескольким параметрам: "
 "пользователь, область, город, и т.д."
 
 #: oc-admin/themes/modern/items/index.php:225
@@ -640,53 +640,53 @@ msgid ""
 "misclassified, duplicate, expired, offensive). You can also delete the "
 "report if you consider it mistaken."
 msgstr ""
-"Здесь вы можете редактировать и удалять объявления о которых сообщали "
+"Здесь вы можете редактировать и удалять задания о которых сообщали "
 "пользователи (спам, неправильно классифицирован, дубликаты, истекшие, "
 "наступление). Вы также можете снять эти отметки, если вы считаете, что это "
 "ошибка."
 
 #: oc-admin/themes/modern/items/reported.php:139
 msgid "Are you sure you want to %s the selected items?"
-msgstr "Вы действительно хотите %s выбранное объявление?"
+msgstr "Вы действительно хотите %s выбранное задание?"
 
 #: oc-admin/themes/modern/items/reported.php:140
 msgid ""
 "Are you sure you want to clear all the reportings of the selected items?"
-msgstr "Вы действительно хотите удалить все пометки из выбранных объявлений?"
+msgstr "Вы действительно хотите удалить все пометки из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:141
 msgid ""
 "Are you sure you want to clear the spam reportings of the selected items?"
 msgstr ""
-"Вы действительно хотите удалить пометки о спаме из выбранных объявлений?"
+"Вы действительно хотите удалить пометки о спаме из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:142
 msgid ""
 "Are you sure you want to clear the misclassified reportings of the selected "
 "items?"
 msgstr ""
-"Вы действительно хотите удалить пометки ошибочные из выбранных объявлений?"
+"Вы действительно хотите удалить пометки ошибочные из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:143
 msgid ""
 "Are you sure you want to clear the duplicated reportings of the selected "
 "items?"
 msgstr ""
-"Вы действительно хотите удалить пометки о дубликатах из выбранных объявлений?"
+"Вы действительно хотите удалить пометки о дубликатах из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:144
 msgid ""
 "Are you sure you want to clear the expired reportings of the selected items?"
 msgstr ""
-"Вы действительно хотите удалить пометки о истекших из выбранных объявлений?"
+"Вы действительно хотите удалить пометки о истекших из выбранных заданий?"
 
 #: oc-admin/themes/modern/items/reported.php:145
 msgid ""
 "Are you sure you want to clear the offensive reportings of the selected "
 "items?"
 msgstr ""
-"Вы действительно хотите очистить пометки о оскорбительных объявлениях из "
-"выбранных объявлений?"
+"Вы действительно хотите очистить пометки о оскорбительных заданиях из "
+"выбранных заданий?"
 
 #: oc-admin/themes/modern/items/settings.php:19
 msgid ""
@@ -694,9 +694,9 @@ msgid ""
 "register in order to publish something, the number of pictures allowed for "
 "each listing, etc."
 msgstr ""
-"Изменить общие параметры для ваших объявлений. Решите, должны ли "
-"пользователи регистрироваться для публикации объявлений. Укажите разрешенное "
-"количество фотографий для каждого объявления и т.д."
+"Изменить общие параметры для ваших заданий. Решите, должны ли "
+"пользователи регистрироваться для публикации заданий. Укажите разрешенное "
+"количество фотографий для каждого задания и т.д."
 
 #: oc-admin/themes/modern/items/settings.php:83
 msgid "If the value is set to zero, there is no wait period"
@@ -707,8 +707,8 @@ msgid ""
 "After %s validated listings the user doesn't need to validate the listings "
 "any more"
 msgstr ""
-"После %s подтверждений  объявлений, пользователю больше не нужно "
-"подтверждать объявления."
+"После %s подтверждений  заданий, пользователю больше не нужно "
+"подтверждать задания."
 
 #: oc-admin/themes/modern/items/settings.php:127
 msgid "Allow attached files in contact publisher form"
@@ -720,7 +720,7 @@ msgstr "Отправлять админам копию \"контактов пу
 
 #: oc-admin/themes/modern/items/settings.php:150
 msgid "Send admin a copy to \"share listing\" email"
-msgstr "Отправлять админам на email копию \"поделиться объявлением\""
+msgstr "Отправлять админам на email копию \"поделиться заданием\""
 
 #: oc-admin/themes/modern/items/settings.php:195
 msgid "If the value is zero, it means an unlimited number of images is allowed"
@@ -766,7 +766,7 @@ msgid ""
 "received from donations will be used to further development and improve the "
 "project."
 msgstr ""
-"Osclass лучший скрипт доски объявлений в мире, имеет открытый исходный код, "
+"Osclass лучший скрипт доски заданий в мире, имеет открытый исходный код, "
 "поддерживаеется сообществом. Деньги, полученные от пожертвований будут "
 "использованы для дальнейшего развития и улучшения проекта."
 
@@ -882,8 +882,8 @@ msgid ""
 "inappropriate or doesn’t match the listing."
 msgstr ""
 "Управление изображениями, которые пользователи загрузили вместе с их "
-"объявлениями. Вы можете их удалить, не удаляя всё объявление, если "
-"изображение является неуместным или не соответствуют объявлению."
+"заданиями. Вы можете их удалить, не удаляя всё задание, если "
+"изображение является неуместным или не соответствуют заданию."
 
 #: oc-admin/themes/modern/media/index.php:57
 msgid "Delete media"
@@ -974,7 +974,7 @@ msgid ""
 "listings."
 msgstr ""
 "Изменение параметров, которые позволяют пользователям публиковать "
-"комментарии в объявления на вашем сайте."
+"комментарии в задания на вашем сайте."
 
 #: oc-admin/themes/modern/settings/comments.php:92
 msgid "Comment Settings &raquo; %s"
@@ -1011,7 +1011,7 @@ msgstr "Новых комментариев"
 
 #: oc-admin/themes/modern/settings/comments.php:155
 msgid "There's a new comment on his listing"
-msgstr "Новый комментарий в объявлении"
+msgstr "Новый комментарий в задании"
 
 #: oc-admin/themes/modern/settings/currencies.php:19
 msgid ""
@@ -1019,7 +1019,7 @@ msgid ""
 "in their country's currency."
 msgstr ""
 "Добавить новую валюту или редактировать существующие валюты, для того чтобы "
-"пользователи могли публиковать объявления в валюте своей страны."
+"пользователи могли публиковать задания в валюте своей страны."
 
 #: oc-admin/themes/modern/settings/currencies.php:132
 msgid "Are you sure you want to %s the selected currencies?"
@@ -1048,32 +1048,32 @@ msgstr "Символ валюты"
 #: oc-admin/themes/modern/settings/index.php:64
 msgid "Listings shown in RSS feed: this field is required"
 msgstr ""
-"Количество объявлений для показа в RSS-ленте: это поле обязательно для "
+"Количество заданий для показа в RSS-ленте: это поле обязательно для "
 "заполнения"
 
 #: oc-admin/themes/modern/settings/index.php:65
 msgid ""
 "Listings shown in RSS feed: this field must only contain numeric characters"
 msgstr ""
-"Количество объявлений для показа в RSS-ленте: это поле должно содержать "
+"Количество заданий для показа в RSS-ленте: это поле должно содержать "
 "только цифры"
 
 #: oc-admin/themes/modern/settings/index.php:68
 msgid "Latest listings shown: this field is required"
 msgstr ""
-"Количество последних объявлений для показа: это поле обязательно для "
+"Количество последних заданий для показа: это поле обязательно для "
 "заполнения"
 
 #: oc-admin/themes/modern/settings/index.php:69
 msgid "Latest listings shown: this field must only contain numeric characters"
 msgstr ""
-"Количество последних объявления для показа: в этом поле должны быть только "
+"Количество последних задания для показа: в этом поле должны быть только "
 "цифры"
 
 #: oc-admin/themes/modern/settings/index.php:73
 msgid "The search page shows: this field must only contain numeric characters"
 msgstr ""
-"Показывать объявлений на странице поиска: в этом поле должны быть только "
+"Показывать заданий на странице поиска: в этом поле должны быть только "
 "цифры"
 
 #: oc-admin/themes/modern/settings/index.php:133
@@ -1084,14 +1084,14 @@ msgid ""
 "values if you're not sure what you're doing!"
 msgstr ""
 "Изменение базовой конфигурации Osclass. Здесь Вы можете изменять значения, "
-"такие как имя сайта, валюта по умолчанию и сколько объявлений будет "
+"такие как имя сайта, валюта по умолчанию и сколько заданий будет "
 "отображаться на главной, в категориях и регионах сайта. <strong>Будьте "
 "осторожны</strong> при изменении значения по умолчанию, если вы не уверены, "
 "что вы делаете!"
 
 #: oc-admin/themes/modern/settings/index.php:275
 msgid "Latest listings shown"
-msgstr "Последние объявлений для показа"
+msgstr "Последние заданий для показа"
 
 #: oc-admin/themes/modern/settings/index.php:278
 msgid "at most"
@@ -1111,7 +1111,7 @@ msgid ""
 "editing a listing "
 msgstr ""
 "Разрешить пользователям выбирать только родительскую категорию  при "
-"публикации объявления."
+"публикации задания."
 
 #: oc-admin/themes/modern/settings/index.php:319
 msgid ""
@@ -1157,7 +1157,7 @@ msgid ""
 "deleted. Users from this location will be unlinked, but not deleted. Are you "
 "sure you want to continue?"
 msgstr ""
-"Это действие невозможно отменить. Объявления, связанные с данным "
+"Это действие невозможно отменить. задания, связанные с данным "
 "местоположением, будут удалены. Пользователи из этого местоположения будут "
 "отвязаны от него, но не удалятся  с сайта. Вы действительно хотите "
 "продолжить?"
@@ -1189,8 +1189,8 @@ msgid ""
 "watermark, etc."
 msgstr ""
 "В управлении настройками изображений пользователи могут загружать картинки "
-"вместе с объявлениями. Вы можете ограничить их размер, количество "
-"изображений в объявлении, включить водяные знаки и т.д."
+"вместе с заданиями. Вы можете ограничить их размер, количество "
+"изображений в задании, включить водяные знаки и т.д."
 
 #: oc-admin/themes/modern/settings/media.php:174
 msgid "Image sizes"
@@ -1305,7 +1305,7 @@ msgstr ""
 msgid ""
 "See how many comments the listings published on your site have received."
 msgstr ""
-"Посмотрите, как много комментариев объявлений опубликованы на Вашем сайте."
+"Посмотрите, как много комментариев заданий опубликованы на Вашем сайте."
 
 #: oc-admin/themes/modern/stats/comments.php:53
 msgid "Comment Statistics &raquo; %s"
@@ -1353,7 +1353,7 @@ msgid ""
 "See how many listings from your site have been reported as spam, expired, "
 "duplicate, etc."
 msgstr ""
-"Просматривайте, сколько объявлений на Вашем сайте было помечено как спам, "
+"Просматривайте, сколько заданий на Вашем сайте было помечено как спам, "
 "истекшее, дубликат, и т.д."
 
 #: oc-admin/themes/modern/stats/reports.php:50
@@ -1382,7 +1382,7 @@ msgid ""
 "Save a backup of all of your site's information: listings, users and "
 "configuration. You can save a backup on your server or on your computer."
 msgstr ""
-"Сохранить резервную копию всей информации с сайта: объявления, пользователи "
+"Сохранить резервную копию всей информации с сайта: задания, пользователи "
 "и настройки. Вы можете сохранить резервную копию на сервере или на "
 "компьютере."
 
@@ -1537,7 +1537,7 @@ msgid ""
 msgstr ""
 "Добавить, изменить или удалить правила бана. Имейте в виду, правила бана не "
 "позволяют пользователям регистрироваться, публиковать или комментировать "
-"объявления."
+"задания."
 
 #: oc-admin/themes/modern/users/ban.php:35
 msgid "Manage ban rules &raquo; %s"
@@ -1634,7 +1634,7 @@ msgid ""
 msgstr ""
 "Добавление, изменение или удаление информации, связанной с "
 "зарегистрированным пользователем. Имейте в виду, что при удалении "
-"пользователя также удаляются все опубликованные объявления пользователя"
+"пользователя также удаляются все опубликованные задания пользователя"
 
 #: oc-admin/themes/modern/users/index.php:317
 msgid "Delete user"
@@ -1707,7 +1707,7 @@ msgstr "Email пользователя"
 
 #: oc-includes/osclass/classes/EmailVariables.php:56
 msgid "List of listings, used when send alerts"
-msgstr "Список объявлений, используемый при отправке уведомлений"
+msgstr "Список заданий, используемый при отправке уведомлений"
 
 #: oc-includes/osclass/classes/EmailVariables.php:60
 msgid "Title of your site"
@@ -1747,39 +1747,39 @@ msgstr "Тело комментария"
 
 #: oc-includes/osclass/classes/EmailVariables.php:69
 msgid "Listing url"
-msgstr "Url объявления"
+msgstr "Url задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:70
 msgid "Listing list"
-msgstr "Список объявлений"
+msgstr "Список заданий"
 
 #: oc-includes/osclass/classes/EmailVariables.php:71
 msgid "Listing title"
-msgstr "Заголовок объявления"
+msgstr "Заголовок задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:72
 msgid "Listing id"
-msgstr "ID объявления"
+msgstr "ID задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:73
 msgid "Link for edit listing"
-msgstr "Ссылка на редактирование объявления"
+msgstr "Ссылка на редактирование задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:74
 msgid "Url for edit listing"
-msgstr "Url для редактирования объявления"
+msgstr "Url для редактирования задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:75
 msgid "Delete listing link"
-msgstr "Ссылка для удаления объявления"
+msgstr "Ссылка для удаления задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:76
 msgid "Delete listing url"
-msgstr "Url  для удаления объявления"
+msgstr "Url  для удаления задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:77
 msgid "Change user password link"
-msgstr "Ссылка для смены пароля объявления"
+msgstr "Ссылка для смены пароля задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:78
 msgid "change user password url"
@@ -1799,7 +1799,7 @@ msgstr "Email друга"
 
 #: oc-includes/osclass/classes/EmailVariables.php:82
 msgid "Question about your listing"
-msgstr "Вопрос по поводу Вашего объявления"
+msgstr "Вопрос по поводу Вашего задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:83
 msgid "Contact name"
@@ -1811,11 +1811,11 @@ msgstr "Номер телефона"
 
 #: oc-includes/osclass/classes/EmailVariables.php:85
 msgid "Listing description"
-msgstr "Описание объявления"
+msgstr "Описание задания"
 
 #: oc-includes/osclass/classes/EmailVariables.php:86
 msgid "Listing description in all languages"
-msgstr "Описание объявления на всех языках"
+msgstr "Описание задания на всех языках"
 
 #: oc-includes/osclass/classes/EmailVariables.php:87
 msgid "Listing price"
@@ -1889,7 +1889,7 @@ msgstr "Описание должно быть больше"
 #: oc-includes/osclass/frm/Item.form.class.php:1185
 msgid "Sorry, you have reached the maximum number of images per listing"
 msgstr ""
-"К сожалению, Вы добавили максимальное количество изображений в объявлении"
+"К сожалению, Вы добавили максимальное количество изображений в задании"
 
 #: oc-includes/osclass/frm/Language.form.class.php:138
 msgid "Number of decimals: this field must only contain numeric characters"
@@ -2159,15 +2159,15 @@ msgstr ""
 
 #: oc-includes/osclass/installer/basic_data.php:104
 msgid "Example Ad"
-msgstr "Пример объявления"
+msgstr "Пример задания"
 
 #: oc-includes/osclass/installer/basic_data.php:105
 msgid ""
 "Description of the example ad. Insert here some usefull description of your "
 "ad."
 msgstr ""
-"Описание примера объявления. Вставьте здесь некоторые полезные описания "
-"вашего объявления."
+"Описание примера задания. Вставьте здесь некоторые полезные описания "
+"вашего задания."
 
 #: oc-includes/osclass/installer/basic_data.php:106
 msgid "Example author"
@@ -2441,7 +2441,7 @@ msgid ""
 "for no email."
 msgstr ""
 "Эта опция отправляет автору на Email уведомление об истечении срока "
-"актуальности объявления. 0, не отправлять уведомление."
+"актуальности задания. 0, не отправлять уведомление."
 
 #: oc-admin/themes/modern/items/settings.php:159
 msgid "days"
@@ -2990,11 +2990,11 @@ msgstr "Администратор"
 
 #: oc-includes/osclass/controller/search.php:563
 msgid "Latest listings added"
-msgstr "Последние добавленные объявления"
+msgstr "Последние добавленные задания"
 
 #: oc-includes/osclass/controller/search.php:565
 msgid "Latest listings added in"
-msgstr "Последние добавленные объявления в"
+msgstr "Последние добавленные задания в"
 
 #: oc-admin/admins.php:321 oc-admin/emails.php:128 oc-admin/languages.php:363
 #: oc-admin/themes/modern/appearance/widgets.php:86
@@ -3384,7 +3384,7 @@ msgstr "Получить новый пароль"
 
 #: oc-admin/themes/modern/main/index.php:180
 msgid "Listings by category"
-msgstr "Объявления из категории"
+msgstr "задания из категории"
 
 #: oc-admin/themes/modern/comments/frm.php:36
 #: oc-admin/themes/modern/comments/index.php:24
@@ -3397,7 +3397,7 @@ msgstr "Объявления из категории"
 #: oc-admin/themes/modern/main/index.php:197
 #: oc-includes/osclass/classes/AdminMenu.php:52
 msgid "Listing"
-msgstr "Объявления"
+msgstr "задания"
 
 #: oc-admin/themes/modern/items/reported.php:24
 #: oc-admin/themes/modern/main/index.php:51
@@ -3405,11 +3405,11 @@ msgstr "Объявления"
 #: oc-admin/themes/modern/main/index.php:197
 #: oc-includes/osclass/classes/AdminMenu.php:75
 msgid "Listings"
-msgstr "Объявления"
+msgstr "задания"
 
 #: oc-admin/themes/modern/main/index.php:210
 msgid "There aren't any uploaded listing yet"
-msgstr "Нет ни одного загруженного объявления"
+msgstr "Нет ни одного загруженного задания"
 
 #: oc-admin/themes/modern/main/index.php:219
 #: oc-admin/themes/modern/stats/comments.php:46
@@ -4064,15 +4064,15 @@ msgstr "У вас нет ни одного дополнительного пол
 #: oc-admin/themes/modern/items/frm.php:32
 #: oc-admin/themes/modern/items/index.php:29
 msgid "Add listing"
-msgstr "Добавить объявление"
+msgstr "Добавить задание"
 
 #: oc-admin/themes/modern/items/frm.php:35
 msgid "Edit listing"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: oc-admin/themes/modern/items/frm.php:36
 msgid "Update listing"
-msgstr "Обновить объявление"
+msgstr "Обновить задание"
 
 #: oc-admin/themes/modern/items/frm.php:168
 #: oc-admin/themes/modern/items/index.php:189
@@ -4128,12 +4128,12 @@ msgstr "Адрес"
 
 #: oc-admin/themes/modern/items/index.php:36
 msgid "Manage listings &raquo; %s"
-msgstr "Управление объявлениями &raquo; %s"
+msgstr "Управление заданиями &raquo; %s"
 
 #: oc-admin/themes/modern/items/index.php:84
 #: oc-admin/themes/modern/items/reported.php:57
 msgid "Delete listing"
-msgstr "Удалить объявление"
+msgstr "Удалить задание"
 
 #: oc-admin/themes/modern/items/index.php:125
 #: oc-admin/themes/modern/users/index.php:84
@@ -4223,7 +4223,7 @@ msgstr "Управление"
 #: oc-admin/themes/modern/items/reported.php:123
 #: oc-admin/themes/modern/items/reported.php:124
 msgid "%d Listings"
-msgstr "%d объявлений"
+msgstr "%d заданий"
 
 #: oc-admin/themes/modern/items/index.php:315
 #: oc-admin/themes/modern/users/index.php:262
@@ -4247,7 +4247,7 @@ msgstr "Найти"
 #: oc-admin/items.php:825 oc-admin/items.php:826 oc-admin/items.php:827
 #: oc-admin/items.php:828 oc-admin/items.php:829 oc-admin/items.php:830
 msgid "Are you sure you want to %s the selected listings?"
-msgstr "Вы уверены, что хотите %s выбранные объявления?"
+msgstr "Вы уверены, что хотите %s выбранные задания?"
 
 #: oc-admin/languages.php:378
 msgid "Update here"
@@ -4256,7 +4256,7 @@ msgstr "Обновить здесь"
 #: oc-admin/themes/modern/items/index.php:397
 #: oc-admin/themes/modern/items/reported.php:189
 msgid "Are you sure you want to delete this listing?"
-msgstr "Вы уверены, что хотите удалить это объявление?"
+msgstr "Вы уверены, что хотите удалить это задание?"
 
 #: oc-admin/themes/modern/items/reported.php:111
 #: oc-includes/osclass/classes/AdminMenu.php:54
@@ -4265,7 +4265,7 @@ msgstr "Помеченные"
 
 #: oc-admin/themes/modern/items/reported.php:32
 msgid "Reported listings &raquo; %s"
-msgstr "Помеченные объявления &raquo; %s"
+msgstr "Помеченные задания &raquo; %s"
 
 #: oc-admin/themes/modern/items/reported.php:142
 msgid "Clear Missclassified"
@@ -4293,38 +4293,38 @@ msgstr "Оскорбительные"
 
 #: oc-admin/themes/modern/items/settings.php:57
 msgid "Listing Settings &raquo; %s"
-msgstr "Настройки объявления &raquo; %s"
+msgstr "Настройки задания &raquo; %s"
 
 #: oc-admin/themes/modern/items/settings.php:65
 msgid "Listing Settings"
-msgstr "Настройки объявления"
+msgstr "Настройки задания"
 
 #: oc-admin/themes/modern/items/settings.php:77
 msgid "Only logged in users can post listings"
-msgstr "Только зарегистрированные пользователи могут оставлять объявления"
+msgstr "Только зарегистрированные пользователи могут оставлять задания"
 
 #: oc-admin/themes/modern/items/settings.php:81
 msgid "An user has to wait %s seconds between each listing added"
 msgstr ""
-"Пользователь должен подождать %s секунд между каждым добавлением объявления"
+"Пользователь должен подождать %s секунд между каждым добавлением задания"
 
 #: oc-admin/themes/modern/items/settings.php:89
 msgid "Users have to validate their listings"
-msgstr "Пользователи должны подтвердить их объявления"
+msgstr "Пользователи должны подтвердить их задания"
 
 #: oc-admin/themes/modern/items/settings.php:96
 msgid "If the value is zero, it means that each listing must be validated"
 msgstr ""
-"Если значение равно нулю, то это означает, что каждое объявление должно быть "
+"Если значение равно нулю, то это означает, что каждое задание должно быть "
 "подтверждено"
 
 #: oc-admin/themes/modern/items/settings.php:102
 msgid "Logged in users don't need to validate their listings"
-msgstr "Вошедшим пользователям не нужно подтверждать их объявления"
+msgstr "Вошедшим пользователям не нужно подтверждать их задания"
 
 #: oc-admin/themes/modern/items/settings.php:109
 msgid "Show reCAPTCHA in add/edit listing form"
-msgstr "Показывать  reCAPTCHA в форме добавления/обновления объявления"
+msgstr "Показывать  reCAPTCHA в форме добавления/обновления задания"
 
 #: oc-admin/themes/modern/items/settings.php:111
 msgid "<strong>Remember</strong> that you must configure reCAPTCHA first"
@@ -4334,12 +4334,12 @@ msgstr ""
 #: oc-admin/themes/modern/items/settings.php:116
 #: oc-includes/osclass/classes/Breadcrumb.php:321
 msgid "Contact publisher"
-msgstr "Написать автору объявления"
+msgstr "Написать автору задания"
 
 #: oc-admin/themes/modern/items/settings.php:121
 msgid "Only allow registered users to contact publisher"
 msgstr ""
-"Разрешить только зарегистрированным пользователям писать автору объявления"
+"Разрешить только зарегистрированным пользователям писать автору задания"
 
 #: oc-admin/themes/modern/items/settings.php:133
 #: oc-admin/themes/modern/settings/comments.php:138
@@ -4348,7 +4348,7 @@ msgstr "Уведомления"
 
 #: oc-admin/themes/modern/items/settings.php:138
 msgid "Notify admin when a new listing is added"
-msgstr "Уведомлять администратора, когда добавляется новое объявление"
+msgstr "Уведомлять администратора, когда добавляется новое задание"
 
 #: oc-admin/themes/modern/items/settings.php:180
 msgid "Optional fields"
@@ -4360,7 +4360,7 @@ msgstr "Прикрепить изображения"
 
 #: oc-admin/themes/modern/items/settings.php:194
 msgid "Attach %s images per listing"
-msgstr "Можно прикрепить %s изображения на объявление"
+msgstr "Можно прикрепить %s изображения на задание"
 
 #: oc-admin/themes/modern/languages/add.php:25
 msgid "Add language &raquo; %s"
@@ -4478,7 +4478,7 @@ msgstr "Пользователи"
 #: oc-admin/themes/modern/main/index.php:219
 #: oc-admin/themes/modern/main/index.php:222
 msgid "New listings"
-msgstr "Новые объявления"
+msgstr "Новые задания"
 
 #: oc-admin/themes/modern/main/index.php:219
 #: oc-admin/themes/modern/main/index.php:228
@@ -4489,11 +4489,11 @@ msgstr "Новые пользователи"
 
 #: oc-admin/themes/modern/main/index.php:223
 msgid "Total number of listings: %s"
-msgstr "Всего объявлений: %s"
+msgstr "Всего заданий: %s"
 
 #: oc-admin/themes/modern/main/index.php:225
 msgid "Listing statistics"
-msgstr "Статистика объявлений"
+msgstr "Статистика заданий"
 
 #: oc-admin/themes/modern/main/index.php:229
 msgid "Total number of users: %s"
@@ -4513,7 +4513,7 @@ msgstr "Медиа &raquo; %s"
 
 #: oc-includes/osclass/classes/datatables/MediaDataTable.php:76
 msgid "Attached to"
-msgstr "Прикреплен к объявлению"
+msgstr "Прикреплен к заданию"
 
 #: oc-admin/themes/modern/pages/frm.php:32
 msgid "Edit page"
@@ -4608,7 +4608,7 @@ msgstr "Настройки комментариев по-умолчанию"
 
 #: oc-admin/themes/modern/settings/comments.php:111
 msgid "Allow people to post comments on listings"
-msgstr "Разрешить комментарии к объявлениям"
+msgstr "Разрешить комментарии к заданиям"
 
 #: oc-admin/themes/modern/settings/comments.php:116
 msgid "Users must be registered and logged in to comment"
@@ -5134,7 +5134,7 @@ msgstr "Восстановить"
 #: oc-admin/themes/modern/settings/permalinks.php:174
 #: oc-admin/themes/modern/settings/permalinks.php:175
 msgid "Listings url: this field is required"
-msgstr "URL объявления: это поле обязательно для заполнения"
+msgstr "URL задания: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:178
 #: oc-admin/themes/modern/settings/permalinks.php:179
@@ -5204,44 +5204,44 @@ msgstr "URL языка: это поле обязательно для запол
 #: oc-admin/themes/modern/settings/permalinks.php:230
 #: oc-admin/themes/modern/settings/permalinks.php:231
 msgid "Listing mark url: this field is required"
-msgstr "URL отмеченного объявления: это поле обязательно для заполнения"
+msgstr "URL отмеченного задания: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:234
 #: oc-admin/themes/modern/settings/permalinks.php:235
 msgid "Listing send friend url: this field is required"
 msgstr ""
-"URL объявления для отправки друзьям: это поле обязательно для заполнения"
+"URL задания для отправки друзьям: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:238
 #: oc-admin/themes/modern/settings/permalinks.php:239
 msgid "Listing contact url: this field is required"
-msgstr "URL объявления для контакта: это поле обязательно для заполнения"
+msgstr "URL задания для контакта: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:242
 #: oc-admin/themes/modern/settings/permalinks.php:243
 msgid "New listing url: this field is required"
-msgstr "URL новых объявлений: это поле обязательно для заполнения"
+msgstr "URL новых заданий: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:246
 #: oc-admin/themes/modern/settings/permalinks.php:247
 msgid "Activate listing url: this field is required"
-msgstr "URL активных объявлений: это поле обязательно для заполнения"
+msgstr "URL активных заданий: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:250
 #: oc-admin/themes/modern/settings/permalinks.php:251
 msgid "Edit listing url: this field is required"
-msgstr "URL объявлений для редактирования: это поле обязательно для заполнения"
+msgstr "URL заданий для редактирования: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:254
 #: oc-admin/themes/modern/settings/permalinks.php:255
 msgid "Delete listing url: this field is required"
-msgstr "URL объявлений для удаления: это поле обязательно для заполнения"
+msgstr "URL заданий для удаления: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:258
 #: oc-admin/themes/modern/settings/permalinks.php:259
 msgid "Delete listing resource url: this field is required"
 msgstr ""
-"URL ресурсов объявлений для удаления: это поле обязательно для заполнения"
+"URL ресурсов заданий для удаления: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:262
 #: oc-admin/themes/modern/settings/permalinks.php:263
@@ -5281,7 +5281,7 @@ msgstr "URL профиля пользователя: это поле обяза�
 #: oc-admin/themes/modern/settings/permalinks.php:290
 #: oc-admin/themes/modern/settings/permalinks.php:291
 msgid "User listings url: this field is required"
-msgstr "URL объявлений пользователя: это поле обязательно для заполнения"
+msgstr "URL заданий пользователя: это поле обязательно для заполнения"
 
 #: oc-admin/themes/modern/settings/permalinks.php:294
 #: oc-admin/themes/modern/settings/permalinks.php:295
@@ -5339,7 +5339,7 @@ msgstr "Включить дружественные URL"
 
 #: oc-admin/themes/modern/settings/permalinks.php:399
 msgid "Listing URL:"
-msgstr "URL объявления"
+msgstr "URL задания"
 
 #: oc-admin/themes/modern/settings/permalinks.php:403
 #: oc-admin/themes/modern/settings/permalinks.php:412
@@ -5407,7 +5407,7 @@ msgstr "Язык"
 
 #: oc-admin/themes/modern/settings/permalinks.php:501
 msgid "Listing mark"
-msgstr "Отмеченное объявление"
+msgstr "Отмеченное задание"
 
 #: oc-admin/themes/modern/settings/permalinks.php:507
 msgid "Listing send friend"
@@ -5415,27 +5415,27 @@ msgstr "Отправить другу"
 
 #: oc-admin/themes/modern/settings/permalinks.php:513
 msgid "Listing contact"
-msgstr "Контакты объявления"
+msgstr "Контакты задания"
 
 #: oc-admin/themes/modern/settings/permalinks.php:519
 msgid "Listing new"
-msgstr "Новое объявление"
+msgstr "Новое задание"
 
 #: oc-admin/themes/modern/settings/permalinks.php:525
 msgid "Listing activate"
-msgstr "Активировать объявление"
+msgstr "Активировать задания"
 
 #: oc-admin/themes/modern/settings/permalinks.php:531
 msgid "Listing edit"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: oc-admin/themes/modern/settings/permalinks.php:537
 msgid "Listing delete"
-msgstr "Удалить объявление"
+msgstr "Удалить задание"
 
 #: oc-admin/themes/modern/settings/permalinks.php:543
 msgid "Listing resource delete"
-msgstr "Удалить ресурсы объявления"
+msgstr "Удалить ресурсы задания"
 
 #: oc-admin/themes/modern/settings/permalinks.php:549
 msgid "User login"
@@ -5675,8 +5675,8 @@ msgid ""
 "Quickly find out how many new listings have been published on your site and "
 "how many visits each of the listings gets."
 msgstr ""
-"Узнать быстро, сколько новых объявлений было опубликовано на вашем сайте и "
-"сколько просмотров у объявлений."
+"Узнать быстро, сколько новых заданий было опубликовано на вашем сайте и "
+"сколько просмотров у заданий."
 
 #: oc-admin/themes/modern/stats/comments.php:165
 msgid "Latest comments on the web"
@@ -5684,12 +5684,12 @@ msgstr "Последние комментарии"
 
 #: oc-admin/themes/modern/stats/items.php:61
 msgid "Listing Statistics &raquo; %s"
-msgstr "Статистика объявлений &raquo; %s"
+msgstr "Статистика заданий &raquo; %s"
 
 #: oc-admin/themes/modern/stats/items.php:95
 #: oc-includes/osclass/classes/datatables/UsersDataTable.php:67
 msgid "Items"
-msgstr "Объявления"
+msgstr "задания"
 
 #: oc-admin/themes/modern/stats/items.php:97
 msgid "Views"
@@ -5697,23 +5697,23 @@ msgstr "Просмотры"
 
 #: oc-admin/themes/modern/stats/items.php:303
 msgid "Listing Statistics"
-msgstr "Статистика объявлений"
+msgstr "Статистика заданий"
 
 #: oc-admin/themes/modern/stats/items.php:317
 msgid "New listing"
-msgstr "Новое объявление"
+msgstr "Новое задание"
 
 #: oc-admin/themes/modern/stats/items.php:320
 msgid "Number of new listings"
-msgstr "Количество новых объявлений"
+msgstr "Количество новых заданий"
 
 #: oc-admin/themes/modern/stats/items.php:334
 msgid "Listings' views"
-msgstr "Просмотры объявлений"
+msgstr "Просмотры заданий"
 
 #: oc-admin/themes/modern/stats/items.php:337
 msgid "Total number of listings' views"
-msgstr "Всего просмотров объявлений"
+msgstr "Всего просмотров заданий"
 
 #: oc-admin/themes/modern/comments/frm.php:89
 #: oc-includes/osclass/classes/datatables/CommentsDataTable.php:207
@@ -5759,11 +5759,11 @@ msgstr "E-Mail"
 
 #: oc-admin/themes/modern/stats/users.php:264
 msgid "Avg. items per user"
-msgstr "Среднее количество объявлений у пользователя"
+msgstr "Среднее количество заданий у пользователя"
 
 #: oc-admin/themes/modern/stats/users.php:267
 msgid "%s listings per user"
-msgstr "%s объявлений на пользователя"
+msgstr "%s заданий на пользователя"
 
 #: oc-admin/themes/modern/tools/backup.php:42
 #: oc-admin/themes/modern/tools/category.php:24
@@ -5991,12 +5991,12 @@ msgstr "Результаты поиска"
 #: oc-includes/osclass/classes/Breadcrumb.php:318
 #: oc-includes/osclass/functions.php:88
 msgid "Publish a listing"
-msgstr "Опубликовать объявление"
+msgstr "Опубликовать задание"
 
 #: oc-includes/osclass/classes/Breadcrumb.php:319
 #: oc-includes/osclass/functions.php:89
 msgid "Edit your listing"
-msgstr "Редактировать объявление"
+msgstr "Редактировать задание"
 
 #: oc-includes/osclass/classes/Breadcrumb.php:320
 #: oc-includes/osclass/functions.php:90
@@ -6025,7 +6025,7 @@ msgstr "страница"
 
 #: oc-includes/osclass/functions.php:120
 msgid "Show all listings"
-msgstr "Показать все объявления"
+msgstr "Показать все задания"
 
 #: oc-includes/osclass/classes/Breadcrumb.php:334
 #: oc-includes/osclass/functions.php:155
@@ -6044,7 +6044,7 @@ msgstr "Создать новый аккаунт"
 
 #: oc-includes/osclass/functions.php:165
 msgid "Manage my listings"
-msgstr "Управление моими объявлениями"
+msgstr "Управление моими заданиями"
 
 #: oc-includes/osclass/functions.php:166
 msgid "Manage my alerts"
@@ -6440,7 +6440,7 @@ msgstr "Аккаунт"
 
 #: oc-includes/osclass/classes/Breadcrumb.php:327
 msgid "My listings"
-msgstr "Мои объявления"
+msgstr "Мои задания"
 
 #: oc-includes/osclass/classes/Breadcrumb.php:328
 msgid "My alerts"
@@ -6681,7 +6681,7 @@ msgstr "Бесплатно"
 #: oc-includes/osclass/helpers/hSearch.php:48
 #: oc-includes/osclass/helpers/hSearch.php:55
 msgid "Newly listed"
-msgstr "Новые объявления"
+msgstr "Новые задания"
 
 #: oc-includes/osclass/helpers/hSearch.php:49
 msgid "Lower price first"
@@ -6861,7 +6861,7 @@ msgstr "pm"
 
 #: oc-includes/osclass/helpers/hUtils.php:180
 msgid "Manage your listings"
-msgstr "Управление объявлениями"
+msgstr "Управление заданиями"
 
 #: oc-includes/osclass/helpers/hUtils.php:181
 msgid "Manage your alerts"

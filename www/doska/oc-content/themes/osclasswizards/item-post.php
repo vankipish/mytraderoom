@@ -53,13 +53,73 @@
     <div class="wraps">
       <div class="title">
         <h1>
-          <?php _e('Publish a listing', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            <h1><?php _e('Publish a listing', OSCLASSWIZARDS_THEME_FOLDER); ?></h1>
         </h1>
       </div>
       <ul id="error_list">
       </ul>
       <form name="item" action="<?php echo osc_base_url(true);?>" method="post" enctype="multipart/form-data" id="item-post">
-        <fieldset>
+
+          <!-- seller info -->
+          <?php if(!osc_is_web_user_logged_in() ) { ?>
+              <div class="box seller_info">
+                  <h2>
+                      Ваши контакты
+                  </h2>
+                  <div class="form-group">
+                      <label class="control-label" for="contactName">
+                          <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                      </label>
+                      <div class="controls">
+                          <?php ItemForm::contact_name_text(); ?>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label" for="contactEmail">
+                          <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                      </label>
+                      <div class="controls">
+                          <?php ItemForm::contact_email_text(); ?>
+                      </div>
+                  </div>
+
+                  <div class="control-group" style="margin-bottom: 10px">
+                      <label class="control-label" for="contactPhone"><?php echo "Номер телефона"?></label>
+                      <div class="controls">
+                          <?php ItemForm::contact_phone_text(); ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="controls checkbox">
+                          <?php ItemForm::show_email_checkbox(); ?>
+                          <label for="showEmail">
+                              <?php _e('Show e-mail on the listing page', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                          </label>
+                      </div>
+                  </div>
+            
+                  <div class="form-group">
+                      <div class="controls checkbox">
+                          <?php ItemForm::show_phone_checkbox(); ?>
+                          <label for="showPhone">
+                              Показать номер телефона в объявлении
+                          </label>
+                      </div>
+                  </div>
+
+              </div>
+              <?php
+          }
+
+          if($edit) {
+              ItemForm::plugin_edit_item();
+          } else {
+              ItemForm::plugin_post_item();
+          }
+          ?>
+
+          <fieldset>
           <input type="hidden" name="action" value="<?php echo $action; ?>" />
           <input type="hidden" name="page" value="item" />
           <?php if($edit){ ?>
@@ -187,46 +247,7 @@
               </div>
             </div>
           </div>
-          <!-- seller info -->
-          <?php if(!osc_is_web_user_logged_in() ) { ?>
-          <div class="box seller_info">
-            <h2>
-              <?php _e("Seller's information", OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </h2>
-            <div class="form-group">
-              <label class="control-label" for="contactName">
-                <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </label>
-              <div class="controls">
-                <?php ItemForm::contact_name_text(); ?>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="contactEmail">
-                <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </label>
-              <div class="controls">
-                <?php ItemForm::contact_email_text(); ?>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="controls checkbox">
-                <?php ItemForm::show_email_checkbox(); ?>
-                <label for="showEmail">
-                  <?php _e('Show e-mail on the listing page', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </label>
-              </div>
-            </div>
-          </div>
-          <?php
-                        }
-		
-                        if($edit) {
-                            ItemForm::plugin_edit_item();
-                        } else {
-                            ItemForm::plugin_post_item();
-                        }
-                        ?>
+
           <div class="form-group">
             <?php if( osc_recaptcha_items_enabled() ) { ?>
             <div class="recap">
