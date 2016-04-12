@@ -1,3 +1,4 @@
+
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -257,17 +258,9 @@
                 <!--<div class="form-group">    -->
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
               <!-- <div class="controls"> -->
-                      
-
 
                       <?php CommentForm::js_show_or_hide(); ?>
-
-                
-
-
-
-                      <!--  </div>  -->
-                <!-- </div>   -->
+                  
 
               <?php } else { ?>
               <div class="form-group">
