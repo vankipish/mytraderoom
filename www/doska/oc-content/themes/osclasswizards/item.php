@@ -1,9 +1,4 @@
 
-<?php osc_register_script('jquery', osc_current_web_theme_js_url('jquery.min.js'));
-osc_enqueue_script('jquery'); ?>
-<link href="<?php osc_current_web_theme_js_url()?>oc-content/themes/osclasswizards/js/icheck-1.x/skins/square/red.css" rel="stylesheet">
-<script src="<?php osc_current_web_theme_js_url()?>oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>
-
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -33,7 +28,7 @@ osc_enqueue_script('jquery'); ?>
     }
 
     osclasswizards_add_body_class('item');
-
+		
 	if(osclasswizards_show_as() == 'gallery'){
         $loop_template	=	'loop-search-grid.php';
 		$buttonClass = 'active';
@@ -41,7 +36,7 @@ osc_enqueue_script('jquery'); ?>
 		$loop_template	=	'loop-search-list.php';
 		$buttonClass = '';
 	}
-
+	
     function sidebar(){
         osc_current_web_theme_path('item-sidebar.php');
     }
@@ -59,7 +54,7 @@ osc_enqueue_script('jquery'); ?>
     if( osc_item_country() !== '' ) {
         $location[] = osc_item_country();
     }
-
+	
     osc_current_web_theme_path('header.php');
 
 ?>
@@ -262,18 +257,10 @@ osc_enqueue_script('jquery'); ?>
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
                 <!--<div class="form-group">    -->
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
-              <!-- <div class="controls"> -->
-                      
-
+                <!-- <div class="controls"> -->
 
                       <?php CommentForm::js_show_or_hide(); ?>
-
-                
-
-
-
-                      <!--  </div>  -->
-                <!-- </div>   -->
+                  
 
               <?php } else { ?>
               <div class="form-group">

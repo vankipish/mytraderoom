@@ -188,14 +188,10 @@
         {
             ?>
 
-            <script type="text/javascript">
-                function showOrHide(cb, cat) {
-                    cb = document.getElementById(cb);
-                    cat = document.getElementById(cat);
-                    if (cb.checked) cat.style.display = "block";
-                    else cat.style.display = "none";
-                }
-            </script>
+
+
+
+
 
             <div class="checkbox">
                 <div>
@@ -203,6 +199,21 @@
                     <br />
                     <div id = 'cat1' style = 'display: none;'>Содержимое категории 1</div>
                 </div>
+            </div>
+
+
+
+                <script>
+
+                    function showOrHide(cb, cat) {
+                        cb = document.getElementById(cb);
+                        cat = document.getElementById(cat);
+                        if (cb.checked) cat.style.display = "block";
+                        else cat.style.display = "none";
+                    }
+                </script>
+
+
 
             <?php
         }

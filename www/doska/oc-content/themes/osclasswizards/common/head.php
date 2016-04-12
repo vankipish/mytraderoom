@@ -25,13 +25,11 @@
         'cancel' => __('Cancel', OSCLASSWIZARDS_THEME_FOLDER)
     );
 
-
-
-    osc_register_script('jquery', osc_current_web_theme_js_url('jquery-1.12.3.min.js'));
+	osc_register_script('jquery', osc_current_web_theme_js_url('jquery-2.2.3.min.js'));
     osc_enqueue_script('jquery');
-osc_register_script('icheck', osc_current_web_theme_js_url('icheck-1.x/icheck.js'));
-osc_enqueue_script('icheck');
     osc_enqueue_script('jquery-ui');
+osc_register_script('icheck', osc_current_web_theme_js_url('icheck-1.x/icheck.js'),'jquery');
+osc_enqueue_script('icheck');
 	osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
     osc_enqueue_style('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.css'));
     osc_enqueue_script('fancybox');
@@ -39,12 +37,11 @@ osc_enqueue_script('icheck');
     osc_enqueue_script('jquery-validate');
 	osc_enqueue_script('bootstrap-theme-js');
 	osc_register_script('bootstrap-theme-js', osc_current_web_theme_js_url('bootstrap.min.js'), 'jquery');
-    osc_enqueue_script('library-js');
-    osc_register_script('library-js', osc_current_web_theme_js_url('library.js'), 'jquery');
+	osc_enqueue_script('library-js');
+	osc_register_script('library-js', osc_current_web_theme_js_url('library.js'), 'jquery');
     osc_register_script('global-theme-js', osc_current_web_theme_js_url('global.js'), 'jquery');
     osc_register_script('delete-user-js', osc_current_web_theme_js_url('delete_user.js'), 'jquery-ui');
     osc_enqueue_script('global-theme-js');
-
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title><?php echo osc_esc_html(meta_title()) ; ?></title>
@@ -91,9 +88,10 @@ osc_enqueue_script('icheck');
 <?php } ?>
 <?php $color_mode = osclasswizards_theme_color_mode(); ?>
 <link href="<?php echo osc_current_web_theme_url('css/apps-'.$color_mode.'.css') ; ?>" rel="stylesheet" type="text/css" />
+
+
+
+<link href="./oc-content/themes/osclasswizards/js/icheck-1.x/skins/all.css" rel="stylesheet">
+<script src="./oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>
+
 <?php osc_run_hook('header') ; ?>
-
-<script>
-
-    $('input').iCheck();
-</script>
