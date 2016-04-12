@@ -1,3 +1,9 @@
+
+<?php osc_register_script('jquery', osc_current_web_theme_js_url('jquery.min.js'));
+osc_enqueue_script('jquery'); ?>
+<link href="<?php osc_current_web_theme_js_url()?>oc-content/themes/osclasswizards/js/icheck-1.x/skins/square/red.css" rel="stylesheet">
+<script src="<?php osc_current_web_theme_js_url()?>oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>
+
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -27,7 +33,7 @@
     }
 
     osclasswizards_add_body_class('item');
-		
+
 	if(osclasswizards_show_as() == 'gallery'){
         $loop_template	=	'loop-search-grid.php';
 		$buttonClass = 'active';
@@ -35,7 +41,7 @@
 		$loop_template	=	'loop-search-list.php';
 		$buttonClass = '';
 	}
-	
+
     function sidebar(){
         osc_current_web_theme_path('item-sidebar.php');
     }
@@ -53,7 +59,7 @@
     if( osc_item_country() !== '' ) {
         $location[] = osc_item_country();
     }
-	
+
     osc_current_web_theme_path('header.php');
 
 ?>
