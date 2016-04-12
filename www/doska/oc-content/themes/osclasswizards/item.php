@@ -198,7 +198,7 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения<?php
-        //var_dump( User::newInstance()->findByPrimaryKey( osc_item_user_id() ));
+        //var_dump( CommentForm::js_show_or_hide());
         // _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
 
       </h2>
@@ -220,7 +220,13 @@
             <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
             <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
-                  if (osc_comment_author_phone() or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) )){ ?>
+                  if (osc_comment_author_phone() or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) {
+
+                    // Checkbox is selected
+                  } else {
+
+                    // Alternate code
+                  }{ ?>
                      <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
                 <?php }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
@@ -256,10 +262,10 @@
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
                 <!--<div class="form-group">    -->
-                  <label class="control-label" for="authorPhone"><b>Оставить номер телефона:</b></label>
+                  <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                 <!-- <div class="controls"> -->
 
-                      <?php CommentForm::js_show_or_hide(); ?>
+                      <?php CommentForm::js_show_or_hide();?>
                   
 
               <?php } else { ?>

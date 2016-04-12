@@ -187,35 +187,30 @@
         static public function js_show_or_hide($admin = false)
         {
             ?>
-
-
-
-
-
-
-            <div class="checkbox">
-                <div>
-                    <input type = 'checkbox' name="showPhone" id = 'cb1' onchange = 'showOrHide("cb1", "cat1");'/>Показать содержимое категории 1
-                    <br />
-                    <div id = 'cat1' style = 'display: none;'>Содержимое категории 1</div>
-                </div>
-            </div>
-
-
-
-                <script>
-
-                    function showOrHide(cb, cat) {
-                        cb = document.getElementById(cb);
-                        cat = document.getElementById(cat);
-                        if (cb.checked) cat.style.display = "block";
-                        else cat.style.display = "none";
-                    }
-                </script>
-
-
+                    <input type = 'checkbox' name="showPhone" id = 'showPhone'>
+                    <div id="authorPhone" style="display: none">
+                        <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                    </div>
+            <script>
+                $('input#showPhone').on('ifChecked', function(event){$('#authorPhone').slideDown(300);});
+                $('input#showPhone').on('ifUnchecked', function(event){$('#authorPhone').slideUp(300);});
+            </script>
 
             <?php
         }
 
+
+        static public function js_slide($admin = false)  // не работает, надо б разобраться
+        {
+            ?>
+            <script>
+                function showOrHide(chk, el) {
+                    chk = document.getElementById(chk);
+                    el = document.getElementById(el);
+                    $(chk).on('ifChecked', function(event){$(el).slideDown(300);});
+                    $(chk).on('ifUnchecked', function(event){$(el).slideUp(300);})
+                }
+            </script>
+            <?php
+        }
     }?>
