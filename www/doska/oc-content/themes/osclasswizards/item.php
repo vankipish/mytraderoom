@@ -262,15 +262,15 @@
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
                 <!--<div class="form-group">    -->
+                  <input type = 'checkbox' name="showPhone" id = 'chk1'">
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
-                <!-- <div class="controls"> -->
-                <input type = 'checkbox' name="showPhone" id = 'chk1'">
+                                
                   <div id="el1" style="display: none">
                     <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
                   </div>
 
                 <script>js_showOrHide()</script>
-                
+
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
