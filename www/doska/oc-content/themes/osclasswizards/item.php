@@ -219,7 +219,7 @@
             <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
             <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
-                  if (osc_comment_author_phone() && (osc_comment_user_id() <> osc_logged_user_id()) or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
+                  if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
                    <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
 
                  <?php } else {
@@ -264,13 +264,13 @@
                   <input type = 'checkbox' name="showPhone" id = 'chk1'">
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                                 
-                  <div id="el1" style="display: none">
+                  <div id="el1" >  <!--style="display: none"-->
                     <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
                   </div>
 
                 <script>js_showOrHide()</script>
 
-              <?php if ($_POST['showPhone']=="on") {echo "!!!";} else {echo "????";}?>
+              <?php if (isset($_POST['showPhone'])) {echo "!!!";} else {echo "????";}?>
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
