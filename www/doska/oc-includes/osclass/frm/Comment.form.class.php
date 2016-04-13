@@ -203,13 +203,19 @@
         static public function js_slide($admin = false)  // не работает, надо б разобраться
         {
             ?>
+                <input type = 'checkbox' name="showPhone" id = 'chk1'">
+                <div id="el1" style="display: none">
+                    <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                </div>
             <script>
-                function showOrHide(chk, el) {
-                    chk = document.getElementById(chk);
-                    el = document.getElementById(el);
-                    $(chk).on('ifChecked', function(event){$(el).slideDown(300);});
-                    $(chk).on('ifUnchecked', function(event){$(el).slideUp(300);})
-                }
+                function showOrHide()
+                    {
+                        var chekbox = document.getElementById('chk1');
+                        var elem = document.getElementById('el1');
+                    $('input#'+chekbox.id).on('ifChecked', function(event){$('#'+elem.id).slideDown(300);});
+                    $('input#'+chekbox.id).on('ifUnchecked', function(event){$('#'+elem.id).slideUp(300);});
+                    }
+                showOrHide()
             </script>
             <?php
         }

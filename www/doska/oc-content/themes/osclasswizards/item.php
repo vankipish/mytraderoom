@@ -265,7 +265,9 @@
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                 <!-- <div class="controls"> -->
 
-                      <?php CommentForm::js_show_or_hide();?>
+                      <?php //CommentForm::js_show_or_hide();
+                          CommentForm::js_slide();
+                        ?>
                   
 
               <?php } else { ?>
