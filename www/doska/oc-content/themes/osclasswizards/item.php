@@ -264,12 +264,13 @@
                 <!--<div class="form-group">    -->
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                 <!-- <div class="controls"> -->
+                <input type = 'checkbox' name="showPhone" id = 'chk1'">
+                  <div id="el1" style="display: none">
+                    <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                  </div>
 
-                      <?php //CommentForm::js_show_or_hide();
-                          CommentForm::js_slide();
-                        ?>
-                  
-
+                <script>js_showOrHide()</script>
+                
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">

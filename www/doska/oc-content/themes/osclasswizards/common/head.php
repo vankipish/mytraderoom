@@ -42,6 +42,9 @@ osc_enqueue_script('icheck');
     osc_register_script('global-theme-js', osc_current_web_theme_js_url('global.js'), 'jquery');
     osc_register_script('delete-user-js', osc_current_web_theme_js_url('delete_user.js'), 'jquery-ui');
     osc_enqueue_script('global-theme-js');
+osc_register_script('my', osc_current_web_theme_js_url('my.js'));
+osc_enqueue_script('my');
+
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title><?php echo osc_esc_html(meta_title()) ; ?></title>

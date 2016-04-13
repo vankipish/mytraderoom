@@ -9,5 +9,3 @@ $(document).ready(function(){
         increaseArea: '20%' // не обязательно
     });
 });
-
-

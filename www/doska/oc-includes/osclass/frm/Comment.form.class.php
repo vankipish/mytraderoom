@@ -183,40 +183,5 @@
             </script>
             <?php
         }
-
-        static public function js_show_or_hide($admin = false)
-        {
-            ?>
-                    <input type = 'checkbox' name="showPhone" id = 'showPhone'>
-                    <div id="authorPhone" style="display: none">
-                        <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
-                    </div>
-            <script>
-                $('input#showPhone').on('ifChecked', function(event){$('#authorPhone').slideDown(300);});
-                $('input#showPhone').on('ifUnchecked', function(event){$('#authorPhone').slideUp(300);});
-            </script>
-
-            <?php
-        }
-
-
-        static public function js_slide($admin = false)  // не работает, надо б разобраться
-        {
-            ?>
-                <input type = 'checkbox' name="showPhone" id = 'chk1'">
-                <div id="el1" style="display: none">
-                    <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
-                </div>
-            <script>
-                function showOrHide()
-                    {
-                        var chekbox = document.getElementById('chk1');
-                        var elem = document.getElementById('el1');
-                    $('input#'+chekbox.id).on('ifChecked', function(event){$('#'+elem.id).slideDown(300);});
-                    $('input#'+chekbox.id).on('ifUnchecked', function(event){$('#'+elem.id).slideUp(300);});
-                    }
-                showOrHide()
-            </script>
-            <?php
-        }
+        
     }?>
