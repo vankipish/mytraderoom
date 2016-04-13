@@ -219,14 +219,14 @@
             <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
             <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
               <?php
-                  if (osc_comment_author_phone() or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) {
+                  if (osc_comment_author_phone() && (osc_comment_user_id() <> osc_logged_user_id()) or ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
+                   <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
 
-                    // Checkbox is selected
-                  } else {
+                 <?php } else {
 
                     // Alternate code
                   }{ ?>
-                     <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
+
                 <?php }   ?>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
           </div>
