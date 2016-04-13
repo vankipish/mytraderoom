@@ -25,7 +25,7 @@
         'cancel' => __('Cancel', OSCLASSWIZARDS_THEME_FOLDER)
     );
 
-	osc_register_script('jquery', osc_current_web_theme_js_url('jquery-2.2.3.min.js'));
+	osc_register_script('jquery', osc_current_web_theme_js_url('jquery.min.js'));
     osc_enqueue_script('jquery');
     osc_enqueue_script('jquery-ui');
 osc_register_script('icheck', osc_current_web_theme_js_url('icheck-1.x/icheck.js'),'jquery');

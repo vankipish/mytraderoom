@@ -213,7 +213,6 @@
 
           <div style="border-bottom: ridge" >
           <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
-              // Проверить не будет ли ошибок : array_push($newPrices,osc_comment_title())
             ?></h4> <em>
             <a style="font-weight: normal">От</a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
 
@@ -271,6 +270,7 @@
 
                 <script>js_showOrHide()</script>
 
+              <?php if ($_POST['showPhone']=="on") {echo "!!!";} else {echo "????";}?>
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">

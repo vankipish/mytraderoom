@@ -238,7 +238,7 @@ osc_add_hook('header', 'osc_load_styles', 9);
 osc_add_hook('header', 'osc_load_scripts', 10);
 
 // register scripts
-osc_register_script('jquery', osc_assets_url('js/jquery-2.2.3.min.js'));
+osc_register_script('jquery', osc_assets_url('js/jquery.min.js'));
 osc_register_script('icheck', osc_assets_url('js/icheck-1.x/icheck.js'),'jquery');
 osc_register_script('jquery-ui', osc_assets_url('js/jquery-ui.min.js'), 'jquery');
 osc_register_script('jquery-json', osc_assets_url('js/jquery.json.js'), 'jquery');
