@@ -56,7 +56,7 @@
     }
 	
     osc_current_web_theme_path('header.php');
-
+  
 ?>
 
 <div class="row">
@@ -198,6 +198,7 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения
+        <nav id="menu"> <a href="#here" >Оставить предложение</a></nav>
       </h2>
       <?php } ?>
 
@@ -236,8 +237,7 @@
         </div>
       <?php } ?>
     </div>
-
-      <div class="comment_form">
+      <div class="comment_form" id="here">
         <div class="title">
           <h1>
             Оставьте Ваше ценовое предложение
