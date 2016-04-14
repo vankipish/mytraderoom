@@ -166,7 +166,9 @@
           <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
             смотреть другие объявления автора
             </a> </li>
+          <li id="menu"><a href="#here" >Оставить предложение</a></li>
         </ul>
+
         <?php osc_run_hook('location'); ?>
       </div>
     </div>
@@ -198,7 +200,6 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
         Предложения
-        <nav id="menu"> <a href="#here" >Оставить предложение</a></nav>
       </h2>
       <?php } ?>
 
