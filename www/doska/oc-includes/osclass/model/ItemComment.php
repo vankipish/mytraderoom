@@ -67,6 +67,7 @@
                 's_author_name',
                 's_author_email',
                 's_author_phone',
+                's_show_phone',
                 's_body',
                 'b_enabled',
                 'b_active',

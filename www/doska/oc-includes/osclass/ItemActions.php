@@ -904,6 +904,7 @@
             $authorName     = trim(strip_tags($aItem['authorName']));
             $authorEmail    = trim(strip_tags($aItem['authorEmail']));
             $authorPhone    = trim(strip_tags($aItem['authorPhone']));
+            $showPhone      = $aItem['showPhone'];
             $body           = trim(strip_tags($aItem['body']));
             $title          = trim(strip_tags($aItem['title']));
             $itemId         = $aItem['id'];
@@ -984,6 +985,7 @@
                               ,'s_author_name'  => $authorName
                               ,'s_author_email' => $authorEmail
                               ,'s_author_phone' => $authorPhone
+                                    ,'s_show_phone' => $showPhone
                               ,'s_title'        => $title
                               ,'s_body'         => $body
                               ,'b_active'       => ($status=='ACTIVE' ? 1 : 0)
@@ -1069,7 +1071,11 @@
                     View::newInstance()->_exportVariableToView('item', $aItem['item']);
                     $aItem['authorName']     = Params::getParam('authorName');
                     $aItem['authorEmail']    = Params::getParam('authorEmail');
-                    $aItem['authorPhone']    = Params::getParam('authorPhone');
+                        if (osc_logged_user_id()>0){
+                            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;}
+                        else $aItem['showPhone']=1;
+                        if ($aItem['showPhone']==1){
+                        $aItem['authorPhone']    = Params::getParam('authorPhone');}
                     $aItem['body']           = Params::getParam('body');
                     //поменял Title на Newprice
                     $aItem['title']          = Params::getParam('Newprice');

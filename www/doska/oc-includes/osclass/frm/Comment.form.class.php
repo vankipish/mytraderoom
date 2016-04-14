@@ -91,6 +91,17 @@
             parent::generic_input_text("authorPhone", $commentAuthorPhone, null, false);
         }
 
+        static public function show_phone_checkbox($comment = null) {
+            if (isset($comment['s_show_phone'])) {
+                $showPhone = $comment['s_show_phone'];
+            }
+            if( Session::newInstance()->_getForm('showPhone') != 0) {
+                $comment['s_show_phone'] = Session::newInstance()->_getForm('showPhone');
+            }
+            parent::generic_input_checkbox('showPhone', '1', (isset($comment['s_show_phone']) ) ? $comment['s_show_phone'] : false );
+            return true;
+        }
+
 
         static public function email_input_text($comment = null)
         {
@@ -115,6 +126,7 @@
             }
             parent::generic_textarea("body", $commentBody);
         }
+        
 
         static public function js_validation($admin = false)
         {

@@ -197,14 +197,9 @@
     <div id="comments">
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <h2 class="title">
-        Предложения<?php
-        //var_dump( CommentForm::js_show_or_hide());
-        // _e('Comments', OSCLASSWIZARDS_THEME_FOLDER); ?>
-
+        Предложения
       </h2>
-      <?php }
-
-	  ?>
+      <?php } ?>
 
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
@@ -261,16 +256,15 @@
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
                 <!--<div class="form-group">    -->
-                  <input type = 'checkbox' name="showPhone" id = 'chk1'">
+                  <input type = 'checkbox' name="showPhone" id = 'chk1' >
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                                 
-                  <div id="el1" >  <!--style="display: none"-->
+                  <div id="el1" style="display: none">
                     <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
                   </div>
 
                 <script>js_showOrHide()</script>
 
-              <?php if (isset($_POST['showPhone'])) {echo "!!!";} else {echo "????";}?>
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
