@@ -174,14 +174,14 @@
           <input type="hidden" name="sUser[]" value="<?php echo osc_esc_html($userId); ?>" />
         <?php } ?>
         <fieldset class="box location">
-          <h3><strong><?php _e('Your search', 'modern'); ?></strong></h3>
+          <h3><strong><?php _e('Your search', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
           <div class="row one_input">
             <input type="text" name="sPattern" id="query" value="<?php echo osc_esc_html( osc_search_pattern() ); ?>" />
             <div id="search-example"></div>
           </div>
-          <h3><strong><?php _e('Location', 'modern'); ?></strong></h3>
+          <h3><strong><?php _e('Location', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
           <div class="row one_input">
-            <h6><?php _e('City', 'modern'); ?></h6>
+            <h6><?php _e('City', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
             <input type="text" id="sCity" name="sCity" value="<?php echo osc_esc_html( osc_search_city() ); ?>" />
             <input type="hidden" id="sRegion" name="sRegion" value="" />
           </div>
@@ -189,29 +189,29 @@
 
         <fieldset class="box show_only">
           <?php if( osc_images_enabled_at_items() ) { ?>
-            <h3><strong><?php _e('Show only', 'modern'); ?></strong></h3>
+            <h3><strong><?php _e('Show only', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
             <div class="row checkboxes">
               <ul>
                 <li>
                   <input type="checkbox" name="bPic" id="withPicture" value="1" <?php echo (osc_search_has_pic() ? 'checked="checked"' : ''); ?> />
-                  <label for="withPicture"><?php _e('Show only listings with pictures', 'modern'); ?></label>
+                  <label for="withPicture"><?php _e('Show only listings with pictures', OSCLASSWIZARDS_THEME_FOLDER); ?></label>
                 </li>
               </ul>
             </div>
           <?php } ?>
           <?php if( osc_price_enabled_at_items() ) { ?>
             <div class="row two_input">
-              <h6><?php _e('Price', 'modern'); ?></h6>
-              <div><?php _e('Min', 'modern'); ?>.</div>
+              <h6><?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
+              <div><?php _e('Min', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
               <input type="text" id="priceMin" name="sPriceMin" value="<?php echo osc_esc_html(osc_search_price_min()); ?>" size="6" maxlength="6" />
-              <div><?php _e('Max', 'modern'); ?>.</div>
+              <div><?php _e('Max', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
               <input type="text" id="priceMax" name="sPriceMax" value="<?php echo osc_esc_html(osc_search_price_max()); ?>" size="6" maxlength="6" />
             </div>
           <?php } ?>
           <?php  osc_get_non_empty_categories(); ?>
           <?php  if ( osc_count_categories() ) { ?>
             <div class="row checkboxes">
-              <h6><?php _e('Category', 'modern'); ?></h6>
+              <h6><?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
               <ul>
                 <?php // RESET CATEGORIES IF WE USED THEN IN THE HEADER ?>
                 <?php osc_goto_first_category(); ?>
@@ -241,7 +241,7 @@
           osc_run_hook('search_form');
         }
         ?>
-        <button type="submit"><?php _e('Apply', 'modern'); ?></button>
+        <button type="submit"><?php _e('Apply', OSCLASSWIZARDS_THEME_FOLDER); ?></button>
       </form>
       <?php osc_alert_form(); ?>
     </div>
