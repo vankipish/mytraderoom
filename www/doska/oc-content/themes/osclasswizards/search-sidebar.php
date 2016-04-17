@@ -24,7 +24,145 @@
      }
 
 ?>
+<style>
+  ul.sub {
+    padding-left: 20px;
+  }
+  .chbx{
+    width:15px; height:15px;
+    display: inline;
+    padding:8px 3px;
+    background-repeat:no-repeat;
+    cursor: pointer;
 
+
+
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('li.parent').each(function() {
+      var totalInputSub = $(this).find('ul.sub>li>input').size();
+      var totalInputSubChecked = $(this).find('ul.sub>li>input:checked').size();
+      $(this).find('ul.sub>li>input').each(function(){
+        $(this).hide();
+        var id = $(this).attr('id');
+        id = id+'_';
+        if( $(this).is(':checked') ){
+          var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+          $(this).before(aux);
+        } else {
+          var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+          $(this).before(aux);
+        }
+      });
+
+      var input = $(this).find('input.parent');
+      $(input).hide();
+      var id = $(input).attr('id');
+      id = id+'_';
+      if(totalInputSub == totalInputSubChecked) {
+        if(totalInputSub == 0) {
+          if( $(this).find("input[name='sCategory[]']:checked").size() > 0) {
+            var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+            $(input).before(aux);
+          } else {
+            var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+            $(input).before(aux);
+          }
+        } else {
+          var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+          $(input).before(aux);
+        }
+      }else if(totalInputSubChecked == 0) {
+        // no input checked
+        var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+        $(input).before(aux);
+      }else if(totalInputSubChecked < totalInputSub) {
+        var aux = $('<div class="chbx semi-checked"><span></span></div>').attr('id', id);
+        $(input).before(aux);
+      }
+    });
+
+    $('li.parent').prepend('<span style="width:6px;display:inline-block;" class="toggle">+</span>');
+    $('ul.sub').toggle();
+
+    $('span.toggle').click(function(){
+      $(this).parent().find('ul.sub').toggle();
+      if($(this).text()=='+'){
+        $(this).html('-');
+      } else {
+        $(this).html('+');
+      }
+    });
+
+    $("li input[name='sCategory[]']").change( function(){
+      var id = $(this).attr('id');
+      $(this).click();
+      $('#'+id+'_').click();
+    });
+
+    $('div.chbx').click( function() {
+      var isChecked       = $(this).hasClass('checked');
+      var isSemiChecked   = $(this).hasClass('semi-checked');
+
+      if(isChecked) {
+        $(this).removeClass('checked');
+        $(this).next('input').prop('checked', false);
+      } else if(isSemiChecked) {
+        $(this).removeClass('semi-checked');
+        $(this).next('input').prop('checked', false);
+      } else {
+        $(this).addClass('checked');
+        $(this).next('input').prop('checked', true);
+      }
+
+      // there are subcategories ?
+      if($(this).parent().find('ul.sub').size()>0) {
+        if(isChecked){
+          $(this).parent().find('ul.sub>li>div.chbx').removeClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', false);
+        } else if(isSemiChecked){
+          // if semi-checked -> check-all
+          $(this).parent().find('ul.sub>li>div.chbx').removeClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', false);
+          $(this).removeClass('semi-checked');
+        } else {
+          $(this).parent().find('ul.sub>li>div.chbx').addClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', true);
+        }
+      } else {
+        // is subcategory checkbox or is category parent without subcategories
+        var parentLi = $(this).closest('li.parent');
+
+        // subcategory
+        if($(parentLi).find('ul.sub').size() > 0) {
+          var totalInputSub           = $(parentLi).find('ul.sub>li>input').size();
+          var totalInputSubChecked    = $(parentLi).find('ul.sub>li>input:checked').size();
+
+          var input    = $(parentLi).find('input.parent');
+          var divInput = $(parentLi).find('div.chbx').first();
+
+          $(input).prop('checked', false);
+          $(divInput).removeClass('checked');
+          $(divInput).removeClass('semi-checked');
+
+          if(totalInputSub == totalInputSubChecked) {
+            $(divInput).addClass('checked');
+            $(input).prop('checked', true);
+          }else if(totalInputSubChecked == 0) {
+            // no input checked;
+          }else if(totalInputSubChecked < totalInputSub) {
+            $(divInput).addClass('semi-checked');
+          }
+        } else {
+          // parent category
+        }
+      }
+    });
+  });
+</script>
 <div class="col-sm-4 col-md-3">
   <div id="sidebar">
     <div class="filters">
