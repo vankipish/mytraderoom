@@ -1,3 +1,5 @@
+
+
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -19,7 +21,8 @@
      * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
 
-    // meta tag robots
+
+// meta tag robots
     if( osc_count_items() == 0 || stripos($_SERVER['REQUEST_URI'], 'search') ) {
         osc_add_hook('header','osclasswizards_nofollow_construct');
     } else {
