@@ -30,7 +30,9 @@
     osc_enqueue_script('jquery-ui');
 osc_register_script('icheck', osc_current_web_theme_js_url('icheck-1.x/icheck.js'),'jquery');
 osc_enqueue_script('icheck');
-	osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
+osc_register_script('maskedinput', osc_current_web_theme_js_url('jquery.maskedinput.js'));
+osc_enqueue_script('maskedinput');
+    osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
     osc_enqueue_style('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.css'));
     osc_enqueue_script('fancybox');
 	osc_register_script('jquery-validate', osc_current_web_theme_js_url('jquery.validate.min.js'));

@@ -176,6 +176,8 @@
             </div>
           </div>
           <?php } ?>
+
+
           <?php 
 			if( osc_images_enabled_at_items() ) {
                 ItemForm::ajax_photos();

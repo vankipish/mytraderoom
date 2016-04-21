@@ -129,8 +129,8 @@
                                 custom_theme_widget: 'recaptcha_widget'
                             };
                         </script>
-          <style type="text/css"> 
-div#recaptcha_widget, div#recaptcha_image > img { width:280px; } 
+          <style type="text/css">
+div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
 </style>
           <div id="recaptcha_widget">
             <div id="recaptcha_image"><img /></div>
@@ -153,8 +153,8 @@ div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
     <?php ContactForm::js_validation(); ?>
     <?php } ?>
   </div>
-  
-    <?php 
+
+    <?php
 	if( osc_get_preference('facebook-showitem', 'osclasswizards_theme') == "1"){
 		?>
 		<div class="block_list facebook">
@@ -163,5 +163,5 @@ div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
 	<?php
 	}
   ?>
-  
+
 </div>

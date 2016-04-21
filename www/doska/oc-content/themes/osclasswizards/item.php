@@ -59,6 +59,7 @@
   
 ?>
 
+
 <div class="row">
   <div class="col-sm-7 col-md-8">
     <div id="item-content">
@@ -261,7 +262,7 @@
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                                 
                   <div id="el1" style="display: none">
-                    <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                    <input id="phone" name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
                   </div>
 
                 <script>js_showOrHide()</script>
