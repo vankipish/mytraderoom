@@ -211,7 +211,11 @@
           <div style="border-bottom: ridge" >
           <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
             ?></h4> <em>
-            <a style="font-weight: normal">От</a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+              <a style="font-weight: normal">От
+                <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #20264b " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><?php echo osc_comment_author_name(); ?></a>
+                <?php } else { ?>
+              </a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+                <?php }?>
 
             <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
             <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>

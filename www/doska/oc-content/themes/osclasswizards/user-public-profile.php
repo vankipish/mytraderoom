@@ -67,12 +67,16 @@
 <div class="row">
   <div class="col-sm-4 col-md-3">
     <div class="user-card">
-      <!--<figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure>-->
+        <!--<figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure> -->
       <ul id="user_data">
-          <?php profile_picture_show(); ?>
-          <li class="name">
+          <div style="margin-bottom: 15px"><?php profile_picture_show(); ?></div>
+        <li class="name">
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>
         </li>
+        <li class="name">
+           <div id="ratingOf"></div>
+        </li>
+          <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
         <?php if( osc_user_website() !== '' ) { ?>
         <li class="website"><i class="fa fa-link"></i> <strong><a target="_blank" href="<?php echo osc_user_website(); ?>"><?php echo osc_user_website(); ?></a></strong></li>
         <?php } ?>
@@ -84,15 +88,23 @@
         <?php } ?>
       </ul>
     </div>
-    <section class="user_detail_info">
-      <?php if( osc_user_info() !== '' ) { ?>
-      <div class="title">
-        <h1>
-          <?php _e('User description', OSCLASSWIZARDS_THEME_FOLDER); ?>
-        </h1>
-      </div>
-      <?php } ?>
-      <?php echo nl2br(osc_user_info()); ?> </section>
+    <?php
+        if (osc_user_info()) { ?>
+          <section class="user_detail_info">
+          <?php if( osc_user_info() !== '' ) { ?>
+          <div class="title">
+            <h1>
+              <?php _e('User description', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            </h1>
+          </div>
+          <?php } ?>
+          <?php echo nl2br(osc_user_info()); ?> </section>
+        <?php } ?>
+      <?php
+      if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
+        Оцените заказчика/исполнителя: <br>
+          <div id="toRate"></div>
+      <?php }?>
   </div>
   <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>

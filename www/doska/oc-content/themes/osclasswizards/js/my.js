@@ -19,6 +19,6 @@ $(document).ready(function(){
             top = $(id).offset().top;
 
         //анимируем переход на расстояние - top за 1500 мс
-        $("body").delay(100).animate({scrollTop: top}, 1500);
+        $("body").delay(100).animate({scrollTop: top}, 500);
     });
 });
