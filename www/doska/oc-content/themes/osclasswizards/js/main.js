@@ -32,5 +32,16 @@ $(document).ready(function(){
 
     });
 
-    
-  
+
+$('#ratingOf').raty({
+    cancel   : false,
+    half     : true,
+    readOnly : true,
+    starType : 'i'
+});
+
+$('#toRate').raty({
+    cancel   : true,
+    half     : false,
+    starType : 'i'
+});

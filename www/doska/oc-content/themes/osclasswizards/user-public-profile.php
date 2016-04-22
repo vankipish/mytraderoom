@@ -73,6 +73,9 @@
         <li class="name">
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>
         </li>
+        <li class="name">
+           <div id="ratingOf"></div>
+        </li>
           <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
         <?php if( osc_user_website() !== '' ) { ?>
         <li class="website"><i class="fa fa-link"></i> <strong><a target="_blank" href="<?php echo osc_user_website(); ?>"><?php echo osc_user_website(); ?></a></strong></li>
@@ -85,15 +88,23 @@
         <?php } ?>
       </ul>
     </div>
-    <section class="user_detail_info">
-      <?php if( osc_user_info() !== '' ) { ?>
-      <div class="title">
-        <h1>
-          <?php _e('User description', OSCLASSWIZARDS_THEME_FOLDER); ?>
-        </h1>
-      </div>
-      <?php } ?>
-      <?php echo nl2br(osc_user_info()); ?> </section>
+    <?php
+        if (osc_user_info()) { ?>
+          <section class="user_detail_info">
+          <?php if( osc_user_info() !== '' ) { ?>
+          <div class="title">
+            <h1>
+              <?php _e('User description', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            </h1>
+          </div>
+          <?php } ?>
+          <?php echo nl2br(osc_user_info()); ?> </section>
+        <?php } ?>
+      <?php
+      if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
+        Оцените заказчика/исполнителя: <br>
+          <div id="toRate"></div>
+      <?php }?>
   </div>
   <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>
