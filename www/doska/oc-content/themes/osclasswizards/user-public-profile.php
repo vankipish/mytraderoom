@@ -63,12 +63,12 @@
 
     osc_current_web_theme_path('header.php');
 ?>
-
+<?php var_dump(Session::newInstance()->_get('userId'))?>
 <div class="row">
   <div class="col-sm-4 col-md-3">
     <div class="user-card">
         <!--<figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure> -->
-      <ul id="user_data">
+        <ul id="user_data">
           <div style="margin-bottom: 15px"><?php profile_picture_show(); ?></div>
         <li class="name">
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>

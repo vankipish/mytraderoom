@@ -99,6 +99,7 @@ osc_enqueue_script('my');
 
 
 <link href="./oc-content/themes/osclasswizards/js/icheck-1.x/skins/all.css" rel="stylesheet">
-<script src="./oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>
+<!--<script src="./oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>  вроде уже не нужно, но на всякий случай оставил-->
+<link href="./oc-content/themes/osclasswizards/js/raty/lib/jquery.raty.css" rel="stylesheet">
 
 <?php osc_run_hook('header') ; ?>

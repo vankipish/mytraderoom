@@ -45,7 +45,7 @@ describe('#readOnly', function() {
 
     it ('does not trigger mouseover', function() {
       // given
-      this.el.raty({ readOnly: true })
+      this.el.raty({ readOnly: true });
 
       var stars = this.el.children('img');
 
@@ -236,7 +236,7 @@ describe('#readOnly', function() {
   context('on false', function() {
     it ('removes the :readOnly of the score', function() {
       // given
-      this.el.raty({ readOnly: true })
+      this.el.raty({ readOnly: true });
 
       var input = this.el.children('input');
 

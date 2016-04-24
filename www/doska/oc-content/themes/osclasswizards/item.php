@@ -201,7 +201,7 @@
       <h2 class="title">
         Предложения
       </h2>
-      <?php } ?>
+      <?php }  ?>
 
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
