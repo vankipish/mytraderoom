@@ -66,13 +66,15 @@
                     include_once "$path./oc-includes/osclass/model/userRaty.php";
                     $mRaty = userRaty::newInstance();
 
+                    $idexecutor = $_POST['idexecutor'];
                     $executor = $_POST['executor'];
                     $rating = $_POST['score'];
                     $userId = $_POST['r_of_user'];
                     $r_pub_date = $_POST['r_pub_date'];
 
                     $aRaty = array(
-                        'r_pub_date' => date('Y-m-d H:i:s')
+                      'r_pub_date' => date('Y-m-d H:i:s')
+                    , 'id_executor' => $idexecutor
                     , 'r_executor' => $executor
                     , 'r_rating' => $rating
                     , 'r_of_user' => $userId)

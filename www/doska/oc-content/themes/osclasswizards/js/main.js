@@ -33,9 +33,11 @@ $(document).ready(function(){
     });
 
 //для рейтингов
+var $rating_of = 0;
 $('#ratingOf').raty({
     cancel   : false,
     half     : true,
     readOnly : true,
-    starType : 'i'
+    starType : 'i',
+    score    : document.getElementById('ratingValue').value
 });

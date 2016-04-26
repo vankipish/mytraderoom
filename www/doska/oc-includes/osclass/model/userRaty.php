@@ -26,7 +26,7 @@ Copy from ItemComment table description
          *
          * @access public
          * @since unknown
-         * @return ItemComment
+         * @return userRaty
          */
         public static function newInstance()
         {
@@ -47,6 +47,7 @@ Copy from ItemComment table description
             $array_fields = array(
                 'r_id',
                 'r_pub_date',
+                'id_executor',
                 'r_executor',
                 'r_rating',
                 'r_comment',
@@ -76,6 +77,66 @@ Copy from ItemComment table description
 
             return $result->result();
         }
+
+        /**
+         * Count the number of comments
+         *
+         * @param int item's ID or null
+         * @return int
+        **/
+        public function count($userId = null) {
+            $this->dao->select('COUNT(*) AS numrows');
+            $this->dao->from($this->getTableName());
+
+            $this->dao->where('id_executor',$userId);
+            $aux = $this->dao->get();
+            if($aux == false) {
+                return array();
+            }
+            $row = $aux->row();
+            return $row['numrows'];
+        }
+
+        /**
+         * Count the number of ratings
+         *
+         * @param int item's ID or null
+         * @return int
+         **/
+        public function rating($userId = null) {
+            $this->dao->select('count(r_rating) as total');
+            $this->dao->from($this->getTableName());
+            $this->dao->groupBy('id_executor');
+            $result = $this->dao->get();
+            if( $result == false ) {
+                return false;
+            } else if($result->numRows() === 0) {
+                return 0;
+            } else {
+                $total = $result->row();
+                return $total['total'];
+            }
+        }
+        function totalRating($id)
+        {
+            $rating = 0;
+            $this->dao->select('r_rating',$rating);
+            $this->dao->from($this->getTableName());
+            $this->dao->where('id_executor', $id);
+            $result = $this->dao->get();
+
+            if ($result == false) {
+                return array();
+            }
+            $allRatings = $result->result();
+            $ratings = array();
+            foreach ($allRatings as $rat){
+                array_push($ratings,$rat['r_rating']);}
+                $totalRating=array_sum($ratings)/count($ratings);
+            return $totalRating;
+        }
     }
+
+
 
 ?>

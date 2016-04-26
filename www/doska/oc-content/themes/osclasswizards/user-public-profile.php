@@ -62,6 +62,8 @@
     }
 
     osc_current_web_theme_path('header.php');
+    include_once "$path./oc-includes/osclass/model/userRaty.php";
+
 ?>
 <?php var_dump(Session::newInstance()->_get('userId'))?>
 <div class="row">
@@ -74,7 +76,9 @@
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>
         </li>
         <li class="name">
-           <div id="ratingOf"></div>
+            <?php// var_dump(userRaty::newInstance()->totalRating(osc_user_id()))?>
+            <input hidden id="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
+            <div id="ratingOf"></div>
         </li>
           <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
         <?php if( osc_user_website() !== '' ) { ?>
@@ -105,19 +109,22 @@
         <br>
           <div id="toRate"></div>
           <?php $executor = osc_user_name();
+                $idexecutor = osc_user_id();
                 $userId = Session::newInstance()->_get('userId');
                 $r_pub_date = date('Y-m-d H:i:s')?>
 
 
             <input hidden id="executor" value="<?php echo $executor; ?>">
+            <input hidden id="idexecutor" value="<?php echo $idexecutor; ?>">
             <input hidden id="r_of_user" value="<?php echo $userId; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
           
           <script>
               var $executor = document.getElementById('executor').value;
+              var $idexecutor = document.getElementById('idexecutor').value;
               var $r_of_user = document.getElementById('r_of_user').value;
               var $r_pub_date = document.getElementById('r_pub_date').value;
-              //var $url = '<?php echo osc_ajax_plugin_url("/Doska/oc-content/plugins/AjaxRating/action.php"); ?>';
+              
               $('#toRate').raty
               ({
                   cancel   : true,
@@ -129,7 +136,7 @@
                       ({
                           type: "POST",
                           url: '<?php echo osc_base_url(true); ?>?page=ajax&action=rating',
-                          data: {"score":score,"executor": $executor,"r_of_user":$r_of_user,"r_pub_date":$r_pub_date},
+                          data: {"score":score,"executor": $executor,"idexecutor": $idexecutor,"r_of_user":$r_of_user,"r_pub_date":$r_pub_date},
                           response:'text',
                           success:function (data) {//возвращаемый результат от сервера
                               $("#result").html(data)}
