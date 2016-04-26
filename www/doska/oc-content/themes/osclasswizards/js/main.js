@@ -39,27 +39,3 @@ $('#ratingOf').raty({
     readOnly : true,
     starType : 'i'
 });
-
-$('#toRate').raty({
-    cancel   : true,
-    half     : false,
-    starType : 'i',
-    click: function(score, evt) {
-        alert(score);
-        $.ajax({
-            type: "POST",
-            url: "C:\WebServers\home\mytraderoom\www\doska\oc-content\plugins\AjaxRating\action.php",
-            data: {"score":score},
-            cache: false,
-            success: function(response){
-                var messageResp = ['Ваше сообщение отправлено','Сообщение не отправлено Ошибка базы данных','Нельзя отправлять пустые сообщения'];
-                var resultStat = messageResp[Number(response)];
-                if(response == 0){
-                    score=0;
-                }
-                $("#resp").text(resultStat).show().delay(1500).fadeOut(800);
-
-            }
-        })
-    }
-});
