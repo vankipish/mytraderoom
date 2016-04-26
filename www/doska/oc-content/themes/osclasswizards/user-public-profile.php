@@ -102,12 +102,13 @@
         <?php } ?>
       <?php
       if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
-        Оцените заказчика/исполнителя: <br>
+        <br>
           <div id="toRate"></div>
           <?php $executor = osc_user_name();
                 $userId = Session::newInstance()->_get('userId');
-                //$mRaty = userRaty::newInstance();
                 $r_pub_date = date('Y-m-d H:i:s')?>
+
+
             <input hidden id="executor" value="<?php echo $executor; ?>">
             <input hidden id="r_of_user" value="<?php echo $userId; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
@@ -116,6 +117,7 @@
               var $executor = document.getElementById('executor').value;
               var $r_of_user = document.getElementById('r_of_user').value;
               var $r_pub_date = document.getElementById('r_pub_date').value;
+              //var $url = '<?php echo osc_ajax_plugin_url("/Doska/oc-content/plugins/AjaxRating/action.php"); ?>';
               $('#toRate').raty
               ({
                   cancel   : true,
@@ -126,20 +128,19 @@
                       $.ajax
                       ({
                           type: "POST",
-                          url: "/Doska/oc-content/plugins/AjaxRating/action.php",
+                          url: '<?php echo osc_base_url(true); ?>?page=ajax&action=rating',
                           data: {"score":score,"executor": $executor,"r_of_user":$r_of_user,"r_pub_date":$r_pub_date},
                           response:'text',
                           success:function (data) {//возвращаемый результат от сервера
-                              alert(data);
-                              $("#result").html(data)},
-                          cache: false
+                              $("#result").html(data)}
+
                       })
                   }
               });
           </script>
       <?php }?>
 
-      <div id="result">Тут будет ответ от сервера</div><br /><br />
+      <div id="result">Оцените исполнителя/заказчика</div><br /><br />
 
   </div>
   <div class="col-sm-8 col-md-9">

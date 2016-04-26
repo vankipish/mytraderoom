@@ -61,6 +61,32 @@
                     $cities = City::newInstance()->ajax(Params::getParam("term"), Params::getParam("region"));
                     echo json_encode($cities);
                 break;
+                case 'rating':
+                    $path = $_SERVER['DOCUMENT_ROOT'] . '/doska';
+                    include_once "$path./oc-includes/osclass/model/userRaty.php";
+                    $mRaty = userRaty::newInstance();
+
+                    $executor = $_POST['executor'];
+                    $rating = $_POST['score'];
+                    $userId = $_POST['r_of_user'];
+                    $r_pub_date = $_POST['r_pub_date'];
+
+                    $aRaty = array(
+                        'r_pub_date' => date('Y-m-d H:i:s')
+                    , 'r_executor' => $executor
+                    , 'r_rating' => $rating
+                    , 'r_of_user' => $userId)
+                        //,'r_id'           => $ratyId        
+                        //,'r_comment'      => $rComment
+                    ;
+                    if ($mRaty->insert($aRaty)) {
+                        $ratyID = $mRaty->dao->insertedId();
+                    }
+
+                    if(isset($_POST['score'])) {
+                        header("Content-type: text/txt; charset=UTF-8");
+                        if($_POST['score']>'0') {echo "Ваша оценка принята!";}}
+                break;    
                 case 'delete_image': // Delete images via AJAX
                     $ajax_photo = Params::getParam('ajax_photo');
                     $id         = Params::getParam('id');
