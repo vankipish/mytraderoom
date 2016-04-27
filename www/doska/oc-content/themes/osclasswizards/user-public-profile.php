@@ -76,8 +76,8 @@
         </li>
         <li class="name">
             <?php //var_dump(userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()))?>
-            <input hidden id="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
-            <div id="ratingOf"></div>
+            <input hidden name="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
+            <div name="ratingOf"></div>
             <?php if (userRaty::newInstance()->count(osc_user_id())==1) { ?>
                 <p>По оценке <?php echo userRaty::newInstance()->count(osc_user_id()) ?> пользователя</p>
             <?php } if (userRaty::newInstance()->count(osc_user_id())>1) {?>
@@ -111,7 +111,7 @@
       <?php
       if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
         <br>
-          <div id="toRate"></div> <!-- описано ниже -->
+          <div id="toRate""></div> <!-- описано ниже -->
           <?php $executor = osc_user_name();
                 $idexecutor = osc_user_id();
                 $userId = Session::newInstance()->_get('userId');

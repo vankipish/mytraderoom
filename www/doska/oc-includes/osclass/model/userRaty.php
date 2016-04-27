@@ -119,6 +119,7 @@ Copy from ItemComment table description
             $ratings = array();
             foreach ($allRatings as $rat){
                 array_push($ratings,$rat['r_rating']);}
+                if (count($ratings)>0)
                 $totalRating=array_sum($ratings)/count($ratings);
             return $totalRating;
         }
