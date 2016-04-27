@@ -4,7 +4,7 @@
  * User: Admin
  * Date: 23.04.2016
  * Time: 11:39
- */
+
 if(isset($_POST['score'])) {
     header("Content-type: text/txt; charset=UTF-8");
     if($_POST['score']>'0') {
@@ -53,7 +53,7 @@ if(isset($_POST['score'])) {
             $ratyID = $mRaty->dao->insertedId();
         }
 
-
+ */
 ?>
 
         

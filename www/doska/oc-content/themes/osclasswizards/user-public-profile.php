@@ -65,7 +65,6 @@
     include_once "$path./oc-includes/osclass/model/userRaty.php";
 
 ?>
-<?php var_dump(Session::newInstance()->_get('userId'))?>
 <div class="row">
   <div class="col-sm-4 col-md-3">
     <div class="user-card">
@@ -76,9 +75,14 @@
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>
         </li>
         <li class="name">
-            <?php// var_dump(userRaty::newInstance()->totalRating(osc_user_id()))?>
+            <?php //var_dump(userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()))?>
             <input hidden id="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
             <div id="ratingOf"></div>
+            <?php if (userRaty::newInstance()->count(osc_user_id())==1) { ?>
+                <p>По оценке <?php echo userRaty::newInstance()->count(osc_user_id()) ?> пользователя</p>
+            <?php } if (userRaty::newInstance()->count(osc_user_id())>1) {?>
+                <p>По оценкам <?php echo userRaty::newInstance()->count(osc_user_id()) ?> пользователей</p>
+            <?php }?>
         </li>
           <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
         <?php if( osc_user_website() !== '' ) { ?>
@@ -107,7 +111,7 @@
       <?php
       if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
         <br>
-          <div id="toRate"></div>
+          <div id="toRate"></div> <!-- описано ниже -->
           <?php $executor = osc_user_name();
                 $idexecutor = osc_user_id();
                 $userId = Session::newInstance()->_get('userId');
@@ -127,9 +131,10 @@
               
               $('#toRate').raty
               ({
-                  cancel   : true,
+                  cancel   : false,
                   half     : false,
                   starType : 'i',
+                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id())?>',
                   click: function(score, evt)
                   {
                       $.ajax
@@ -138,7 +143,7 @@
                           url: '<?php echo osc_base_url(true); ?>?page=ajax&action=rating',
                           data: {"score":score,"executor": $executor,"idexecutor": $idexecutor,"r_of_user":$r_of_user,"r_pub_date":$r_pub_date},
                           response:'text',
-                          success:function (data) {//возвращаемый результат от сервера
+                          success:function (data) {
                               $("#result").html(data)}
 
                       })
@@ -147,7 +152,7 @@
           </script>
       <?php }?>
 
-      <div id="result">Оцените исполнителя/заказчика</div><br /><br />
+      <div id="result"><?php if (userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0) {echo 'Оцените исполнителя/заказчика';} else {echo 'Ваша оценка';}?></div><br /><br />
 
   </div>
   <div class="col-sm-8 col-md-9">

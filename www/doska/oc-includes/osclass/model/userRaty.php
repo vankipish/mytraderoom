@@ -98,25 +98,12 @@ Copy from ItemComment table description
         }
 
         /**
-         * Count the number of ratings
+         * Count the middle rating
          *
          * @param int item's ID or null
          * @return int
          **/
-        public function rating($userId = null) {
-            $this->dao->select('count(r_rating) as total');
-            $this->dao->from($this->getTableName());
-            $this->dao->groupBy('id_executor');
-            $result = $this->dao->get();
-            if( $result == false ) {
-                return false;
-            } else if($result->numRows() === 0) {
-                return 0;
-            } else {
-                $total = $result->row();
-                return $total['total'];
-            }
-        }
+
         function totalRating($id)
         {
             $rating = 0;
@@ -134,6 +121,33 @@ Copy from ItemComment table description
                 array_push($ratings,$rat['r_rating']);}
                 $totalRating=array_sum($ratings)/count($ratings);
             return $totalRating;
+        }
+
+        function checking($loggedUserId) //для проверки, оставлял ли уже этот пользователь оценку этому исполнителю
+        {
+            $this->dao->select('r_of_user');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('r_of_user', $loggedUserId);
+            $result = $this->dao->get();
+            $checking = $result->result();
+            if (empty($checking))
+                return 1;
+            else
+                return 0;
+        }
+
+        function scoreOfLoggedUser($loggedUserId) //для проверки, оставлял ли уже этот пользователь оценку этому исполнителю
+        {
+            $this->dao->select('r_rating');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('r_of_user', $loggedUserId);
+            $result = $this->dao->get();
+            $resArr = $result->result();
+            if (empty($resArr))
+                return 0;
+            else
+                $score=$resArr['0'];
+                return $score['r_rating'];
         }
     }
 

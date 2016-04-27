@@ -71,6 +71,7 @@
                     $rating = $_POST['score'];
                     $userId = $_POST['r_of_user'];
                     $r_pub_date = $_POST['r_pub_date'];
+                    
 
                     $aRaty = array(
                       'r_pub_date' => date('Y-m-d H:i:s')
