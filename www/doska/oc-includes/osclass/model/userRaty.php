@@ -131,9 +131,9 @@ Copy from ItemComment table description
             $result = $this->dao->get();
             $checking = $result->result();
             if (empty($checking))
-                return 1;
+                return 1; // пользователь еще не оценивал текущего юзера
             else
-                return 0;
+                return 0; // пользователь уже оценивал текущего юзера
         }
 
         function scoreOfLoggedUser($loggedUserId) //для проверки, оставлял ли уже этот пользователь оценку этому исполнителю

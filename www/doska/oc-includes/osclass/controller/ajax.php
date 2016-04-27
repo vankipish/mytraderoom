@@ -72,23 +72,38 @@
                     $userId = $_POST['r_of_user'];
                     $r_pub_date = $_POST['r_pub_date'];
                     
-
-                    $aRaty = array(
-                      'r_pub_date' => date('Y-m-d H:i:s')
-                    , 'id_executor' => $idexecutor
-                    , 'r_executor' => $executor
-                    , 'r_rating' => $rating
-                    , 'r_of_user' => $userId)
-                        //,'r_id'           => $ratyId        
-                        //,'r_comment'      => $rComment
-                    ;
-                    if ($mRaty->insert($aRaty)) {
-                        $ratyID = $mRaty->dao->insertedId();
+                    if (userRaty::newInstance()->checking(osc_logged_user_id()) == 1)
+                        {
+                    // создание новой оценки
+                        $aRaty = array(
+                          'r_pub_date' => date('Y-m-d H:i:s')
+                        , 'id_executor' => $idexecutor
+                        , 'r_executor' => $executor
+                        , 'r_rating' => $rating
+                        , 'r_of_user' => $userId)
+                            //,'r_comment'      => $rComment
+                        ;
+                        if ($mRaty->insert($aRaty)) {
+                            $ratyID = $mRaty->dao->insertedId();
+                        }
+    
+                        if(isset($_POST['score'])) {
+                            header("Content-type: text/txt; charset=UTF-8");
+                            if($_POST['score']>'0') {echo "Ваша оценка принята!";}}
+                        }
+                    // обновление оценки
+                    else {$aRaty = array(   
+                          'r_pub_date' => date('Y-m-d H:i:s')
+                        , 'id_executor' => $idexecutor
+                        , 'r_executor' => $executor
+                        , 'r_rating' => $rating
+                        , 'r_of_user' => $userId)
+                            //,'r_comment'      => $rComment
+                    ; $mRaty->update($aRaty,array('r_of_user' =>$userId));
+                        echo "Ваша оценка изменена!";
+                       
                     }
 
-                    if(isset($_POST['score'])) {
-                        header("Content-type: text/txt; charset=UTF-8");
-                        if($_POST['score']>'0') {echo "Ваша оценка принята!";}}
                 break;    
                 case 'delete_image': // Delete images via AJAX
                     $ajax_photo = Params::getParam('ajax_photo');
