@@ -84,7 +84,7 @@
                 <p>По оценкам <?php echo userRaty::newInstance()->count(osc_user_id()) ?> пользователей</p>
             <?php }?>
         </li>
-          <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
+          <?php if (osc_user_phone()) {?><p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p><?php }?>
         <?php if( osc_user_website() !== '' ) { ?>
         <li class="website"><i class="fa fa-link"></i> <strong><a target="_blank" href="<?php echo osc_user_website(); ?>"><?php echo osc_user_website(); ?></a></strong></li>
         <?php } ?>
@@ -151,9 +151,9 @@
               });
           </script>
       <?php }?>
-
+        <?php if (osc_logged_user_id()>0) {?>
       <div id="result"><?php if (userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0) {echo 'Оцените исполнителя/заказчика';} else {echo 'Ваша оценка';}?></div><br /><br />
-
+        <?php } ?>
   </div>
   <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>
