@@ -152,11 +152,11 @@
           </script>
       <?php }?>
         <?php if (osc_logged_user_id()>0) {?>
-      <div id="result"><?php if (userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0) {echo 'Оцените исполнителя/заказчика';} else {echo 'Ваша оценка';}?></div><br /><br />
+      <div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?></div><br /><br />
         <?php } ?>
             <script>
                 //для отображения рейтинга
-                
+
                 $('[name=ratingOf]').raty({
                     half     : true,
                     readOnly : true,

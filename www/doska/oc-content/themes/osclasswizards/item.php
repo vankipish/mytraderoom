@@ -207,31 +207,19 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
-          <script>
-            //для отображения рейтингов
-            var $user = <?php echo osc_comment_user_id()?>;
-            $('[name=ratingOf'+$user+']').raty({
-              half     : true,
-              readOnly : true,
-              starType : 'i',
-              score    : document.getElementsByName("ratingValue<?php echo osc_comment_user_id()?>")[0].value
-            });
-          </script>
           <div class="comment">
           <div style="border-bottom: ridge" >
           <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
-            ?></h4> <em>
-              <a style="font-weight: normal">От <?php //var_dump(userRaty::newInstance()->totalRating(osc_comment_user_id())) ?>
-                <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #20264b " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><?php echo osc_comment_author_name(); ?></a>
-                  <input hidden name="ratingValue<?php echo osc_comment_user_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
-                  <a name="ratingOf<?php echo osc_comment_user_id()?>" style="font-size: 6px; margin-left: 3px"></a>
+            ?></h4>  <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
+              <a style="font-weight: normal"><?php //var_dump(userRaty::newInstance()->totalRating(osc_comment_user_id())) ?>
+                <?php if (osc_comment_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #20264b " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><?php echo osc_comment_author_name(); ?></a>
+                  <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
+                  <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px"></a>
 
                 <?php } else { ?>
-              </a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
+              </a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                 <?php }?>
-
-            <a style="margin: 1px; color: #b8c6d1">(Добавлено <?php echo osc_format_date(osc_comment_pub_date()) ?>)</a>
-            <h5 style="margin: 0px"> <em> <?php echo "E-mail: ". osc_comment_author_email(); ?> </em> </h5>
+            <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
               <?php
                   if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
                    <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
@@ -249,6 +237,17 @@
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a> </p>
           <?php } ?>
+            <?php if (osc_comment_user_id()) {?>
+            <script>
+                //для отображения рейтингов
+                $('#ratingOfUser<?php echo osc_comment_id()?>').raty({
+                  half     : true,
+                  readOnly : true,
+                  starType : 'i',
+                  score    : document.getElementById('ratingValue<?php echo osc_comment_id()?>').value
+                });
+            </script>
+            <?php } ?>
           </div>
          <?php } ?>
         <div class="pagination"> <?php echo osc_comments_pagination(); ?> </div>
