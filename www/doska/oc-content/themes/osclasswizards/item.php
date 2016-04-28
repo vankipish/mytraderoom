@@ -207,18 +207,18 @@
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
-          <div class="comment">
-          <div style="border-bottom: ridge" >
+          <div class="comment" style="border-bottom: ridge">
           <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
             ?></h4>  <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
-              <a style="font-weight: normal"><?php //var_dump(userRaty::newInstance()->totalRating(osc_comment_user_id())) ?>
-                <?php if (osc_comment_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #20264b " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><?php echo osc_comment_author_name(); ?></a>
+                <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
                   <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
                   <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px"></a>
 
                 <?php } else { ?>
-              </a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
+               <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                 <?php }?>
+            <p style="margin: 1px; color: #139923" id="chk<?php echo osc_comment_id(); ?>">показать контактную информацию</p>
+            <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
             <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
               <?php
                   if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
@@ -230,10 +230,11 @@
                   }{ ?>
 
                 <?php }   ?>
+              <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
           <p><?php echo nl2br( osc_comment_body() ); ?> </p>
-          </div>
+            </div>
           <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
-          <p> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
+          <p style="margin: 1px"> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a> </p>
           <?php } ?>
@@ -273,14 +274,14 @@
               <input type="hidden" name="authorName" value="<?php echo osc_esc_html( osc_logged_user_name() ); ?>" />
               <input type="hidden" name="authorEmail" value="<?php echo osc_logged_user_email();?>" />
                 <!--<div class="form-group">    -->
-                  <input type = 'checkbox' name="showPhone" id = 'chk1' >
+                  <input type = 'checkbox' name="showPhone" id = 'chkPhone' >
                   <label class="control-label" for="authorPhone"><b>Оставить номер телефона </b></label>
                                 
-                  <div id="el1" style="display: none">
+                  <div id="elPhone" style="display: none">
                     <input name="authorPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
                   </div>
 
-                <script>js_showOrHide()</script>
+                <script>js_showOrHideChkbox('Phone')</script>
 
               <?php } else { ?>
               <div class="form-group">
