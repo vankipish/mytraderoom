@@ -63,8 +63,8 @@
 
     osc_current_web_theme_path('header.php');
     include_once "$path./oc-includes/osclass/model/userRaty.php";
-
 ?>
+
 <div class="row">
   <div class="col-sm-4 col-md-3">
     <div class="user-card">
@@ -123,7 +123,7 @@
             <input hidden id="r_of_user" value="<?php echo $userId; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
           
-          <script>
+          <script>// для ввода рейтинга
               var $executor = document.getElementById('executor').value;
               var $idexecutor = document.getElementById('idexecutor').value;
               var $r_of_user = document.getElementById('r_of_user').value;
@@ -154,6 +154,16 @@
         <?php if (osc_logged_user_id()>0) {?>
       <div id="result"><?php if (userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0) {echo 'Оцените исполнителя/заказчика';} else {echo 'Ваша оценка';}?></div><br /><br />
         <?php } ?>
+            <script>
+                //для отображения рейтинга
+                
+                $('[name=ratingOf]').raty({
+                    half     : true,
+                    readOnly : true,
+                    starType : 'i',
+                    score    : document.getElementsByName("ratingValue")[0].value
+                });
+            </script>
   </div>
   <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>

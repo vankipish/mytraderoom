@@ -32,12 +32,6 @@ $(document).ready(function(){
 
     });
 
-//для рейтингов
-var $rating_of = 0;
-$('[name=ratingOf]').raty({
-    cancel   : false,
-    half     : true,
-    readOnly : true,
-    starType : 'i',
-    score    : document.getElementsByName("ratingValue")[0].value
-});
+
+
+

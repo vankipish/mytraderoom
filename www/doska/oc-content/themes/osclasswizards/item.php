@@ -204,19 +204,27 @@
         Предложения
       </h2>
       <?php }  ?>
-
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
-        <div class="comment">
-          <input hidden id="ratingValue" value="">
+          <script>
+            //для отображения рейтингов
+            var $user = <?php echo osc_comment_user_id()?>;
+            $('[name=ratingOf'+$user+']').raty({
+              half     : true,
+              readOnly : true,
+              starType : 'i',
+              score    : document.getElementsByName("ratingValue<?php echo osc_comment_user_id()?>")[0].value
+            });
+          </script>
+          <div class="comment">
           <div style="border-bottom: ridge" >
           <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
             ?></h4> <em>
               <a style="font-weight: normal">От <?php //var_dump(userRaty::newInstance()->totalRating(osc_comment_user_id())) ?>
                 <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #20264b " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><?php echo osc_comment_author_name(); ?></a>
-                  <input hidden name="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
-                  <a name="ratingOf" style="font-size: 6px; margin-left: 3px"></a>
+                  <input hidden name="ratingValue<?php echo osc_comment_user_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
+                  <a name="ratingOf<?php echo osc_comment_user_id()?>" style="font-size: 6px; margin-left: 3px"></a>
 
                 <?php } else { ?>
               </a> <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></em></b>
