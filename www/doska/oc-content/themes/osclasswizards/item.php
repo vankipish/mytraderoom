@@ -217,7 +217,7 @@
                 <?php } else { ?>
                <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                 <?php }?>
-            <p style="margin: 1px; color: #139923" id="chk<?php echo osc_comment_id(); ?>">показать контактную информацию</p>
+            <p style="margin: 1px; color: #139923; cursor: pointer" id="chk<?php echo osc_comment_id(); ?>">подробнее</p>
             <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
             <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
               <?php

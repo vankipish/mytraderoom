@@ -6,7 +6,7 @@ function js_showOrHideChkbox($id)
     $('input#'+chekbox.id).on('ifUnchecked', function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function js_showOrHideDiv($id)
+function js_showOrHideDiv($id) // появление информации в предложениях
 {
     var chek = document.getElementById('chk'+$id+'');
     var elem = document.getElementById('el'+$id+'');
