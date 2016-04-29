@@ -175,6 +175,15 @@
               </ul>
             </div>
           </div>
+                <div>
+                  <input type = 'checkbox' name="showPhoneLogged" id = 'chkPhone' >
+                  <label class="control-label" for="contactPhoneLogged"><b>Оставить номер телефона </b></label>
+
+                  <div id="elPhone" style="display: none">
+                      <input name="contactPhoneLogged" value="<?php echo " ". osc_logged_user_phone();?>" />
+                  </div>
+                </div>
+              <script>js_showOrHideChkbox('Phone')</script>
           <?php } ?>
           <?php 
 			if( osc_images_enabled_at_items() ) {

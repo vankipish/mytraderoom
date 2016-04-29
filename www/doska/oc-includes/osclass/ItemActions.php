@@ -404,7 +404,11 @@
                     $aItem['userId']      = $aItem['userId'];
                     $aItem['contactName'] = $user['s_name'];
                     $aItem['contactEmail'] = $user['s_email'];
-                    $aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
+                    //$aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
+                    if (Params::getParam('showPhoneLogged'))
+                    {
+                        $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
+                    }
                 } else {
                     $aItem['userId']      = NULL;
                 }
@@ -422,6 +426,7 @@
                     ,'fk_c_currency_code' => $aItem['currency']
                     ,'b_show_email'       => $aItem['showEmail']
                     ,'b_show_phone'       => $aItem['showPhone']
+                    ,'s_contact_phone'    => $aItem['contactPhone']
                 );
 
                 // only can change the user if you're an admin
@@ -431,6 +436,7 @@
                     $aUpdate['s_contact_email'] = $aItem['contactEmail'];
                     $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
                     $aUpdate['b_show_phone']    = $aItem['showPhone'];
+                    $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
 
 
                 } else {
@@ -1122,7 +1128,11 @@
                 $aItem['contactEmail']  = $data['s_email'];
                 Params::setParam('contactName', $data['s_name']);
                 Params::setParam('contactEmail', $data['s_email']);
-                Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
+                //Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
+                if (Params::getParam('showPhoneLogged'))
+                {
+                    $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
+                }
             } else {
                 $aItem['contactName']   = Params::getParam('contactName');
                 $aItem['contactEmail']  = Params::getParam('contactEmail');
@@ -1178,7 +1188,7 @@
             $aItem['address']       = Params::getParam('address');
             $aItem['currency']      = Params::getParam('currency');
             $aItem['showEmail']     = (Params::getParam('showEmail') != '') ? 1 : 0;
-            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;
+            $aItem['showPhone']     = (Params::getParam('showPhoneLogged') != '') ? 1 : 0;
             $aItem['title']         = Params::getParam('title');
             $aItem['description']   = Params::getParam('description');
             $aItem['photos']        = Params::getFiles('photos');
