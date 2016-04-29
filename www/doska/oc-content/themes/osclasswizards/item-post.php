@@ -185,7 +185,9 @@
                 </div>
               <script>js_showOrHideChkbox('Phone')</script>
           <?php } ?>
-          <?php 
+          <div id="chk1" style="cursor: pointer; margin-bottom: 10px">Указать дополнительную информацию</div>
+           <div name="add_information" id="el1" style="display: none">
+              <?php
 			if( osc_images_enabled_at_items() ) {
                 ItemForm::ajax_photos();
             } ?>
@@ -256,7 +258,8 @@
               </div>
             </div>
           </div>
-
+           </div>
+             <script> js_showOrHideDiv(1)</script>
           <div class="form-group">
             <?php if( osc_recaptcha_items_enabled() ) { ?>
             <div class="recap">
