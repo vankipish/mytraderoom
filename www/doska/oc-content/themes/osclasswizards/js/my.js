@@ -10,7 +10,7 @@ function js_showOrHideDiv($id) // появление информации в п�
 {
     var chek = document.getElementById('chk'+$id+'');
     var elem = document.getElementById('el'+$id+'');
-    $('#chk'+$id).on("click", function(event){$('#'+elem.id).slideDown(300); $('#chk'+$id).slideUp(300)});
+    $('#chk'+$id).on("click", function(event){$('#'+elem.id).slideDown(300); $('#chk'+$id).slideUp(200)});
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 

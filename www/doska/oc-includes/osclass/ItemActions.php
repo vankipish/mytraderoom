@@ -176,7 +176,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = NULL;
+                    $aItem['currency'] = $aItem['currency'];
                 }
 
                 $this->manager->insert(array(
@@ -416,7 +416,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = NULL;
+                    $aItem['currency'] = $aItem['currency']; //было NULL
                 }
 
                 $aUpdate = array(
@@ -1304,9 +1304,9 @@
                 $aItem['catId'] = 0;
             }
 
-            if( $aItem['currency'] == '' ) {
-                $aItem['currency'] = null;
-            }
+            //if( $aItem['currency'] == '' ) {
+            //    $aItem['currency'] = null;
+            //}
 
             $this->data = $aItem;
         }
