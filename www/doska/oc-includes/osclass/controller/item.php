@@ -499,9 +499,9 @@
                         case 3:  $msg = _m('Please fill the required field (email)');
                                  osc_add_flash_warning_message($msg);
                             break;
-                        case 4:  $msg = _m('Please type a comment');
-                                 osc_add_flash_warning_message($msg);
-                            break;
+                        //case 4:  $msg = _m('Please type a comment');
+                         //        osc_add_flash_warning_message($msg);
+                         //   break;
                         case 5:  $msg = _m('Your comment has been marked as spam');
                             osc_add_flash_error_message($msg);
                             break;

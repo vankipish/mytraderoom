@@ -137,8 +137,7 @@
                     $("form[name=comment_form]").validate({
                         rules: {
                             body: {
-                                required: true,
-                                minlength: 1,
+                                required: false,
                                 maxlength: 500
                             },
                             authorEmail: {
@@ -157,7 +156,6 @@
                                 email: "<?php _e("Invalid email address"); ?>."
                             },
                             body: {
-                                required: "<?php _e("Comment: this field is required"); ?>.",
                                 minlength: "<?php _e("Comment: this field is required"); ?>.",
                                 maxlength: "Воу воу, краткость - сестра таланта"
                             },

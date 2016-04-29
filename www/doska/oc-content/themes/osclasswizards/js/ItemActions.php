@@ -176,7 +176,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = $aItem['currency'];
+                    $aItem['currency'] = NULL;
                 }
 
                 $this->manager->insert(array(
@@ -404,11 +404,7 @@
                     $aItem['userId']      = $aItem['userId'];
                     $aItem['contactName'] = $user['s_name'];
                     $aItem['contactEmail'] = $user['s_email'];
-                    //$aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
-                    if (Params::getParam('showPhoneLogged'))
-                    {
-                        $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
-                    }
+                    $aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
                 } else {
                     $aItem['userId']      = NULL;
                 }
@@ -416,7 +412,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = $aItem['currency']; //было NULL
+                    $aItem['currency'] = NULL;
                 }
 
                 $aUpdate = array(
@@ -426,7 +422,6 @@
                     ,'fk_c_currency_code' => $aItem['currency']
                     ,'b_show_email'       => $aItem['showEmail']
                     ,'b_show_phone'       => $aItem['showPhone']
-                    ,'s_contact_phone'    => $aItem['contactPhone']
                 );
 
                 // only can change the user if you're an admin
@@ -436,7 +431,6 @@
                     $aUpdate['s_contact_email'] = $aItem['contactEmail'];
                     $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
                     $aUpdate['b_show_phone']    = $aItem['showPhone'];
-                    $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
 
 
                 } else {
@@ -948,12 +942,12 @@
                 return 3;
             }
 
-           // if( ($body == '') ) {
-            //    Session::newInstance()->_setForm('commentAuthorName', $authorName);
-           //     Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
-            //    Session::newInstance()->_setForm('commentTitle', $title);
-            //    return 4;
-          //  }
+            if( ($body == '') ) {
+                Session::newInstance()->_setForm('commentAuthorName', $authorName);
+                Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
+                Session::newInstance()->_setForm('commentTitle', $title);
+                return 4;
+            }
 
             $num_moderate_comments = osc_moderate_comments();
             if($userId==null) {
@@ -1128,11 +1122,7 @@
                 $aItem['contactEmail']  = $data['s_email'];
                 Params::setParam('contactName', $data['s_name']);
                 Params::setParam('contactEmail', $data['s_email']);
-                //Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
-                if (Params::getParam('showPhoneLogged'))
-                {
-                    $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
-                }
+                Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
             } else {
                 $aItem['contactName']   = Params::getParam('contactName');
                 $aItem['contactEmail']  = Params::getParam('contactEmail');
@@ -1188,7 +1178,7 @@
             $aItem['address']       = Params::getParam('address');
             $aItem['currency']      = Params::getParam('currency');
             $aItem['showEmail']     = (Params::getParam('showEmail') != '') ? 1 : 0;
-            $aItem['showPhone']     = (Params::getParam('showPhoneLogged') != '') ? 1 : 0;
+            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;
             $aItem['title']         = Params::getParam('title');
             $aItem['description']   = Params::getParam('description');
             $aItem['photos']        = Params::getFiles('photos');
@@ -1304,9 +1294,9 @@
                 $aItem['catId'] = 0;
             }
 
-            //if( $aItem['currency'] == '' ) {
-            //    $aItem['currency'] = null;
-            //}
+            if( $aItem['currency'] == '' ) {
+                $aItem['currency'] = null;
+            }
 
             $this->data = $aItem;
         }
