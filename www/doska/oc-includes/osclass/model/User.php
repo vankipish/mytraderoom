@@ -55,6 +55,7 @@
                 's_website',
                 's_phone_land',
                 's_phone_mobile',
+                's_show_phone',
                 'b_enabled',
                 'b_active',
                 's_pass_code',

@@ -84,7 +84,7 @@
                 <p>По оценкам <?php echo userRaty::newInstance()->count(osc_user_id()) ?> пользователей</p>
             <?php }?>
         </li>
-          <?php if (osc_user_phone()) {?><p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p><?php }?>
+          <?php if (osc_user_phone()&& osc_show_phone_public()) {?><p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p><?php }?>
         <?php if( osc_user_website() !== '' ) { ?>
         <li class="website"><i class="fa fa-link"></i> <strong><a target="_blank" href="<?php echo osc_user_website(); ?>"><?php echo osc_user_website(); ?></a></strong></li>
         <?php } ?>

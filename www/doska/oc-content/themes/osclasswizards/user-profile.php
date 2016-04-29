@@ -76,7 +76,11 @@
             <?php UserForm::mobile_text(osc_user()); ?>
           </div>
         </div>
-        <div class="form-group">
+          <div style="margin-bottom: 5px">
+            <input type = 'checkbox' name="showPhone" <?php if (osc_show_phone_public()) {?>checked> <?php } ?>
+            <label class="control-label" for="showPhone"><b>&nbsp  Отображать номер телефона на публичной странице </b></label>
+          </div>
+          <div hidden class="form-group">
           <label class="control-label" for="phoneLand">
             <?php _e('Phone', OSCLASSWIZARDS_THEME_FOLDER); ?>
           </label>

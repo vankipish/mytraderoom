@@ -65,7 +65,7 @@
         static public function mobile_text($user = null) {
             parent::generic_input_text("s_phone_mobile", isset($user['s_phone_mobile'])? $user['s_phone_mobile'] : '', null, false);
         }
-
+        
         static public function phone_land_text($user = null) {
             parent::generic_input_text("s_phone_land", isset($user['s_phone_land'])? $user['s_phone_land'] : '', null, false);
         }
