@@ -95,7 +95,7 @@
         <li class="location"><i class="fa fa-location-arrow"></i> <strong><?php _e('Location', OSCLASSWIZARDS_THEME_FOLDER);?>:</strong><br><?php echo  $location; ?></li>
         <?php } ?>
       </ul>
-    </div>
+    <!-- тут был закрывающий див для юзеркард-->
     <?php
         if (osc_user_info()) { ?>
           <section class="user_detail_info">
@@ -110,50 +110,71 @@
         <?php } ?>
       <?php
       if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
-        <br>
-          <div id="toRate""></div> <!-- описано ниже -->
+
+      <?php if (osc_logged_user_id()>0) {?>
+          <label style="margin-top: 10px">Ваш отзыв</label><br>
+          <textarea name="comment" id="rComment"></textarea>
+          <div id="result"><label><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?><label></div>
+      <?php } ?>
+      <div id="toRate""></div> <!-- описано ниже -->
           <?php $executor = osc_user_name();
                 $idexecutor = osc_user_id();
                 $userId = Session::newInstance()->_get('userId');
                 $r_pub_date = date('Y-m-d H:i:s')?>
 
-
             <input hidden id="executor" value="<?php echo $executor; ?>">
             <input hidden id="idexecutor" value="<?php echo $idexecutor; ?>">
             <input hidden id="r_of_user" value="<?php echo $userId; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
-          
+            
+      <div class="actions">
+          <button class="btn btn-success" onclick="js_sendRaring()">
+              Оценить
+          </button>
+      </div>
+            <script>
+                function js_sendRaring()
+                {
+
+                    var $executor = document.getElementById('executor').value;
+                    var $idexecutor = document.getElementById('idexecutor').value;
+                    var $r_of_user = document.getElementById('r_of_user').value;
+                    var $r_pub_date = document.getElementById('r_pub_date').value;
+                    var $rComment = document.getElementById('rComment').value;
+                    var $rScore = document.getElementsByName('score')[0].value;
+                    $.ajax
+                    ({
+                        type: "POST",
+                        url: '<?php echo osc_base_url(true); ?>?page=ajax&action=rating',
+                        data: {
+                            "score": $rScore,
+                            "executor": $executor,
+                            "idexecutor": $idexecutor,
+                            "r_of_user": $r_of_user,
+                            "rComment": document.getElementById('rComment').value
+                        },
+                        response: 'text',
+                        success: function (data) {
+                            $("#result").html(data)
+                        }
+
+                    })
+                }
+            </script>
+
+
           <script>// для ввода рейтинга
-              var $executor = document.getElementById('executor').value;
-              var $idexecutor = document.getElementById('idexecutor').value;
-              var $r_of_user = document.getElementById('r_of_user').value;
-              var $r_pub_date = document.getElementById('r_pub_date').value;
+
               
               $('#toRate').raty
               ({
                   cancel   : false,
                   half     : false,
                   starType : 'i',
-                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id())?>',
-                  click: function(score, evt)
-                  {
-                      $.ajax
-                      ({
-                          type: "POST",
-                          url: '<?php echo osc_base_url(true); ?>?page=ajax&action=rating',
-                          data: {"score":score,"executor": $executor,"idexecutor": $idexecutor,"r_of_user":$r_of_user,"r_pub_date":$r_pub_date},
-                          response:'text',
-                          success:function (data) {
-                              $("#result").html(data)}
-
-                      })
-                  }
+                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id())?>'
               });
           </script>
       <?php }?>
-        <?php if (osc_logged_user_id()>0) {?>
-      <div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?></div><br /><br />
-        <?php } ?>
             <script>
                 //для отображения рейтинга
 
@@ -164,8 +185,10 @@
                     score    : document.getElementsByName("ratingValue")[0].value
                 });
             </script>
+
+    </input>
   </div>
-  <div class="col-sm-8 col-md-9">
+<div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>
     <div class="similar_ad">
       <div class="title">

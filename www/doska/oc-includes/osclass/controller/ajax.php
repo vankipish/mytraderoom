@@ -66,22 +66,23 @@
                     include_once "$path./oc-includes/osclass/model/userRaty.php";
                     $mRaty = userRaty::newInstance();
 
-                    $idexecutor = $_POST['idexecutor'];
-                    $executor = $_POST['executor'];
-                    $rating = $_POST['score'];
-                    $userId = $_POST['r_of_user'];
-                    $r_pub_date = $_POST['r_pub_date'];
+                    $idexecutor = strip_tags($_POST['idexecutor']);
+                    $executor = strip_tags($_POST['executor']);
+                    $rating = strip_tags($_POST['score']);
+                    $userId = strip_tags($_POST['r_of_user']);
+                    $rComment = strip_tags($_POST['rComment']);
+                    $r_pub_date = strip_tags($_POST['r_pub_date']);
                     
                     if (userRaty::newInstance()->checking(osc_logged_user_id()) == 1)
                         {
                     // создание новой оценки
                         $aRaty = array(
                           'r_pub_date' => date('Y-m-d H:i:s')
-                        , 'id_executor' => $idexecutor
+                        , 'id_executor'=> $idexecutor
                         , 'r_executor' => $executor
-                        , 'r_rating' => $rating
-                        , 'r_of_user' => $userId)
-                            //,'r_comment'      => $rComment
+                        , 'r_rating'   => $rating
+                        , 'r_of_user'  => $userId
+                        , 'r_comment'  => $rComment)
                         ;
                         if ($mRaty->insert($aRaty)) {
                             $ratyID = $mRaty->dao->insertedId();
@@ -94,11 +95,11 @@
                     // обновление оценки
                     else {$aRaty = array(   
                           'r_pub_date' => date('Y-m-d H:i:s')
-                        , 'id_executor' => $idexecutor
+                        , 'id_executor'=> $idexecutor
                         , 'r_executor' => $executor
-                        , 'r_rating' => $rating
-                        , 'r_of_user' => $userId)
-                            //,'r_comment'      => $rComment
+                        , 'r_rating'   => $rating
+                        , 'r_of_user'  => $userId
+                        , 'r_comment'  => $rComment)
                     ; $mRaty->update($aRaty,array('r_of_user' =>$userId));
                         echo "Ваша оценка изменена!";
                        
