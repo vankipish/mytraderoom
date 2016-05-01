@@ -137,7 +137,7 @@ Copy from ItemComment table description
                 return 0; // пользователь уже оценивал текущего юзера
         }
 
-        function scoreOfLoggedUser($loggedUserId) //для проверки, оставлял ли уже этот пользователь оценку этому исполнителю
+        function scoreOfLoggedUser($loggedUserId) 
         {
             $this->dao->select('r_rating');
             $this->dao->from($this->getTableName());
@@ -149,6 +149,48 @@ Copy from ItemComment table description
             else
                 $score=$resArr['0'];
                 return $score['r_rating'];
+        }
+
+        function commentOfLoggedUser($loggedUserId) 
+        {
+            $this->dao->select('r_comment');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('r_of_user', $loggedUserId);
+            $result = $this->dao->get();
+            $resArr = $result->result();
+            if (empty($resArr))
+                return 0;
+            else
+                $comment=$resArr['0'];
+            return $comment['r_comment'];
+        }
+
+        function Allcomment($id)
+        {
+            $this->dao->select('r_comment');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('id_executor', $id);
+            $result = $this->dao->get();
+            $resArr = $result->result();
+            if (empty($resArr))
+                return 0;
+            else
+                $comment=$resArr['0'];
+            return $comment;
+        }
+
+        function AllUsers($id)
+        {
+            $this->dao->select('r_of_user');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('id_executor', $id);
+            $result = $this->dao->get();
+            $resArr = $result->result();
+            if (empty($resArr))
+                return 0;
+            else
+                $users=$resArr['0'];
+            return $users;
         }
     }
 
