@@ -40,6 +40,10 @@
                                 maxlength: "Воу воу, краткость - сестра таланта"
                             }
                         },
+                        errorElement : 'div',
+                        errorLabelContainer: '.errorTxt',
+                        
+                        
                         submitHandler: function(form) {
 
                             var $executor = document.getElementById('executor').value;
@@ -61,7 +65,9 @@
                                 },
                                 response: 'text',
                                 success: function (data) {
-                                    $("#result").html(data)
+                                    $("#result").html(data);
+                                    $("#button").html('Оценка отправлена');
+                                    
                                 }
 
                             })

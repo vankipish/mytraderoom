@@ -117,7 +117,7 @@
         <?php if (osc_logged_user_id()>0) {?>
           <label style="margin-top: 10px">Ваш отзыв</label><br>
           <textarea name="comment" id="rComment"></textarea>
-          <div id="result"><label><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?><label></div>
+                    <label><div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?></div><label>
       <?php } ?>
 
 
@@ -137,9 +137,7 @@
               <?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оценить';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Изменить оценку';}?>
           </button>
       </div>
-            
-
-
+                            <div style="margin-top: 15px" class="errorTxt"></div>
           <script>// для ввода рейтинга
 
               
@@ -181,3 +179,5 @@
   </div>
 </div>
 <?php osc_current_web_theme_path('footer.php') ; ?>
+
+
