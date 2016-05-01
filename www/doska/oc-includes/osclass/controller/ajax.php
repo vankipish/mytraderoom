@@ -68,7 +68,7 @@
 
                     $idexecutor = strip_tags($_POST['idexecutor']);
                     $executor = strip_tags($_POST['executor']);
-                    $rating = strip_tags($_POST['score']);
+                    $rating = $_POST['score'];
                     $userId = strip_tags($_POST['r_of_user']);
                     $rComment = strip_tags($_POST['rComment']);
                     $r_pub_date = strip_tags($_POST['r_pub_date']);
