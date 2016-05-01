@@ -78,10 +78,11 @@
         <li class="name">
             <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
                   $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
-            $i=0;
-            foreach ($allComments as $comment)
+                  $i=0;
+            var_dump(userRaty::newInstance()->Allcomment(osc_user_id()));
+            while ($allComments[$i])
             {
-                echo $comment;
+                echo $allComments[$i];
                 echo $allUsers[$i];
                 $i++;
             }
@@ -126,7 +127,7 @@
             <?php if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
         <?php if (osc_logged_user_id()>0) {?>
           <label style="margin-top: 10px">Ваш отзыв</label><br>
-          <textarea name="comment" id="rComment"><?php echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
+          <textarea name="comment" id="rComment"><?php if (userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())) echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
                     <label><div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?></div><label>
       <?php } ?>
 

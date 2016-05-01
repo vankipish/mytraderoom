@@ -282,6 +282,7 @@
             $input['s_phone_mobile'] = trim(Params::getParam('s_phone_mobile'));
             $input['s_show_phone']   = (Params::getParam('showPhone') != '') ? 1 : 0;
 
+
             if(strtolower(substr($input['s_website'], 0, 4))!=='http') {
                 $input['s_website'] = 'http://'.$input['s_website'];
             }

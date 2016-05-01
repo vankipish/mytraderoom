@@ -175,7 +175,7 @@ Copy from ItemComment table description
             if (empty($resArr))
                 return 0;
             else
-                $comment=$resArr['0'];
+                $comment=$resArr;
             return $comment;
         }
 
@@ -189,7 +189,7 @@ Copy from ItemComment table description
             if (empty($resArr))
                 return 0;
             else
-                $users=$resArr['0'];
+                $users=$resArr;
             return $users;
         }
     }
