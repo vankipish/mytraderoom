@@ -76,18 +76,6 @@
           <h3><i class="fa fa-user"></i> <?php echo osc_user_name(); ?></h3>
         </li>
         <li class="name">
-            <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
-                  $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
-                  $i=0;
-            //var_dump($allComments);
-            while ($allComments[$i])
-                  {
-                      var_dump($allUsers[$i]['r_user_name']);
-                      var_dump($allComments[$i]['r_comment']);
-                    $i++;
-                  }
-
-            ?>
             <input hidden name="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
             <div name="ratingOf"></div>
             <?php if (userRaty::newInstance()->count(osc_user_id())==1) { ?>
@@ -170,18 +158,54 @@
                     half     : true,
                     readOnly : true,
                     starType : 'i',
-                    score    : document.getElementsByName("ratingValue")[0].value
+                    score    : document.getElementsByName('ratingValue')[0].value
                 });
             </script>
                 </fieldset>
             </form>
         </div>
   </div>
+
+    <div class="col-sm-8 col-md-9">
+        <div class="title">
+            <h1>Отзывы</h1>
+        </div>
+        <div class="comments_list">
+            <div class="comment" style="border-bottom: ridge">
+        <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
+        $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
+        $allUsersIds = userRaty::newInstance()->AllUsersId(osc_user_id());
+        $i=0;
+        //var_dump(userRaty::newInstance()->AllUsers(osc_user_id()));
+        while ($allComments[$i])
+        {
+            //var_dump(userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]));
+            ?><input hidden name="ratingValueOfUser<?php echo $allUsersIds[$i]?>" value="<?php echo userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]) ?>"><?php
+            ?><h3 style="margin-bottom: 5px; margin-top: 0px"><a href="<?php echo osc_user_public_profile_url( $allUsersIds[$i] ); ?>" ><i class="fa fa-user"></i><?php echo $allUsers[$i]; ?></a><a style="font-size: 7px; margin-left: 7px" name="ratingOfUser<?php echo $allUsersIds[$i]?>"></a></h3><?php
+            ?><p style="margin-bottom: 25px"><?php echo $allComments[$i];?></p><?php
+        ?>
+                <script>
+                //для отображения рейтинга
+
+                $('[name=ratingOfUser<?php echo $allUsersIds[$i]?>]').raty({
+                        half     : true,
+                        readOnly : true,
+                        starType : 'i',
+                        score    : document.getElementsByName('ratingValueOfUser<?php echo $allUsersIds[$i]?>')[0].value
+                    });
+                </script>
+                <?php
+                $i++;
+        }?>
+
+            </div>
+        </div>
+    </div>
 <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>
     <div class="similar_ad">
       <div class="title">
-        <h1>
+        <h1 style="margin-top: 15px">
           <?php _e('Latest listings', OSCLASSWIZARDS_THEME_FOLDER); ?>
         </h1>
       </div>

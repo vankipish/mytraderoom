@@ -176,8 +176,10 @@ Copy from ItemComment table description
             if (empty($resArr))
                 return 0;
             else
-                $comment=$resArr;
-            return $comment;
+                $AllComments = array();
+            foreach ($resArr as $comments)
+                array_push($AllComments,$comments['r_comment']);
+            return $AllComments;
         }
 
         function AllUsersId($id)
@@ -190,8 +192,10 @@ Copy from ItemComment table description
             if (empty($resArr))
                 return 0;
             else
-                $users=$resArr;
-            return $users;
+                $AllusersIds = array();
+            foreach ($resArr as $users)
+                array_push($AllusersIds,$users['r_of_user']);
+            return $AllusersIds;
         }
 
         function AllUsers($id)
@@ -204,8 +208,10 @@ Copy from ItemComment table description
             if (empty($resArr))
                 return 0;
             else
-                $users=$resArr;
-            return $users;
+                $Allusers = array();
+                foreach ($resArr as $users)
+                    array_push($Allusers,$users['r_user_name']);
+            return $Allusers;
         }
     }
 
