@@ -70,6 +70,7 @@
                     $executor = strip_tags($_POST['executor']);
                     $rating = $_POST['score'];
                     $userId = strip_tags($_POST['r_of_user']);
+                    $userName = strip_tags($_POST['r_user_name']);
                     $rComment = strip_tags($_POST['rComment']);
                     $r_pub_date = strip_tags($_POST['r_pub_date']);
                     
@@ -82,6 +83,7 @@
                         , 'r_executor' => $executor
                         , 'r_rating'   => $rating
                         , 'r_of_user'  => $userId
+                        , 'r_user_name'=> $userName
                         , 'r_comment'  => $rComment)
                         ;
                         if ($mRaty->insert($aRaty)) {
@@ -99,6 +101,7 @@
                         , 'r_executor' => $executor
                         , 'r_rating'   => $rating
                         , 'r_of_user'  => $userId
+                        , 'r_user_name'=> $userName
                         , 'r_comment'  => $rComment)
                     ; $mRaty->update($aRaty,array('r_of_user' =>$userId));
                         echo "Ваша оценка изменена!";

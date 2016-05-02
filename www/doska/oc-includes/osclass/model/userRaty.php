@@ -51,7 +51,8 @@ Copy from ItemComment table description
                 'r_executor',
                 'r_rating',
                 'r_comment',
-                'r_of_user'
+                'r_of_user',
+                'r_user_name'
             );
             $this->setFields($array_fields);
         }
@@ -179,9 +180,23 @@ Copy from ItemComment table description
             return $comment;
         }
 
-        function AllUsers($id)
+        function AllUsersId($id)
         {
             $this->dao->select('r_of_user');
+            $this->dao->from($this->getTableName());
+            $this->dao->where('id_executor', $id);
+            $result = $this->dao->get();
+            $resArr = $result->result();
+            if (empty($resArr))
+                return 0;
+            else
+                $users=$resArr;
+            return $users;
+        }
+
+        function AllUsers($id)
+        {
+            $this->dao->select('r_user_name');
             $this->dao->from($this->getTableName());
             $this->dao->where('id_executor', $id);
             $result = $this->dao->get();

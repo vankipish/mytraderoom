@@ -79,13 +79,13 @@
             <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
                   $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
                   $i=0;
-            var_dump(userRaty::newInstance()->Allcomment(osc_user_id()));
+            //var_dump($allComments);
             while ($allComments[$i])
-            {
-                echo $allComments[$i];
-                echo $allUsers[$i];
-                $i++;
-            }
+                  {
+                      var_dump($allUsers[$i]['r_user_name']);
+                      var_dump($allComments[$i]['r_comment']);
+                    $i++;
+                  }
 
             ?>
             <input hidden name="ratingValue" value="<?php echo userRaty::newInstance()->totalRating(osc_user_id()) ?>">
@@ -136,11 +136,13 @@
           <?php $executor = osc_user_name();
                 $idexecutor = osc_user_id();
                 $userId = Session::newInstance()->_get('userId');
+                $userName = Session::newInstance()->_get('userName');
                 $r_pub_date = date('Y-m-d H:i:s')?>
 
             <input hidden id="executor" value="<?php echo $executor; ?>">
             <input hidden id="idexecutor" value="<?php echo $idexecutor; ?>">
             <input hidden id="r_of_user" value="<?php echo $userId; ?>">
+            <input hidden id="r_user_name" value="<?php echo $userName; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
 
       <div style="margin-bottom: 20px">

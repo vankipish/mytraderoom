@@ -49,6 +49,7 @@
                             var $executor = document.getElementById('executor').value;
                             var $idexecutor = document.getElementById('idexecutor').value;
                             var $r_of_user = document.getElementById('r_of_user').value;
+                            var $r_user_name = document.getElementById('r_user_name').value;
                             var $r_pub_date = document.getElementById('r_pub_date').value;
                             var $rComment = document.getElementById('rComment').value;
                             var $rScore = document.getElementsByName('score')[1].value;
@@ -61,6 +62,7 @@
                                     "executor": $executor,
                                     "idexecutor": $idexecutor,
                                     "r_of_user": $r_of_user,
+                                    "r_user_name": $r_user_name,
                                     "rComment": document.getElementById('rComment').value
                                 },
                                 response: 'text',
