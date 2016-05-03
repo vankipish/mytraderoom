@@ -10,7 +10,7 @@ function js_showOrHideDiv($id) // появление информации в п�
 {
     var chek = document.getElementById('chk'+$id+'');
     var elem = document.getElementById('el'+$id+'');
-    $('#chk'+$id).on("click", function(event){$('#'+elem.id).slideDown(300); $('#chk'+$id).slideUp(200)});
+    $('#chk'+$id).on("click", function(event){$('#'+elem.id).slideDown(300); $('#chk'+$id).slideUp(0)});
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
@@ -27,6 +27,6 @@ $(document).ready(function(){
             top = $(id).offset().top;
 
         //анимируем переход на расстояние - top за 1500 мс
-        $("body").delay(100).animate({scrollTop: top}, 500);
+        $("body").delay(100).animate({scrollTop: top -200}, 500);
     });
 });

@@ -85,7 +85,7 @@
       }
     });
 
-    $('li.parent').prepend('<span style="width:6px;display:inline-block;" class="toggle">+</span>');
+    $('li.parent').prepend('<span style="width:6px;display:inline-block; color: #0b0b0b" class="toggle">+</span>');
     $('ul.sub').toggle();
 
     $('span.toggle').click(function(){
@@ -179,9 +179,9 @@
             <input type="text" name="sPattern" id="query" value="<?php echo osc_esc_html( osc_search_pattern() ); ?>" />
             <div id="search-example"></div>
           </div>
-          <h3><strong><?php _e('Location', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+          <h3><strong><?php _e('City', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
           <div class="row one_input">
-            <h6><?php _e('City', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
+
             <input type="text" id="sCity" name="sCity" value="<?php echo osc_esc_html( osc_search_city() ); ?>" />
             <input type="hidden" id="sRegion" name="sRegion" value="" />
           </div>
@@ -189,7 +189,7 @@
 
         <fieldset class="box show_only">
           <?php if( osc_images_enabled_at_items() ) { ?>
-            <h3><strong><?php _e('Show only', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+            <!--<h3><strong><?php _e('Show only', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
             <div class="row checkboxes">
               <ul>
                 <li>
@@ -198,10 +198,11 @@
                 </li>
               </ul>
             </div>
+            -->
           <?php } ?>
           <?php if( osc_price_enabled_at_items() ) { ?>
             <div class="row two_input">
-              <h6><?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
+              <h3><strong><?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
               <div><?php _e('Min', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
               <input type="text" id="priceMin" name="sPriceMin" value="<?php echo osc_esc_html(osc_search_price_min()); ?>" size="6" maxlength="6" />
               <div><?php _e('Max', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
@@ -211,7 +212,7 @@
           <?php  osc_get_non_empty_categories(); ?>
           <?php  if ( osc_count_categories() ) { ?>
             <div class="row checkboxes">
-              <h6><?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?></h6>
+              <h3><strong><?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
               <ul>
                 <?php // RESET CATEGORIES IF WE USED THEN IN THE HEADER ?>
                 <?php osc_goto_first_category(); ?>
@@ -232,7 +233,7 @@
                 <?php } ?>
               </ul>
             </div>
-          <?php } osclasswizards_footer_js() ?> <!-- подключаю ihelper, который сидит в хуке footer-->
+          <?php } //osclasswizards_footer_js() ?> <!-- подключаю ihelper, который сидит в хуке footer-->
         </fieldset>
         <?php
         if(osc_search_category_id()) {
@@ -241,7 +242,7 @@
           osc_run_hook('search_form');
         }
         ?>
-        <button type="submit"><?php _e('Apply', OSCLASSWIZARDS_THEME_FOLDER); ?></button>
+        <button type="submit" class="apply"><?php _e('Apply', OSCLASSWIZARDS_THEME_FOLDER); ?></button>
       </form>
       <?php osc_alert_form(); ?>
     </div>

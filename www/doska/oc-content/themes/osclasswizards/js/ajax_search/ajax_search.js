@@ -28,22 +28,22 @@ $(document).ready(function () {
 	$(filterForm+' input, '+filterForm+' select, input[name="sPattern"]').live('change' , function(event){
 		ajaxSearch($filterForm, 1, event);
 	});
-	
+
 	// click on pagination
 	$(paginate+' a').live('click', function (event) {
 		var iPage = getIPage($(this));
 		ajaxSearch($filterForm, iPage, event);
 	});
-	
+
 	// click on category checkboxes
 	$(categoryCheckboxes).live('click', function(event) {
 		ajaxSearch($filterForm, 1, event);
 	});
-	
+
 	$( "[id$='range']" ).on( "slidechange", function( event, ui ) {
 		ajaxSearch($filterForm, 1, event);
 	});
-	
+
 	// click on sort
 	$(sortBy).live('click', function (e) {
 		var href = $(this).attr('href');

@@ -1,4 +1,29 @@
-
+<style>
+    ul.sub {
+        padding-left: 20px;
+    }
+    .chbx{
+        width:15px; height:15px;
+        display: inline;
+        padding:8px 3px;
+        background-repeat:no-repeat;
+        cursor: pointer;
+    }
+    .chbx span{
+        width:15px; height:15px;
+        display: inline-block;
+        border:solid 1px #bababa;
+        border-radius:2px;
+        -moz-border-radius:2px;
+        -webkit-border-radius:2px;
+    }
+    .chbx.checked{
+        background-image:url('<?php echo osc_current_web_theme_url('images/checkmark.png'); ?>');
+    }
+    .chbx.semi-checked{
+        background-image:url('<?php echo osc_current_web_theme_url('images/checkmark-partial.png'); ?>');
+    }
+</style>
 
 <?php
     /*
@@ -30,7 +55,7 @@
     }
 
     osclasswizards_add_body_class('category');
-	
+
 	if(osclasswizards_show_as() == 'gallery'){
         $loop_template	=	'loop-search-grid.php';
 		$listClass = 'listing-grid';
@@ -40,13 +65,14 @@
 		$listClass = '';
 		$buttonClass = '';
 	}
-	
+
     osc_add_hook('before-main','sidebar');
     function sidebar(){
         osc_current_web_theme_path('search-sidebar.php');
     }
     osc_add_hook('footer','autocompleteCity');
     function autocompleteCity(){ ?>
+        
 <script type="text/javascript">
     $(function() {
                     function log( message ) {
@@ -71,10 +97,12 @@
 ?>
 <?php osc_current_web_theme_path('header.php') ; ?>
 
+
 <div class="row">
   <?php osc_current_web_theme_path('search-sidebar.php') ; ?>
   <div class="col-sm-8 col-md-9">
-    <div class="title">
+   <div class="ad_list">
+      <div class="title">
       <h1><?php echo (search_title() != "")? search_title() : '&nbsp;'; ?></h1>
     </div>
     <div class="toolbar">
@@ -89,7 +117,7 @@
                 printf(__('%1$d - %2$d of %3$d listings', OSCLASSWIZARDS_THEME_FOLDER), $search_number['from'], $search_number['to'], $search_number['of']);
             ?>
       </span>
-      <div class="sort"> <span class="see_by">
+      <div class="sort"> <span class="see_by">  <!-- сортировка-->
         <?php
               $orders = osc_list_orders();
               $current = '';
@@ -115,7 +143,7 @@
         </ul>
         </span> </div>
       <?php } ?>
-    </div>
+    </div>   <!-- вроде премиум объявл-->
     <?php if( osc_get_preference('search-results-top-728x90', 'osclasswizards_theme') != ""){ ?>
     <div class="ads_search_top"> <?php echo osc_get_preference('search-results-top-728x90', 'osclasswizards_theme'); ?></div>
     <?php } ?>
@@ -125,8 +153,8 @@
             if(osc_count_premiums() > 0) {
             echo '<h5 class="title">'.__('Premium listings',OSCLASSWIZARDS_THEME_FOLDER).'</h5>';
 			?>
-    <?php 
-			
+    <?php
+
             View::newInstance()->_exportVariableToView("listType", 'premiums');
             View::newInstance()->_exportVariableToView("listClass",$listClass.' premium-list');
             osc_current_web_theme_path($loop_template);
@@ -138,8 +166,7 @@
     <?php if(osc_count_items() > 0) {
         echo '<h5 class="title titles">'.__('Listings',OSCLASSWIZARDS_THEME_FOLDER).'</h5>';
 		?>
-    <?php 
-		
+    <?php
         View::newInstance()->_exportVariableToView("listType", 'items');
         View::newInstance()->_exportVariableToView("listClass",$listClass);
             osc_current_web_theme_path($loop_template);
@@ -162,11 +189,12 @@
     </div>
     <?php }
       } ?>
-    <div class="pagination"> <?php echo osc_search_pagination(); ?> </div>
+    <div class="paginate"> <?php echo osc_search_pagination(); ?> </div>
     <?php } ?>
     <?php if( osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme') != "" ){ ?>
     <div class="ads_search_bottom"> <?php echo osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme'); ?></div>
     <?php } ?>
   </div>
+  </div>
 </div>
-<?php osc_current_web_theme_path('footer.php') ; ?>
+<?php //osc_current_web_theme_path('footer.php') ; ?>

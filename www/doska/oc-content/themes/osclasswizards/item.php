@@ -157,9 +157,7 @@
             <?php     } ?>
             <?php } ?>
           </li> -->
-          <li><a href="<?php echo osc_item_send_friend_url(); ?>" rel="nofollow">
-            <?php _e('Share', OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </a></li>
+          <li id="menu"><a href="#here" >Оставить предложение</a></li>
           <?php if(function_exists('watchlist')) {?>
           <li>
             <?php watchlist(); ?>
@@ -168,7 +166,9 @@
           <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
             смотреть другие объявления автора
             </a> </li>
-          <li id="menu"><a href="#here" >Оставить предложение</a></li>
+          <li><a href="<?php echo osc_item_send_friend_url(); ?>" rel="nofollow">
+            <?php _e('Share', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a></li>
         </ul>
 
         <?php osc_run_hook('location'); ?>
@@ -286,7 +286,7 @@
               <?php } else { ?>
               <div class="form-group">
                 <label class="control-label" for="authorName">
-                  <?php _e('Your name', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                  <?php _e('Your name', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
                 </label>
                 <div class="controls">
                   <?php CommentForm::author_input_text(); ?>
@@ -294,7 +294,7 @@
               </div>
               <div class="form-group">
                 <label class="control-label" for="authorEmail">
-                  <?php _e('Your e-mail', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                  <?php _e('Your e-mail', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
                 </label>
                 <div class="controls">
                   <?php CommentForm::email_input_text(); ?>
@@ -314,7 +314,7 @@
               <div class="form-group">
                 <label class="control-label" for="title">
                   <!--     <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>-->
-                  Ваша цена
+                  Ваша цена<sup>*</sup>
                 </label>
 
               <!--Добавил сюда контрол из ввода цены -->

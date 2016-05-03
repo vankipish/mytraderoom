@@ -30,7 +30,7 @@ if(View::newInstance()->_exists('listType')){
 <ul class="listings_list listing-card" id="listing-card-list">
   <?php
 	$i = 0;
-	
+
 	//latest items
 	if($type == 'latestItems'){
 
@@ -72,7 +72,7 @@ if(View::newInstance()->_exists('listType')){
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
               <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
+              </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
               <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
               </a>
               <?php if(osc_item_is_inactive()) {?>
@@ -88,11 +88,11 @@ if(View::newInstance()->_exists('listType')){
       </div>
     </div>
   </li>
-  <?php	
+  <?php
         }
 
-    } 
-		
+    }
+
 	// premium items
 	elseif($type == 'premiums'){
 		while ( osc_has_premiums() ) {
@@ -116,7 +116,7 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_premium_url() ; ?>" title="<?php echo osc_esc_html(osc_premium_title()) ; ?>"><?php echo osc_premium_title() ; ?></a></h4>
-             
+
               <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_premium_category_id() ); ?>"></i> <?php echo osc_premium_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_premium_city(); ?>
                 <?php if(osc_premium_region()!='') { ?>
                 (<?php echo osc_premium_region(); ?>)
@@ -133,7 +133,7 @@ if(View::newInstance()->_exists('listType')){
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_premium_edit_url(); ?>" rel="nofollow">
               <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_premium_delete_url();?>" >
+              </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_premium_delete_url();?>" >
               <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
               </a>
               <?php if(osc_premium_is_inactive()) {?>
@@ -179,7 +179,7 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
-             
+
               <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
                 <?php if( osc_item_region()!='' ) { ?>
                 (<?php echo osc_item_region(); ?>)
@@ -195,7 +195,7 @@ if(View::newInstance()->_exists('listType')){
               <?php if($admin){ ?>
               <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
               <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
+              </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
               <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
               </a>
               <?php if(osc_item_is_inactive()) {?>

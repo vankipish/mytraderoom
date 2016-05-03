@@ -68,7 +68,7 @@
                   </h2>
                   <div class="form-group">
                       <label class="control-label" for="contactName">
-                          <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                          <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
                       </label>
                       <div class="controls">
                           <?php ItemForm::contact_name_text(); ?>
@@ -76,7 +76,7 @@
                   </div>
                   <div class="form-group">
                       <label class="control-label" for="contactEmail">
-                          <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                          <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
                       </label>
                       <div class="controls">
                           <?php ItemForm::contact_email_text(); ?>
@@ -131,7 +131,7 @@
           </h2>
           <div class="form-group">
             <label class="control-label" for="select_1">
-              <?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php  if ( osc_count_categories() ) { ?>
@@ -145,7 +145,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="title[<?php echo osc_current_user_locale(); ?>]">
-              <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php ItemForm::title_input('title',osc_current_user_locale(), osc_esc_html( osclasswizards_item_title() )); ?>
@@ -153,7 +153,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="description[<?php echo osc_current_user_locale(); ?>]">
-              <?php _e('Description', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Description', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php ItemForm::description_textarea('description',osc_current_user_locale(), osc_esc_html( osclasswizards_item_description() )); ?>
