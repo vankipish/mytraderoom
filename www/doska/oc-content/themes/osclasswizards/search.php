@@ -1,7 +1,12 @@
-<style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
+<head>
+    <style>
     ul.sub {
         padding-left: 20px;
     }
+    
+
     .chbx{
         width:15px; height:15px;
         display: inline;
@@ -96,12 +101,13 @@
     }
 ?>
 <?php osc_current_web_theme_path('header.php') ; ?>
-
+    </head>
+<body>
 
 <div class="row">
   <?php osc_current_web_theme_path('search-sidebar.php') ; ?>
   <div class="col-sm-8 col-md-9">
-   <div class="ad_list">
+      <div class="ad_list">
       <div class="title">
       <h1><?php echo (search_title() != "")? search_title() : '&nbsp;'; ?></h1>
     </div>
@@ -117,31 +123,23 @@
                 printf(__('%1$d - %2$d of %3$d listings', OSCLASSWIZARDS_THEME_FOLDER), $search_number['from'], $search_number['to'], $search_number['of']);
             ?>
       </span>
-      <div class="sort"> <span class="see_by">  <!-- сортировка-->
-        <?php
-              $orders = osc_list_orders();
-              $current = '';
+      <div class="sort"> <p class="see_by">
+              Сортировать по:
+              <?php $i = 0; ?>
+              <?php $orders = osc_list_orders();
               foreach($orders as $label => $params) {
-                  $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1';
-                  if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) {
-                      $current = $label;
-                  }
-              }
-              ?>
-        <?php $i = 0; ?>
-        <ul>
-          <?php
-                  foreach($orders as $label => $params) {
-                      $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
-          <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
-          <li><a class="current" href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a></li>
-          <?php } else { ?>
-          <li><a href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a></li>
-          <?php } ?>
-          <?php $i++; ?>
-          <?php } ?>
-        </ul>
-        </span> </div>
+                  $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
+                  <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
+                      <a class="current" href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a>
+                  <?php } else { ?>
+                      <a href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a>
+                  <?php } ?>
+                  <?php if ($i != count($orders)-1) { ?>
+                      <span>|</span>
+                  <?php } ?>
+                  <?php $i++; ?>
+              <?php } ?>
+          </p> </div>
       <?php } ?>
     </div>   <!-- вроде премиум объявл-->
     <?php if( osc_get_preference('search-results-top-728x90', 'osclasswizards_theme') != ""){ ?>
@@ -189,7 +187,7 @@
     </div>
     <?php }
       } ?>
-    <div class="paginate"> <?php echo osc_search_pagination(); ?> </div>
+    <div class="paginate"><?php echo osc_search_pagination(); ?> </div>
     <?php } ?>
     <?php if( osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme') != "" ){ ?>
     <div class="ads_search_bottom"> <?php echo osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme'); ?></div>
@@ -198,3 +196,5 @@
   </div>
 </div>
 <?php //osc_current_web_theme_path('footer.php') ; ?>
+</body>
+</html>

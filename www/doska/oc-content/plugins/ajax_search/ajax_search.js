@@ -1,8 +1,11 @@
 // variable to hold request
+
 var request;
 var productList = 'div.ad_list';
-
 var paginate = 'div.paginate';
+
+var $productList = $(productList);
+var $paginate = $(paginate);
 
 var filterForm = 'div.filters form';
 var $filterForm = $(filterForm);
@@ -16,12 +19,13 @@ var divPlug = 'div#plug';
 
 var categoryCheckboxes = 'div.chbx';
 
-var sortBy = 'p.see_by a';
+var sortBy = "div.sort > p > a";
 
 $(document).ready(function () {
+
 	// add loader
 	addPlug();
-	
+
 	// when form inputs and selcets changes values (looses focus)
 	$(filterForm+' input, '+filterForm+' select, input[name="sPattern"]').on('change' , function(event){
 		ajaxSearch($filterForm, 1, event);
@@ -43,11 +47,11 @@ $(document).ready(function () {
 	});
 
 	// click on sort
-	$(sortBy).on('click', function (e) {
+	$(sortBy).on('click', function (event) {
 		var href = $(this).attr('href');
 		var found = href.indexOf('sOrder');
 		var params = href.substring(found, found.length);
-		
+
 		// non friendly urls
 		if(params.indexOf('&') >= 0){
 			var vars = params.split('&');
@@ -60,21 +64,20 @@ $(document).ready(function () {
 			var iOrderType = vars[1].replace('iOrderType,', '');
 		}
 		if(typeof vars !== 'undefined'){
-		
+
 			var sOrderInput = $('input[name="sOrder"]');
 			var iOrderTypeInput = $('input[name="iOrderType"]');
-		
+
 			sOrderInput.val(sOrder);
 			iOrderTypeInput.val(iOrderType);
-			
+
 			ajaxSearch($filterForm, 1, event);
-			
 			//prevent default action on link
 			return false;
+
 		}
-		
 	});
-	
+
 	//hide filter button
 	//$(filterForm+' button[type="submit"]').parent().parent().hide(); - было
 	$(filterForm+' button[type="submit"][class = "apply"]').hide();
@@ -91,10 +94,10 @@ function ajaxSearch(form, pagination, event){
 	}
 	//show preloader
 	$(divPlug).fadeIn();
-	
+
 	// prevent default posting of form
 	event.preventDefault();
-		
+
 	// setup some local variables
 	var $form = form;
 	// let's select and cache all the fields
@@ -104,7 +107,7 @@ function ajaxSearch(form, pagination, event){
 	serializedData += '&iPage='+pagination;
 	// let's disable the inputs for the duration of the ajax request
 	$inputs.attr("disabled", "disabled");
-	
+
 	// fire off the request to /form.php
 	var request = $.ajax({
 		//url: "<?php echo osc_base_url(true); ?>",
@@ -116,12 +119,52 @@ function ajaxSearch(form, pagination, event){
 
 	// callback handler that will be called on success
 	request.done(function (response, textStatus, jqXHR){
-		var $productList = $(productList);
-		var $paginate = $(paginate);
+
+
 		var results = $(response).find(productList).html();
 		var pagination = $(response).find(paginate).html();
-		$productList.html(results);
+		$(productList).html(results);
 		$(paginate).html(pagination);
+
+		// click on sort
+		$(sortBy).on('click', function (event) {
+			var href = $(this).attr('href');
+			var found = href.indexOf('sOrder');
+			var params = href.substring(found, found.length);
+
+			// non friendly urls
+			if(params.indexOf('&') >= 0){
+				var vars = params.split('&');
+				var sOrder = vars[0].replace('sOrder=', '');
+				var iOrderType = vars[1].replace('iOrderType=', '');
+			}
+			else if(params.indexOf('/') >= 0){
+				var vars = params.split('/');
+				var sOrder = vars[0].replace('sOrder,', '');
+				var iOrderType = vars[1].replace('iOrderType,', '');
+			}
+			if(typeof vars !== 'undefined'){
+
+				var sOrderInput = $('input[name="sOrder"]');
+				var iOrderTypeInput = $('input[name="iOrderType"]');
+
+				sOrderInput.val(sOrder);
+				iOrderTypeInput.val(iOrderType);
+
+				ajaxSearch($filterForm, 1, event);
+				//prevent default action on link
+				return false;
+
+			}
+		});
+
+		// click on pagination
+		$(paginate+' a').on('click', function (event) {
+			var iPage = getIPage($(this));
+			ajaxSearch($filterForm, iPage, event);
+		});
+
+
 	});
 
 	// callback handler that will be called on failure
@@ -138,12 +181,14 @@ function ajaxSearch(form, pagination, event){
 	request.always(function () {
 		// reenable the inputs
 		$inputs.prop("disabled", false);
-		
+
+
 		//scroll to top
 		$('html, body').animate({
 			scrollTop: $breadcrumbs.offset().top
 		}, 1000, function () {$(divPlug).fadeOut();});
 	});
+
 }
 
 function addPlug(){

@@ -227,6 +227,7 @@ p.empty {margin: 0;
 }
 h1 .sorting {float: right;margin: 2px 0 0;
 }
+.ad_list .see_by a.current { background:url(../images/order_by_current.gif) no-repeat right 45%; padding-right:12px; }
 /*index listings*/
 
 
