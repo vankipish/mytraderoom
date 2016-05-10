@@ -187,7 +187,7 @@
     </div>
     <?php }
       } ?>
-    <div class="paginate"><?php echo osc_search_pagination(); ?> </div>
+    <div class="pagination"><?php echo osc_search_pagination(); ?> </div>
     <?php } ?>
     <?php if( osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme') != "" ){ ?>
     <div class="ads_search_bottom"> <?php echo osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme'); ?></div>

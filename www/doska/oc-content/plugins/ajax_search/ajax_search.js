@@ -2,7 +2,7 @@
 
 var request;
 var productList = 'div.ad_list';
-var paginate = 'div.paginate';
+var paginate = 'div.pagination';
 
 var $productList = $(productList);
 var $paginate = $(paginate);

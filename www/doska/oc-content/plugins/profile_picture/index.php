@@ -47,10 +47,10 @@ function profile_picture_upload(){
    // Configuration - Your Options ///////////////////////////////////////////////////////
 
     // Specify display width of picture (height will be automatically calculated proprotionally)
-    $maxwidth = '120';
+    $maxwidth = '360';
 
     $allowed_filetypes = array('.jpg','.gif','.bmp','.png'); // These will be the types of file that will pass the validation.
-    $max_filesize = 524288; // Maximum filesize in BYTES (currently 0.5MB).
+    $max_filesize = 10485760; // Maximum filesize in BYTES (currently 0.5MB).
     $upload_path = osc_plugins_path().'profile_picture/images/';
 
     $button_text = 'Загрузить фотографию';
@@ -75,7 +75,7 @@ function profile_picture_upload(){
 	    echo '<script language="javascript">function deletePhoto(){document.forms["deleteForm"].submit();}</script>';
 
 	    $modtime = filemtime($upload_path.'profile'.$user_id.$result['pic_ext']); //ensures browser cache is refreshed if newer version of picture exists
-	    echo '<img src="'.osc_base_url() . 'oc-content/plugins/profile_picture/images/profile'.$user_id.$result['pic_ext'].'?'.$modtime.'" width="'.$maxwidth.'" height="'.$height.'">'; // display picture
+		echo '<div class="photo" style="width:'.$maxwidth.'px; border: ridge; border-color: #427e38">'.'<img src="'.osc_base_url() . 'oc-content/plugins/profile_picture/images/profile'.$user_id.$result['pic_ext'].'?'.$modtime.'" width="'.$maxwidth.'" height="'.$height.'">'.'</div>'; // display picture
 	}
 	else { // show default photo since they haven't uploaded one
 	    echo '<img src="'.osc_base_url() . 'oc-content/plugins/profile_picture/no_picture.jpg" width="'.$width.'" height="'.$height.'">';
@@ -83,7 +83,7 @@ function profile_picture_upload(){
 
     if( osc_is_web_user_logged_in()){
 	if($result>0){
-	    echo '<br><a href="javascript:ShowDiv();">Изменить фотографию</a> <br><a href="javascript:deletePhoto();">Удалить фотографию</a>';
+	    echo '<div style="margin-bottom: 10px">'.'<a href="javascript:ShowDiv();">Изменить фотографию</a> &nbsp &nbsp <a href="javascript:deletePhoto();">Удалить фотографию<br></a>'.'</div>';
 	    echo '<div id="HiddenDiv" style="display:none;">'; // hides form if user already has a profile picture and displays a link to form instead
 	}
 	$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
@@ -150,7 +150,7 @@ function profile_picture_show(){
    // Configuration - Your Options ///////////////////////////////////////////////////////
 
     // Specify display width of picture (height will be automatically calculated proprotionally)
-    $maxwidth = '120';
+    $maxwidth = '1200';
 
 
     ////// ***** No modifications below here should be needed ***** /////////////////////
