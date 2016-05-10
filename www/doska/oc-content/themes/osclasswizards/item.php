@@ -1,3 +1,11 @@
+<style>
+    .comments_list {
+        overflow-y: auto;
+        max-height:400px;
+    }
+</style>
+
+
 
 <?php
     /*
