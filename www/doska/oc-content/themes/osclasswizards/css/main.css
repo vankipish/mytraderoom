@@ -270,9 +270,9 @@ figure img:hover {opacity: 0.9;
 }
 .listings_grid li.premium h4 span {position: absolute;right: 10px;top: 10px;font-size: 10px!important;
 }
-.listings_grid li, .list_space {margin-bottom: 20px;
+.listings_grid li, .list_space {margin-bottom: 10px;
 }
-.list_space {padding: 2em;position: relative;
+.list_space {padding: 0.5em;position: relative;
 }
 .list_space h4 {margin: 0 0 10px;
 }

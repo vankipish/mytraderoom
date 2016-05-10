@@ -165,7 +165,8 @@
             </form>
         </div>
   </div>
-
+    <!-- если есть отзывы...-->
+    <?php if (userRaty::newInstance()->Allcomment(osc_user_id())) {?>
     <div class="col-sm-8 col-md-9">
         <div class="title">
             <h1>Отзывы</h1>
@@ -201,6 +202,16 @@
             </div>
         </div>
     </div>
+    <?php } else {?>
+        <!-- если нет отзывов...-->
+        <div class="col-sm-8 col-md-9">
+            <div class="title">
+                <h1>У Вас еще нет отзывов</h1>
+            </div>
+         </div>
+
+    <?php } ?>
+
 <div class="col-sm-8 col-md-9">
     <?php if( osc_count_items() > 0 ) { ?>
     <div class="similar_ad">
@@ -212,6 +223,12 @@
       <?php osc_current_web_theme_path($loop_template); ?>
       <div class="pagination"><?php echo osc_pagination_items(); ?></div>
     </div>
+    <?php } else {?>
+        <div class="title">
+            <h1 style="margin-top: 15px">
+                У Вас еще нет объявлений
+            </h1>
+        </div>
     <?php } ?>
   </div>
 </div>

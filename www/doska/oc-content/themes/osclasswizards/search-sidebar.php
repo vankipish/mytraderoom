@@ -85,7 +85,7 @@
       }
     });
 
-    $('li.parent').prepend('<span style="width:6px;display:inline-block; color: #0b0b0b" class="toggle">+</span>');
+    $('li.parent').prepend('<span style="width:6px;display:inline-block; color: #4e6d80" class="toggle">+</span>');
     $('ul.sub').toggle();
 
     $('span.toggle').click(function(){
@@ -167,9 +167,9 @@
   <div id="sidebar">
     <div class="filters">
       <form action="<?php echo osc_base_url(true); ?>" method="get" onsubmit="return doSearch()" class="nocsrf">
-        <input  name="page" value="search" />
-        <input  name="sOrder" value="<?php echo osc_esc_html(osc_search_order()); ?>" />
-        <input  name="iOrderType" value="<?php $allowedTypesForSorting = Search::getAllowedTypesForSorting(); echo osc_esc_html($allowedTypesForSorting[osc_search_order_type()]); ?>" />
+        <input hidden name="page" value="search" />
+        <input hidden name="sOrder" value="<?php echo osc_esc_html(osc_search_order()); ?>" />
+        <input hidden name="iOrderType" value="<?php $allowedTypesForSorting = Search::getAllowedTypesForSorting(); echo osc_esc_html($allowedTypesForSorting[osc_search_order_type()]); ?>" />
         <?php foreach(osc_search_user() as $userId) { ?>
           <input type="hidden" name="sUser[]" value="<?php echo osc_esc_html($userId); ?>" />
         <?php } ?>
