@@ -540,6 +540,18 @@ select {-webkit-appearance: none;appearance: none;
 }
 .btn-success:hover, .btn-focus, .contact_button a:hover, .thumbs a:hover, .forgot .form-container-box .resp-wrapper .ui-button:hover {opacity: 0.7;-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s;
 }
+#choosePhoto, #loadPhoto {
+    text-align:center;
+    padding-top: 2px;
+    overflow:hidden;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width:95px;
+    height:27px;
+    cursor:pointer
+}
+
 /*fash messages*/
 .flashmessage-error, #error_list label, #comment_error_list label, .flashmessage-warning {background: #fed2d3;border: solid 1px #d8929c;color: #6a000c;display: block!important;
 }

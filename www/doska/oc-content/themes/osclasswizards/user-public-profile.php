@@ -66,6 +66,7 @@
     include_once "$path./oc-includes/osclass/frm/Rating.form.class.php";
 ?>
 
+
 <div class="row">
   <div class="col-sm-4 col-md-3">
     <div class="user-card">
