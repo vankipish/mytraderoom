@@ -185,7 +185,7 @@
                 </div>
               <script>js_showOrHideChkbox('Phone')</script>
           <?php } ?>
-          <div id="chk1" style="cursor: pointer; margin-bottom: 10px">Указать дополнительную информацию</div>
+          <div class="chk" id="chk1" style="cursor: pointer; margin-bottom: 10px">Указать дополнительную информацию</div>
            <div name="add_information" id="el1" style="display: none">
               <?php
 			if( osc_images_enabled_at_items() ) {

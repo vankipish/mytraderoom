@@ -1,12 +1,3 @@
-<style>
-    .comments_list {
-        overflow-y: auto;
-        max-height:400px;
-    }
-</style>
-
-
-
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -225,7 +216,7 @@
                 <?php } else { ?>
                <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                 <?php }?>
-            <br><a style="margin: 1px; color: #139923; cursor: pointer" id="chk<?php echo osc_comment_id(); ?>">подробнее</a>
+            <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>">подробнее</a>
             <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
             <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
               <?php

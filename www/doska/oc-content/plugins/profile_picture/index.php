@@ -103,7 +103,7 @@ function profile_picture_upload(){
 			});
 		</script>
 	<?php
-    	if($result>0) echo '<form name="deleteForm" method="POST" action="'.$url.'"><input type="hidden" name="deletePhoto"></form></div>';
+    	if($result>0) echo '<form name="deleteForm" hidden method="POST" action="'.$url.'"><input type="hidden" name="deletePhoto"></form></div>';
     } //if logged-in
 
 

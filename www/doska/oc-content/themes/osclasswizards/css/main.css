@@ -45,9 +45,15 @@ ul, li {margin: 0;padding: 0;list-style: none;
 }
 .fa {margin-right: 1px;
 }
+.chk {background: #0c9ec7;  ;border-radius: 3px; padding: 4px;  cursor: pointer; color: #e8eee8; box-shadow: inset 5px -5px 5px -5px rgba(0,0,0,.2);}
 /*text inputs*/
-
-input[type=text], input[type=password], textarea, select {height: 35px;width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-appearance: none;-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */box-sizing: border-box;
+ .comments_list {
+     overflow-y: auto;
+     max-height:400px;
+ }
+input[type=text], input[type=password],  textarea, select {height: 35px;width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-appearance: none;-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */box-sizing: border-box; border-radius: 2px; box-shadow: inset -5px 5px 5px -5px rgba(0,0,0,.2);
+}
+input[name=authorPhone], input[name=contactPhoneLogged] {border: solid ; border-width: 1px; border-color: #eaeaea; padding-left: 7px; width: 115px; border-radius: 2px; box-shadow: inset -5px 5px 5px -5px rgba(0,0,0,.2);
 }
 input[type=text]:focus, input[type=password]:focus, textarea:focus {outline: none;
 }
@@ -78,7 +84,7 @@ textarea {height: 50px;
 }
 .control-label sup {color: #F00;
 }
-.btn, .forgot .form-container-box .resp-wrapper .ui-button {height: 35px;line-height: 35px;padding: 0 25px;text-transform: uppercase;border: 0;font-weight: 700;
+.btn, .forgot .form-container-box .resp-wrapper .ui-button {height: 35px;line-height: 35px;padding: 0 25px;text-transform: uppercase;border: 0;font-weight: 700; border-radius: 8px; box-shadow: inset 10px -10px 8px -5px rgba(0,0,0,.2);
 }
 .btn_search {padding: 0;width: 100%;text-align: center;
 }
@@ -208,7 +214,8 @@ textarea {height: 50px;
 .see_more_link {margin: 15px 0;text-align: right;
 }
 /*toolbar*/
-
+#temp{background-color: #f8fbfc
+}
 p.empty {margin: 0;
 }
 .toolbar {padding: 15px;overflow: hidden;margin-bottom: 20px;
@@ -320,7 +327,7 @@ li.premium .ribbon {display: block;
 }
 .contact_button li {display: inline-block;margin: 0 10px 10px 0;
 }
-.contact_button a {display: block;vertical-align: middle;font-size: 12px;font-weight: 400;text-transform: uppercase;height: 25px;line-height: 25px;padding: 0 15px;
+.contact_button a {display: block;vertical-align: middle;font-size: 12px;font-weight: 400;text-transform: uppercase;height: 25px;line-height: 25px;padding: 0 15px;border-radius: 5px; box-shadow: inset 8px -8px 8px -5px rgba(0,0,0,.2);
 }
 .contact_button {margin: 20px 0 0;
 }
@@ -538,7 +545,7 @@ select {-webkit-appearance: none;appearance: none;
 }
 #footer a {color: #ababab;
 }
-.btn-success:hover, .btn-focus, .contact_button a:hover, .thumbs a:hover, .forgot .form-container-box .resp-wrapper .ui-button:hover {opacity: 0.7;-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s;
+.btn-success:hover, .btn-focus, .contact_button a:hover, .thumbs a:hover, .forgot .form-container-box .resp-wrapper .ui-button:hover {opacity: 0.7;-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s; box-shadow: inset -5px 5px 10px -5px rgba(0,0,0,.2);
 }
 #choosePhoto {
     margin-top: 10px;
