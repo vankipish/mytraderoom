@@ -61,7 +61,10 @@ function profile_picture_upload(){
 	$user_id = osc_logged_user_id(); // the user id of the user profile we're at
 	$conn = getConnection();
 	$result=$conn->osc_dbFetchResult("SELECT user_id, pic_ext FROM %st_profile_picture WHERE user_id = '%d' ", DB_TABLE_PREFIX, $user_id);
-
+	$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+?>
+	<form name="newpic" method="post" style="padding-bottom: 2px" enctype="multipart/form-data"  action="<?php $url?>">
+<?php
 	if($result>0) //if picture exists
 	{
 
@@ -86,70 +89,19 @@ function profile_picture_upload(){
 	    echo '<div style="margin-bottom: 10px">'.'<a href="javascript:ShowDiv();">Изменить фотографию</a> &nbsp &nbsp <a href="javascript:deletePhoto();">Удалить фотографию<br></a>'.'</div>';
 	    echo '<div id="HiddenDiv" style="display:none;">'; // hides form if user already has a profile picture and displays a link to form instead
 	}
-	$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+
 	?>
-	    <form name="newpic" method="post" enctype="multipart/form-data"  action="<?php $url?>">
-
-			<div class="btn-success" title="Выберите фото" id="choosePhoto">
-				<div>Выбрать фото</div>
-				<input class="btn btn-success" type="file" name="userfile" id="file" style="opacity: 0; filter:alpha(opacity:0); font-size: 30px; margin:0px; margin-top: -60px; margin-left: -50px; padding:0px; border:none; ">
-			</div>
-			<div class="btn-success" title="Загрузить фото" id="loadPhoto">
-				<div><?php echo $button_text?></div>
-				<input input name="Submit" type="submit" style="opacity: 0; filter:alpha(opacity:0); font-size: 30px; margin:0px; margin-top: -60px; margin-left: -50px; padding:0px; border:none" >
-			</div>
+				<div class="btn-success" title="Выберите фото" id="choosePhoto">
+				<div>выбрать фото</div>
+				<input type="file" name="userfile" id="file" style="opacity: 0; filter:alpha(opacity:0); font-size: 30px; margin:0px; margin-top: -30px; margin-left: -50px; padding:0px; border:none ">
+				</div>
+				<input hidden id="submitButtom" name="Submit" type="submit">
 	    </form>
-<script>
-	var files;
-	$('input[type=file]').change(function(){
-		files = this.files;
-	});
-	$('input[type=submit]').click(function( event ){
-		event.stopPropagation(); // Остановка происходящего
-		event.preventDefault();  // Полная остановка происходящего
-
-		// Создадим данные формы и добавим в них данные файлов из files
-
-		var data = new FormData();
-		$.each( files, function( key, value ){
-			data.append( key, value );
-		});
-
-		// Отправляем запрос
-
-		$.ajax({
-			url: './submit.php?uploadfiles',
-			type: 'POST',
-			data: data,
-			cache: false,
-			dataType: 'json',
-			processData: false, // Не обрабатываем файлы (Don't process the files)
-			contentType: false, // Так jQuery скажет серверу что это строковой запрос
-			success: function( respond, textStatus, jqXHR ){
-
-				// Если все ОК
-
-				if( typeof respond.error === 'undefined' ){
-					// Файлы успешно загружены, делаем что нибудь здесь
-
-					// выведем пути к загруженным файлам в блок '.ajax-respond'
-
-					var files_path = respond.files;
-					var html = '';
-					$.each( files_path, function( key, val ){ html += val +'<br>'; } )
-					$('.ajax-respond').html( html );
-				}
-				else{
-					console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
-				}
-			},
-			error: function( jqXHR, textStatus, errorThrown ){
-				console.log('ОШИБКИ AJAX запроса: ' + textStatus );
-			}
-		});
-
-	});
-</script>
+		<script>
+			$('input[type="file"]').on('change', function (event, files, label) {
+				$('#submitButtom').click()
+			});
+		</script>
 	<?php
     	if($result>0) echo '<form name="deleteForm" method="POST" action="'.$url.'"><input type="hidden" name="deletePhoto"></form></div>';
     } //if logged-in
