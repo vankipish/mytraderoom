@@ -5,7 +5,16 @@
 
 /*Color reset file*/
 
-#item-post h2, #related-searches li a, #show_filters, #tab_filter section li a, .block h2:after, .btn-focus, .btn-success, .btn-success:hover, .contact_button a, .custom .user_menu .watchlist_page a, .filters h3, .forgot .form-container-box .header:after, .forgot .form-container-box .resp-wrapper .ui-button, .item-header li .fa, .list_watch, .listing-attr .currency-value, .listings h2 .fa, .pagination a:hover, .pagination span, .rate_me span, .ribbon, .search_filter li li a, .thumbs a:hover, .title:after, .user-alerts .user_menu li.opt_alerts a, .user-change_email .user_menu li.opt_change_email a, .user-items .user_menu li.opt_items a, .user-passowrd_change .user_menu li.opt_change_password a, .user-profile .user_menu li.opt_account a, .user-username .user_menu li.opt_change_email a, .user-usernames .user_menu li.opt_change_username a, .user_menu li a:hover, .slick-arrow:hover, .filters h3, .filters .plugin-hooks h6 {background-color: #0c9ec7;
+#item-post h2, #related-searches li a, #show_filters, #tab_filter section li a, .block h2:after,  .custom .user_menu .watchlist_page a, .filters h3, .forgot .form-container-box .header:after, .forgot .form-container-box .resp-wrapper .ui-button, .item-header li .fa, .list_watch, .listing-attr .currency-value, .listings h2 .fa, .pagination a:hover, .pagination span, .rate_me span, .ribbon, .search_filter li li a, .thumbs a:hover, .title:after, .user-alerts .user_menu li.opt_alerts a, .user-change_email .user_menu li.opt_change_email a, .user-items .user_menu li.opt_items a, .user-passowrd_change .user_menu li.opt_change_password a, .user-profile .user_menu li.opt_account a, .user-username .user_menu li.opt_change_email a, .user-usernames .user_menu li.opt_change_username a, .user_menu li a:hover, .slick-arrow:hover, .filters h3, .filters .plugin-hooks h6 {background-color: #0c9ec7;
+}
+.btn-focus, .btn-success, .btn-success:hover, .contact_button a, .chk
+{
+background: radial-gradient(#0eaae5, #0d88b6);
+border-bottom-color: #0c678d;
+border-left-color: #0c5777;
+}
+.item-header li .fa, .listings h2 .fa{
+    -webkit-box-shadow: 1px -1px 4px 0px rgba(3, 3, 3, 0.25);-moz-box-shadow: 1px -1px 4px 0px rgba(3, 3, 3, 0.25);box-shadow:1px -1px 4px 0px rgba(3, 3, 3, 0.25);
 }
 .filters .ui-widget-content {background: #0c9ec7;
 }

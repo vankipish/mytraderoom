@@ -128,9 +128,9 @@
         </div>
       </div>
       <?php } ?>
-      <div id="description">
-        <p style="font-weight:bold;    margin-bottom: 1px">Описание:</p>
-        <p style="background-color: white; border-style: dashed; padding: 5px; margin-right: 20px"><?php echo "   ".osc_item_description(); ?></p>
+      <div id="description" style="margin-top: -15px">
+        <span style="font-weight:bold;  margin-top: 0;  margin-bottom: 1px">Описание:</span>
+        <p><?php echo "   ".osc_item_description(); ?></p>
         <div id="custom_fields">
           <?php if( osc_count_item_meta() >= 1 ) { ?>
           <br />
