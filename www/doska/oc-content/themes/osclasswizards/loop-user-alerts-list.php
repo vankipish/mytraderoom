@@ -126,11 +126,11 @@ if(View::newInstance()->_exists('listType')){
                 <?php osclasswizards_item_star_rating( osc_itemosc_premium_id() ); ?>
                 <span><?php echo osclasswizards_item_avg_rating( osc_premium_id()) ; ?></span> </div>
               <?php } ?>
-              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_premium_category_id() ); ?>"></i><?php echo osc_premium_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_premium_city(); ?>
-                <?php if(osc_premium_region()!='') { ?>
-                (<?php echo osc_premium_region(); ?>)
-                <?php } ?>
-                </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_premium_pub_date()); ?> </span>
+              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_premium_category_id() ); ?>"></i><?php echo osc_premium_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
+                  <?php if( osc_item_region()!='' ) { ?>
+                    (<?php echo osc_item_region(); ?>)
+                  <?php } ?>
+                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_premium_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
                 <span class="currency-value"> <?php echo osc_format_price(osc_premium_price(), osc_premium_currency_symbol()); ?></span>
                 <?php } ?>

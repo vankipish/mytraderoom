@@ -54,11 +54,11 @@ if(View::newInstance()->_exists('listType')){
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
 
-              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
-                <?php if( osc_item_region()!='' ) { ?>
-                (<?php echo osc_item_region(); ?>)
-                <?php } ?>
-                </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
+              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
+                  <?php if( osc_item_region()!='' ) { ?>
+                    (<?php echo osc_item_region(); ?>)
+                  <?php } ?>
+                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
                   <span class="currency-value" style="margin: 0px"><?php echo "Начальная цена: ". osc_item_formated_price(); ?></span>
                   <!-- Добавил строку для вывода минимальной цены-->
