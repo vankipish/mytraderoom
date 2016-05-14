@@ -67,7 +67,9 @@ if(View::newInstance()->_exists('listType')){
                 <?php } ?>
                 </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"> <?php echo osc_format_price(osc_item_price()); ?></span>
+                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
+                  <!-- Добавил строку для вывода минимальной цены-->
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>
@@ -76,7 +78,7 @@ if(View::newInstance()->_exists('listType')){
             <?php if($admin){ ?>
             <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
             <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
+            </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a>
             <?php if(osc_item_is_inactive()) {?>
@@ -139,7 +141,7 @@ if(View::newInstance()->_exists('listType')){
             <?php if($admin){ ?>
             <span class="admin-options"> <a href="<?php echo osc_premium_edit_url(); ?>" rel="nofollow">
             <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_premium_delete_url();?>" >
+            </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_premium_delete_url();?>" >
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a>
             <?php if(osc_premium_is_inactive()) {?>
@@ -203,7 +205,7 @@ if(View::newInstance()->_exists('listType')){
             <?php if($admin){ ?>
             <span class="admin-options"> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
             <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </a> <span>|</span> <a class="delete" onclick="javascript:return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
+            </a> <span>|</span> <a class="delete" onclick="return confirm('<?php echo osc_esc_js(__('This action can not be undone. Are you sure you want to continue?', OSCLASSWIZARDS_THEME_FOLDER)); ?>')" href="<?php echo osc_item_delete_url();?>" >
             <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>
             </a>
             <?php if(osc_item_is_inactive()) {?>

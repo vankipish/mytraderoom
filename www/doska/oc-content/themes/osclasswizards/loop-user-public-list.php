@@ -27,7 +27,7 @@ if(View::newInstance()->_exists('listType')){
 
 ?>
 
-<div class="toolbar toolbars"><span class="sorting"> <a href="<?php echo osc_user_public_profile_url( Params::getParam('id') ); ?>?sShowAs=list" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_user_public_profile_url( Params::getParam('id') ); ?>?sShowAs=gallery" class="grid-button <?php if(osclasswizards_show_as()=='gallery') echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i></span></a> </span> </div>
+<!--<div class="toolbar toolbars"><span class="sorting"> <a href="<?php echo osc_user_public_profile_url( Params::getParam('id') ); ?>?sShowAs=list" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_user_public_profile_url( Params::getParam('id') ); ?>?sShowAs=gallery" class="grid-button <?php if(osclasswizards_show_as()=='gallery') echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i></span></a> </span> </div>-->
 <ul class="listings_list listing-card" id="listing-card-list">
   <?php
   $i = 0;

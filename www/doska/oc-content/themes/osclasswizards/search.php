@@ -1,11 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
-<head>
     <style>
     ul.sub {
         padding-left: 20px;
     }
-    
+
 
     .chbx{
         width:15px; height:15px;
@@ -77,7 +74,7 @@
     }
     osc_add_hook('footer','autocompleteCity');
     function autocompleteCity(){ ?>
-        
+
 <script type="text/javascript">
     $(function() {
                     function log( message ) {
@@ -101,8 +98,6 @@
     }
 ?>
 <?php osc_current_web_theme_path('header.php') ; ?>
-    </head>
-<body>
 
 <div class="row">
   <?php osc_current_web_theme_path('search-sidebar.php') ; ?>
@@ -112,7 +107,7 @@
       <h1><?php echo (search_title() != "")? search_title() : '&nbsp;'; ?></h1>
     </div>
     <div class="toolbar">
-      <div class="sorting"> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'list'))); ?>" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'gallery'))); ?>" class="grid-button <?php if(osclasswizards_show_as()=='gallery')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i> </span></a> </div>
+      <div hidden class="sorting"> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'list'))); ?>" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'gallery'))); ?>" class="grid-button <?php if(osclasswizards_show_as()=='gallery')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i> </span></a> </div>
       <?php osc_run_hook('search_ads_listing_top'); ?>
       <?php if(osc_count_items() == 0) { ?>
       <p class="empty" ><?php printf(__('There are no results matching "%s"', OSCLASSWIZARDS_THEME_FOLDER), osc_search_pattern()) ; ?></p>
@@ -195,6 +190,10 @@
   </div>
   </div>
 </div>
-<?php //osc_current_web_theme_path('footer.php') ; ?>
-</body>
-</html>
+<?php osc_current_web_theme_path('footer.php') ; ?>
+    <script>
+        $(document).ready(function () {
+            $('input').iCheck('destroy')
+        })
+    </script>
+
