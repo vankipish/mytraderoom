@@ -172,7 +172,7 @@ function ajaxSearch(form, pagination, event){
 	request.fail(function (jqXHR, textStatus, errorThrown){
 		var $productList = $(productList);
 		var $paginate = $(paginate);
-		$productList.html('<p id="noresults">There are no results</p>');
+		$productList.html('<p id="noresults">Нет результатов, удовлетворяющих выбранным параметрам</p>');
 		$paginate.html(' ');
 	});
 

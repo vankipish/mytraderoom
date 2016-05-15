@@ -138,11 +138,13 @@ Copy from ItemComment table description
                 return 0; // пользователь уже оценивал текущего юзера
         }
 
-        function scoreOfLoggedUser($loggedUserId) 
+        function scoreOfLoggedUser($loggedUserId, $currentUser) 
         {
             $this->dao->select('r_rating');
             $this->dao->from($this->getTableName());
-            $this->dao->where('r_of_user', $loggedUserId);
+            $conditions = array('r_of_user'   => $loggedUserId,
+                                'id_executor' => $currentUser);
+            $this->dao->where($conditions);
             $result = $this->dao->get();
             $resArr = $result->result();
             if (empty($resArr))
@@ -152,11 +154,27 @@ Copy from ItemComment table description
                 return $score['r_rating'];
         }
 
-        function commentOfLoggedUser($loggedUserId) 
+        function commentOfLoggedUser($loggedUserId)
+    {
+        $this->dao->select('r_comment');
+        $this->dao->from($this->getTableName());
+        $this->dao->where('r_of_user', $loggedUserId);
+        $result = $this->dao->get();
+        $resArr = $result->result();
+        if (empty($resArr))
+            return 0;
+        else
+            $comment=$resArr['0'];
+        return $comment['r_comment'];
+    }
+
+        function commentOfLoggedUserforCurrentUser($loggedUserId,$currentUser)
         {
             $this->dao->select('r_comment');
             $this->dao->from($this->getTableName());
-            $this->dao->where('r_of_user', $loggedUserId);
+            $conditions = array('r_of_user'   => $loggedUserId,
+                                'id_executor'  => $currentUser);
+            $this->dao->where($conditions);
             $result = $this->dao->get();
             $resArr = $result->result();
             if (empty($resArr))
@@ -182,6 +200,7 @@ Copy from ItemComment table description
             return $AllComments;
         }
 
+        
         function AllUsersId($id)
         {
             $this->dao->select('r_of_user');

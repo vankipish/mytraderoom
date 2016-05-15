@@ -116,8 +116,8 @@
             <?php if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
         <?php if (osc_logged_user_id()>0) {?>
           <label style="margin-top: 10px">Ваш отзыв</label><br>
-          <textarea name="comment" id="rComment"><?php if (userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())) echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
-                    <label><div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Ваша оценка';}?></div><label>
+          <textarea name="comment" id="rComment"><?php if (userRaty::newInstance()->commentOfLoggedUserforCurrentUser(osc_logged_user_id(),osc_user_id())) echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
+                    <label><div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if ((osc_logged_user_id() != osc_user_id()) && userRaty::newInstance()->commentOfLoggedUserforCurrentUser(osc_logged_user_id(),osc_user_id())) {echo 'Ваша оценка';}?></div><label>
       <?php } ?>
 
 
@@ -136,7 +136,7 @@
 
       <div style="margin-bottom: 20px">
           <button id="button" type="submit" class="btn btn-success">
-              <?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оценить';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Изменить оценку';}?>
+              <?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оценить';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Изменить оценку';}?>
           </button>
       </div>
                             <div style="margin-top: 15px" class="errorTxt"></div>
@@ -148,7 +148,7 @@
                   cancel   : false,
                   half     : false,
                   starType : 'i',
-                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id())?>'
+                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id())?>'
               });
           </script>
       <?php }?>
@@ -182,7 +182,7 @@
         while ($allComments[$i])
         {
             //var_dump(userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]));
-            ?><input hidden name="ratingValueOfUser<?php echo $allUsersIds[$i]?>" value="<?php echo userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]) ?>"><?php
+            ?><input hidden name="ratingValueOfUser<?php echo $allUsersIds[$i]?>" value="<?php echo userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i],osc_user_id()) ?>"><?php
             ?><h3 style="margin-bottom: 5px; margin-top: 0px"><a href="<?php echo osc_user_public_profile_url( $allUsersIds[$i] ); ?>" ><i class="fa fa-user"></i><?php echo $allUsers[$i]; ?></a><a style="font-size: 7px; margin-left: 7px" name="ratingOfUser<?php echo $allUsersIds[$i]?>"></a></h3><?php
             ?><p style="margin-bottom: 25px"><?php echo $allComments[$i];?></p><?php
         ?>
@@ -207,7 +207,7 @@
         <!-- если нет отзывов...-->
         <div class="col-sm-8 col-md-9">
             <div class="title">
-                <h1>У Вас еще нет отзывов</h1>
+                <h1>Еще нет отзывов</h1>
             </div>
          </div>
 
@@ -227,7 +227,7 @@
     <?php } else {?>
         <div class="title">
             <h1 style="margin-top: 15px">
-                У Вас еще нет объявлений
+                Еще нет объявлений
             </h1>
         </div>
     <?php } ?>
