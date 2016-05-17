@@ -301,14 +301,14 @@ class PHPMailer {
    * Sets SMTP class debugging on or off.
    * @var bool
    */
-  public $SMTPDebug     = false;
+  public $SMTPDebug     = true;
 
   /**
    * Sets the function/method to use for debugging output.
    * Right now we only honor "echo" or "error_log"
    * @var string
    */
-  public $Debugoutput     = "echo";
+  public $Debugoutput     = "error_log";
 
   /**
    * Prevents the SMTP connection from being closed after each mail
