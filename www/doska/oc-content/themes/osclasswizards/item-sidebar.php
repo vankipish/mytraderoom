@@ -47,9 +47,10 @@
       </a></strong> </p>
     <?php } else { ?>
     <?php if( osc_item_user_id() != null ) { ?>
-    <div class="user-card">
-      <figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure>
-    </div>
+        <div class="user-card">
+          <div style="width: 100px; margin: 10px 0 20px 0; border: solid 2px"><?php profile_picture_show(); ?></div>
+          <!--<figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure>-->
+        </div>
     <h3 class="name">
 	  <i class="fa fa-user"></i>
       <a href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>" ><?php echo osc_item_contact_name(); ?></a></h3>
