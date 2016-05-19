@@ -56,7 +56,7 @@
 	
     osc_current_web_theme_path('header.php');
       $path = $_SERVER['DOCUMENT_ROOT'] . '/doska';
-      include_once "$path./oc-includes/osclass/model/userRaty.php";
+      include_once "$path../oc-includes/osclass/model/userRaty.php";
   
 ?>
 
@@ -202,7 +202,11 @@
       <h2 class="title">
         Предложения
       </h2>
-      <?php }  ?>
+      <?php }  else if (osc_logged_user_id() == osc_user_id() && osc_has_item_comments() == 0) { ?>
+        <h2 class="title" style="margin: 50px 0 50px 0">
+        Скоро здесь появятся предложения, из которых Вы сможете выбрать подходящее
+        </h2>
+      <?php } ?>
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
@@ -212,7 +216,11 @@
                 <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
                   <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
                   <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px"></a>
-
+                    <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
+                        <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
+                    <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
+                        <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
+                    <?php }?>
                 <?php } else { ?>
                <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                 <?php }?>
@@ -254,11 +262,14 @@
         </div>
       <?php } ?>
     </div>
+
+      <?php if
+      (osc_logged_user_id() !== osc_user_id() ) {
+       ?>
+
       <div class="comment_form" id="here">
         <div class="title">
-          <h1>
-            Оставьте Ваше ценовое предложение
-          </h1>
+            <h1> Оставьте ваше ценовое предложение </h1>
             <ul style="margin-top: 10px" id="comment_error_list"> </ul>
             <?php CommentForm::js_validation(); ?>
 
@@ -354,6 +365,7 @@
           </form>
         </div>
       </div>
+      <?php } ?>
     </div>
     <?php } ?>
     <?php } ?>

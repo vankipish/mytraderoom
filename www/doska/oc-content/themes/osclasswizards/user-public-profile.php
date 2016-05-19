@@ -113,12 +113,12 @@
       <div class="rating_form">
             <form name="rating_form" id="rating_form">
                 <fieldset>
-            <?php if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
-        <?php if (osc_logged_user_id()>0) {?>
-          <label style="margin-top: 10px">Ваш отзыв</label><br>
-          <textarea name="comment" id="rComment"><?php if (userRaty::newInstance()->commentOfLoggedUserforCurrentUser(osc_logged_user_id(),osc_user_id())) echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
+                    <?php if ((osc_logged_user_id()<>osc_user_id()) && (osc_is_web_user_logged_in())) { ?>
+                    <?php if (osc_logged_user_id()>0) {?>
+                    <label style="margin-top: 10px">Ваш отзыв</label><br>
+                    <textarea name="comment" id="rComment"><?php if (userRaty::newInstance()->commentOfLoggedUserforCurrentUser(osc_logged_user_id(),osc_user_id())) echo userRaty::newInstance()->commentOfLoggedUser(osc_logged_user_id())?></textarea>
                     <label><div id="result"><?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оцените исполнителя/заказчика';} else if ((osc_logged_user_id() != osc_user_id()) && userRaty::newInstance()->commentOfLoggedUserforCurrentUser(osc_logged_user_id(),osc_user_id())) {echo 'Ваша оценка';}?></div><label>
-      <?php } ?>
+                            <?php } ?>
 
 
       <div class="toRate" id="toRate">   <!-- описано ниже --> </div>
@@ -134,26 +134,26 @@
             <input hidden id="r_user_name" value="<?php echo $userName; ?>">
             <input hidden id="r_pub_date" value="<?php echo $r_pub_date; ?>">
 
-      <div style="margin-bottom: 20px">
-          <button id="button" type="submit" class="btn btn-success">
-              <?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оценить';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Изменить оценку';}?>
-          </button>
-      </div>
+                            <div style="margin-bottom: 20px">
+                                <button id="button" type="submit" class="btn btn-success">
+                                    <?php if ((userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id()) ==0)&& (osc_logged_user_id())) {echo 'Оценить';} else if (osc_logged_user_id() != osc_user_id()) {echo 'Изменить оценку';}?>
+                                </button>
+                            </div>
                             <div style="margin-top: 15px" class="errorTxt"></div>
           <script>// для ввода рейтинга
 
-              
-              $('#toRate').raty
-              ({
-                  cancel   : false,
-                  half     : false,
-                  starType : 'i',
-                  score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id())?>'
-              });
-          </script>
-      <?php }?>
-            <script>
-                //для отображения рейтинга
+
+                                $('#toRate').raty
+                                ({
+                                    cancel   : false,
+                                    half     : false,
+                                    starType : 'i',
+                                    score    : '<?php echo userRaty::newInstance()->scoreOfLoggedUser(osc_logged_user_id(),osc_user_id())?>'
+                                });
+                            </script>
+                            <?php }?>
+                            <script>
+                                //для отображения рейтинга
 
                 $('[name=ratingOf]').raty({
                     half     : true,
@@ -168,26 +168,26 @@
   </div>
     <!-- если есть отзывы...-->
     <?php if (userRaty::newInstance()->Allcomment(osc_user_id())) {?>
-    <div class="col-sm-8 col-md-9">
-        <div class="title">
-            <h1>Отзывы</h1>
-        </div>
-        <div class="comments_list">
-            <div class="comment" style="border-bottom: ridge">
-        <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
-        $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
-        $allUsersIds = userRaty::newInstance()->AllUsersId(osc_user_id());
-        $i=0;
-        //var_dump(userRaty::newInstance()->AllUsers(osc_user_id()));
-        while ($allComments[$i])
-        {
-            //var_dump(userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]));
-            ?><input hidden name="ratingValueOfUser<?php echo $allUsersIds[$i]?>" value="<?php echo userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i],osc_user_id()) ?>"><?php
-            ?><h3 style="margin-bottom: 5px; margin-top: 0px"><a href="<?php echo osc_user_public_profile_url( $allUsersIds[$i] ); ?>" ><i class="fa fa-user"></i><?php echo $allUsers[$i]; ?></a><a style="font-size: 7px; margin-left: 7px" name="ratingOfUser<?php echo $allUsersIds[$i]?>"></a></h3><?php
-            ?><p style="margin-bottom: 25px"><?php echo $allComments[$i];?></p><?php
-        ?>
-                <script>
-                //для отображения рейтинга
+        <div class="col-sm-8 col-md-9">
+            <div class="title">
+                <h1>Отзывы</h1>
+            </div>
+            <div class="comments_list">
+                <div class="comment" style="border-bottom: ridge">
+                    <?php $allComments = userRaty::newInstance()->Allcomment(osc_user_id());
+                    $allUsers = userRaty::newInstance()->AllUsers(osc_user_id());
+                    $allUsersIds = userRaty::newInstance()->AllUsersId(osc_user_id());
+                    $i=0;
+                    //var_dump(userRaty::newInstance()->AllUsers(osc_user_id()));
+                    while ($allComments[$i])
+                    {
+                        //var_dump(userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i]));
+                        ?><input hidden name="ratingValueOfUser<?php echo $allUsersIds[$i]?>" value="<?php echo userRaty::newInstance()->scoreOfLoggedUser($allUsersIds[$i],osc_user_id()) ?>"><?php
+                        ?><h3 style="margin-bottom: 5px; margin-top: 0px"><a href="<?php echo osc_user_public_profile_url( $allUsersIds[$i] ); ?>" ><i class="fa fa-user"></i><?php echo $allUsers[$i]; ?></a><a style="font-size: 7px; margin-left: 7px" name="ratingOfUser<?php echo $allUsersIds[$i]?>"></a></h3><?php
+                        ?><p style="margin-bottom: 25px"><?php echo $allComments[$i];?></p><?php
+                    ?>
+                        <script>
+                            //для отображения рейтинга
 
                 $('[name=ratingOfUser<?php echo $allUsersIds[$i]?>]').raty({
                         half     : true,
@@ -207,31 +207,31 @@
         <!-- если нет отзывов...-->
         <div class="col-sm-8 col-md-9">
             <div class="title">
-                <h1>Еще нет отзывов</h1>
+                <h1>У Вас еще нет отзывов</h1>
             </div>
          </div>
 
     <?php } ?>
 
-<div class="col-sm-8 col-md-9">
-    <?php if( osc_count_items() > 0 ) { ?>
-    <div class="similar_ad">
-      <div class="title">
-        <h1 style="margin-top: 15px">
-          <?php _e('Latest listings', OSCLASSWIZARDS_THEME_FOLDER); ?>
-        </h1>
-      </div>
-      <?php osc_current_web_theme_path($loop_template); ?>
-      <div class="pagination"><?php echo osc_pagination_items(); ?></div>
+    <div class="col-sm-8 col-md-9">
+        <?php if( osc_count_items() > 0 ) { ?>
+            <div class="similar_ad">
+                <div class="title">
+                    <h1 style="margin-top: 15px">
+                        <?php _e('Latest listings', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                    </h1>
+                </div>
+                <?php osc_current_web_theme_path($loop_template); ?>
+                <div class="pagination"><?php echo osc_pagination_items(); ?></div>
+            </div>
+        <?php } else {?>
+            <div class="title">
+                <h1 style="margin-top: 15px">
+                    Еще нет объявлений
+                </h1>
+            </div>
+        <?php } ?>
     </div>
-    <?php } else {?>
-        <div class="title">
-            <h1 style="margin-top: 15px">
-                Еще нет объявлений
-            </h1>
-        </div>
-    <?php } ?>
-  </div>
 </div>
 <?php osc_current_web_theme_path('footer.php') ; ?>
 
