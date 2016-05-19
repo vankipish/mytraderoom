@@ -150,8 +150,15 @@ textarea {height: 50px;
     border-radius: 5px;
     border-width: 0 0 3px 2px;
     box-shadow: inset 3px -3px 2px -2px  rgba(0, 0, 0, .2);
-
 }
+ #flashmessage .btn{
+    box-shadow: none;
+     height: auto;
+     width: auto;
+     display: inline;
+     border: none;
+     padding: 5px;
+ }
 .btn_search {padding: 0;width: 100%;text-align: center;
 }
 #item-post h2 {padding: 10px;
@@ -459,7 +466,7 @@ li.premium .ribbon {display: block;
 }
 .facebook {margin-top: 20px;
 }
-.item-photos .thumbs {height: 400px;overflow: auto;
+.item-photos .thumbs {height: 400px;overflow: hidden;
 }
 /*recaptcha*/
 .recap input {box-shadow: inset 0 1px 0 0 #dfd8d8;width: 280px;height: 16px;line-height: 16px;font-size: 1em;padding: 0 10px

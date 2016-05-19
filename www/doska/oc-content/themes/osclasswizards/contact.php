@@ -45,7 +45,6 @@
           <div class="form-group">
             <label class="control-label" for="yourName">
               <?php _e('Your name', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              (
               <?php _e('optional', OSCLASSWIZARDS_THEME_FOLDER); ?>
               )</label>
             <div class="controls">
@@ -54,7 +53,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="yourEmail">
-              <?php _e('Your email address', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Your email address', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php ContactForm::your_email(); ?>
@@ -72,7 +71,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="message">
-              <?php _e('Message', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Message', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls textarea">
               <?php ContactForm::your_message(); ?>
