@@ -77,11 +77,12 @@ ul, li {margin: 0;padding: 0;list-style: none;
     color: #fff;
  }
  .chk_post {
+
      position: relative;
      cursor: pointer;
      overflow: hidden;
      height: 20px;
-     width: 235px;
+     width: 143px;
      line-height: 18px;
      margin-top: 5px;
      padding: 0 0 5px 5px;
@@ -96,13 +97,10 @@ ul, li {margin: 0;padding: 0;list-style: none;
  .chk_post::after {
      position: absolute;
      top: -2px;
-     left: 212px;
+     left: 123px;
      display: block;
      z-index: 2;
      content: "\f0dd"; font-family: 'FontAwesome';margin: 0 0 0 5px;
- }
- .chk_post:hover{
-     color: #fff;
  }
 input[type=text], input[type=password],  textarea, select {height: 35px;width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-appearance: none;-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */ border-radius: 2px; box-shadow: inset 5px -5px 5px -4px rgba(0,0,0,.2); -webkit-box-shadow: inset 5px -5px 5px -4px rgba(4, 4, 4, 0.3);-moz-box-shadow: inset 5px -5px 5px -4px rgba(4, 4, 4, 0.3);
 }
@@ -636,7 +634,7 @@ select {-webkit-appearance: none;appearance: none;
 }
 #footer a {color: #ababab;
 }
-.btn-success:hover, .chk:hover ,.btn-focus, .contact_button a:hover, .thumbs a:hover, .forgot .form-container-box .resp-wrapper .ui-button:hover {opacity: 0.7;-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s; box-shadow: inset -5px 5px 10px -5px rgba(0,0,0,.2);
+.btn-success:hover, .chk:hover, .chk_post:hover ,.btn-focus, .contact_button a:hover, .thumbs a:hover, .forgot .form-container-box .resp-wrapper .ui-button:hover {opacity: 0.7;-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s; box-shadow: inset -5px 5px 10px -5px rgba(0,0,0,.2);
 }
 #choosePhoto {
     margin-top: 10px;

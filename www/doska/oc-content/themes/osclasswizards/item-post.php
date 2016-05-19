@@ -163,7 +163,7 @@
           <?php if( osc_price_enabled_at_items() ) { ?>
           <div class="form-group form-group-price">
             <label class="control-label" for="price">
-              <?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?> (по желанию можете указать цену, на которую расчитываете)
             </label>
             <div class="controls">
               <ul class="row">
@@ -186,7 +186,7 @@
                 </div>
               <script>js_showOrHideChkbox('Phone')</script>
           <?php } ?>
-          <div class="chk_post" id="chk1" style="cursor: pointer; margin-bottom: 10px">Указать дополнительную информацию</div>
+          <div class="chk_post" id="chk1" style="cursor: pointer; margin-bottom: 10px">Добавить фото, адрес</div>
            <div name="add_information" id="el1" style="display: none">
               <?php
 			if( osc_images_enabled_at_items() ) {

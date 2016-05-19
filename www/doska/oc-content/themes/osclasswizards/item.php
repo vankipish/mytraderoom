@@ -56,7 +56,7 @@
 	
     osc_current_web_theme_path('header.php');
       $path = $_SERVER['DOCUMENT_ROOT'] . '/doska';
-      include_once "$path./oc-includes/osclass/model/userRaty.php";
+      include_once "$path../oc-includes/osclass/model/userRaty.php";
   
 ?>
 
@@ -202,7 +202,11 @@
       <h2 class="title">
         Предложения
       </h2>
-      <?php }  ?>
+      <?php }  else if (osc_logged_user_id() == osc_user_id() && osc_has_item_comments() == 0) { ?>
+        <h2 class="title" style="margin: 50px 0 50px 0">
+        Скоро здесь появятся предложения, из которых Вы сможете выбрать подходящее
+        </h2>
+      <?php } ?>
       <?php if( osc_count_item_comments() >= 1 ) { ?>
       <div class="comments_list">
         <?php while ( osc_has_item_comments() ) { ?>
@@ -254,11 +258,14 @@
         </div>
       <?php } ?>
     </div>
+
+      <?php if
+      (osc_logged_user_id() !== osc_user_id() ) {
+       ?>
+
       <div class="comment_form" id="here">
         <div class="title">
-          <h1>
-            Оставьте Ваше ценовое предложение
-          </h1>
+            <h1> Оставьте ваше ценовое предложение </h1>
             <ul style="margin-top: 10px" id="comment_error_list"> </ul>
             <?php CommentForm::js_validation(); ?>
 
@@ -354,6 +361,7 @@
           </form>
         </div>
       </div>
+      <?php } ?>
     </div>
     <?php } ?>
     <?php } ?>
