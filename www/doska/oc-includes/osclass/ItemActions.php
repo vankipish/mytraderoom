@@ -984,7 +984,16 @@
                     $status_num = 5;
                 }
             }
-
+            if( (osc_recaptcha_private_key() != '') ) {
+                if( !osc_check_recaptcha() ) {
+                    osc_add_flash_error_message( _m('The Recaptcha code is wrong'));
+                    Session::newInstance()->_setForm('commentAuthorName', $authorName);
+                    Session::newInstance()->_setForm('commentTitle', $title);
+                    Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
+                    Session::newInstance()->_setForm('commentBody', $body);
+                    return 8;
+                }
+            }
             $mComments = ItemComment::newInstance();
             $aComment  = array('dt_pub_date'    => date('Y-m-d H:i:s')
                               ,'fk_i_item_id'   => $itemId
