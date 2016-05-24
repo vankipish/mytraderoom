@@ -159,8 +159,10 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php     } ?>
             <?php     } ?>
             <?php } ?>
-          </li> -->
+            </li> -->
+                      <?php if ((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) { ?>
                     <li id="menu"><a href="#here" >Оставить предложение</a></li>
+                      <?php } ?>
                     <?php if(function_exists('watchlist')) {?>
                         <li>
                             <?php watchlist(); ?>
@@ -206,7 +208,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 <h2 class="title">
                     Предложения
                 </h2>
-            <?php }  else if (osc_logged_user_id() == osc_user_id() && osc_has_item_comments() == 0) { ?>
+            <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
                     Скоро здесь появятся предложения, из которых Вы сможете выбрать подходящее
                 </h2>
@@ -328,7 +330,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                             <div class="form-group">
                                 <label class="control-label" for="title">
                                     <!--     <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>-->
-                                    Ваша цена<sup>*</sup>
+                                    Ваше ценовое предложение<sup>*</sup>
                                 </label>
 
                                 <!--Добавил сюда контрол из ввода цены -->
