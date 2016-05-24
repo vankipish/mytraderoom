@@ -55,8 +55,8 @@ if( osc_item_country() !== '' ) {
 }
 
 osc_current_web_theme_path('header.php');
-$path = $_SERVER['DOCUMENT_ROOT'] . '/doska';
-include_once "$path../oc-includes/osclass/model/userRaty.php";
+$path = dirname(dirname(dirname(__DIR__)));
+include_once "$path/oc-includes/osclass/model/userRaty.php";
 
 ?>
 
