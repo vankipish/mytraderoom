@@ -160,7 +160,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php     } ?>
             <?php } ?>
             </li> -->
-                      <?php if ((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) { ?>
+                      <?php if ((osc_logged_user_id() !== osc_user_id()) || osc_user_id() == 0) { ?>
                     <li id="menu"><a href="#here" >Оставить предложение</a></li>
                       <?php } ?>
                     <?php if(function_exists('watchlist')) {?>
