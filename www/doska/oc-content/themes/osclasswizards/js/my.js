@@ -14,6 +14,20 @@ function js_showOrHideDiv($id) // появление информации в п�
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
+function js_showZakazchikField($id) // появление информации в предложениях
+{
+    var chek = document.getElementById('chk1');
+    var elem = document.getElementById('el1');
+    $('#chk1').on("click", function(event){$('#el2').slideUp(300); $('#'+elem.id).slideDown(300)});
+    
+}
+function js_showIspolnitelField($id) // появление информации в предложениях
+{
+    var chek = document.getElementById('chk2');
+    var elem = document.getElementById('el2');
+    $('#chk2').on("click", function(event){$('#el1').slideUp(300); $('#'+elem.id).slideDown(300)});
+    
+}
 
 $(document).ready(function(){
     $("#menu").on("click","a", function (event) {

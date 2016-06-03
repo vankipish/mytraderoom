@@ -34,9 +34,16 @@ if(osclasswizards_show_as() == 'gallery'){
 
 ?>
 <?php osc_current_web_theme_path('header.php') ; ?>
-<h1>Всего на сайте <?php echo(osc_total_active_items()) ?> объявлений-заявок, размещенных <?php echo osc_total_users() ?> пользователями, среди которых Вы можете найти своего клиента</h1><br>
+<?php $countItems=osc_total_active_items();
+      $totalUsers= osc_total_users()?>
+<div class="ispolnitel" style="display: none" id="el2">
+<h1>Всего на сайте <?php echo($countItems); if(((substr($countItems,-1)) == 1) && ($countItems !== 11)) {echo ' заявка,';}
+                                       else if(((substr($countItems,-1)) == 0) || ((substr($countItems,-1)) >= 5) || (5 <= $countItems && $countItems < 21)) {echo ' заявок,';}
+                                       else if(((substr($countItems,-1)) == 2 || (substr($countItems,-1)) == 3 || (substr($countItems,-1)) == 4 ) && ($countItems < 10 || $countItems > 20)) {echo ' заявки,';}?>
+  размещенных <?php echo $totalUsers; if(((substr($totalUsers,-1)) == 1) && ($totalUsers !== 11)) {echo ' пользователем,';}
+                                      else {echo ' пользователями,';}
+  ?> среди которых Вы можете найти своего клиента</h1><br>
 <?php
-
 osc_get_premiums(osclasswizards_premium_listings_shown_home());
 
 if(osc_count_premiums() > 0) {
@@ -103,7 +110,12 @@ if(osc_count_premiums() > 0) {
 }
 ?>
 <?php osc_run_hook('inside-main'); ?>
-<div class="content">
+</div>
+
+<script>js_showZakazchikField(1)</script>
+<script>js_showIspolnitelField(2)</script>
+
+  <div class="content">
   <div class="title">
     <h1>
       <?php _e('Latest Listings', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
