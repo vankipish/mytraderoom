@@ -37,12 +37,14 @@ if(osclasswizards_show_as() == 'gallery'){
 <?php $countItems=osc_total_active_items();
       $totalUsers= osc_total_users()?>
 <div class="ispolnitel" style="display: none" id="el3">
-<h1>Всего на сайте <?php echo($countItems); if(((substr($countItems,-1)) == 1) && ($countItems !== 11)) {echo ' заявка,';}
-                                       else if(((substr($countItems,-1)) == 0) || ((substr($countItems,-1)) >= 5) || (5 <= $countItems && $countItems < 21)) {echo ' заявок,';}
-                                       else if(((substr($countItems,-1)) == 2 || (substr($countItems,-1)) == 3 || (substr($countItems,-1)) == 4 ) && ($countItems < 10 || $countItems > 20)) {echo ' заявки,';}?>
-  размещенных <?php echo $totalUsers; if(((substr($totalUsers,-1)) == 1) && ($totalUsers !== 11)) {echo ' пользователем,';}
-                                      else {echo ' пользователями,';}
+  <div style="text-align: center">
+    <h1>Всего на сайте <?php echo($countItems); if(((substr($countItems,-1)) == 1) && ($countItems !== 11)) {echo ' заявка,';}
+                                         else if(((substr($countItems,-1)) == 0) || ((substr($countItems,-1)) >= 5) || (5 <= $countItems && $countItems < 21)) {echo ' заявок,';}
+                                         else if(((substr($countItems,-1)) == 2 || (substr($countItems,-1)) == 3 || (substr($countItems,-1)) == 4 ) && ($countItems < 10 || $countItems > 20)) {echo ' заявки,';}?>
+    размещенных <?php echo $totalUsers; if(((substr($totalUsers,-1)) == 1) && ($totalUsers !== 11)) {echo ' пользователем,';}
+                                        else {echo ' пользователями,';}
   ?> среди которых Вы можете найти своего клиента</h1><br>
+  </div>
 <?php
 osc_get_premiums(osclasswizards_premium_listings_shown_home());
 

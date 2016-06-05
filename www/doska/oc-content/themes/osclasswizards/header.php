@@ -130,34 +130,34 @@
     }
     ?>
 
-    <div class="banner_none" id="form_vh_map">
+    <div class="banner_none" id="form_vh_map" style="padding: 0">
 
-      <ul class="contact_button" style="text-align: center">
-        <li id="menu" style="margin-right: 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
+      <ul class="contact_button" style="text-align: center; margin: 5px 0 5px 0">
+        <li id="menu" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
 
-        <li id="menu" style="margin-left: 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
+        <li id="menu" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
       </ul>
 
 
-      <div class="main_header" id="el1" style="display: none">
+      <div class="zakazchik" id="el1" style="display: none">
         <div class="container">
-          <div class="publish">
+          <?php echo '<img src="'.osc_current_web_theme_url('images/tutorial.jpg').'" />'; ?>
+          <ul class="contact_button" style="text-align: center; margin: 5px 0 5px 0">
             <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
-              <a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
+              <li style="margin: 10px 20px 10px 20px"><a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
                 <?php _e("Опубликовать заявку",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
-              </a>
             <?php } ?>
-          </div>
+          </ul>
         </div>
       </div>
 
     <div id="el2" style="display: none">
-      <p class="title_for_search" style="text-align: center; color: #0eaae5; margin: 0 0 15px 0" >Поиск заявок на услуги или товары</p>
+      <p class="title_for_search" style="text-align: center; color: #0eaae5; margin: 0 0 15px 0" >Найдите своего клиента!</p>
       <form action="<?php echo osc_base_url(true); ?>" id="main_search" method="get" class="search nocsrf" >
         <div class="container">
           <input type="hidden" name="page" value="search"/>
           <div class="main-search">
-            <div class="form-filters">
+            <div class="form-filters" style="margin-bottom: 15px">
               <div class="row">
                 <?php $showCountry  = (osc_get_preference('show_search_country', 'osclasswizards_theme') == '1') ? true : false; ?>
                 <div class="col-md-<?php echo ($showCountry)? '3' : '4'; ?>">
