@@ -105,32 +105,16 @@
         }
         osc_reset_static_pages();
         ?>
-      <!--  <li> <a href="<?php echo osc_contact_url(); ?>">
+       <li> <a href="<?php echo osc_contact_url(); ?>">
             <?php _e('Contact', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </a> </li> -->
+          </a> </li>
       </ul>
 
-        <ul class="contact_button" style="position:absolute;left: 38.5%; margin: 5px 0 0 0 ">
-        <li id="menu" style="margin-right: 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
-
-        <li id="menu" style="margin-left: 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
-        </ul>
-
       </div>
     </div>
-  </div>
- <div class="zakazchik" style="display: none" id="el1">
-  <div class="main_header">
-    <div class="container">
-      <div class="publish">
-        <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
-          <a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
-            <?php _e("Опубликовать заявку",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
-          </a>
-        <?php } ?>
-      </div>
-    </div>
-  </div>
+  <!--</div>-->
+
+
   <?php
   if( osc_is_home_page() ) {
     if(osc_get_preference('show_banner', 'osclasswizards_theme')=='1'){
@@ -145,7 +129,29 @@
       echo '</div>';
     }
     ?>
+
     <div class="banner_none" id="form_vh_map">
+
+      <ul class="contact_button" style="text-align: center">
+        <li id="menu" style="margin-right: 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
+
+        <li id="menu" style="margin-left: 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
+      </ul>
+
+
+      <div class="main_header" id="el1" style="display: none">
+        <div class="container">
+          <div class="publish">
+            <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
+              <a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
+                <?php _e("Опубликовать заявку",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
+              </a>
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+
+    <div id="el2" style="display: none">
       <p class="title_for_search" style="text-align: center; color: #0eaae5; margin: 0 0 15px 0" >Поиск заявок на услуги или товары</p>
       <form action="<?php echo osc_base_url(true); ?>" id="main_search" method="get" class="search nocsrf" >
         <div class="container">
@@ -195,12 +201,12 @@
         </div>
       </form>
     </div>
+    </div>
     <?php
 
   }
   ?>
   <?php osc_show_widgets('header'); ?>
- </div>
 </header>
 
 

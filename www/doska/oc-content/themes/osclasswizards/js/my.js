@@ -18,14 +18,14 @@ function js_showZakazchikField($id) // появление информации �
 {
     var chek = document.getElementById('chk1');
     var elem = document.getElementById('el1');
-    $('#chk1').on("click", function(event){$('#el2').slideUp(300); $('#'+elem.id).slideDown(300)});
+    $('#chk1').on("click", function(event){$('#el3').slideUp(300);$('#el2').slideUp(300,function(){($('#'+elem.id).slideDown(300))})});
     
 }
 function js_showIspolnitelField($id) // появление информации в предложениях
 {
     var chek = document.getElementById('chk2');
     var elem = document.getElementById('el2');
-    $('#chk2').on("click", function(event){$('#el1').slideUp(300); $('#'+elem.id).slideDown(300)});
+    $('#chk2').on("click", function(event){$('#el1').slideUp(300,function(){($('#el2').slideDown(300));$('#el3').slideDown(300)})});
     
 }
 

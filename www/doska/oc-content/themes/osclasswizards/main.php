@@ -36,7 +36,7 @@ if(osclasswizards_show_as() == 'gallery'){
 <?php osc_current_web_theme_path('header.php') ; ?>
 <?php $countItems=osc_total_active_items();
       $totalUsers= osc_total_users()?>
-<div class="ispolnitel" style="display: none" id="el2">
+<div class="ispolnitel" style="display: none" id="el3">
 <h1>Всего на сайте <?php echo($countItems); if(((substr($countItems,-1)) == 1) && ($countItems !== 11)) {echo ' заявка,';}
                                        else if(((substr($countItems,-1)) == 0) || ((substr($countItems,-1)) >= 5) || (5 <= $countItems && $countItems < 21)) {echo ' заявок,';}
                                        else if(((substr($countItems,-1)) == 2 || (substr($countItems,-1)) == 3 || (substr($countItems,-1)) == 4 ) && ($countItems < 10 || $countItems > 20)) {echo ' заявки,';}?>
