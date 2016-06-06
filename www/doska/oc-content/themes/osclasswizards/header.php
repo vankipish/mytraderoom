@@ -130,9 +130,21 @@
     }
     ?>
 
+      <div class="description" style="border-top: solid 3px #0c9ec7; line-height: normal ; font-size: medium; background-color: #21292d;">
+        <div>
+          <div style="float: left; width: 50%">
+            <div style="float: right; padding: 10px 7% 10px 20px">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/преобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
+          </div>
+          <div style="float: right; width: 50%">
+            <div style="float: left; padding: 10px 20px 10px 2%">Вы готовы предоставить услуги высокого качества, либо у Вас есть что-то, что Вы хотите продать или сдать в аренду. Если Вы ищите клиентов или покупателей - жмите "Я - исполнитель".  </div>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+      </div>
+      
     <div class="banner_none" id="form_vh_map" style="padding: 0">
 
-      <ul class="contact_button" style="text-align: center; margin: 5px 0 5px 0">
+      <ul class="contact_button" style="text-align: center; margin: 0 0 5px 0; padding-top: 10px">
         <li id="menu" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
 
         <li id="menu" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
