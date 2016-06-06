@@ -96,7 +96,7 @@
     <div class="container">
       <div id="logo"> <?php echo logo_header(); ?> <span id="description"><?php echo osc_page_description(); ?></span> </div>
       <h2 class="pull-right toggle"><i class="fa fa-align-justify"></i></h2>
-      <ul class="links">
+      <ul class="links" style="float: right">
         <?php
         osc_reset_static_pages();
         while( osc_has_static_pages() ) { ?>
@@ -130,13 +130,13 @@
     }
     ?>
 
-      <div class="description" style="border-top: solid 3px #0c9ec7; line-height: normal ; font-size: medium; background-color: #21292d;">
+      <div class="description" style="border-top: solid 3px #0c9ec7; line-height: normal ; font-size: medium; color: #d0eaf2; background-color: #21292d;">
         <div>
           <div style="float: left; width: 50%">
-            <div style="float: right; padding: 10px 7% 10px 20px">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/преобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
+            <div style="float: right; padding: 10px 5% 10px 70px">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/преобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
           </div>
           <div style="float: right; width: 50%">
-            <div style="float: left; padding: 10px 20px 10px 2%">Вы готовы предоставить услуги высокого качества, либо у Вас есть что-то, что Вы хотите продать или сдать в аренду. Если Вы ищите клиентов или покупателей - жмите "Я - исполнитель".  </div>
+            <div style="float: left; padding: 10px 70px 10px 2%">Вы готовы предоставить услуги высокого качества, либо у Вас есть что-то, что Вы хотите продать или сдать в аренду. Если Вы ищите клиентов или покупателей - жмите "Я - исполнитель".  </div>
           </div>
           <div style="clear:both;"></div>
         </div>
@@ -153,7 +153,7 @@
 
       <div class="zakazchik" id="el1" style="display: none">
         <div class="container">
-          <?php echo '<img src="'.osc_current_web_theme_url('images/tutorial.jpg').'" />'; ?>
+          <?php echo '<img src="'.osc_current_web_theme_url('images/tutorial.jpg').'" style="border: solid 2px #0c9ec7" />'; ?>
           <ul class="contact_button" style="text-align: center; margin: 5px 0 5px 0">
             <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
               <li style="margin: 10px 20px 10px 20px"><a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
