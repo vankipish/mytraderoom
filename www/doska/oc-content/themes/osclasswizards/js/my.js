@@ -17,17 +17,65 @@ function js_showOrHideDiv($id) // появление информации в п�
 function js_showZakazchikField($id) // появление информации в предложениях
 {
     var chek = document.getElementById('chk1');
+    var unchek = document.getElementById('chk2');
     var elem = document.getElementById('el1');
-    $('#chk1').on("click", function(event){$('#el2').slideUp(300); $('#'+elem.id).slideDown(300)});
-    
+    $('#chk1').on("click", function(event)
+    {
+        $('#el3').fadeOut(300);$('#el2').fadeOut(300,function()
+    {
+        $('#'+elem.id).fadeIn(300);
+        chek.style.background = "radial-gradient(#1DC5E5, #3CCEE5)";
+        chek.style.color = "#F1E8E1";
+        chek.style.textShadow = "1px 1px 2px black";
+        chek.style.borderColor = "#23A0C4";
+        unchek.style.background = "radial-gradient(#0eaae5, #0d88b6)";
+        unchek.style.color = "#f8fbfc";
+        unchek.style.textShadow = "none";
+        unchek.style.borderColor = "#0c678d"
+
+    })
+    });
+
 }
 function js_showIspolnitelField($id) // появление информации в предложениях
 {
     var chek = document.getElementById('chk2');
+    var unchek = document.getElementById('chk1');
     var elem = document.getElementById('el2');
-    $('#chk2').on("click", function(event){$('#el1').slideUp(300); $('#'+elem.id).slideDown(300)});
-    
+    $('#chk2').on("click", function(event)
+    {
+        $('#el1').fadeOut(300,function()
+        {
+            $('#el2').fadeIn(300);
+            $('#el3').fadeIn(300);
+            chek.style.background = "radial-gradient(#1DC5E5, #3CCEE5)";
+            chek.style.color = "#F1E8E1";
+            chek.style.textShadow = "1px 1px 2px black";
+            chek.style.borderColor = "#23A0C4";
+            unchek.style.background = "radial-gradient(#0eaae5, #0d88b6)";
+            unchek.style.color = "#f8fbfc";
+            unchek.style.textShadow = "none";
+            unchek.style.borderColor = "#0c678d"
+        })
+    });
+
 }
+
+$(document).ready(function(){
+    $(".main_button").on("click","a", function (event) {
+        //отменяем стандартную обработку нажатия по ссылке
+        event.preventDefault();
+
+        //забираем идентификатор бока с атрибута href
+        var id  = $(this).attr('href'),
+
+        //узнаем высоту от начала страницы до блока на который ссылается якорь
+            top = $(id).offset().top;
+
+        //анимируем переход на расстояние - top за 1500 мс
+        $("body").delay(100).animate({scrollTop: top }, 500);
+    });
+});
 
 $(document).ready(function(){
     $("#menu").on("click","a", function (event) {

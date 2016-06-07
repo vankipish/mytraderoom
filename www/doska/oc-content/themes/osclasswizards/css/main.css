@@ -19,7 +19,7 @@ a:hover, a:active {outline: 0;
 }
 sub, sup {position: relative;font-size: 75%;line-height: 0;vertical-align: baseline
 }
-img {max-width: 100%;width: auto\9;height: auto;vertical-align: middle;border: 0;-ms-interpolation-mode: bicubic
+img {max-width: 100%;width: auto\9;height: auto;vertical-align: middle; display: inline-block;;  border: 0;-ms-interpolation-mode: bicubic
 }
 #map_canvas img {max-width: none
 }
@@ -685,9 +685,9 @@ select {-webkit-appearance: none;appearance: none;
 }
 .comment h4:before {color: #7a7a7a;
 }
-#form_vh_map {background-color: #000;
+#form_vh_map {background-color: #21292d;
 }
-.form-filters {background-color: rgba(00, 00, 00, 0.4);
+.form-filters {background-color: #21292d;
 }
 .toolbar {background-color: #fafafa;
 }

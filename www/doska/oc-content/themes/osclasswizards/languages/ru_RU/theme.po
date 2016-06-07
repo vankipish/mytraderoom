@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OsclassWizards Theme\n"
 "POT-Creation-Date: 2016-01-21 13:13+0545\n"
-"PO-Revision-Date: 2016-05-15 22:16+0400\n"
+"PO-Revision-Date: 2016-05-26 15:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: OsclassWizards <hello@osclasswizards.com>\n"
 "Language: ru\n"
@@ -35,7 +35,7 @@ msgstr "<strong>Посмотрите</strong>  в самых популярны�
 
 #: admin/ads.php:29
 msgid "Ads management"
-msgstr "Управление заданиями"
+msgstr "Управление заявками"
 
 #: admin/ads.php:33
 msgid ""
@@ -63,7 +63,7 @@ msgstr "Это задание будет показано в верхней ча
 
 #: admin/ads.php:47
 msgid "Homepage Ad"
-msgstr "задания на главной"
+msgstr "заявки на главной"
 
 #: admin/ads.php:51
 msgid ""
@@ -92,7 +92,7 @@ msgstr "Это задание будет показано среди резул�
 
 #: admin/ads.php:71
 msgid "Sidebar Ad"
-msgstr "Боковая панель задания"
+msgstr "Боковая панель заявки"
 
 #: admin/ads.php:75
 msgid ""
@@ -163,7 +163,7 @@ msgstr "Показать страницу Сообщений"
 
 #: admin/facebook.php:75
 msgid "Show On Item Sidebar"
-msgstr "Показать задания на боковой панели"
+msgstr "Показать заявки на боковой панели"
 
 #: admin/facebook.php:84
 msgid "Show On Search Sidebar"
@@ -358,7 +358,7 @@ msgstr ""
 
 #: admin/templates-home.php:62 admin/templates-search.php:32
 msgid "Premium listings shown"
-msgstr "Премиум задания показаны"
+msgstr "Премиум заявки показаны"
 
 #: admin/templates-home.php:70
 msgid "Subcategories limit "
@@ -525,7 +525,7 @@ msgstr "Подписаться на этот поиск"
 
 #: alert-form.php:82
 msgid "Subscribe now"
-msgstr "Подписаться сейчас"
+msgstr "Подписаться на заявки"
 
 #: common/head.php:24 item.php:200 loop-grid.php:67 loop-list.php:73
 #: loop-search-grid.php:72 loop-search-grid.php:130 loop-search-grid.php:183
@@ -640,7 +640,7 @@ msgstr "Категории"
 
 #: functions.php:318
 msgid "See more listings..."
-msgstr "Посмотреть все задания"
+msgstr "Посмотреть все заявки"
 
 #: functions.php:426 item-post.php:56
 msgid "Publish a listing"
@@ -682,11 +682,11 @@ msgstr "Аккаунт"
 
 #: functions.php:435 functions.php:473 search.php:136 user-alerts.php:73
 msgid "Listings"
-msgstr "задания"
+msgstr "Заявки"
 
 #: functions.php:436 functions.php:478 user-alerts.php:32 user-alerts.php:52
 msgid "Alerts"
-msgstr "Оповещения"
+msgstr "Подписки"
 
 #: functions.php:437 user-profile.php:32 user-profile.php:45
 msgid "Update account"
@@ -896,7 +896,7 @@ msgstr "Цена"
 
 #: item-post.php:125
 msgid "Listing Location"
-msgstr "Местоположение задания"
+msgstr "Местоположение заявки"
 
 #: item-post.php:129 search-sidebar.php:58 user-profile.php:88
 msgid "Country"
@@ -971,7 +971,7 @@ msgstr "Это ваше собственное задание, и вы не мо
 msgid ""
 "You must log in or register a new account in order to contact the advertiser"
 msgstr ""
-"Вы должны войти или зарегистрироваться чтобы связаться с автором задания"
+"Вы должны войти или зарегистрироваться чтобы связаться с автором заявки"
 
 #: item-sidebar.php:60
 #, php-format
@@ -1122,7 +1122,7 @@ msgstr "Пометить как оскорбительное"
 
 #: item.php:316
 msgid "Related listings"
-msgstr "Похожие задания"
+msgstr "Похожие заявки"
 
 #: loop-grid.php:66 loop-list.php:72 loop-search-grid.php:71
 #: loop-search-grid.php:129 loop-search-grid.php:182 loop-search-list.php:73
@@ -1155,11 +1155,11 @@ msgstr "Активировать"
 
 #: main.php:46
 msgid "Premium Listings"
-msgstr "Премиум задания"
+msgstr "Премиум заявки"
 
 #: main.php:108
 msgid "Latest Listings"
-msgstr "Последние задания"
+msgstr "Последние заявки"
 
 #: main.php:114
 msgid "There aren't listings available at this moment"
@@ -1167,7 +1167,7 @@ msgstr "заданий пока нет"
 
 #: main.php:124
 msgid "See all listings"
-msgstr "Посмотреть все задания"
+msgstr "Посмотреть все заявки"
 
 #: main.php:131
 #, php-format
@@ -1184,7 +1184,7 @@ msgstr "Расширенный поиск"
 
 #: search-sidebar.php:49
 msgid "Your search"
-msgstr "Ваш поиск"
+msgstr "Что ищем"
 
 #: search-sidebar.php:85
 msgid "Show only"
@@ -1192,7 +1192,7 @@ msgstr "Показать только"
 
 #: search-sidebar.php:90
 msgid "listings with pictures"
-msgstr "задания с фотографиями"
+msgstr "заявки с фотографиями"
 
 #: search-sidebar.php:103
 msgid "Min"
@@ -1230,7 +1230,7 @@ msgstr "%1$d - %2$d из %3$d заданий"
 
 #: search.php:123
 msgid "Premium listings"
-msgstr "Премиум задания"
+msgstr "Премиум заявки"
 
 #: search.php:151
 msgid "Other searches that may interest you"
@@ -1242,7 +1242,7 @@ msgstr "У Вас еще избранных поисков"
 
 #: user-alerts.php:65
 msgid "Alert"
-msgstr "Оповещение"
+msgstr "Подписка"
 
 #: user-alerts.php:66
 msgid "This action can't be undone. Are you sure you want to continue?"
@@ -1251,7 +1251,7 @@ msgstr ""
 
 #: user-alerts.php:67
 msgid "Delete this alert"
-msgstr "Удалить это оповещение"
+msgstr "Удалить эту подписку"
 
 #: user-change_email.php:33 user-change_email.php:47
 msgid "Change e-mail"
@@ -1303,11 +1303,11 @@ msgstr "Восстановить Ваш пароль"
 
 #: user-items.php:58
 msgid "My listings"
-msgstr "Мои задания"
+msgstr "Мои заявки"
 
 #: user-items.php:62
 msgid "No listings have been added yet"
-msgstr "задания ещё не были добавлены"
+msgstr "Заявки ещё не были добавлены"
 
 #: user-login.php:35
 msgid "Please Login"
@@ -1359,7 +1359,7 @@ msgstr "Описание пользователя"
 
 #: user-public-profile.php:101
 msgid "Latest listings"
-msgstr "Последние задания"
+msgstr "Последние заявки"
 
 #: user-recover.php:55
 msgid "Send me a new password"

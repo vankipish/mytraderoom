@@ -96,7 +96,7 @@
     <div class="container">
       <div id="logo"> <?php echo logo_header(); ?> <span id="description"><?php echo osc_page_description(); ?></span> </div>
       <h2 class="pull-right toggle"><i class="fa fa-align-justify"></i></h2>
-      <ul class="links">
+      <ul class="links" style="float: right">
         <?php
         osc_reset_static_pages();
         while( osc_has_static_pages() ) { ?>
@@ -105,32 +105,16 @@
         }
         osc_reset_static_pages();
         ?>
-      <!--  <li> <a href="<?php echo osc_contact_url(); ?>">
-            <?php _e('Contact', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </a> </li> -->
+        <li> <a href="<?php echo osc_contact_url(); ?>">
+            <?php _e('Обратная связь', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a> </li>
       </ul>
 
-        <ul class="contact_button" style="position:absolute;left: 38.5%; margin: 5px 0 0 0 ">
-        <li id="menu" style="margin-right: 20px; cursor: pointer"><a id="chk1" >Я заказчик</a></li>
-
-        <li id="menu" style="margin-left: 20px; cursor: pointer"><a id="chk2"" >Я исполнитель</a></li>
-        </ul>
-
-      </div>
     </div>
   </div>
- <div class="zakazchik" style="display: none" id="el1">
-  <div class="main_header">
-    <div class="container">
-      <div class="publish">
-        <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
-          <a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
-            <?php _e("Опубликовать заявку",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
-          </a>
-        <?php } ?>
-      </div>
-    </div>
-  </div>
+  <!--</div>-->
+
+
   <?php
   if( osc_is_home_page() ) {
     if(osc_get_preference('show_banner', 'osclasswizards_theme')=='1'){
@@ -138,72 +122,98 @@
       if(homepage_image()) {
         echo homepage_image();
       } else {
-
         echo '<img src="'.osc_current_web_theme_url('images/banner.jpg').'" />';
-
       }
       echo '</div>';
     }
     ?>
-    <div class="banner_none" id="form_vh_map">
-      <p class="title_for_search" style="text-align: center; color: #0eaae5; margin: 0 0 15px 0" >Поиск заявок на услуги или товары</p>
-      <form action="<?php echo osc_base_url(true); ?>" id="main_search" method="get" class="search nocsrf" >
+
+    <div class="description" id="here" style="border-top: solid 3px #0c9ec7; line-height: normal ; font-size: medium; color: #d0eaf2; background-color: #21292d;">
+      <div>
+        <div style="float: left; width: 50%">
+          <div style="float: right; padding: 10px 5% 10px 10%">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/преобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
+        </div>
+        <div style="float: right; width: 50%">
+          <div style="float: left; padding: 10px 10% 10px 2%">Вы готовы предоставить услуги высокого качества, либо у Вас есть что-то, что Вы хотите продать или сдать в аренду. Если Вы ищите клиентов или покупателей - жмите "Я - исполнитель".  </div>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </div>
+
+    <div class="banner_none" id="form_vh_map" style="padding: 0">
+
+      <ul class="contact_button" style="text-align: center; margin: 0 0 5px 0; padding-top: 10px">
+        <li class="main_button" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk1" href="#here" >Я заказчик</a></li>
+
+        <li class="main_button" style="margin: 10px 20px 10px 20px; cursor: pointer"><a id="chk2"" href="#here" >Я исполнитель</a></li>
+      </ul>
+      <div class="zakazchik" id="el1" style="display: none">
         <div class="container">
-          <input type="hidden" name="page" value="search"/>
-          <div class="main-search">
-            <div class="form-filters">
-              <div class="row">
-                <?php $showCountry  = (osc_get_preference('show_search_country', 'osclasswizards_theme') == '1') ? true : false; ?>
-                <div class="col-md-<?php echo ($showCountry)? '3' : '4'; ?>">
-                  <div class="cell">
-                    <input type="text" name="sPattern" id="query" class="input-text" value="" placeholder="<?php echo osc_esc_html(__(osc_get_preference('keyword_placeholder', 'osclasswizards_theme'), OSCLASSWIZARDS_THEME_FOLDER)); ?>" />
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <?php  if ( osc_count_categories() ) { ?>
-                    <div class="cell selector">
-                      <?php osc_categories_select('sCategory', null, osc_esc_html(__('Select a category', OSCLASSWIZARDS_THEME_FOLDER))) ; ?>
+          <?php echo '<img src="'.osc_current_web_theme_url('images/tutorial.jpg').'" style="border: solid 2px #0c9ec7" />'; ?>
+          <ul class="contact_button" style="text-align: center; margin: 5px 0 5px 0">
+            <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
+              <li style="margin: 10px 20px 10px 20px"><a class="btn btn-success" href="<?php echo osc_item_post_url_in_category() ; ?>">
+                  <?php _e("Опубликовать заявку",  OSCLASSWIZARDS_THEME_FOLDER);?></a></li>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+      <div id="el2" style="display: none">
+        <p class="title_for_search" style="text-align: center; color: #0eaae5; margin: 0 0 15px 0" >Найдите своего клиента!</p>
+        <form action="<?php echo osc_base_url(true); ?>" id="main_search" method="get" class="search nocsrf" >
+          <div class="container">
+            <input type="hidden" name="page" value="search"/>
+            <div class="main-search">
+              <div class="form-filters" style="margin-bottom: 15px">
+                <div class="row">
+                  <?php $showCountry  = (osc_get_preference('show_search_country', 'osclasswizards_theme') == '1') ? true : false; ?>
+                  <div class="col-md-<?php echo ($showCountry)? '3' : '4'; ?>">
+                    <div class="cell">
+                      <input type="text" name="sPattern" id="query" class="input-text" value="" placeholder="<?php echo osc_esc_html(__(osc_get_preference('keyword_placeholder', 'osclasswizards_theme'), OSCLASSWIZARDS_THEME_FOLDER)); ?>" />
                     </div>
-                  <?php  } ?>
-                </div>
-                <?php if($showCountry) { ?>
+                  </div>
+                  <div class="col-md-2">
+                    <?php  if ( osc_count_categories() ) { ?>
+                      <div class="cell selector">
+                        <?php osc_categories_select('sCategory', null, osc_esc_html(__('Select a category', OSCLASSWIZARDS_THEME_FOLDER))) ; ?>
+                      </div>
+                    <?php  } ?>
+                  </div>
+                  <?php if($showCountry) { ?>
+                    <div class="col-md-2">
+                      <div class="cell selector">
+                        <?php osclasswizards_countries_select('sCountry', 'sCountry', __('Выберите страну', OSCLASSWIZARDS_THEME_FOLDER));?>
+                      </div>
+                    </div>
+                  <?php } ?>
                   <div class="col-md-2">
                     <div class="cell selector">
-                      <?php osclasswizards_countries_select('sCountry', 'sCountry', __('Выберите страну', OSCLASSWIZARDS_THEME_FOLDER));?>
+                      <?php osclasswizards_regions_select('sRegion', 'sRegion', __('Select a region', OSCLASSWIZARDS_THEME_FOLDER)) ; ?>
                     </div>
                   </div>
-                <?php } ?>
-                <div class="col-md-2">
-                  <div class="cell selector">
-                    <?php osclasswizards_regions_select('sRegion', 'sRegion', __('Select a region', OSCLASSWIZARDS_THEME_FOLDER)) ; ?>
+                  <div class="col-md-2">
+                    <div class="cell selector">
+                      <?php osclasswizards_cities_select('sCity', 'sCity', __('Select a city', OSCLASSWIZARDS_THEME_FOLDER)) ; ?>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="cell selector">
-                    <?php osclasswizards_cities_select('sCity', 'sCity', __('Select a city', OSCLASSWIZARDS_THEME_FOLDER)) ; ?>
-                  </div>
-                </div>
-                <div class="col-md-<?php echo ($showCountry)? '1' : '2'; ?>">
-                  <div class="cell reset-padding">
-                    <button  class="btn btn-success btn_search"><i class="fa fa-search"></i> <span <?php echo ($showCountry)? '' : 'class="showLabel"'; ?>><?php echo osc_esc_html(__("Search", OSCLASSWIZARDS_THEME_FOLDER));?></span> </button>
+                  <div class="col-md-<?php echo ($showCountry)? '1' : '2'; ?>">
+                    <div class="cell reset-padding">
+                      <button  class="btn btn-success btn_search"><i class="fa fa-search"></i> <span <?php echo ($showCountry)? '' : 'class="showLabel"'; ?>><?php echo osc_esc_html(__("Search", OSCLASSWIZARDS_THEME_FOLDER));?></span> </button>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div id="message-seach"></div>
             </div>
-            <div id="message-seach"></div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
     <?php
-
   }
   ?>
   <?php osc_show_widgets('header'); ?>
- </div>
 </header>
-
-
 <?php osc_run_hook('before-content'); ?>
 <div class="wrapper" id="content">
   <div class="container">

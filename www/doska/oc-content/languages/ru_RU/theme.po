@@ -2,17 +2,18 @@
 # This file is distributed under the same license as the Bender package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-11 13:55+0300\n"
+"PO-Revision-Date: 2016-05-25 23:58+0400\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7\n"
 "Project-Id-Version: Bender\n"
 "POT-Creation-Date: \n"
 "Last-Translator: Osclass <info@os-class.ru>\n"
 "Language-Team: \n"
+"Language: ru_RU\n"
 
 #: 404.php:30
 msgid "Sorry but I can't find the page you're looking for"
@@ -119,7 +120,7 @@ msgstr "Найти местодержатель"
 
 #: admin/settings.php:56
 msgid "Show lists as:"
-msgstr "Показать список объявлений как"
+msgstr "Показать список заявок как"
 
 #: admin/settings.php:59
 msgid "Gallery"
@@ -191,8 +192,7 @@ msgstr "Свяжитесь с нами"
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: contact.php:41 contact.php:54 item-sidebar.php:93
-#: user-public-sidebar.php:41
+#: contact.php:41 contact.php:54 item-sidebar.php:93 user-public-sidebar.php:41
 msgid "optional"
 msgstr "Опционально"
 
@@ -236,7 +236,7 @@ msgstr "Зарегистрироваться"
 
 #: footer.php:50 header.php:60
 msgid "Publish your ad for free"
-msgstr "Опубликовать задание"
+msgstr "Опубликовать заявку"
 
 #: footer.php:65 functions.php:376 user-public-sidebar.php:26
 msgid "Contact"
@@ -252,11 +252,11 @@ msgstr "например, программист PHP"
 
 #: functions.php:357 item-post.php:40
 msgid "Publish a listing"
-msgstr "Опубликовать задание"
+msgstr "Опубликовать заявку"
 
 #: functions.php:358
 msgid "Edit your listing"
-msgstr "Редактировать задание"
+msgstr "Редактировать заявку"
 
 #: functions.php:359 item-send-friend.php:31
 msgid "Send to a friend"
@@ -288,7 +288,7 @@ msgstr "Аккаунт"
 
 #: functions.php:366 functions.php:404 search.php:128 user-alerts.php:51
 msgid "Listings"
-msgstr "Объявления"
+msgstr "Заявки"
 
 #: functions.php:367 functions.php:409 user-alerts.php:32 user-alerts.php:37
 msgid "Alerts"
@@ -406,14 +406,13 @@ msgstr "Информация продавца"
 msgid "Name"
 msgstr "Имя"
 
-#: item-post.php:127 user-login.php:38 user-recover.php:37
-#: user-register.php:45
+#: item-post.php:127 user-login.php:38 user-recover.php:37 user-register.php:45
 msgid "E-mail"
 msgstr "Электронная почта"
 
 #: item-post.php:134
 msgid "Show e-mail on the listing page"
-msgstr "Показать электронную почту в объявлении"
+msgstr "Показать электронную почту в заявке"
 
 #: item-post.php:153 user-change_email.php:59 user-change_password.php:64
 #: user-change_username.php:102 user-profile.php:114
@@ -466,17 +465,17 @@ msgstr "Пометить как оскорбительное"
 
 #: item-sidebar.php:52
 msgid "The listing is expired. You can't contact the publisher."
-msgstr "Задание не актуально. Вы не можете связаться с автором."
+msgstr "Заявка не актуальна. Вы не можете связаться с автором."
 
 #: item-sidebar.php:56
 msgid "It's your own listing, you can't contact the publisher."
-msgstr "Это ваше собственное задание, и вы не можете связаться с автором."
+msgstr "Это ваша собственная заявка, и вы не можете связаться с автором."
 
 #: item-sidebar.php:60
 msgid ""
 "You must log in or register a new account in order to contact the advertiser"
 msgstr ""
-"Вы должны войти или зарегистрироваться чтобы связаться с автором объявления"
+"Вы должны войти или зарегистрироваться чтобы связаться с автором заявки"
 
 #: item-sidebar.php:70
 msgid "Name: %s"
@@ -571,7 +570,7 @@ msgstr ""
 
 #: item.php:141
 msgid "Related listings"
-msgstr "Похожие объявления"
+msgstr "Похожие заявки"
 
 #: item.php:152
 msgid "Comments"
@@ -605,7 +604,7 @@ msgstr "Активировать"
 
 #: main.php:38
 msgid "Latest Listings"
-msgstr "Последние объявления"
+msgstr "Последние заявки"
 
 #: main.php:46 search.php:81
 msgid "Grid"
@@ -613,7 +612,7 @@ msgstr "Сетка"
 
 #: main.php:57
 msgid "See all listings"
-msgstr "Посмотреть все объявления"
+msgstr "Посмотреть все заявки"
 
 #: search-sidebar.php:38
 msgid "Your search"
@@ -625,7 +624,7 @@ msgstr "Показать только"
 
 #: search-sidebar.php:54
 msgid "listings with pictures"
-msgstr "Объявления с фотографиями"
+msgstr "Заявки с фотографиями"
 
 #: search-sidebar.php:62
 msgid "Min"
@@ -729,11 +728,11 @@ msgstr "Восстановить Ваш пароль"
 
 #: user-items.php:41
 msgid "My listings"
-msgstr "Мои объявления"
+msgstr "Мои заявки"
 
 #: user-items.php:43
 msgid "No listings have been added yet"
-msgstr "У Вас еще нет объявлений"
+msgstr "У Вас еще нет заявок"
 
 #: user-login.php:30
 msgid "Access to your account"
@@ -789,7 +788,7 @@ msgstr "Описание пользователя"
 
 #: user-public-profile.php:80
 msgid "Latest listings"
-msgstr "Последние объявления"
+msgstr "Последние заявки"
 
 #: user-recover.php:45
 msgid "Send me a new password"
@@ -832,15 +831,15 @@ msgstr "Вложение"
 
 #: main.php:41
 msgid "There aren't listings available at this moment"
-msgstr "Объявлений пока нет"
+msgstr "Заявок пока нет"
 
 #: search.php:75
 msgid "%1$d - %2$d of %3$d listings"
-msgstr "%1$d - %2$d из %3$d объявлений"
+msgstr "%1$d - %2$d из %3$d заявок"
 
 #: search.php:121
 msgid "Premium listings"
-msgstr "Премиум объявления"
+msgstr "Премиум заявки"
 
 msgid "http://osclass.org/"
 msgstr "http://osclass.org/"
@@ -869,18 +868,18 @@ msgid ""
 "\">classifieds scripts</a> software <strong>Osclass</strong>"
 msgstr ""
 "Наш сайт с гордостью использует <a title=\"Osclass web\" href=\"%s\">скрипт "
-"доски объявлений</a> <strong>Osclass</strong>"
+"доски заявок</a> <strong>Osclass</strong>"
 
 #: admin/settings.php:74
 msgid "Ads management"
-msgstr "Управление объявлениями"
+msgstr "Управление заявкими"
 
 #: admin/settings.php:78
 msgid ""
 "In this section you can configure your site to display ads and start "
 "generating revenue."
 msgstr ""
-"В этом разделе вы можете настроить ваш сайт для показа объявлений и начать "
+"В этом разделе вы можете настроить ваш сайт для показа заявок и начать "
 "получать доход."
 
 #: admin/settings.php:78
@@ -889,7 +888,7 @@ msgid ""
 "copy and paste here the provided code for ads."
 msgstr ""
 "Если вы используете онлайн-рекламную площадку, например, Google Adsense, "
-"скопируйте и вставьте сюда предоставленный код для объявлений."
+"скопируйте и вставьте сюда предоставленный код для заявок."
 
 #: admin/settings.php:84
 msgid "Header 728x90"
@@ -901,9 +900,9 @@ msgid ""
 "above the search results. Note that the size of the ad has to be 728x90 "
 "pixels."
 msgstr ""
-"Это задание будет показано в верхней части вашего сайта, рядом с "
-"названием сайта и над результатами поиска. Следует отметить, что размер "
-"объявления должен быть 728x90 пикселей."
+"Эта заявка будет показано в верхней части вашего сайта, рядом с названием "
+"сайта и над результатами поиска. Следует отметить, что размер заявки должен "
+"быть 728x90 пикселей."
 
 #: admin/settings.php:92
 msgid "Homepage 728x90"
@@ -915,9 +914,9 @@ msgid ""
 "at the top and bottom of your site homepage. Note that the size of the ad "
 "has to be 728x90 pixels."
 msgstr ""
-"Это задание будет показано на главной странице вашего сайта. Задание "
-"будет отображаться как в верхней, так и нижней частях главной страницы "
-"сайта. Следует отметить, что размер объявления должен быть 728x90 пикселей."
+"Эта заявка будет показана на главной странице вашего сайта. Заявка будет "
+"отображаться как в верхней, так и нижней частях главной страницы сайта. "
+"Следует отметить, что размер заявки должен быть 728x90 пикселей."
 
 #: admin/settings.php:100
 msgid "Search results 728x90 (top of the page)"
@@ -928,8 +927,8 @@ msgid ""
 "This ad will be shown on top of the search results of your site. Note that "
 "the size of the ad has to be 728x90 pixels."
 msgstr ""
-"Это задание будет показываться в верхней части результатов поиска сайта. "
-"Следует отметить, что размер объявления должен быть 728x90 пикселей."
+"Эта заявка будет показываться в верхней части результатов поиска сайта. "
+"Следует отметить, что размер заявки должен быть 728x90 пикселей."
 
 #: admin/settings.php:108
 msgid "Search results 728x90 (middle of the page)"
@@ -940,8 +939,8 @@ msgid ""
 "This ad will be shown among the search results of your site. Note that the "
 "size of the ad has to be 728x90 pixels."
 msgstr ""
-"Это задание будет показываться среди результатов поиска вашего сайта. "
-"Следует отметить, что размер объявления должен быть 728x90 пикселей."
+"Эта заявка будет показываться среди результатов поиска вашего сайта. Следует "
+"отметить, что размер заявки должен быть 728x90 пикселей."
 
 #: admin/settings.php:116
 msgid "Sidebar 300x250"
@@ -952,9 +951,9 @@ msgid ""
 "This ad will be shown at the right sidebar of your website, on the product "
 "detail page. Note that the size of the ad has to be 300x350 pixels."
 msgstr ""
-"Это задание будет показываться в правой боковой панели вашего сайта, на "
-"странице подробнее о товаре. Следует отметить, что размер объявления должен "
-"быть 300x350 пикселей."
+"Эта заявка будет показываться в правой боковой панели вашего сайта, на "
+"странице подробнее о товаре. Следует отметить, что размер заявки должен быть "
+"300x350 пикселей."
 
 #: user-change_email.php:76
 msgid "Email: this field is required"

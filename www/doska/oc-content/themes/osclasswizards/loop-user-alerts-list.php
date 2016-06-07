@@ -27,7 +27,7 @@ if(View::newInstance()->_exists('listType')){
 
 ?>
 
-<div class="toolbar toolbars"><span class="sorting"> <a href="<?php echo osc_user_alerts_url(); ?>?sShowAs=list" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_user_alerts_url(); ?>?sShowAs=gallery" class="grid-button <?php if(osclasswizards_show_as()=='gallery') echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i></span></a> </span> </div>
+<!--<div class="toolbar toolbars"><span class="sorting"> <a href="<?php echo osc_user_alerts_url(); ?>?sShowAs=list" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_user_alerts_url(); ?>?sShowAs=gallery" class="grid-button <?php if(osclasswizards_show_as()=='gallery') echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i></span></a> </span> </div>-->
 <ul class="listing-card-list" id="listing-card-list">
   <?php
 	$i = 0;
@@ -56,16 +56,12 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
-              <?php if( is_voting_enabled() ){ ?>
-              <div class="rate_me rate_me_star">
-                <?php osclasswizards_item_star_rating( osc_item_id() ); ?>
-                <span><?php echo osclasswizards_item_avg_rating( osc_item_id()) ; ?></span> </div>
-              <?php } ?>
-              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
-                <?php if( osc_item_region()!='' ) { ?>
-                (<?php echo osc_item_region(); ?>)
-                <?php } ?>
-                </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
+
+              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
+                  <?php if( osc_item_region()!='' ) { ?>
+                    (<?php echo osc_item_region(); ?>)
+                  <?php } ?>
+                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
                   <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
                   <!-- Добавил строку для вывода минимальной цены-->
@@ -121,18 +117,16 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_premium_url() ; ?>" class="title" title="<?php echo osc_esc_html(osc_premium_title()) ; ?>"><?php echo osc_premium_title() ; ?></a></h4>
-              <?php if( is_voting_enabled() ){ ?>
-              <div class="rate_me rate_me_star">
-                <?php osclasswizards_item_star_rating( osc_itemosc_premium_id() ); ?>
-                <span><?php echo osclasswizards_item_avg_rating( osc_premium_id()) ; ?></span> </div>
-              <?php } ?>
-              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_premium_category_id() ); ?>"></i><?php echo osc_premium_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
+
+              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
                   <?php if( osc_item_region()!='' ) { ?>
                     (<?php echo osc_item_region(); ?>)
                   <?php } ?>
-                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_premium_pub_date()); ?> </span>
+                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"> <?php echo osc_format_price(osc_premium_price(), osc_premium_currency_symbol()); ?></span>
+                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
+                  <!-- Добавил строку для вывода минимальной цены-->
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_premium_description(), 250 ); ?></p>
@@ -186,18 +180,16 @@ if(View::newInstance()->_exists('listType')){
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
-              <?php if( is_voting_enabled() ){ ?>
-              <div class="rate_me rate_me_star">
-                <?php osclasswizards_item_star_rating( osc_item_id() ); ?>
-                <span><?php echo osclasswizards_item_avg_rating( osc_item_id()) ; ?></span> </div>
-              <?php } ?>
-              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i><?php echo osc_item_category() ; ?></span> <span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
-                <?php if( osc_item_region()!='' ) { ?>
-                (<?php echo osc_item_region(); ?>)
-                <?php } ?>
-                </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?></span>
+
+              <div class="attribute_list"> <span class="category"><i class="fa fa-<?php echo osclasswizards_category_icon( osc_item_category_id() ); ?>"></i> <?php echo osc_item_category() ; ?></span> <?php if (osc_item_city()) {?><span class="location"><i class="fa fa-map-marker"></i> <?php echo osc_item_city(); ?>
+                  <?php if( osc_item_region()!='' ) { ?>
+                    (<?php echo osc_item_region(); ?>)
+                  <?php } ?>
+                  </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                <span class="currency-value"> <?php echo osc_format_price(osc_item_price()); ?></span>
+                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
+                  <!-- Добавил строку для вывода минимальной цены-->
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>

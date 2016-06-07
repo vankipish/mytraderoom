@@ -129,7 +129,7 @@
             $this->dao->where($conditions);
           //Добавил сюда сортировку комментов по цене предложений(в ячейке s_title)
             $this->dao->orderBy("s_title",'ASC');
-            $this->dao->orderBy("dt_pub_date",'DESC');
+            $this->dao->orderBy("dt_pub_date",'ASC');
 
             if( $page !== 'all' && $commentsPerPage > 0 ) {
                 $this->dao->limit(($page*$commentsPerPage), $commentsPerPage);

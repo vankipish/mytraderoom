@@ -222,7 +222,8 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                             <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
                                 <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
                                 <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px"></a>
-                    <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
+
+                                <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
                         <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
                     <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
                         <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
