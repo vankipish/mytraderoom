@@ -60,6 +60,14 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
 
 ?>
 
+<script src="https://yastatic.net/share2/share.js" async="async"></script>
+
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 5501574, onlyWidgets: true});
+</script>
+
 <div class="row">
     <div class="col-sm-7 col-md-8">
         <div id="item-content">
@@ -93,9 +101,9 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                     <?php if ( osc_item_pub_date() !== '' ) { printf( __('<i class="fa fa-calendar-o"></i> Published date: %1$s', OSCLASSWIZARDS_THEME_FOLDER), osc_format_date( osc_item_pub_date() ) ); } ?>
                 </li>
                 <?php if ( osc_item_mod_date() !== '' ) {?>
-                <li>
-                    <?php if ( osc_item_mod_date() !== '' ) { printf( __('<span class="update"><i class="fa fa-calendar"></i> Modified date:</span> %1$s', OSCLASSWIZARDS_THEME_FOLDER), osc_format_date( osc_item_mod_date() ) ); } ?>
-                </li>
+                    <li>
+                        <?php if ( osc_item_mod_date() !== '' ) { printf( __('<span class="update"><i class="fa fa-calendar"></i> Modified date:</span> %1$s', OSCLASSWIZARDS_THEME_FOLDER), osc_format_date( osc_item_mod_date() ) ); } ?>
+                    </li>
                 <?php } ?>
                 <?php if (count($location)>0) { ?>
                     <li>
@@ -149,7 +157,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 </div>
                 <?php osc_run_hook('item_detail', osc_item() ); ?>
                 <ul class="contact_button">
-                    <!-- <li> Закоментил, нафиг надо
+                    <!-- <li>
             <?php if( !osc_item_is_expired () ) { ?>
             <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
             <?php     if(osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ) { ?>
@@ -160,47 +168,25 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php     } ?>
             <?php } ?>
             </li> -->
-                      <?php if ((osc_logged_user_id() !== osc_user_id()) || osc_user_id() == 0) { ?>
-                    <li id="menu"><a href="#here" >Оставить предложение</a></li>
-                      <?php } ?>
+                    <?php if ((osc_logged_user_id() !== osc_user_id()) || osc_user_id() == 0) { ?>
+                        <li id="menu"><a href="#here" >Предложить цену</a></li>
+                    <?php } ?>
                     <?php if(function_exists('watchlist')) {?>
                         <li>
                             <?php watchlist(); ?>
                         </li>
                     <?php } ?>
                     <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
-                            смотреть другие объявления автора
+                            другие заявки автора
                         </a> </li>
-                    <li><a href="<?php echo osc_item_send_friend_url(); ?>" rel="nofollow">
-                            <?php _e('Share', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                        </a></li>
+                    <li id="menu1"><a href="#vk_comments" >Обсудить</a></li>
                 </ul>
 
                 <?php osc_run_hook('location'); ?>
             </div>
+
+            <div class="share" style="overflow: hidden"><div class="ya-share2" style="float: right" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,lj" data-title="<?=osc_item_title();?>" data-description="<?=osc_item_description();?>" data-image="<?="http://trutorg.com/oc-content/themes/osclasswizards/images/logo_for_VK2.jpg" ?>" ></div></div>
         </div>
-        <!-- <div class="block_list">
-      <div id="useful_info">
-        <h1 class="title">
-          <?php _e('Useful information', OSCLASSWIZARDS_THEME_FOLDER); ?>
-        </h1>
-        <ul>
-          <li>
-            <?php _e('Avoid scams by acting locally or paying with PayPal', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </li>
-          <li>
-            <?php _e('Never pay with Western Union, Moneygram or other anonymous payment services', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </li>
-          <li>
-            <?php _e('Don\'t buy or sell outside of your country. Don\'t accept cashier cheques from outside your country', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </li>
-          <li>
-            <?php _e('This site is never involved in any transaction, and does not handle payments, shipping, guarantee transactions, provide escrow services, or offer "buyer protection" or "seller certification"', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          </li>
-        </ul>
-      </div>
-    </div>
-    -->
         <?php if( osc_comments_enabled() ) { ?>
         <?php if( osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ) { ?>
         <div id="comments">
@@ -217,20 +203,21 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 <div class="comments_list">
                     <?php while ( osc_has_item_comments() ) { ?>
                         <div class="comment" style="border-bottom: ridge">
-                            <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();
-                                ?></h4>  <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
-                            <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
-                                <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
-                                <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px"></a>
 
-                                <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
-                        <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
-                    <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
-                        <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
-                    <?php }?>
-                            <?php } else { ?>
-                                <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
-                            <?php }?>
+                            <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();?>
+                                <span style="float: right; font-size: 80%"><?php echo osc_choice() ?></span> </h4>
+                                <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
+                                <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
+                                    <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
+                                    <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px; color: #f7aa00"></a>
+                                    <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
+                                        <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
+                                    <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
+                                        <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
+                                    <?php }?>
+                                <?php } else { ?>
+                                    <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
+                                <?php }?>
                             <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>">подробнее</a>
                             <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
                                 <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
@@ -317,7 +304,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                         <?php CommentForm::email_input_text(); ?>
                                     </div>
                                 </div>
-                                <!--// добавил поле ввода номера телефона-->
+
                                 <div class="form-group">
                                     <label class="control-label" for="authorPhone">
                                         Ваш номер телефона:
@@ -334,11 +321,11 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                     Ваше ценовое предложение<sup>*</sup>
                                 </label>
 
-                                <!--Добавил сюда контрол из ввода цены -->
+
                                 <div class="controls">
                                     <ul class="row">
                                         <li class="col-sm-5 col-md-5">
-                                            <!-- если объявление новое цена предложения расчитывается ф-ей CommentForm::newprice_input_text, если новое New_price_input_text -->
+
                                             <?php if( osc_count_item_comments() >= 1 )
                                             {
                                                 CommentForm::New_price_fromMin_input_text(null,osc_item_min_price());
@@ -347,7 +334,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                             ?>
                                         </li>
                                         <li class="col-sm-7 col-md-7">
-                                            <!--Здесь выводится валюта = указанной при размещении об.-->
+
                                             <input type="text" style="background-color: gainsboro " value="<?php echo osc_item_field("fk_c_currency_code") ?>" disabled>
                                         </li>
                                     </ul>
@@ -357,7 +344,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="body">
-                                    <?php _e('Comment', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                                    Комментарий (так же можете добавить ссылки на Ваши работы):
                                 </label>
                                 <div class="controls textarea">
                                     <?php CommentForm::body_input_textarea(); ?>
@@ -374,6 +361,12 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 </div>
             </div>
         <?php } ?>
+
+        <div style="margin: 15px 0 15px 0; border: solid 1px #eaeaea"><div id="vk_comments"></div>
+            <script type="text/javascript">
+                VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*",page_id: <?php echo osc_item_id() ?> });
+            </script></div>
+
     </div>
     <?php } ?>
     <?php } ?>
@@ -434,4 +427,3 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
     </div>
 <?php } ?>
 <?php osc_current_web_theme_path('footer.php') ; ?>
-

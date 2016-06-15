@@ -14,14 +14,15 @@ function js_showOrHideDiv($id) // появление информации в п�
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function js_showZakazchikField($id) // появление информации в предложениях
+function js_showZakazchikField($id) 
 {
     var chek = document.getElementById('chk1');
     var unchek = document.getElementById('chk2');
     var elem = document.getElementById('el1');
     $('#chk1').on("click", function(event)
     {
-        $('#el3').fadeOut(300);$('#el2').fadeOut(300,function()
+        //$('#el3').fadeOut(300);
+        $('#el2').fadeOut(300,function()
     {
         $('#'+elem.id).fadeIn(300);
         chek.style.background = "radial-gradient(#1DC5E5, #3CCEE5)";
@@ -37,7 +38,7 @@ function js_showZakazchikField($id) // появление информации �
     });
 
 }
-function js_showIspolnitelField($id) // появление информации в предложениях
+function js_showIspolnitelField($id) 
 {
     var chek = document.getElementById('chk2');
     var unchek = document.getElementById('chk1');
@@ -47,7 +48,7 @@ function js_showIspolnitelField($id) // появление информации 
         $('#el1').fadeOut(300,function()
         {
             $('#el2').fadeIn(300);
-            $('#el3').fadeIn(300);
+            //$('#el3').fadeIn(300);
             chek.style.background = "radial-gradient(#1DC5E5, #3CCEE5)";
             chek.style.color = "#F1E8E1";
             chek.style.textShadow = "1px 1px 2px black";
@@ -65,13 +66,10 @@ $(document).ready(function(){
     $(".main_button").on("click","a", function (event) {
         //отменяем стандартную обработку нажатия по ссылке
         event.preventDefault();
-
         //забираем идентификатор бока с атрибута href
         var id  = $(this).attr('href'),
-
         //узнаем высоту от начала страницы до блока на который ссылается якорь
             top = $(id).offset().top;
-
         //анимируем переход на расстояние - top за 1500 мс
         $("body").delay(100).animate({scrollTop: top }, 500);
     });
@@ -79,16 +77,18 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#menu").on("click","a", function (event) {
-        //отменяем стандартную обработку нажатия по ссылке
         event.preventDefault();
-
-        //забираем идентификатор бока с атрибута href
         var id  = $(this).attr('href'),
-
-        //узнаем высоту от начала страницы до блока на который ссылается якорь
             top = $(id).offset().top;
+        $("body").delay(100).animate({scrollTop: top -200}, 500);
+    });
+});
 
-        //анимируем переход на расстояние - top за 1500 мс
+$(document).ready(function(){
+    $("#menu1").on("click","a", function (event) {
+        event.preventDefault();
+        var id  = $(this).attr('href'),
+            top = $(id).offset().top;
         $("body").delay(100).animate({scrollTop: top -200}, 500);
     });
 });

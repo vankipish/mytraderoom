@@ -94,7 +94,7 @@
 
   <div class="main_header" id="main_header">
     <div class="container">
-      <div id="logo"> <?php echo logo_header(); ?> <span id="description"><?php echo osc_page_description(); ?></span> </div>
+      <div id="logo"><?php  echo '<img src="'.osc_current_web_theme_url('images/logo.png').'" />';?><?php echo logo_header(); ?><span id="description"><?php echo osc_page_description(); ?></span>  </div>
       <h2 class="pull-right toggle"><i class="fa fa-align-justify"></i></h2>
       <ul class="links" style="float: right">
         <?php
@@ -131,7 +131,7 @@
     <div class="description" id="here" style="border-top: solid 3px #0c9ec7; line-height: normal ; font-size: medium; color: #d0eaf2; background-color: #21292d;">
       <div>
         <div style="float: left; width: 50%">
-          <div style="float: right; padding: 10px 5% 10px 10%">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/преобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
+          <div style="float: right; padding: 10px 5% 10px 10%">У Вас есть дело, которое Вы готовы поручить профессионалу, но не хотите тратить время на поиски и/или переплачивать, либо Вы хотите взять в аренду/приобрести товар по самой выгодной цене, устроив "Голландский аукцион" - жмите "Я - заказчик" </div>
         </div>
         <div style="float: right; width: 50%">
           <div style="float: left; padding: 10px 10% 10px 2%">Вы готовы предоставить услуги высокого качества, либо у Вас есть что-то, что Вы хотите продать или сдать в аренду. Если Вы ищите клиентов или покупателей - жмите "Я - исполнитель".  </div>

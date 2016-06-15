@@ -179,7 +179,19 @@
         }
         return (string) $title;
     }
-
+    /**
+     * выбор заказчика
+     *
+     * @param string $logged_user, $item_owner
+     * @return string
+     */
+    function osc_choice() {
+        if (((osc_logged_user_id() == osc_user_id()) && (osc_user_id() !== 0) && (osc_logged_user_id() !==0 )) && 1)
+        {
+          $text = 'Выбрать исполнителем';
+        }
+        return (string) $text;
+    }
     /**
      * Gets category from current item
      *
@@ -748,7 +760,8 @@
      * @return string
      */
     function osc_comment_body() {
-        return (string) osc_comment_field("s_body");
+        $comment = preg_replace('/((?:\w+:\/\/|www\.)[\w.\/%\d&?#+=-]+)/i', '<a href="\1">\1</a>',  osc_comment_field("s_body"));
+        return  $comment;
     }
 
     /**

@@ -41,7 +41,7 @@ if(View::newInstance()->_exists('listType')){
   <li class="listings_list listing-card<?php if(osc_item_is_premium()){ echo ' premium'; } ?>">
     <div class="list_space"> <span class="ribbon"> <i class="fa fa-star"></i> </span>
       <div class="row">
-        <div class="col-sm-4 col-md-4">
+        <!--<div class="col-sm-4 col-md-4">
           <figure>
             <?php if( osc_images_enabled_at_items() ) { ?>
             <?php if(osc_count_item_resources()) { ?>
@@ -51,8 +51,8 @@ if(View::newInstance()->_exists('listType')){
             <?php } ?>
             <?php } ?>
           </figure>
-        </div>
-        <div class="col-sm-8 col-md-8">
+        </div> -->
+        <div class="col-sm-8 col-md-8"  style="margin-left: 5%">
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
@@ -62,9 +62,9 @@ if(View::newInstance()->_exists('listType')){
                   <?php } ?>
                   </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
-                  <!-- Добавил строку для вывода минимальной цены-->
-                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
+                    <span class="currency-value" style="margin: 0px"><?php echo "Ориентировочная цена заказчика: ". osc_item_formated_price(); ?></span>
+                    
+                    <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная предложенная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>
@@ -101,7 +101,7 @@ if(View::newInstance()->_exists('listType')){
   <li class="listings_list listing-card premium">
     <div class="list_space"> <span class="ribbon"> <i class="fa fa-star"></i> </span>
       <div class="row">
-        <div class="col-sm-4 col-md-4">
+        <!--<div class="col-sm-4 col-md-4">
           <figure>
             <?php if( osc_images_enabled_at_items() ) { ?>
             <?php if(osc_count_premium_resources()) { ?>
@@ -111,8 +111,8 @@ if(View::newInstance()->_exists('listType')){
             <?php } ?>
             <?php } ?>
           </figure>
-        </div>
-        <div class="col-sm-8 col-md-8">
+        </div> -->
+        <div class="col-sm-8 col-md-8"  style="margin-left: 5%">
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_premium_url() ; ?>" class="title" title="<?php echo osc_esc_html(osc_premium_title()) ; ?>"><?php echo osc_premium_title() ; ?></a></h4>
@@ -122,9 +122,9 @@ if(View::newInstance()->_exists('listType')){
                   <?php } ?>
                   </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_premium_pub_date()); ?> </span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
-                  <!-- Добавил строку для вывода минимальной цены-->
-                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
+                    <span class="currency-value" style="margin: 0px"><?php echo "Ориентировочная цена заказчика: ". osc_item_formated_price(); ?></span>
+                    
+                    <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная предложенная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_premium_description(), 250 ); ?></p>
@@ -163,7 +163,7 @@ if(View::newInstance()->_exists('listType')){
   <li class="listings_list listing-card<?php if(osc_item_is_premium()){ echo ' premium'; } ?>">
     <div class="list_space"> <span class="ribbon"> <i class="fa fa-star"></i> </span>
       <div class="row">
-        <div class="col-sm-4 col-md-4">
+        <!--<div class="col-sm-4 col-md-4">
           <figure>
             <?php if( osc_images_enabled_at_items() ) { ?>
             <?php if(osc_count_item_resources()) { ?>
@@ -173,8 +173,8 @@ if(View::newInstance()->_exists('listType')){
             <?php } ?>
             <?php } ?>
           </figure>
-        </div>
-        <div class="col-sm-8 col-md-8">
+        </div> -->
+        <div class="col-sm-8 col-md-8"  style="margin-left: 5%">
           <div class="info">
             <div class="detail_info">
               <h4><a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a></h4>
@@ -184,9 +184,9 @@ if(View::newInstance()->_exists('listType')){
                 <?php } ?>
                 </span> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?></span>
                 <?php if( osc_price_enabled_at_items() ) { ?>
-                  <span class="currency-value" style="margin: 0px"> <?php echo "Начальная цена: ". osc_format_price(osc_item_price()); ?></span>
-                  <!-- Добавил строку для вывода минимальной цены-->
-                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
+                    <span class="currency-value" style="margin: 0px"><?php echo "Ориентировочная цена заказчика: ". osc_item_formated_price(); ?></span>
+                    
+                    <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная предложенная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>

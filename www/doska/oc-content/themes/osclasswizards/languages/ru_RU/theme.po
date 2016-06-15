@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OsclassWizards Theme\n"
 "POT-Creation-Date: 2016-01-21 13:13+0545\n"
-"PO-Revision-Date: 2016-05-26 15:00+0300\n"
+"PO-Revision-Date: 2016-06-07 15:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: OsclassWizards <hello@osclasswizards.com>\n"
 "Language: ru\n"
@@ -611,7 +611,7 @@ msgstr "Войти"
 
 #: footer.php:60 header.php:73 item-sidebar.php:46 user-login.php:73
 msgid "Register for a free account"
-msgstr "Зарегистрировать аккаунт бесплатно"
+msgstr "Зарегистрировать аккаунт"
 
 #: footer.php:73 functions.php:445 header.php:95 user-public-sidebar.php:28
 msgid "Contact"
@@ -932,7 +932,7 @@ msgstr "E-mail"
 
 #: item-post.php:206
 msgid "Show e-mail on the listing page"
-msgstr "Показать электронную почту в задании"
+msgstr "Показать электронную почту в заявке"
 
 #: item-post.php:228 user-change_email.php:73 user-change_password.php:83
 #: user-change_username.php:119 user-profile.php:146

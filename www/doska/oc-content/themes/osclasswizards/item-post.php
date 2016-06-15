@@ -52,6 +52,15 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="wraps">
+        <?php if(osc_user_registration_enabled()&&(osc_logged_user_id()==0)) { ?>
+            <ul><li>
+                    <span>Для более быстрого и удобного размещения заявок, а так же для возможности оценивать исполнителей рекомендуем</span>
+                    <a style="text-transform: lowercase" href="<?php echo osc_register_account_url() ; ?>">
+                    <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?><br><br>
+                    </a>
+                </li>
+            </ul>
+        <?php }; ?>
       <div class="title">
         <h1>
             <h1><?php _e('Publish a listing', OSCLASSWIZARDS_THEME_FOLDER); ?></h1>
@@ -104,7 +113,7 @@
                       <div class="controls checkbox">
                           <?php ItemForm::show_phone_checkbox(); ?>
                           <label for="showPhone">
-                              Показать номер телефона в объявлении
+                              Показывать номер телефона в заявке
                           </label>
                       </div>
                   </div>

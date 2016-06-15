@@ -70,7 +70,7 @@
         }
         ?>
         <li> <a href="<?php echo osc_contact_url(); ?>">
-          <?php _e('Contact', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          <?php _e('Обратная связь', OSCLASSWIZARDS_THEME_FOLDER); ?>
           </a> </li>
         <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
         <li class="publish"> <a href="<?php echo osc_item_post_url_in_category(); ?>">
@@ -79,7 +79,7 @@
         <?php } ?>
       </ul>
       <?php
-            echo '<div class="copyright">' . sprintf(__('Free responsive Osclass theme by <a target="_blank" title="osclasswizards" href="%s">OsclassWizards</a>',OSCLASSWIZARDS_THEME_FOLDER), 'http://www.osclasswizards.com/') . '</div>';
+            //echo '<div class="copyright">' . sprintf(__('Free responsive Osclass theme by <a target="_blank" title="osclasswizards" href="%s">OsclassWizards</a>',OSCLASSWIZARDS_THEME_FOLDER), 'http://www.osclasswizards.com/') . '</div>';
         ?>
     </div>
   </div>

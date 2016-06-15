@@ -250,11 +250,11 @@ textarea {height: 50px;
 }
 .top_links li {display: inline-block;margin: 0 0 0 10px;
 }
-.main_header {padding: 15px 0;width: 100%;z-index: 999;-webkit-box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);-moz-box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);
+.main_header {padding: 10px 0;width: 100%;z-index: 999;-webkit-box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);-moz-box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);box-shadow: 0 0 5px 0 rgba(3, 3, 3, 0.25);
 }
 #logo {float: left;margin: 0 20px 0 0;
 }
-#logo a {display: block;font-size: 20px;font-weight: bold;text-transform: uppercase;margin: 7px 0 0;
+#logo a {display: inline-block; vertical-align: middle;font-size: 24px;font-weight: bold;text-transform: uppercase;margin: 0 0 0 7px;
 }
 #logo #description {text-indent: -99999px;display: block;position: absolute;
 }
