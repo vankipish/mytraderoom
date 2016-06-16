@@ -351,6 +351,55 @@ class CWebItem extends BaseModel
 
                 $this->redirectTo(osc_item_edit_url($secret, $item));
                 break;
+            case 'make_choice':
+
+            osc_csrf_check();
+                $mItem = new ItemActions(false);
+                $status = $mItem->add_comment(); // @TOFIX @FIXME $status never used + ?? need to add_comment() before deleting it??
+
+                $itemId    = Params::getParam('id');
+                $commentId = Params::getParam('comment');
+
+                $item = Item::newInstance()->findByPrimaryKey($itemId);
+
+                if( count($item) == 0 ) {
+                    osc_add_flash_error_message( _m("This listing doesn't exist") );
+                    $this->redirectTo( osc_base_url(true) );
+                }
+
+                View::newInstance()->_exportVariableToView('item', $item);
+
+                if($this->userId == null) {
+                    osc_add_flash_error_message(_m('You must be logged in to choose offer') );
+                    $this->redirectTo( osc_item_url() );
+                }
+
+                $commentManager = ItemComment::newInstance();
+                $aComment = $commentManager->findByPrimaryKey($commentId);
+
+                if( count($aComment) == 0 ) {
+                    osc_add_flash_error_message( _m("The comment doesn't exist") );
+                    $this->redirectTo( osc_item_url() );
+                }
+
+                if( $aComment['b_active'] != 1 ) {
+                    osc_add_flash_error_message( _m('The comment is not active, you cannot delete it') );
+                    $this->redirectTo( osc_item_url() );
+                }
+
+                $commentManager->dao->select('b_choice');
+                $commentManager->dao->from($commentManager->getTableName());
+                    $conditions = array('pk_i_id'     => $commentId);  //id в таблице = id коммента
+                $commentManager->dao->where($conditions);  //для этих условий..
+                    $result =  $commentManager->update(
+                        array('b_choice' => 1),
+                        array('pk_i_id' => $commentId));
+                
+                osc_add_flash_ok_message( _m('Вы сделали свой выбор' ) );
+                $this->redirectTo( osc_item_url() );
+                osc_run_hook('hook_email_choice_made', $aItem);
+                break;
+
             case 'mark':
                 $id = Params::getParam('id');
                 $as = Params::getParam('as');

@@ -192,7 +192,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
         <div id="comments">
             <?php if( osc_count_item_comments() >= 1 ) { ?>
                 <h2 class="title">
-                    Предложения
+                    Предложения <?php var_dump(ItemComment::newInstance()) ?>
                 </h2>
             <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
@@ -205,7 +205,14 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                         <div class="comment" style="border-bottom: ridge">
 
                             <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();?>
-                                <span style="float: right; font-size: 80%"><?php echo osc_choice() ?></span> </h4>
+
+                                <span style="float: right; font-size: 80%"> <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) {?>
+                                    <a rel="nofollow" href="<?php echo osc_make_choice_url(); ?>" title="<?php echo osc_esc_html(__('Выбрать автора этого предложения исполнителем Вашей заявки', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
+                                        <?php _e('Выбрать исполнителем', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                                    </a> <?php  } else if (ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) echo 'Выбор заказчика!' ?>
+                                </span>
+
+                            </h4>
                                 <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
                                 <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
                                     <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">

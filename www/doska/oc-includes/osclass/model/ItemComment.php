@@ -72,7 +72,8 @@
                 'b_enabled',
                 'b_active',
                 'b_spam',
-                'fk_i_user_id'
+                'fk_i_user_id',
+                'b_choice'
             );
             $this->setFields($array_fields);
         }
@@ -128,6 +129,7 @@
                                 'b_enabled'     => 1);
             $this->dao->where($conditions);
           //Добавил сюда сортировку комментов по цене предложений(в ячейке s_title)
+            $this->dao->orderBy("b_choice",'DESC');
             $this->dao->orderBy("s_title",'ASC');
             $this->dao->orderBy("dt_pub_date",'ASC');
 
@@ -307,8 +309,53 @@
           else
             return 0;
         }
-        
-        
+
+        /**
+         * @param $idItem, $idComment
+         * @return mixed
+         */
+        function check_choice($idItem,$idComment)
+        {
+            $result = array();
+            $this->dao->select('b_choice');
+            $this->dao->from($this->getTableName());
+            $conditions = array('fk_i_item_id'  => $idItem,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1,  //проверка комент активен
+                                'pk_i_id'     => $idComment);  //id в таблице = id коммента
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $massive = $result->result();
+            $choices = array();
+            foreach ($massive as $choice){
+                array_push($choices,$choice['b_choice']);
+            }
+            return $choices[0]; //выводится 1 если это предложение выбрано заказчиком
+        }
+        /**
+         * @param $idItem, $idComment
+         * @return mixed
+         */
+        function has_choice($idItem,$idComment)
+        {
+            $result = array();
+            $this->dao->select('b_choice');
+            $this->dao->from($this->getTableName());
+            $conditions = array('fk_i_item_id'  => $idItem,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1);  //проверка комент активен
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $massive = $result->result();
+            $choices = array();
+            foreach ($massive as $choice)
+                {
+                array_push($choices,$choice['b_choice']);
+                if ($choice['b_choice'] == 1) {   return 1; break; }
+                }
+
+            return 0;
+
+        }
+
         
         /**
          * Extends an array of comments with title / description

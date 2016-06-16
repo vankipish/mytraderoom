@@ -889,7 +889,32 @@
                 osc_run_hook('hook_email_item_inquiry', $aItem);
             }
         }
-
+        /*
+                   public function Choose($id)
+                {
+                    $aItem  = $this->prepareDataForFunction('make_choice');
+                    ItemComment::newInstance()->dao->select('b_choice');
+                    ItemComment::newInstance()->dao->from('t_item_comment');
+                    $conditions = array('pk_i_id'     => $id);  //id в таблице = id коммента
+                    ItemComment::newInstance()->dao->where($conditions);  //для этих условий..
+                    $result =  ItemComment::newInstance()->update(
+                        array('b_choice' => 1),
+                        array('pk_i_id' => $id)
+                    );
+        
+                updated correctly
+                    if($result == 1) {
+                        osc_run_hook( 'deactivate_item', $id );
+                        $item = $this->manager->findByPrimaryKey($id);
+                        if($item['b_enabled']==1 && $item['b_spam']==0 && !osc_isExpired($item['dt_expiration'])) {
+                            $this->_decreaseStats($item);
+                        }
+                        return true;
+                    }
+                    return false;
+        return 1;
+        }
+                */
         /*
          *
          */
@@ -1033,6 +1058,14 @@
             $aItem = array();
 
             switch ( $action ){
+                case 'make_choice':
+                    $item = $this->manager->findByPrimaryKey( Params::getParam('id') );
+                    if ($item===false || !is_array($item) || count($item)==0)
+                        break;
+
+                    $aItem['item']          = $item;
+                    View::newInstance()->_exportVariableToView('item', $aItem['item']);
+                break;
                 case 'send_friend':
                     $item = $this->manager->findByPrimaryKey( Params::getParam('id') );
                     if ($item===false || !is_array($item) || count($item)==0)

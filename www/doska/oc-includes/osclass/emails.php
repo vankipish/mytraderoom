@@ -721,6 +721,67 @@
     }
     osc_add_hook('hook_email_new_comment_admin', 'fn_email_new_comment_admin');
 
+function fn_email_choice_made($aItem) {
+    $authorName  = trim(strip_tags($aItem['authorName']));
+    $authorEmail = trim(strip_tags($aItem['authorEmail']));
+    $body        = trim($aItem['body']);
+    // only \n -> <br/>
+    $body        = nl2br(strip_tags($body));
+    $title       = $aItem['title'];
+    $itemId      = $aItem['id'];
+    $admin_email = osc_contact_email();
+
+    $item = Item::newInstance()->findByPrimaryKey($itemId);
+    View::newInstance()->_exportVariableToView('item', $item);
+    $itemURL = osc_item_url();
+    $itemURL = '<a href="'.$itemURL.'" >'.$itemURL.'</a>';
+
+    $mPages = new Page();
+    $aPage = $mPages->findByInternalName('email_new_comment_admin');
+    $locale = osc_current_user_locale();
+
+    if(isset($aPage['locale'][$locale]['s_title'])) {
+        $content = $aPage['locale'][$locale];
+    } else {
+        $content = current($aPage['locale']);
+    }
+
+    $words   = array();
+    $words[] = array(
+        '{COMMENT_AUTHOR}',
+        '{COMMENT_EMAIL}',
+        '{COMMENT_TITLE}',
+        '{COMMENT_TEXT}',
+        '{ITEM_TITLE}',
+        '{ITEM_ID}',
+        '{ITEM_URL}',
+        '{ITEM_LINK}'
+    );
+    $words[] = array(
+        $authorName,
+        $authorEmail,
+        $title,
+        $body,
+        $item['s_title'],
+        $itemId,
+        osc_item_url(),
+        $itemURL
+    );
+    $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
+    $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
+
+    $emailParams = array(
+        'from'      => osc_contact_email(),
+        'to'        => $authorEmail,
+        'to_name'   => __('Admin mail system'),
+        'subject'   => $title_email,
+        'body'      => $body_email,
+        'alt_body'  => $body_email
+    );
+    osc_sendMail($emailParams);
+}
+osc_add_hook('hook_email_choice_made', 'fn_email_choice_made');
+
     function fn_email_item_validation($item) {
         View::newInstance()->_exportVariableToView('item', $item);
         $contactEmail   = $item['s_contact_email'];

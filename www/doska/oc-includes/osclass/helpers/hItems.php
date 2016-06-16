@@ -186,7 +186,7 @@
      * @return string
      */
     function osc_choice() {
-        if (((osc_logged_user_id() == osc_user_id()) && (osc_user_id() !== 0) && (osc_logged_user_id() !==0 )) && 1)
+        if (((osc_logged_user_id() == osc_user_id()) && (osc_user_id() !== 0) && (osc_logged_user_id() !==0 )) && 1==1)
         {
           $text = 'Выбрать исполнителем';
         }
@@ -781,6 +781,11 @@
     function osc_delete_comment_url() {
         return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
+
+    function osc_make_choice_url() {
+        return (string) osc_base_url(true)."?page=item&action=make_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
+
 
     //////////////////////////////
     // END HELPERS FOR COMMENTS //
