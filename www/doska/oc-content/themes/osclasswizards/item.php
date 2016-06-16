@@ -192,7 +192,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
         <div id="comments">
             <?php if( osc_count_item_comments() >= 1 ) { ?>
                 <h2 class="title">
-                    Предложения <?php var_dump(ItemComment::newInstance()) ?>
+                    Предложения <?php var_dump(ItemComment::newInstance()->findByPrimaryKey(osc_comment_id())) ?>
                 </h2>
             <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
