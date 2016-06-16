@@ -722,13 +722,13 @@
     osc_add_hook('hook_email_new_comment_admin', 'fn_email_new_comment_admin');
 
 function fn_email_choice_made($aItem) {
-    $authorName  = trim(strip_tags($aItem['authorName']));
-    $authorEmail = trim(strip_tags($aItem['authorEmail']));
-    $body        = trim($aItem['body']);
+    $authorName  = trim(strip_tags($aItem['S_author_name']));
+    $authorEmail = trim(strip_tags($aItem['S_author_email']));
+    $body        = trim($aItem['S_body']);
     // only \n -> <br/>
     $body        = nl2br(strip_tags($body));
-    $title       = $aItem['title'];
-    $itemId      = $aItem['id'];
+    $title       = $aItem['S_title'];
+    $itemId      = $aItem['Fk_i_item_id'];
     $admin_email = osc_contact_email();
 
     $item = Item::newInstance()->findByPrimaryKey($itemId);

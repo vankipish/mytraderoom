@@ -786,6 +786,10 @@
         return (string) osc_base_url(true)."?page=item&action=make_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
 
+    function osc_cancel_choice_url() {
+        return (string) osc_base_url(true)."?page=item&action=cancel_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
+
 
     //////////////////////////////
     // END HELPERS FOR COMMENTS //

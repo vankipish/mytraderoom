@@ -209,7 +209,9 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                 <span style="float: right; font-size: 80%"> <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) {?>
                                     <a rel="nofollow" href="<?php echo osc_make_choice_url(); ?>" title="<?php echo osc_esc_html(__('Выбрать автора этого предложения исполнителем Вашей заявки', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
                                         <?php _e('Выбрать исполнителем', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                                    </a> <?php  } else if (ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) echo 'Выбор заказчика!' ?>
+                                    </a> <?php  } else if (ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) echo 'Выбор заказчика! '; if ((ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) { ?><br><a style="font-size: 80%" rel="nofollow" href="<?php echo osc_cancel_choice_url(); ?>" title="<?php echo osc_esc_html(__('Отказаться от исполнителя', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
+                                        <?php _e('Отказаться от исполнителя', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                                    </a> <?php } ?>
                                 </span>
 
                             </h4>
