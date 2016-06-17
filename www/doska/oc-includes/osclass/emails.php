@@ -721,23 +721,25 @@
     }
     osc_add_hook('hook_email_new_comment_admin', 'fn_email_new_comment_admin');
 
-function fn_email_choice_made($aItem) {
-    $authorName  = trim(strip_tags($aItem['S_author_name']));
-    $authorEmail = trim(strip_tags($aItem['S_author_email']));
-    $body        = trim($aItem['S_body']);
+function fn_email_choice_made($aComment) {
+    
+    $authorName  = trim(strip_tags($aComment['s_author_name']));
+    $authorEmail = trim(strip_tags($aComment['s_author_email']));
+    $body        = trim($aComment['s_body']);
     // only \n -> <br/>
     $body        = nl2br(strip_tags($body));
-    $title       = $aItem['S_title'];
-    $itemId      = $aItem['Fk_i_item_id'];
+    $title       = $aComment['s_title'];
+    $itemId      = $aComment['fk_i_item_id'];
     $admin_email = osc_contact_email();
 
-    $item = Item::newInstance()->findByPrimaryKey($itemId);
-    View::newInstance()->_exportVariableToView('item', $item);
+    //$item = Item::newInstance()->findByPrimaryKey($itemId);
+    //View::newInstance()->_exportVariableToView('item', $item);
     $itemURL = osc_item_url();
     $itemURL = '<a href="'.$itemURL.'" >'.$itemURL.'</a>';
+    $itemTitle = osc_item_title();
 
     $mPages = new Page();
-    $aPage = $mPages->findByInternalName('email_new_comment_admin');
+    $aPage = $mPages->findByInternalName('email_choice_offer');
     $locale = osc_current_user_locale();
 
     if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -762,9 +764,9 @@ function fn_email_choice_made($aItem) {
         $authorEmail,
         $title,
         $body,
-        $item['s_title'],
+        $itemTitle,
         $itemId,
-        osc_item_url(),
+        $itemURL,
         $itemURL
     );
     $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
@@ -773,12 +775,13 @@ function fn_email_choice_made($aItem) {
     $emailParams = array(
         'from'      => osc_contact_email(),
         'to'        => $authorEmail,
-        'to_name'   => __('Admin mail system'),
+        'to_name'   => $authorName,
         'subject'   => $title_email,
         'body'      => $body_email,
         'alt_body'  => $body_email
     );
     osc_sendMail($emailParams);
+    osc_add_flash_ok_message( sprintf(_m('Уведомление о Вашем решении отправленно исполнителю %s'), $authorName) );
 }
 osc_add_hook('hook_email_choice_made', 'fn_email_choice_made');
 

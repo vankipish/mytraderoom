@@ -192,7 +192,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
         <div id="comments">
             <?php if( osc_count_item_comments() >= 1 ) { ?>
                 <h2 class="title">
-                    Предложения <?php var_dump(ItemComment::newInstance()->findByPrimaryKey(osc_comment_id())) ?>
+                    Предложения
                 </h2>
             <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
@@ -203,7 +203,6 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 <div class="comments_list">
                     <?php while ( osc_has_item_comments() ) { ?>
                         <div class="comment" style="border-bottom: ridge">
-
                             <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();?>
 
                                 <span style="float: right; font-size: 80%"> <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) {?>
@@ -266,8 +265,8 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php } ?>
         </div>
 
-        <?php if
-        (( osc_logged_user_id() !== osc_user_id() ) || osc_user_id() == 0 ) {
+        <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (( osc_logged_user_id() !== osc_user_id() ) || osc_user_id() == 0 ))
+            {
             ?>
 
             <div class="comment_form" id="here">

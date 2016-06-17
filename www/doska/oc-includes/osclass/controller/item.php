@@ -394,11 +394,11 @@ class CWebItem extends BaseModel
                     $result =  $commentManager->update(
                         array('b_choice' => 1),
                         array('pk_i_id' => $commentId));
-                
-                osc_add_flash_ok_message( _m('Вы сделали свой выбор' ) );
-                $this->redirectTo( osc_item_url() );
+            
                 osc_run_hook('hook_email_choice_made', $aComment);
-                break;
+                //osc_add_flash_ok_message( _m('Вы сделали свой выбор' ) );
+                $this->redirectTo( osc_item_url() );
+            break;
 
             case 'cancel_choice':
 
