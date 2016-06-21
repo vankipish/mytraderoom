@@ -248,6 +248,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                 <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
                                 <p><?php echo nl2br( osc_comment_body() ); ?> </p>
                             </div>
+                            <?php ?>
                             <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
                                 <p style="margin: 1px"> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
                                         <?php _e('Delete', OSCLASSWIZARDS_THEME_FOLDER); ?>

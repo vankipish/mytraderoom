@@ -1,0 +1,84 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<title>SkyScript — Простые бесплатные PHP-скрипты</title>
+<link rel="shortcut icon" href="pic/skyico.ico">
+<link href="st.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div align="center">
+<div class="baza" align="left" style="width:900px;">
+<p class="zag">Инструкция по установке скрипта <strong>SkyCom</strong></p>
+<p><span class="zag">1.</span> Переписываем содержимое папки <strong>SkyCom</strong> в корневую папку на Вашем хостинге.</p>
+<p><span class="zag">2.</span> Вносим изменения в файл<strong> db.php</strong></p>
+<p><img src="instrpic/01.png" width="734" height="65" /></p>
+<blockquote>
+  <p>&nbsp;</p>
+  <p>На примере локального Денвера расскажу где чего брать</p>
+  <p>1. Запускаем Денвер (или другой сервер)</p>
+  <p>2. В адресной строке набираем <strong>http://127.0.0.1/tools/phpmyadmin/</strong> попадаем в панель управления базой данных MySQL (такая панель имеется почти на каждом хостинге)</p>
+  <p>3. Создаем базу данных введя ее название в окно:</p>
+  <p><img src="instrpic/02.png" width="660" height="91" /></p>
+  <p>вбиваем например <strong>newbaza</strong> и жмем создать.</p>
+  <p>&nbsp;</p>
+  <p>4. Возвращаемся на главную страницу <strong>http://127.0.0.1/tools/phpmyadmin/</strong> (щелкаем на домик слева)</p>
+  <p><img src="instrpic/03.png" width="666" height="220" /></p>
+  <p>и нажимаем ссылку <strong>Привелегии</strong></p>
+  <p>&nbsp;</p>
+  <p><img src="instrpic/04.png" width="695" height="45" /></p>
+  <p> далее нажимаем <strong>добавить нового пользователя</strong></p>
+  <p>&nbsp;</p>
+  <p><img src="instrpic/05.png" width="733" height="561" /></p>
+  <p>Заполняем следующим образом:</p>
+  <p><strong>Имя пользователя</strong>: любое, например<strong> user</strong></p>
+  <p><strong>Хост:</strong> любой хост</p>
+  <p><strong>Пароль: </strong>например <strong>123</strong></p>
+  <p>Обязательно нажимаем  в привелегиях <strong>Отметить все</strong> и нажимаем <strong>Пошел</strong></p>
+  <p>&nbsp;</p>
+  <p>5. После создания пользователя и базы данных файл <strong>db.php </strong>заполняем следующим образом:</p>
+  <p><img src="instrpic/06.png" width="377" height="65" /></p>
+</blockquote>
+<p>&nbsp;</p>
+<p><span class="zag">3.</span> Заходим в панель управления базой данных MySQL (для Денвера: В адресной строке набираем <strong>http://127.0.0.1/tools/phpmyadmin/</strong>) и выбираем нашу базу. </p>
+<p><img src="instrpic/07.png" width="573" height="273" /></p>
+<p>Нажимаем ссылку SQL</p>
+<p>&nbsp;</p>
+<p><img src="instrpic/08.png" width="798" height="323" /></p>
+<p>Нажимаем обзор и находим файл <strong>SkyCom_db</strong> </p>
+<p>Нажимаем <strong>пошел</strong> и все таблицы для работы скрипта будут созданы.</p>
+<p><span class="zag">4.</span>В файле <strong>index.php</strong> показан пример подключения комментариев. Для этого нужно:</p>
+<ol>
+  <li>В самом начале страницы разместить следующий код:<br>
+    &lt;? 
+    session_start();
+    include (&quot;db.php&quot;);
+    ?&gt;  </li>
+  <li>Между тегами &lt;head&gt; &lt;/head&gt; подключить скрипты:<br>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;scripts/jquery.js&quot;&gt;&lt;/script&gt;<br>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;scripts/jquery.validationengine.js&quot;&gt;&lt;/script&gt;<br>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;scripts/skycom.js&quot;&gt;&lt;/script&gt;</li>
+  <li>Передать скрипту идентификатор, например ID Вашего материала<br>
+    &lt;? $com='Ваш идентификатор';    ?&gt; можно пользовать лат. буквы например nov_11
+  </li>
+  <li>И в нужное место Вашего документа вставить код публикации комментариев:<br>
+    &lt;? 
+    include(&quot;skycom.php&quot;);  ?&gt;</li>
+  </ol>
+<p><span class="zag">5.</span>Обновление с версии 1.0 до версии 1.1:</p>
+<ol>
+  <li>Заменить файлы: skycom.php, st.css (в нем есть пометка что изменилось), <br>
+    scripts/jquery.validationengine.js, scripts/skycom.js</li>
+</ol>
+<p><strong>Для входа в панель администрирования (SkyCom/adm/):</strong></p>
+<p>логин (e-mail для входа ): <strong>email@email.ru</strong> пароль: <strong>12345</strong> </p>
+<p>после входа поменяйте почтовый адрес (на него будут приходить уведомления о новых комментариях) и пароль.</p>
+<hr>
+<p>Пользоваться скриптом <strong>SkyCom можно абсолютно бесплатно</strong><br />
+  Разрешается менять исходный код файлов<br />
+  <strong>SkyCom</strong> распространяется по принципу &quot;as is&quot; (<strong>&quot;как есть&quot;</strong>). Это означает, что вы   пользуетесь продуктом на свой страх и риск. Автор не дает никаких гарантий и не несет   никакой ответственности за возможный ущерб и убытки любого рода.</p>
+<p>Замечания, предложения оставляйте в комментариях на сайте <a href="http://www.skyscript.ru"><strong>skyscript.ru</strong></a></p>
+</div>
+</div>
+
+</body>
+</html>
