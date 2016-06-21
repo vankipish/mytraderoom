@@ -24,10 +24,11 @@
   <?php if( osc_get_preference('sidebar-300x250', 'osclasswizards_theme') != '') {?>
   <div class="ads_300"> <?php echo osc_get_preference('sidebar-300x250', 'osclasswizards_theme'); ?> </div>
   <?php } ?>
+  <?php if( ( osc_logged_user_id() !== osc_item_user_id() ) || osc_logged_user_id() == 0 ) { ?>
   <h1 class="title">
     <?php _e("Contact publisher", OSCLASSWIZARDS_THEME_FOLDER); ?>
   </h1>
-  <div id="contact" class="widget-box form-container form-vertical">
+  <div id="contact" class="widget-box form-container form-vertical" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
     <?php if( osc_item_is_expired () ) { ?>
     <p class="alert_user">
       <?php _e("The listing is expired. You can't contact the publisher.", OSCLASSWIZARDS_THEME_FOLDER); ?>
@@ -64,7 +65,7 @@
       <?php if( osc_item_show_phone() ) {
         $phoneuser = osc_item_contact_phone();
       if ($phoneuser != "") { ?>
-        <i class="fa fa-phone"style="margin-top: 0px"></i><a><?php echo"  ". $phoneuser; ?></a>
+        <i class="fa fa-phone" style="margin-top: 0px"></i><a><?php echo"  ". $phoneuser; ?></a>
       <?php }} ?>
         
     <ul id="error_list">
@@ -152,6 +153,7 @@ div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
     <?php ContactForm::js_validation(); ?>
     <?php } ?>
   </div>
+  <?php } ?>
   
     <?php 
 	if( osc_get_preference('facebook-showitem', 'osclasswizards_theme') == "1"){

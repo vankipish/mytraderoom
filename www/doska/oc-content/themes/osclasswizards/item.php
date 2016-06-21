@@ -68,10 +68,10 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
     VK.init({apiId: 5501574, onlyWidgets: true});
 </script>
 
-<div class="row">
+<div class="row" >
     <div class="col-sm-7 col-md-8">
-        <div id="item-content">
-            <?php if(osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id()) { ?>
+        <div id="item-content" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
+            <?php if((osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id()) && ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 0)) { ?>
                 <p id="edit_item_view"> <strong> <a href="<?php echo osc_item_edit_url(); ?>" rel="nofollow">
                             <?php _e('Edit item', OSCLASSWIZARDS_THEME_FOLDER); ?>
                         </a> </strong> </p>
@@ -112,6 +112,12 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                         </ul>
                     </li>
                 <?php }; ?>
+                <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) {?>
+                    <li>
+                        <i class="fa fa-gavel  "></i>
+                        В исполнении
+                    </li>
+                <?php } ?>
             </ul>
 
             <?php if( osc_images_enabled_at_items() ) { ?>
@@ -142,7 +148,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php } ?>
             <div id="description" style="margin-top: -15px">
                 <span style="font-weight:bold;  margin-top: 0;  margin-bottom: 1px">Описание:</span>
-                <p><?php echo "   ".osc_item_description(); ?></p>
+                <p style="margin-right: 0"><?php echo "   ".osc_item_description(); ?></p>
                 <div id="custom_fields">
                     <?php if( osc_count_item_meta() >= 1 ) { ?>
                         <br />
@@ -168,7 +174,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php     } ?>
             <?php } ?>
             </li> -->
-                    <?php if ((osc_logged_user_id() !== osc_user_id()) || osc_user_id() == 0) { ?>
+                    <?php if (((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 0) && ((osc_logged_user_id() !== osc_user_id()) || osc_user_id() == 0)) { ?>
                         <li id="menu"><a href="#here" >Предложить цену</a></li>
                     <?php } ?>
                     <?php if(function_exists('watchlist')) {?>
@@ -177,7 +183,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                         </li>
                     <?php } ?>
                     <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
-                            другие заявки автора
+                            страница заказчика
                         </a> </li>
                     <li id="menu1"><a href="#vk_comments" >Обсудить</a></li>
                 </ul>
@@ -200,32 +206,32 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                 </h2>
             <?php } ?>
             <?php if( osc_count_item_comments() >= 1 ) { ?>
-                <div class="comments_list">
+                <div class="comments_list" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
                     <?php while ( osc_has_item_comments() ) { ?>
                         <div class="comment" style="border-bottom: ridge">
                             <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title(); echo " "; echo  osc_item_currency_symbol();?>
 
                                 <span style="float: right; font-size: 80%"> <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) {?>
-                                    <a rel="nofollow" href="<?php echo osc_make_choice_url(); ?>" title="<?php echo osc_esc_html(__('Выбрать автора этого предложения исполнителем Вашей заявки', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
-                                        <?php _e('Выбрать исполнителем', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                                    </a> <?php  } else if (ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) echo 'Выбор заказчика! '; if ((ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) { ?><br><a style="font-size: 80%" rel="nofollow" href="<?php echo osc_cancel_choice_url(); ?>" title="<?php echo osc_esc_html(__('Отказаться от исполнителя', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
+                                        <a rel="nofollow" href="<?php echo osc_make_choice_url(); ?>" title="<?php echo osc_esc_html(__('Выбрать автора этого предложения исполнителем Вашей заявки', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
+                                            <?php _e('Выбрать исполнителем', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                                        </a> <?php  } else if (ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) echo 'Выбор заказчика! '; if ((ItemComment::newInstance() ->check_choice(osc_item_id(),osc_comment_id())==1) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) { ?><br><a style="font-size: 80%" rel="nofollow" href="<?php echo osc_cancel_choice_url(); ?>" title="<?php echo osc_esc_html(__('Отказаться от исполнителя', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
                                         <?php _e('Отказаться от исполнителя', OSCLASSWIZARDS_THEME_FOLDER); ?>
                                     </a> <?php } ?>
                                 </span>
 
                             </h4>
-                                <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
-                                <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
-                                    <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
-                                    <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px; color: #f7aa00"></a>
-                                    <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
-                                        <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
-                                    <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
-                                        <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
-                                    <?php }?>
-                                <?php } else { ?>
-                                    <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
+                            <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
+                            <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
+                                <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
+                                <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px; color: #f7aa00"></a>
+                                <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
+                                    <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
+                                <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
+                                    <a>(По оценкам <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователей)</a>
                                 <?php }?>
+                            <?php } else { ?>
+                                <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
+                            <?php }?>
                             <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>">подробнее</a>
                             <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
                                 <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
@@ -266,7 +272,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
         </div>
 
         <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (( osc_logged_user_id() !== osc_user_id() ) || osc_user_id() == 0 ))
-            {
+        {
             ?>
 
             <div class="comment_form" id="here">
@@ -370,7 +376,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             </div>
         <?php } ?>
 
-        <div style="margin: 15px 0 15px 0; border: solid 1px #eaeaea"><div id="vk_comments"></div>
+        <div style="margin: 15px 0 15px 0; border: solid 1px #eaeaea;"><div id="vk_comments" ></div>
             <script type="text/javascript">
                 VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*",page_id: <?php echo osc_item_id() ?> });
             </script></div>
@@ -391,7 +397,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
         ?>
         <div class="alert_block">
             <?php if(!osc_is_web_user_logged_in() || osc_logged_user_id()!=osc_item_user_id()) { ?>
-                <form action="<?php echo osc_base_url(true); ?>" method="post" name="mask_as_form" id="mask_as_form">
+                <form action="<?php echo osc_base_url(true); ?>" method="post" name="mask_as_form" id="mask_as_form" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
                     <input type="hidden" name="id" value="<?php echo osc_item_id(); ?>" />
                     <input type="hidden" name="as" value="spam" />
                     <input type="hidden" name="action" value="mark" />

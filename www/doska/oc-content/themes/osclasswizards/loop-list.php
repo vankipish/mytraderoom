@@ -35,8 +35,8 @@ if(View::newInstance()->_exists('listType')){
     while ( osc_has_latest_items() ) {
 ?>
   <?php $size = explode('x', osc_thumbnail_dimensions()); ?>
-  <li class="listings_list listing-card <?php if(osc_item_is_premium()){ echo ' premium'; } ?>">
-    <div class="list_space"> <span class="ribbon"> <i class="fa fa-star"></i> </span>
+  <li class="listings_list listing-card <?php if(osc_item_is_premium()){ echo ' premium'; } ?>" >
+    <div class="list_space" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>> <span class="ribbon"> <i class="fa fa-star"></i> </span>
       <div class="row">
        <!-- <div class="col-sm-4 col-md-3">
           <figure>
@@ -59,10 +59,11 @@ if(View::newInstance()->_exists('listType')){
                     (<?php echo osc_item_region(); ?>)
                   <?php } ?>
                   </span><?php } ?> <span class="date"> <i class="fa fa-clock-o"></i> <?php echo osc_format_date(osc_item_pub_date()); ?> </span>
-                <?php if( osc_price_enabled_at_items() ) { ?>
-                  <span class="currency-value" style="margin: 0px"><?php echo "Ориентировочная цена заказчика: ". osc_item_formated_price(); ?></span>
-                  
-                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"> <?php echo "Минимальная предложенная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
+                    <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) {?><span style="margin: 0px"><i class="fa fa-gavel"></i><?php echo " В исполнении "?></span><?php }?>
+                  <?php if( osc_price_enabled_at_items() ) { ?>
+                  <span class="currency-value" style="margin: 0px"><i class="fa fa-money"></i><?php echo " Ориентировочная цена заказчика: ". osc_item_formated_price(); ?></span>
+
+                  <span class="currency-value" style="margin: 0px; margin-bottom: 3px"><i class="fa fa-money"></i> <?php echo " Минимальная предложенная цена: ". osc_format_min_price(osc_item_min_price()); ?></span>
                 <?php } ?>
               </div>
               <p style="margin-bottom: 0px"><?php echo osc_highlight( osc_item_description() ,250) ; ?></p>
