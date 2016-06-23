@@ -62,7 +62,7 @@
                     echo json_encode($cities);
                 break;
                 case 'rating':
-                    $path = $_SERVER['DOCUMENT_ROOT'] . '/doska';
+                    $path = dirname(dirname(dirname(__DIR__)));
                     include_once "$path./oc-includes/osclass/model/userRaty.php";
                     $mRaty = userRaty::newInstance();
 
@@ -108,7 +108,55 @@
                        
                     }
 
-                break;    
+                break;
+                case 'myCom':
+                    $path = dirname(dirname(dirname(__DIR__)));
+                    include_once "$path./oc-includes/osclass/model/myCom.php";
+                    $myComNI = myCom::newInstance();
+                    
+                    sleep(1);
+                    header("Content-type: text/plain; charset=windows-1251");
+                    header("Cache-Control: no-store, no-cache, must-revalidate");
+                    header("Cache-Control: post-check=0, pre-check=0", false);
+                    // Преобразуем полученые данные в нужную кодировку
+                    while(list ($key, $val) = each ($_POST)){$_POST[$key] = iconv("UTF-8","CP1251", $_POST[$key]);}
+
+                    $date = date('d.m.Yв H:i');
+                    // Устанавливаем параметры валидации
+                    $nl = strlen($_POST['name']);
+                    $ml = strlen($_POST['mail']);
+                    $tl = strlen($_POST['text']);
+                    $id_article = $_GET['id_article'];
+                    $name = $_POST['name'];
+                    $mail = $_POST['mail'];
+                    $text = $_POST['text'];
+                    if($nl<0 or $nl>60 or $ml<0 or $ml>60 or $tl<0 or $tl>500 or $_POST['nr']!='nerobot')
+                    {$validate = false;}
+                    elseif(!preg_match('^[a-z0-9]+(([a-z0-9_.-]+)?)@[a-z0-9+](([a-z0-9_.-]+)?)+\.+[a-z]{2,4}$',$_POST['mail']))
+                    {$validate = false;}
+                    else{$validate = true;}
+                    // Если прошли валидацию
+                    if($validate)
+                    {
+                    // Добавляем комментарий
+
+                        $myComNI ->dao ->insert(array(
+                            'com_id'       => $id_article,
+                            'author_name'  => $name,
+                            'author_mail'  => $mail,
+                            'com_text'     => $text,
+                            'pub_date'     => $date,
+                            'b_enabled'    => 0
+                        ));
+                        osc_add_flash_ok_message( _m("Комментарий добавлен и ожидает проверки!"));
+                    }
+                    else
+                    {
+                        osc_add_flash_error_message( _m("Заполните правильно поля ввода!"));
+                    }
+
+
+                break;
                 case 'delete_image': // Delete images via AJAX
                     $ajax_photo = Params::getParam('ajax_photo');
                     $id         = Params::getParam('id');
