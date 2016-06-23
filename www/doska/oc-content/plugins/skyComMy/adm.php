@@ -75,7 +75,7 @@ if (isset($_SESSION['ses_user']) && isset($_SESSION['pass']))
 	$ses_user = (isset($_SESSION['ses_user'])) ? osc_escape_string($_SESSION['ses_user']) : '';
 	$pass = (isset($_SESSION['pass'])) ? osc_escape_string($_SESSION['pass']) : '';
 
-		$skyComNI ->dao->select('user_id','user_login','user_pass','user_prava','user_email');
+		$skyComNI ->dao->select('`user_id`,`user_login`,`user_pass`,`user_prava`,`user_email`');
 		$skyComNI->dao->from('skyusers');
 		$conditions = array('user_pass'  => $pass,
 							'user_id'   => $ses_user);
@@ -212,7 +212,9 @@ if ($mod=='nas' || empty($mod))
 	else
 		{
 			$aSkyCom = array('user_email'=> $user_email,
-							 'user_pass'=> 	);
+							 'user_pass'=> $code_pass,
+							 'user_sol'=>$user_sol
+				);
 			$skyComNI -> update($aSkyCom,array('user_id' =>$_SESSION['ses_user']));
 			echo '<div class="ok">изменения внесены</div>';
 		}
@@ -224,15 +226,24 @@ if ($mod=='nas' || empty($mod))
 		$com_width = globper('com_width'); $com_dlina = globper('com_dlina'); $com_str = globper('com_str'); 
 		if (empty($com_width) || empty($com_dlina) || empty($com_str)) { al("обязательно введите все значения"); }
 		else {
-			$skybasenastr = mysql_query("SELECT 'nas_par','nas_znach' FROM 'skynas'",$db) or die(mysql_error());
-			$skyrownastr = mysql_fetch_array($skybasenastr);
-			
+
+			$skyComNI ->dao->select('`nas_par`,`nas_znach`');
+			$skyComNI->dao->from('skynas');
+			$skybasenastr = $skyComNI->dao->get();
+			$skyrownastr = db2_fetch_array($skybasenastr);
+						
 			do {
 				if (!empty($$skyrownastr['nas_par']))
-				{ $skybase = mysql_query("UPDATE 'skynas' SET 'nas_znach'='{$$skyrownastr['nas_par']}'
-			WHERE 'nas_par'='{$skyrownastr['nas_par']}'",$db) or die(mysql_error()); }
+					{
+					$aSkyCom = array('nas_znach'=> $$skyrownastr['nas_par']);
+					$conditions = array('nas_par'  => $skyrownastr['nas_par']);
+					$skyComNI->dao->from('skynas');
+					$skyComNI->dao->set($aSkyCom);
+					$skyComNI->dao->where($conditions);
+					$skybase = $skyComNI->dao->update();
+					}
 				}
-			while ($skyrownastr = mysql_fetch_array($skybasenastr));
+			while ($skyrownastr = db2_fetch_array($skybasenastr));
 			echo '<div class="ok">изменения внесены</div>';
 			}
 	}
@@ -241,9 +252,13 @@ if ($mod=='nas' || empty($mod))
 	
 	echo'<div class="zag" style="margin:0 0 5px 0;">Настройки</div>';
 
-	$skybase = mysql_query("SELECT 'user_email'
-	FROM 'skyusers' WHERE 'user_id'='{$_SESSION['ses_user']}' LIMIT 1",$db) or die(mysql_error());
-	$skyrow = mysql_fetch_array($skybase); ?>
+		$conditions = array('user_id'  => $_SESSION['ses_user']);
+		$skyComNI ->dao->select('user_email');
+		$skyComNI->dao->from('skyusers');
+		$skyComNI->dao->where($conditions);
+		$skybase = $skyComNI->dao->get();
+		$skyrow = db2_fetch_array($skybase);
+	 ?>
     
 <fieldset class="nas">
 <legend class="ser"> Общие настройки </legend>
