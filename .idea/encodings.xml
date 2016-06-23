@@ -2,8 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skyComMy/adm.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skyComMy/adm/index.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skyComMy/index.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skyComMy/skycom.php" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skycom/adm.php" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skycom/db.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/www/doska/oc-content/plugins/skycom/skycom.php" charset="windows-1251" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

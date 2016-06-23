@@ -35,7 +35,7 @@ if (!empty($_POST) && $act=="login")
 		$user_sol = $skyrowlogin['user_sol'];
 		$user_pass = md5(md5($_POST['user_pass']) . $user_sol);
 
-		$skyComNI ->dao->select('user_id','user_login','user_pass','user_prava');
+		$skyComNI ->dao->select('`user_id`,`user_login`,`user_pass`,`user_prava`');
 		$skyComNI->dao->from('skyusers');
 		$conditions = array('user_email'  => $user_email,
 							'user_pass'   => $user_pass);
@@ -371,7 +371,7 @@ if ($mod=='nas' || empty($mod))
       <tr>
         <td width="33"></td>
         <td width="210" align="left"><div class="sm2">Бесплатные PHP-скрипты<br />
-          <a href="http://www.skyscript.ru">2009&mdash;2011 SkyScript.ru</a></div></td>
+          <a href="http://www.skyscript.ru">2009 &mdash ;2011 SkyScript.ru</a></div></td>
         <td width="33">&nbsp;</td>
         <td align="left"><div class="sm2">Скрипт Комментарии <span class="kr">SkyCom</span> версия 1.0<br />
           Работает на PHP + MySQL </div></td>
