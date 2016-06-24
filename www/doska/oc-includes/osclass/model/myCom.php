@@ -46,6 +46,7 @@ class myCom extends DAO
             'com_text',
             'b_enabled',
             'author_id',
+            'parent_com_id'
         );
         $this->setFields($array_fields);
     }

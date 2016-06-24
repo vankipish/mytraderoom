@@ -1,4 +1,4 @@
-<?php
+<?php if ( !defined('ABS_PATH') ) exit('ABS_PATH is not loaded. Direct access is not allowed.');
 /**
  * Created by PhpStorm.
  * User: Admin
@@ -18,19 +18,19 @@ function show_comments($id_article)//выводвсехкомментариев�
                         'b_enabled'    => 1);
     $myComNI->dao->where($conditions);
     $myComNI->dao->orderBy('pub_date');
-    $res = $myComNI->dao->get();
-        
-    while($arr = mysql_fetch_array($res, MYSQL_NUM))
+    $result = $myComNI->dao->get();
+    $res = $result->result();
+    foreach ($res as $comment)
     {
-        echo "
+        echo "<br>
     <div class=main>
-       <img src=images/comentator.jpg>
+       
             <div class=block_name>
-                <span class=name>[2]</span>
-                <span class=date>[5]</span>
+                <span class=name>$comment[author_name]</span>
+                <span class=date>$comment[pub_date]</span>
             </div>
-            <div class=coment>
-               <div>$arr[4]</div>
+            <div class=comment>
+               <div>$comment[com_text]</div>
             </div>
     </div>
              ";

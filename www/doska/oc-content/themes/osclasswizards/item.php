@@ -199,39 +199,9 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
             <?php if( osc_count_item_comments() >= 1 ) { ?>
                 <h2 class="title">
                     Предложения
-
                     <?php
-                    $id_article = osc_item_id();
-                    include_once "$path/oc-includes/osclass/model/myCom.php";
-                    $myComNI = myCom::newInstance();
 
-                    $myComNI = myCom::newInstance();
-                    $myComNI ->dao->select('*');
-                    $myComNI->dao->from('oc_t_comment_comment');
-                    $conditions = array('item_id'  => $id_article,
-                                         'b_enabled'    => 1);
-                    $myComNI->dao->where($conditions);
-                    $myComNI->dao->orderBy('pub_date');
-                    $result = $myComNI->dao->get();
-                    $res = $result->result();
-                    var_dump($res);
-                    foreach ($res[0] as $k=>$v)
-                    {
-                        echo $v;echo "<br>
-    <div class=main>
-       
-            <div class=block_name>
-                <span class=name>$comment[Author_name]</span>
-                <span class=date>[5]</span>
-            </div>
-            <div class=comment>
-               <div>$arr[4]</div>
-            </div>
-    </div>
-             ";
-                    }
                     ?>
-
                 </h2>
             <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
@@ -280,6 +250,10 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                 <?php }   ?>
                                 <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
                                 <p><?php echo nl2br( osc_comment_body() ); ?> </p>
+                                <!-- Добавлю сюда комменты -->
+                                <?php include_once "$path/oc-content/plugins/myCom/my_comments.php";?>
+                                
+                                
                             </div>
                             <?php ?>
                             <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
