@@ -50,6 +50,8 @@ osc_register_script('jquery-uniform', osc_current_web_theme_js_url('jquery.unifo
     osc_enqueue_script('global-theme-js');
 osc_register_script('my', osc_current_web_theme_js_url('my.js'));
 osc_enqueue_script('my');
+osc_register_script('js_comments', "./oc-content/plugins/myCom/js_comments.js");
+osc_enqueue_script('js_comments');
 
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />

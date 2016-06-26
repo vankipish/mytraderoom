@@ -47,6 +47,7 @@ function vhe(obj, vh){obj.style.visibility=vh;}
 function gh(id)
 {
     var e = document.getElementById(id);
+    debugger;
     if(e.style.display == "none")
     {
         e.style.visibility = "hidden";

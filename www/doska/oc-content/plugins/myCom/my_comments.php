@@ -9,21 +9,19 @@
 $path = dirname(dirname(dirname(__DIR__)));
 ?>
 
-<script Language="JavaScript" src="js_comments.js"> </script>
-
 <div class="myCom_form">
     <form name="myCom_form" id="myCom_form">
         <fieldset>
 <div class="myCom_title">
      <span>
          <h2>Обсуждение предложения:</h2>
-              <a href="#<?php echo osc_item_id() ?>">
+              <a href="<?php echo osc_item_url() ?>">
                   <?php echo osc_item_title() ?>
 </a>
                                </span>
 </div>
 <div class="top">
-<span id="addcomentbutton"  onClick="toggle('addcoment'); location.href='#myCom_form';">press</span>
+    <img id="addcomentbutton"  onClick="toggle('addcoment'); location.href='#coments';" src="./oc-content/plugins/myCom/images/comment.png"/>
 </div>
 <div id="addcoment" class="addcoment" style="display:none;">
 
