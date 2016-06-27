@@ -19,28 +19,30 @@ $myComNI = myCom::newInstance();
 <div class="top">
     <img id="addcomentbutton"  onClick="toggle('addcoment'); location.href='#coments';" src="./oc-content/plugins/myCom/images/comment.png"/>
 </div>
-<div id="addcoment" class="addcoment" ">
-    <form name="myCom_form" id="myCom_form">
-        <fieldset>
+    <div id="addcoment" class="addcoment" >
+            <form name="myCom_form" id="myCom_form">
+                <fieldset>
 
-    <input hidden id="item_id" value="<?php echo osc_item_id(); ?>">
-    <input hidden id="parent_com_id" value="<?php echo osc_comment_id(); ?>">
-    <input hidden id="myCom_time" value="<?php echo time(); ?>">
-            
-            <div id="result"><?php include_once "$path/oc-content/plugins/myCom/show_comments.php"; ?></div>
+            <input hidden id="item_id" value="<?php echo osc_item_id(); ?>">
+            <input hidden id="parent_com_id" value="<?php echo osc_comment_id(); ?>">
+            <input hidden id="myCom_time" value="<?php echo time(); ?>">
 
-<input id="myCom_name" type="text" name="myCom_name" value="<?php if (osc_user_name() !== "") {echo osc_user_name();} else {echo "Имя (Обязательно)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
-<input id="myCom_email" type="text" name="myCom_email" value="<?php if (osc_user_email() !== "") {echo osc_user_email();} else {echo "Почта (Обязательно, не публикуется)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
-<textarea id="myCom_text" name="myCom_text" onfocus="clearText(this)" onblur="clearText(this)"></textarea>
+                    <?php include_once "$path/oc-content/plugins/myCom/show_comments.php"; ?>
 
-            <div style="margin-bottom: 20px">
-                <button id="button" type="submit" class="btn btn-success">
-                    Оставить коммент
-                </button>
-            </div>
-            <div style="margin-top: 15px"  class="errorMyCom"></div>
-        </fieldset>
-    </form>
+        <input id="myCom_name" type="text" name="myCom_name" value="<?php if (osc_logged_user_name() !== "") {echo osc_user_name();} else {echo "Имя (Обязательно)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
+        <input id="myCom_email" type="text" name="myCom_email" value="<?php if (osc_logged_user_email() !== "") {echo osc_user_email();} else {echo "Почта (Обязательно, не публикуется)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
+        <textarea id="myCom_text" name="myCom_text" onfocus="clearText(this)" onblur="clearText(this)"></textarea>
+
+                    <div style="margin-bottom: 20px">
+                        <button id="button" type="submit" class="btn btn-success">
+                            Оставить коммент
+                        </button>
+                    </div>
+                    <div style="margin-top: 15px"  class="errorMyCom"></div>
+                </fieldset>
+            </form>
+    </div>
 </div>
+
 
        

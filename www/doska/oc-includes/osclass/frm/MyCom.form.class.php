@@ -86,7 +86,15 @@ class MyComForm extends Form
                             },
                             response: 'text',
                             success: function (data) {
-                                $("#result").html(data);
+                                alert(data);
+                                var obj = JSON.parse(data);
+                                alert(obj);
+                                for(var i=0; i < obj.length; i ++){
+                                    //Добавляем в чат сообщение
+                                    $("#result").append("<li>"+obj[i].name+": "+obj[i].msg+"</li>");
+                                }
+                                //Прокручиваем чат до самого конца
+                                $("#msg-box").scrollTop(2000);
                                 $("#button").html('Комент отправлен');
                             }
                         })
