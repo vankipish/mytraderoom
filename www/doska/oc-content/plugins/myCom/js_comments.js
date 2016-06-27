@@ -17,13 +17,13 @@ function toggle(id)
     var e = document.getElementById(id);
     var dh = gh(id);
     var elems = e.getElementsByTagName('*');
-
     if (e.style.display == "none")
     {
         for(var i=0; i=0;i-=5)
         {
             (function()
                 {
+
                     var pos=i;
                     setTimeout(function()
                     {
@@ -47,7 +47,6 @@ function vhe(obj, vh){obj.style.visibility=vh;}
 function gh(id)
 {
     var e = document.getElementById(id);
-    debugger;
     if(e.style.display == "none")
     {
         e.style.visibility = "hidden";

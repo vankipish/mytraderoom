@@ -5,34 +5,23 @@
  * Date: 23.06.2016
  * Time: 22:17
  */
-$path = dirname(dirname(dirname(__DIR__)));
-include_once "$path/oc-includes/osclass/model/myCom.php";
-$myComNI = myCom::newInstance();
+?>
 
-function show_comments($id_article)//выводвсехкомментариевкстатье
-{
-    $myComNI = myCom::newInstance();
-    $myComNI ->dao->select('*');
-    $myComNI->dao->from('oc_t_comment_comment');
-    $conditions = array('item_id'  => $id_article,
-                        'b_enabled'    => 1);
-    $myComNI->dao->where($conditions);
-    $myComNI->dao->orderBy('pub_date');
-    $result = $myComNI->dao->get();
-    $res = $result->result();
-    foreach ($res as $comment)
-    {
+<div>Комментарии к предложению:</div>
+<?php
+    $comments = ($myComNI -> allComments(osc_comment_id()));
+    var_dump($comments);
+ foreach ($comments as $comment) {
         echo "<br>
-    <div class=main>
-       
-            <div class=block_name>
-                <span class=name>$comment[author_name]</span>
-                <span class=date>$comment[pub_date]</span>
-            </div>
-            <div class=comment>
-               <div>$comment[com_text]</div>
-            </div>
-    </div>
-             ";
-    }
-}
+        <div style='margin-left: 5%' class=myCom_main>
+           
+                <div class=block_name>
+                    <span class=name>От:$comment[author_name]</span>
+                    <span class=date>Опубликовано:$comment[pub_date]</span>
+                </div>
+                <div class=comment>
+                   <div>$comment[com_text]</div>
+                </div>
+        </div>
+                 ";
+    }?>

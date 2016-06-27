@@ -9,15 +9,23 @@
  */
 class myCom extends DAO
 {
+    /**
+     * It references to self object: MyCom.
+     * It is used as a singleton
+     *
+     * @access private
+     * @since unknown
+     * @var Item
+     */
     private static $instance;
 
     /**
-     * It creates a new skyCom object class ir if it has been created
+     * It creates a new MyCom object class ir if it has been created
      * before, it return the previous object
      *
      * @access public
      * @since unknown
-     * @return ItemComment
+     * @return MyCom
      */
     public static function newInstance()
     {
@@ -28,12 +36,12 @@ class myCom extends DAO
     }
 
     /**
-     * Set data related to skyCom table
+     * Set data related to MyCom table
      */
     function __construct()
     {
         parent::__construct();
-        $this->setTableName('oc_t_comment_comment');
+        $this->setTableName('t_comment_comment');
         $this->setPrimaryKey('com_id');
         $array_fields = array(
             'com_id',
@@ -51,5 +59,50 @@ class myCom extends DAO
         $this->setFields($array_fields);
     }
 
+    function findByItemIDAll($id)
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        $this->dao->where('com_id', $id);
+        $result = $this->dao->get();
+
+        if ($result == false) {
+            return array();
+        }
+
+        return $result->result();
+    }
+
+    function AllTexts($parentCommId)
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        $this->dao->where('parent_com_id', $parentCommId);
+        $result = $this->dao->get();
+        $resArr = $result->result();
+        if (empty($resArr))
+            return 0;
+        else
+            $AllComments = array();
+        foreach ($resArr as $comments)
+            array_push($AllComments,$comments['com_text']);
+        return $AllComments;
+    }
+
+    function allComments($parentCommId)
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        $this->dao->where('parent_com_id', $parentCommId);
+        $result = $this->dao->get();
+        $this->dao->orderBy("pub_date",'DESC');
+        $resArr = $result->result();
+        if (empty($resArr))
+            return 0;
+        else
+        return $resArr;
+    }
+    
 }
+?>
     

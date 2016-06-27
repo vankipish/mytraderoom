@@ -57,6 +57,9 @@ if( osc_item_country() !== '' ) {
 osc_current_web_theme_path('header.php');
 $path = dirname(dirname(dirname(__DIR__)));
 include_once "$path/oc-includes/osclass/model/userRaty.php";
+include_once "$path/oc-includes/osclass/frm/MyCom.form.class.php";
+include_once "$path/oc-includes/osclass/model/myCom.php";
+
 
 ?>
 
@@ -251,6 +254,7 @@ include_once "$path/oc-includes/osclass/model/userRaty.php";
                                 <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
                                 <p><?php echo nl2br( osc_comment_body() ); ?> </p>
                                 <!-- Добавлю сюда комменты -->
+                                
                                 <?php include_once "$path/oc-content/plugins/myCom/my_comments.php";?>
                                 
                                 

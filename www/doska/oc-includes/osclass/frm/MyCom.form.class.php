@@ -27,41 +27,67 @@ class MyComForm extends Form
                 // Code for form validation
                 $("form[name=myCom_form]").validate({
                     rules: {
-                        comment: {
+                        myCom_name: {
+                            required: true,
+                            minlength: 1,
+                            maxlength: 30
+                        },
+                        myCom_email: {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 30
+                        },
+                        myCom_text: {
                             required: true,
                             minlength: 3,
                             maxlength: 500
                         }
                     },
                     messages: {
-                        comment: {
+                        myCom_name: {
+                            required: "Введите имя!",
+                            minlength: "Имя слишком короткое",
+                            maxlength: "Воу воу, краткость - сестра таланта"
+                        },
+                        myCom_email: {
+                            required: "Введите email!",
+                            minlength: "Это не email",
+                            maxlength: "Воу воу, краткость - сестра таланта"
+                        },
+                        myCom_text: {
                             required: "Введите комментарий!",
                             minlength: "Комментарий слишком короткий",
                             maxlength: "Воу воу, краткость - сестра таланта"
                         }
                     },
                     errorElement : 'div',
-                    errorLabelContainer: '.errorTxt',
-
+                    errorLabelContainer: '.errorMyCom',
 
                     submitHandler: function(form) {
-                        
+
+                        var $myCom_name = document.getElementById('myCom_name').value;
+                        var $item_id = document.getElementById('item_id').value;
+                        var $parent_com_id = document.getElementById('parent_com_id').value;
+                        var $myCom_email = document.getElementById('myCom_email').value;
+                        var $myCom_time = document.getElementById('myCom_time').value;
+                        var $myCom_text = document.getElementById('myCom_text').value;
+
                         $.ajax
                         ({
                             type: "POST",
                             url: '<?php echo osc_base_url(true); ?>?page=ajax&action=myCom',
                             data: {
-                                "name": document.getElementById('myCom_name').value,
-                                "itemId": document.getElementById('item_id').value,
-                                "parentComId": document.getElementById('parent_com_id').value,
-                                "email": document.getElementById('myCom_email').value,
-                                "pubDate": document.getElementById('myCom_time').value,
-                                "myComText": document.getElementById('myCom_text').value
+                                "myCom_name": $myCom_name,
+                                "item_id": $item_id,
+                                "parent_com_id": $parent_com_id,
+                                "myCom_email": $myCom_email,
+                                "pubDate": $myCom_time,
+                                "myCom_text": $myCom_text
                             },
                             response: 'text',
                             success: function (data) {
                                 $("#result").html(data);
-                                //$("#button").html('Оценка отправлена');
+                                $("#button").html('Комент отправлен');
                             }
                         })
                     }
