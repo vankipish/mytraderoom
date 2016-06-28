@@ -88,14 +88,11 @@ class MyComForm extends Form
                             success: function (data) {
                                 alert(data);
                                 var obj = JSON.parse(data);
-                                alert(obj);
-                                for(var i=0; i < obj.length; i ++){
-                                    //Добавляем в чат сообщение
-                                    $("#result").append("<li>"+obj[i].name+": "+obj[i].msg+"</li>");
-                                }
+                                    $("#result").append("<li>"+obj.author_name+"<br>: "+obj.com_text+"</li><br>");
                                 //Прокручиваем чат до самого конца
                                 $("#msg-box").scrollTop(2000);
                                 $("#button").html('Комент отправлен');
+
                             }
                         })
                     }

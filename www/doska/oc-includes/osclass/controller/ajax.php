@@ -138,7 +138,7 @@
                     if ($myComNI->insert($myComArray)) {
                         $MyComID = $myComNI->dao->insertedId();
                     }
-                        include_once "$path/oc-content/plugins/myCom/show_comments.php";
+                    echo json_encode($myComArray);
                     
                 break;
                 case 'delete_image': // Delete images via AJAX
