@@ -11,18 +11,21 @@ if ($comments !==0)
   { ?>
 
 <h3 style="margin-left: 5%"> Комментарии к предложению:</h3>
+      <input hidden id='answer_for_<?php echo osc_comment_id() ?>' value = '0'>
 <div class="comForCom" id="comForCom<?php echo osc_comment_id() ?>">
     <?php
     //var_dump($comments);
     foreach ($comments as $comment) {
+        //var_dump($comment['author_name']);
+        $test = 'test';
         echo "<ul>
-                    <li>$comment[author_name] ($comment[pub_date]):</li>
+                    <li><a id='author_".$comment['com_id']."'>$comment[author_name]</a>($comment[pub_date]):</li>
                     <li>$comment[com_text]</li>
-               </ul>  
-                  <div>
-                  <a class='myComAnswer' onclick='js_answer($offerId,$comment)'>Ответить</a>
+                    <div>
+                  <a id='answer_".$comment['com_id']."' class='myComAnswer' onclick='js_answer($offerId)'>Ответить</a>
                   </div>
                   <div style=\"clear:both;\"></div>
+               </ul>
                  ";
     }?>
     </div>

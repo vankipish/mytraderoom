@@ -121,6 +121,7 @@
                     $myCom_email = strip_tags($_POST['myCom_email']);
                     $myCom_time = date('Y-m-d H:i:s');
                     $myCom_text = strip_tags($_POST['myCom_text']);
+                    $answer_for = $_POST['answer_for'];
 
                     // Добавляем комментарий
 
@@ -134,7 +135,9 @@
                         'author_phone'     => '',
                         'show_phone'       => '',
                         'b_enabled'        => '',
-                        'author_id'        => '');
+                        'author_id'        => '',
+                        'answer_for'       => $answer_for
+                        );
                     if ($myComNI->insert($myComArray)) {
                         $MyComID = $myComNI->dao->insertedId();
                     };

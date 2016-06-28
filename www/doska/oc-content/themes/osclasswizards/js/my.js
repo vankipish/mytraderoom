@@ -101,10 +101,14 @@ function js_showOrHideMyCom($id) // появление обсуждения пр
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function js_answer($offerId,$commentAuthor)  // ф-я ответа на коммент
+function js_answer($offerId)  // ф-я ответа на коммент
 {
+    var $id=event.target.id.substring(7);
     js_showOrHideMyCom($offerId);
     var $textArea = document.getElementById('myCom_text'+$offerId);
+    var $whome = document.getElementById('author_'+$id);
     $textArea.focus();
-    $('#myCom_text'+$offerId).val($commentAuthor);
+    $('#myCom_text'+$offerId).val($("#author_"+$id).html()+', ');
+    $('#answer_for_'+$offerId).val($id);
+    //alert($('#answer_for_'+$offerId).val());
 }

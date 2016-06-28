@@ -54,7 +54,8 @@ class myCom extends DAO
             'com_text',
             'b_enabled',
             'author_id',
-            'parent_com_id'
+            'parent_com_id',
+            'answer_for'
         );
         $this->setFields($array_fields);
     }
@@ -101,6 +102,19 @@ class myCom extends DAO
             return 0;
         else
         return $resArr;
+    }
+
+    function getId($parentCommId)
+    {
+        $this->dao->select('com_id');
+        $this->dao->from($this->getTableName());
+        $this->dao->where('parent_com_id', $parentCommId);
+        $result = $this->dao->get();
+        $resArr = $result->result();
+        if (empty($resArr))
+            return 0;
+        else
+            return $resArr;
     }
     
 }

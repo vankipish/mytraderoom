@@ -71,6 +71,7 @@ class MyComForm extends Form
                         var $myCom_email<?php echo $id?> = document.getElementById('myCom_email<?php echo $id?>').value;
                         var $myCom_time<?php echo $id?> = document.getElementById('myCom_time<?php echo $id?>').value;
                         var $myCom_text<?php echo $id?> = document.getElementById('myCom_text<?php echo $id?>').value;
+                        var $answer_for_<?php echo $id?> = document.getElementById('answer_for_<?php echo $id?>').value;
 
                         $.ajax
                         ({
@@ -82,7 +83,8 @@ class MyComForm extends Form
                                 "parent_com_id": $parent_com_id<?php echo $id?>,
                                 "myCom_email": $myCom_email<?php echo $id?>,
                                 "pubDate": $myCom_time<?php echo $id?>,
-                                "myCom_text": $myCom_text<?php echo $id?>
+                                "myCom_text": $myCom_text<?php echo $id?>,
+                                "answer_for": $answer_for_<?php echo $id?>
                             },
                             response: 'text',
                             success: function (data) {
