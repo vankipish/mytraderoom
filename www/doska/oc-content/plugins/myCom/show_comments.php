@@ -15,9 +15,10 @@ if ($comments !==0)
 <div class="comForCom" id="comForCom<?php echo osc_comment_id() ?>">
     <?php
     //var_dump($comments);
+
     foreach ($comments as $comment) {
         //var_dump($comment['author_name']);
-        $test = 'test';
+
         echo "<ul>
                     <li><a id='author_".$comment['com_id']."'>$comment[author_name]</a>($comment[pub_date]):</li>
                     <li>$comment[com_text]</li>
