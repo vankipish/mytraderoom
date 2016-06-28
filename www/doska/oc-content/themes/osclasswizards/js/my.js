@@ -14,14 +14,6 @@ function js_showOrHideDiv($id) // появление информации в п�
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function js_showOrHideMyCom($id) // появление обсуждения предложений
-{
-    var trigger = document.getElementById('triger'+$id+'');
-    var myComSend = document.getElementById('myComSend'+$id+'');
-    $('#'+myComSend.id).slideDown(300); $('#trigger'+$id).slideUp(0);
-    //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
-}
-
 function js_showZakazchikField($id) 
 {
     var chek = document.getElementById('chk1');
@@ -100,3 +92,19 @@ $(document).ready(function(){
         $("body").delay(100).animate({scrollTop: top -200}, 500);
     });
 });
+
+function js_showOrHideMyCom($id) // появление обсуждения предложений
+{
+    var trigger = document.getElementById('triger'+$id+'');
+    var myComSend = document.getElementById('myComSend'+$id+'');
+    $('#'+myComSend.id).slideDown(300); $('#trigger'+$id).slideUp(0);
+    //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
+}
+
+function js_answer($offerId,$commentAuthor)  // ф-я ответа на коммент
+{
+    js_showOrHideMyCom($offerId);
+    var $textArea = document.getElementById('myCom_text'+$offerId);
+    $textArea.focus();
+    $('#myCom_text'+$offerId).val($commentAuthor);
+}
