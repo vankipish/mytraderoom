@@ -39,7 +39,7 @@ $myComNI = myCom::newInstance();
        </div>
                    <div class="a_for_comment">
                     <a id="trigger<?php echo osc_comment_id()?>" onClick="js_showOrHideMyCom('<?php echo osc_comment_id()?>')" >Комменировать</a>
-                   </div>
+                   </div> 
                 </fieldset>
             </form>
     </div>

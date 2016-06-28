@@ -5,21 +5,26 @@
  * Date: 23.06.2016
  * Time: 22:17
  */
-?>
+$comments = ($myComNI -> allComments(osc_comment_id()));
+$offerId = osc_comment_id();
+if ($comments !==0)
+  { ?>
+
 <h3 style="margin-left: 5%"> Комментарии к предложению:</h3>
-<div  class="comForCom" id="comForCom<?php echo osc_comment_id()?>"">
-<?php
-    $comments = ($myComNI -> allComments(osc_comment_id()));
+<div class="comForCom" id="comForCom<?php echo osc_comment_id() ?>">
+    <?php
     //var_dump($comments);
- if ($comments !== 0)
- {
-     foreach ($comments as $comment) {
-         echo "<ul>
+    foreach ($comments as $comment) {
+        echo "<ul>
                     <li>$comment[author_name] ($comment[pub_date]):</li>
                     <li>$comment[com_text]</li>
-               </ul>     
+               </ul>  
+                  <div>
+                  <a class='myComAnswer' onclick='js_answer($offerId,$comment)'>Ответить</a>
+                  </div>
+                  <div style=\"clear:both;\"></div>
                  ";
-     }
- }
-?>
-</div>
+    }?>
+    </div>
+  <?php } ?>
+

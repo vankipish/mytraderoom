@@ -72,5 +72,8 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 .comForCom ul{
     border-bottom: 1px solid #a5bcc0;
 }
-.a_for_comment {margin: 0 5% 5px 5%}
+.myComAnswer{
+    float: right;
+}
+.a_for_comment {margin: 3px 5% 5px 5%}
 .a_for_comment a{float: right}
