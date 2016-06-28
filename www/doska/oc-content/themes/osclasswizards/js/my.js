@@ -14,6 +14,14 @@ function js_showOrHideDiv($id) // появление информации в п�
     //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
 }
 
+function js_showOrHideMyCom($id) // появление обсуждения предложений
+{
+    var trigger = document.getElementById('triger'+$id+'');
+    var myComSend = document.getElementById('myComSend'+$id+'');
+    $('#'+myComSend.id).slideDown(300); $('#trigger'+$id).slideUp(0);
+    //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
+}
+
 function js_showZakazchikField($id) 
 {
     var chek = document.getElementById('chk1');

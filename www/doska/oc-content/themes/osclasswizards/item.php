@@ -254,8 +254,8 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                                 <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
                                 <p><?php echo nl2br( osc_comment_body() ); ?> </p>
                                 <!-- Добавлю сюда комменты -->
-                                
-                                <?php include_once "$path/oc-content/plugins/myCom/my_comments.php";?>
+                                <?php //var_dump(osc_logged_user_email())?>
+                                <?php include "$path/oc-content/plugins/myCom/my_comments.php";?>
                                 
                                 
                             </div>

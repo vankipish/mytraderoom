@@ -19,13 +19,13 @@
 class MyComForm extends Form
 {
 
-    static public function js_validation($admin = false)
+    static public function js_validation($id)
     {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
                 // Code for form validation
-                $("form[name=myCom_form]").validate({
+                $("#myCom_form<?php echo $id?>").validate({
                     rules: {
                         myCom_name: {
                             required: true,
@@ -61,38 +61,40 @@ class MyComForm extends Form
                         }
                     },
                     errorElement : 'div',
-                    errorLabelContainer: '.errorMyCom',
+                    errorLabelContainer: '#errorMyCom<?php echo $id?>',
 
                     submitHandler: function(form) {
 
-                        var $myCom_name = document.getElementById('myCom_name').value;
-                        var $item_id = document.getElementById('item_id').value;
-                        var $parent_com_id = document.getElementById('parent_com_id').value;
-                        var $myCom_email = document.getElementById('myCom_email').value;
-                        var $myCom_time = document.getElementById('myCom_time').value;
-                        var $myCom_text = document.getElementById('myCom_text').value;
+                        var $myCom_name<?php echo $id?> = document.getElementById('myCom_name<?php echo $id?>').value;
+                        var $item_id<?php echo $id?> = document.getElementById('item_id<?php echo $id?>').value;
+                        var $parent_com_id<?php echo $id?> = document.getElementById('parent_com_id<?php echo $id?>').value;
+                        var $myCom_email<?php echo $id?> = document.getElementById('myCom_email<?php echo $id?>').value;
+                        var $myCom_time<?php echo $id?> = document.getElementById('myCom_time<?php echo $id?>').value;
+                        var $myCom_text<?php echo $id?> = document.getElementById('myCom_text<?php echo $id?>').value;
 
                         $.ajax
                         ({
                             type: "POST",
                             url: '<?php echo osc_base_url(true); ?>?page=ajax&action=myCom',
                             data: {
-                                "myCom_name": $myCom_name,
-                                "item_id": $item_id,
-                                "parent_com_id": $parent_com_id,
-                                "myCom_email": $myCom_email,
-                                "pubDate": $myCom_time,
-                                "myCom_text": $myCom_text
+                                "myCom_name": $myCom_name<?php echo $id?>,
+                                "item_id": $item_id<?php echo $id?>,
+                                "parent_com_id": $parent_com_id<?php echo $id?>,
+                                "myCom_email": $myCom_email<?php echo $id?>,
+                                "pubDate": $myCom_time<?php echo $id?>,
+                                "myCom_text": $myCom_text<?php echo $id?>
                             },
                             response: 'text',
                             success: function (data) {
-                                alert(data);
                                 var obj = JSON.parse(data);
-                                    $("#result").append("<li>"+obj.author_name+"<br>: "+obj.com_text+"</li><br>");
+                                    $("#comForCom<?php echo $id?>").append("" +
+                                        "<ul>" +
+                                            "<li>"+obj.author_name+" ("+obj.pub_date+"):</li>" +
+                                            "<li>"+obj.com_text+"</li>" +
+                                        "</ul>");
                                 //Прокручиваем чат до самого конца
-                                $("#msg-box").scrollTop(2000);
-                                $("#button").html('Комент отправлен');
-
+                                $("#comForCom<?php echo $id?>").scrollTop(2000);
+                                $("#button<?php echo $id?>").html('Комент отправлен');
                             }
                         })
                     }

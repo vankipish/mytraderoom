@@ -6,8 +6,8 @@
  * Time: 22:17
  */
 ?>
-
-<div id="result">Комментарии к предложению:
+<h3 style="margin-left: 5%"> Комментарии к предложению:</h3>
+<div  class="comForCom" id="comForCom<?php echo osc_comment_id()?>"">
 <?php
     $comments = ($myComNI -> allComments(osc_comment_id()));
     //var_dump($comments);
@@ -15,9 +15,9 @@
  {
      foreach ($comments as $comment) {
          echo "<ul>
-                    <li>От:$comment[author_name]</li>
-                    <li>Опубликовано:$comment[pub_date]</li>
+                    <li>$comment[author_name] ($comment[pub_date]):</li>
                     <li>$comment[com_text]</li>
+               </ul>     
                  ";
      }
  }

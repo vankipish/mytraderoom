@@ -9,8 +9,8 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 #myCom_form  .myCom_title .left{float:left; padding:5px; width:500px;}
 #myCom_form .addcoment {position:relative; top:-15px; background: #EEE; border:5px solid #93afbc; display:none;}
 #myCom_form .addcoment img:hover{cursor:pointer;}
-#myCom_form  textarea{ width:535px; font-size:14px; height: 180px; margin:10px; overflow:hidden; background:#FFF; border:1px solid #DDD;}
-#myCom_form  input[type="text"]{padding-left:10px; width:525px; height:25px; font-size:15px; line-height: 1.8em; margin:10px 5px 0px 10px; border:1px solid #DDD;}
+#myCom_form  textarea{ width:90%; font-size:12px; height: 50px; margin:10px; overflow:hidden; background:#FFF; border:1px solid #DDD;}
+#myCom_form  input[type="text"]{padding-left:10px; width:90%; height:25px; font-size:15px; line-height: 1.8em; margin:10px 5px 0px 10px; border:1px solid #DDD;}
 #myCom_form  .addcoment span{position:relative; top:-10px; margin-right:180px; left:180px; font-size:20px; color:#292;}
 #myCom_form  #statusbox{padding-left:10px; line-height:55px; color:#888; font-size:18px; height:50px;}
 #myCom_form  img.button_add{margin:10px 5px 0px 10px; padding:0; border:0; float:none;}
@@ -21,3 +21,56 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 #myCom_form .date {height:40px; font-size:10px; position:relative; left:-10px; float:right; color: #555;}
 #myCom_form img{ float:left;}
 #myCom_form .coment{position:relative; left:-12px; width:554px; padding:19px 20px 10px 20px; border-bottom:1px solid #DDD; font-size:12px; background: #f7f4ca url(images/coment_top.png) left top no-repeat; text-align:justify;}
+/*.comForCom {margin: 5px 20% 5px 5%; background-color: #d4f0f7; padding: 5px 10px; overflow:hidden}*/
+.myComSend {
+    margin: -2px 5% 5px 5%;
+    background-color: #eff9fe;
+    padding: 5px 10px;
+    overflow:hidden;
+    /* Border */
+    border-bottom: 1px solid #a5bcc0;
+    border-left: 1px solid #a5bcc0;
+    border-right: 1px solid #a5bcc0;
+
+    /* Border-Radius */
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+.myComSend input{margin: 2px 0 2px 0}
+.comForCom {/* Border */
+    margin: 0 5% 0 5%;
+    padding: 5px 10px;
+    overflow:hidden;
+
+    /* Border */
+    border: 1px solid #a5bcc0;
+
+    /* Border-Radius */
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+
+
+    background: #eff9fe;
+
+    /* Box-Shadow */
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    -moz-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+
+    /* Opacity
+    -moz-opacity: 0.60;
+    -khtml-opacity: 0.60;
+    opacity: 0.60;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=60);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+    filter: alpha(opacity=60);*/
+
+    /* Text-Shadow */
+    text-shadow: 0px 0px 0px #000;}
+.comForCom ul{
+    border-bottom: 1px solid #a5bcc0;
+}
+.a_for_comment {margin: 0 5% 5px 5%}
+.a_for_comment a{float: right}
