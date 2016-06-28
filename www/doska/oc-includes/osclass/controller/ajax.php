@@ -119,7 +119,7 @@
                     $item_id = $_POST['item_id'];
                     $parent_com_id = $_POST['parent_com_id'];
                     $myCom_email = strip_tags($_POST['myCom_email']);
-                    $myCom_time = date('d.m.Yв H:i');
+                    $myCom_time = date('Y-m-d H:i:s');
                     $myCom_text = strip_tags($_POST['myCom_text']);
 
                     // Добавляем комментарий
@@ -137,7 +137,7 @@
                         'author_id'        => '');
                     if ($myComNI->insert($myComArray)) {
                         $MyComID = $myComNI->dao->insertedId();
-                    }
+                    };
                     echo json_encode($myComArray);
                     
                 break;
