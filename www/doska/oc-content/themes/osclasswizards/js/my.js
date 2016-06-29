@@ -112,3 +112,15 @@ function js_answer($offerId)  // ф-я ответа на коммент
     $('#answer_for_'+$offerId).val($id);
     //alert($('#answer_for_'+$offerId).val());
 }
+
+function js_echo_comments($comments,$offerId) {
+    $.each($comments, function(index, value){
+/*
+        $('#comForCom142').append
+            ('<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
+            '<li>'+value.com_text+'</li>');
+        debugger;*/
+        });
+
+
+}
