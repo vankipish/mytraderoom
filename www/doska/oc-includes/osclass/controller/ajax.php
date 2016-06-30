@@ -141,6 +141,8 @@
                     if ($myComNI->insert($myComArray)) {
                         $MyComID = $myComNI->dao->insertedId();
                     };
+                    $myComArray['com_id'] = $MyComID;
+                    array_push($myComArray,$ComId);
                     echo json_encode($myComArray);
                     
                 break;

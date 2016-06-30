@@ -140,3 +140,12 @@ function js_echo_comments($comments,$offerId) {
 
 
 }
+
+function js_mark_comment(comment,$offerId) {
+    $('#comForOfferID'+comment['com_id']).fadeIn(300);
+    $('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 200, 255, 219, 0.9 )"}, 500);
+    $('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 500);
+    top = $('#comForOfferID'+comment['com_id']).offset().top;
+    //анимируем переход на расстояние - top за 1500 мс
+    $('div.comments_list').delay(50).animate({scrollTop: top }, 1500);
+}

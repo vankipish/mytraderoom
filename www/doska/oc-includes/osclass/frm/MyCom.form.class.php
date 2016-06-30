@@ -95,25 +95,24 @@ class MyComForm extends Form
                                 if (comment['answer_for']==0)
                                 {
                                     $('#comForCom'+$offerId).append
-                                    ('<ul id="comForOfferID'+comment['com_id']+'">' +
+                                    ('<ul id="comForOfferID'+comment['com_id']+'" style="display: none">' +
                                         '<li><a id="author_'+comment['com_id']+'">'+comment.author_name+' </a>('+comment.pub_date+'):</li>' +
                                         '<li>'+comment.com_text+'</li>' +
                                         '<div><a id="answer_'+comment['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a>' +
                                         '</div><div style="clear:both;"></div>' +
                                         '</ul>');
-                                    //$('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "#FF4500"}, 4000);
-                                    //$('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 4000);
+                                    js_mark_comment(comment,$offerId);
+
+                                    
                                 }
                                 else
                                 {
                                     $('#comForOfferID'+comment['answer_for']).append
-                                    ('<ul id="'+comment['com_id']+'" style="margin-left: 10%;">' +
+                                    ('<ul id="comForOfferID'+comment['com_id']+'" style="margin-left: 10%;">' +
                                         '<li><a id="author_'+comment['com_id']+'">'+comment.author_name+' </a>('+comment.pub_date+'):</li>' +
                                         '<li>'+comment.com_text+'</li>' +
                                         '</ul>');
-                                    //$t = $( "ul" ).is('#comForOfferID'+comment['com_id']);
-                                    //alert($t);
-                                   // $('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 4000);
+                                    js_mark_comment(comment,$offerId);
                                 }
                                 //Прокручиваем чат до самого конца
                                 $("#comForCom<?php echo $id?>").scrollTop(2000);
