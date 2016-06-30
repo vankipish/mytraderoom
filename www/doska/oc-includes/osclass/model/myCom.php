@@ -96,7 +96,7 @@ class myCom extends DAO
         $this->dao->from($this->getTableName());
         $this->dao->where('parent_com_id', $parentCommId);
         $result = $this->dao->get();
-        $this->dao->orderBy("pub_date",'DESC');
+        $this->dao->orderBy("pub_date",'ASC');
         $resArr = $result->result();
         if (empty($resArr))
             return 0;

@@ -125,6 +125,7 @@ function js_echo_comments($comments,$offerId) {
                 '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a>' +
                 '</div><div style="clear:both;"></div>' +
                 '</ul>');
+            
         }
         else
         {
