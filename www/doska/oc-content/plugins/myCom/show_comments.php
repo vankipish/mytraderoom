@@ -9,13 +9,12 @@ $comments = ($myComNI -> allComments(osc_comment_id()));
 $jsonComments = json_encode($comments);
 $offerId = osc_comment_id();
  ?>
-      <script>js_echo_comments(<?php echo $jsonComments ?>,<?php echo $offerId ?>)</script>
-      
 <h3 style="margin-left: 5%"> Комментарии к предложению:</h3>
       <input hidden id='answer_for_<?php echo osc_comment_id() ?>' value = '0'>
 <div class="comForCom" id="comForCom<?php echo osc_comment_id() ?>">
+    <script>js_echo_comments(<?php echo $jsonComments ?>,<?php echo $offerId ?>)</script>
 
-    <?php if ($comments !==0)
+    <?php /*if ($comments !==0)
     {
     foreach ($comments as $comment)
             {
@@ -29,7 +28,7 @@ $offerId = osc_comment_id();
                </ul>
                  ";
             }
-    }?>
+    }*/?>
     </div>
   <?php  ?>
 

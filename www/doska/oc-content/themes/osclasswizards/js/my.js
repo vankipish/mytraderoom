@@ -115,11 +115,13 @@ function js_answer($offerId)  // ф-я ответа на коммент
 
 function js_echo_comments($comments,$offerId) {
     $.each($comments, function(index, value){
-/*
-        $('#comForCom142').append
-            ('<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
-            '<li>'+value.com_text+'</li>');
-        debugger;*/
+        $('#comForCom'+$offerId).append
+            ('<ul>' +
+            '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
+            '<li>'+value.com_text+'</li>' +
+            '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a>' +
+            '</div><div style="clear:both;"></div>' +
+            '</ul>');
         });
 
 
