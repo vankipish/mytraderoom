@@ -63,6 +63,7 @@ class MyComForm extends Form
                     errorElement : 'div',
                     errorLabelContainer: '#errorMyCom<?php echo $id?>',
 
+
                     submitHandler: function(form) {
 
                         var $myCom_name<?php echo $id?> = document.getElementById('myCom_name<?php echo $id?>').value;

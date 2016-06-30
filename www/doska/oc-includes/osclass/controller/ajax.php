@@ -114,7 +114,7 @@
                     $path = dirname(dirname(dirname(__DIR__)));
                     include_once "$path./oc-includes/osclass/model/myCom.php";
                     $myComNI = myCom::newInstance();
-
+                   // osc_add_flash_ok_message( sprintf(_m('!! %s'), $myComNI) );
                     $myCom_name = strip_tags($_POST['myCom_name']);
                     $item_id = $_POST['item_id'];
                     $parent_com_id = $_POST['parent_com_id'];
