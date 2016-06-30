@@ -77,3 +77,41 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 }
 .a_for_comment {margin: 3px 5% 5px 5%}
 .a_for_comment a{float: right}
+
+#blackout {
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+
+    overflow: hidden;
+    z-index: 999999;
+    left: 0;
+    display: none;
+}
+.contact_information {
+    padding: 2%;
+
+    z-index: 9999999;
+    background-color: #d8eeeb;
+    max-height:70%;
+    overflow-y: auto;
+    position:absolute;
+    width:50%;
+    top:15%;
+    left:35%;
+}
+.popup-box .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    color: #434343;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.popup-box .close:hover {
+    color: #000;
+}

@@ -6,14 +6,57 @@ function js_showOrHideChkbox($id)
     $('input#'+chekbox.id).on('ifUnchecked', function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function js_showOrHideDiv($id) // появление информации в предложениях
-{
-    var chek = document.getElementById('chk'+$id+'');
-    var elem = document.getElementById('el'+$id+'');
-    $('#chk'+$id).on("click", function(event){$('#'+elem.id).slideDown(300); $('#chk'+$id).slideUp(0)});
-    //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
+function centerBox() {
+    var boxWidth = 400;
+    /* определяем нужные данные */
+    var winWidth = $(window).width();
+    var winHeight = $(document).height();
+    var scrollPos = $(window).scrollTop();
+
+    /* Вычисляем позицию */
+
+    var disWidth = (winWidth - boxWidth) / 2;
+    var disHeight = scrollPos + 150;
+
+    /* Добавляем стили к блокам */
+    $('.contact_information').css({'width' : boxWidth+'px', 'left' : disWidth+'px', 'top' : disHeight+'px'});
+    $('#blackout').css({'width' : winWidth+'px', 'height' : winHeight+'px'});
+
+    return false;
 }
 
+function js_showOrHideDiv($id) // появление pop-up окна "подробно"
+{
+    js_blackoutShow();
+    $('#blackout').fadeIn(100);
+    $(window).resize(centerBox);
+    $(window).scroll(centerBox);
+    centerBox();
+    var elem = document.getElementById('el'+$id+'');
+    $('#'+elem.id).fadeIn(300);
+
+
+    $('html,body').css('overflow', 'hidden');
+        $('html').click(function() {
+            var scrollPos = $(window).scrollTop();
+            /* Скрыть окно, когда кликаем вне его области */
+            $('.contact_information').hide();
+            $('#blackout').hide();
+            $("html,body").css("overflow","auto");
+            $('html').scrollTop(scrollPos);
+        });
+        $('.close').click(function() {
+            var scrollPos = $(window).scrollTop();
+            /* Скрываем тень и окно, когда пользователь кликнул по X */
+            $('.contact_information').hide();
+            $('#blackout').hide();
+            $("html,body").css("overflow","auto");
+            $('html').scrollTop(scrollPos);
+        });
+}
+function js_blackoutShow() {
+    $('body').append('<div id="blackout"></div>');
+}
 function js_showZakazchikField($id) 
 {
     var chek = document.getElementById('chk1');

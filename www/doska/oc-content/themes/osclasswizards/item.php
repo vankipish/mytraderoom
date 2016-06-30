@@ -238,8 +238,9 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                             <?php } else { ?>
                                 <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                             <?php }?>
-                            <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>">подробнее</a>
+                            <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>" onclick="js_showOrHideDiv(<?php echo osc_comment_id(); ?>)">подробнее</a>
                             <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
+                                <div class="close">X</div>
                                 <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
                                 <?php
                                 if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
@@ -251,7 +252,7 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                                 }{ ?>
 
                                 <?php }   ?>
-                                <script>js_showOrHideDiv(<?php echo osc_comment_id()?>)</script>
+
                                 <p><?php echo nl2br( osc_comment_body() ); ?> </p>
                                 <!-- Добавлю сюда комменты -->
                                 <?php //var_dump(myCom::newInstance()->getId(osc_comment_id()))?>
