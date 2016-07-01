@@ -6,21 +6,22 @@ function js_showOrHideChkbox($id)
     $('input#'+chekbox.id).on('ifUnchecked', function(event){$('#'+elem.id).slideUp(300);});
 }
 
-function centerBox() {
+function centerBox($id) {
     var boxWidth = 500;
     /* определяем нужные данные */
     var winWidth = $(window).width();
-    var winHeight = $(document).height();
+    var winHeight = $(window).height();
+    var docHeight = $(document).height();
     var scrollPos = $(window).scrollTop();
 
     /* Вычисляем позицию */
 
     var disWidth = (winWidth - boxWidth) / 2;
-    var disHeight = scrollPos - 100;
+    var disHeight = (winHeight - winHeight/2)/2;
 
     /* Добавляем стили к блокам */
-    $('.contact_information').css({'width' : boxWidth+'px', 'left' : disWidth+'px', 'top' : disHeight+'px'});
-    $('#blackout').css({'width' : winWidth+'px', 'height' : winHeight+'px'});
+    $('#el'+$id).css({'width' : boxWidth+'px', 'left' : disWidth+'px', 'top' : disHeight+'px', 'maxHeight' : winHeight/2+'px'});
+    $('#blackout').css({'width' : winWidth+'px', 'height' : docHeight+'px'});
 
     return false;
 }
@@ -32,7 +33,7 @@ function js_showOrHideDiv($id) // появление pop-up окна "подро
     $('#blackout').fadeIn(100);
     $(window).resize(centerBox);
     $(window).scroll(centerBox);
-    centerBox();
+    centerBox($id);
 
     $(infoBlock).fadeIn(300,function()
     {
