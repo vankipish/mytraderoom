@@ -116,6 +116,25 @@ class myCom extends DAO
         else
             return $resArr;
     }
+
+    function deleteComment($CommId)
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        $cond = array(
+                      'com_id'  => $CommId
+                     );
+        return $this->delete($cond);
+    }
+    function deleteChild($CommId)
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        $cond = array(
+            'answer_for'  => $CommId
+        );
+        return $this->delete($cond);
+    }
     
 }
 ?>

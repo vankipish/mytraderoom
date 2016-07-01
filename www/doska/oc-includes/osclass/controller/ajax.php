@@ -144,8 +144,25 @@
                     $myComArray['com_id'] = $MyComID;
                     array_push($myComArray,$ComId);
                     echo json_encode($myComArray);
-                    
                 break;
+
+                case 'myComDel':
+
+                    $path = dirname(dirname(dirname(__DIR__)));
+                    include_once "$path/oc-includes/osclass/model/myCom.php";
+
+                    $IdMycom    = Params::getParam('myCom_Id');
+                    //$IdMyText    = Params::getParam('myCom_text');
+
+
+                    myCom::newInstance()->deleteComment($IdMycom);
+                    myCom::newInstance()->deleteChild($IdMycom);
+
+                    //osc_run_hook('hook_email_choice_made', $aComment);
+                    //osc_add_flash_ok_message( _m('Коммент удален!' ) );
+
+                break;
+
                 case 'delete_image': // Delete images via AJAX
                     $ajax_photo = Params::getParam('ajax_photo');
                     $id         = Params::getParam('id');

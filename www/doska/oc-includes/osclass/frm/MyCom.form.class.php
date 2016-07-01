@@ -23,7 +23,8 @@ class MyComForm extends Form
     {
         ?>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function () 
+            {
                 // Code for form validation
                 $("#myCom_form<?php echo $id?>").validate({
                     rules: {
@@ -98,7 +99,7 @@ class MyComForm extends Form
                                     ('<ul id="comForOfferID'+comment['com_id']+'" style="display: none">' +
                                         '<li><a id="author_'+comment['com_id']+'">'+comment.author_name+' </a>('+comment.pub_date+'):</li>' +
                                         '<li>'+comment.com_text+'</li>' +
-                                        '<div><a id="answer_'+comment['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a>' +
+                                        '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+comment.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
                                         '</div><div style="clear:both;"></div>' +
                                         '</ul>');
                                     js_mark_comment(comment,$offerId);
@@ -111,6 +112,8 @@ class MyComForm extends Form
                                     ('<ul id="comForOfferID'+comment['com_id']+'" style="margin-left: 10%;">' +
                                         '<li><a id="author_'+comment['com_id']+'">'+comment.author_name+' </a>('+comment.pub_date+'):</li>' +
                                         '<li>'+comment.com_text+'</li>' +
+                                        '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+comment.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
+                                        '</div><div style="clear:both;"></div>' +
                                         '</ul>');
                                     js_mark_comment(comment,$offerId);
                                 }
@@ -125,5 +128,4 @@ class MyComForm extends Form
         </script>
         <?php
     }
-
 }?>

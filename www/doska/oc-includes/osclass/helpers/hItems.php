@@ -700,14 +700,16 @@
     // HELPERS FOR COMMENTS //
     //////////////////////////
 
+
+
     /**
      * Gets id of current comment
      *
      * @return int
      */
     function osc_comment_id() {
-        return (int) osc_comment_field("pk_i_id");
-    }
+    return (int) osc_comment_field("pk_i_id");
+}
 
     /**
      * Gets publication date of current comment
@@ -789,6 +791,7 @@
     function osc_cancel_choice_url() {
         return (string) osc_base_url(true)."?page=item&action=cancel_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
+
 
 
     //////////////////////////////

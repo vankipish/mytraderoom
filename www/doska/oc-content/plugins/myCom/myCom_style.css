@@ -72,7 +72,7 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 .comForCom ul{
     border-top: 1px solid #a5bcc0;
 }
-.myComAnswer{
+.myComAnswer, .myComDelete {
     float: right;
 }
 .a_for_comment {margin: 3px 5% 5px 5%}

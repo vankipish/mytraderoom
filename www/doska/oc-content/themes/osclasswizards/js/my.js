@@ -185,17 +185,20 @@ function js_answer($offerId)  // ф-я ответа на коммент
 
 }
 
-function js_echo_comments($comments,$offerId) {
+function js_echo_comments($comments,$offerId,$userLoggedEmail) {
     $.each($comments, function(index, value)
     {
+        if (value['author_email'] == $userLoggedEmail) {var action = '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>'}
+            else {
+            if (value['answer_for']==0){var action = '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a></div>'}
+                else {{var action = ''}}}
+
         if (value['answer_for']==0)
         {
             $('#comForCom'+$offerId).append
                 ('<ul id="comForOfferID'+value['com_id']+'">' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
-                '<li>'+value.com_text+'</li>' +
-                '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a></div>' +
-                '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
+                '<li id="myComText'+value['com_id']+'">'+value.com_text+'</li>' + action +
                 '<div style="clear:both;"></div>' +
                 '</ul>');
         }
@@ -204,16 +207,16 @@ function js_echo_comments($comments,$offerId) {
             $('#comForOfferID'+value['answer_for']).append
             ('<ul id="#comForOfferID'+value['com_id']+'" style="margin-left: 10%">' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
-                '<li>'+value.com_text+'</li>' +
-                '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
+                '<li id="myComText'+value['com_id']+'">'+value.com_text+'</li>' + action +
                 '<div style="clear:both;"></div>'+
                 '</ul>');
         }
 
-    });
+        });
 
 
 }
+
 
 function js_mark_comment(comment,$offerId) {
     $('#comForOfferID'+comment['com_id']).fadeIn(300);
