@@ -194,17 +194,19 @@ function js_echo_comments($comments,$offerId) {
                 ('<ul id="comForOfferID'+value['com_id']+'">' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
                 '<li>'+value.com_text+'</li>' +
-                '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a>' +
-                '</div><div style="clear:both;"></div>' +
+                '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a></div>' +
+                '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
+                '<div style="clear:both;"></div>' +
                 '</ul>');
-            
         }
         else
         {
             $('#comForOfferID'+value['answer_for']).append
-            ('<ul id="'+value['com_id']+'" style="margin-left: 10%">' +
+            ('<ul id="#comForOfferID'+value['com_id']+'" style="margin-left: 10%">' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
                 '<li>'+value.com_text+'</li>' +
+                '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
+                '<div style="clear:both;"></div>'+
                 '</ul>');
         }
 
@@ -220,4 +222,24 @@ function js_mark_comment(comment,$offerId) {
     top = $('#comForOfferID'+comment['com_id']).offset().top;
     //анимируем переход на расстояние - top за 1500 мс
     $('div.comments_list').delay(50).animate({scrollTop: top }, 1500);
+}
+
+function js_delMyCom($idMyCom) {
+    $(document).ready(function ()
+    {$('#comForOfferID'+$idMyCom).remove();
+        $.ajax
+        ({
+                type: "POST",
+                url: '?page=ajax&action=myComDel',
+                data: {
+                      "myCom_Id": $idMyCom
+                      //"myCom_text": $myCom_text
+                      },
+                response: 'text',
+                success: function () {
+
+
+                }
+    })
+    });
 }
