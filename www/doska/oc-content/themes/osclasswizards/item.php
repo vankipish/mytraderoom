@@ -229,7 +229,7 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                             <a><?php echo osc_format_date(osc_comment_pub_date()) ?>&nbsp от</a>
                             <?php if (osc_comment_user_id()) { ?> <a style="font-weight: bold; font-size: larger; color: #5b7c8f " href="<?php echo osc_user_public_profile_url( osc_comment_user_id() ); ?>" ><i class="fa fa-user"></i><?php echo osc_comment_author_name(); ?></a>
                                 <input hidden id="ratingValue<?php echo osc_comment_id()?>" value="<?php echo userRaty::newInstance()->totalRating(osc_comment_user_id()) ?>">
-                                <a id="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px; color: #f7aa00"></a>
+                                <a class="ratingOfUser<?php echo osc_comment_id()?>" style="font-size: 6px; margin-left: 3px; color: #f7aa00"></a>
                                 <?php if (userRaty::newInstance()->count(osc_comment_user_id())==1) { ?>
                                     <a>(По оценке <?php echo userRaty::newInstance()->count(osc_comment_user_id()) ?> пользователя)</a>
                                 <?php } if (userRaty::newInstance()->count(osc_comment_user_id())>1) {?>
@@ -239,27 +239,7 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                                 <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                             <?php }?>
                             <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>" onclick="js_showOrHideDiv(<?php echo osc_comment_id(); ?>)">подробнее</a>
-                            <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
-                                <div class="close">X</div>
-                                <h5 style="margin: 0px">  <?php echo "E-mail: ". osc_comment_author_email(); ?>  </h5>
-                                <?php
-                                if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
-                                    <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
-
-                                <?php } else {
-
-                                    // Alternate code
-                                }{ ?>
-
-                                <?php }   ?>
-
-                                <p><?php echo nl2br( osc_comment_body() ); ?> </p>
-                                <!-- Добавлю сюда комменты -->
-                                <?php //var_dump(myCom::newInstance()->getId(osc_comment_id()))?>
-                                <?php include "$path/oc-content/plugins/myCom/my_comments.php";?>
-                                
-                                
-                            </div>
+                                <?php osc_current_web_theme_path('infoBlock.php')?>
                             <?php ?>
                             <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
                                 <p style="margin: 1px"> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
@@ -269,7 +249,7 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
                             <?php if (osc_comment_user_id()) {?>
                                 <script>
                                     //для отображения рейтингов
-                                    $('#ratingOfUser<?php echo osc_comment_id()?>').raty({
+                                    $('.ratingOfUser<?php echo osc_comment_id()?>').raty({
                                         half     : true,
                                         readOnly : true,
                                         starType : 'i',

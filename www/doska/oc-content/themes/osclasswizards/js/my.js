@@ -35,31 +35,42 @@ function js_showOrHideDiv($id) // появление pop-up окна "подро
     centerBox();
 
     $(infoBlock).fadeIn(300,function()
-        { $('html,body').css('overflow', 'hidden');
-            $(document).mouseup(function(e) {
+    {
+        $('html,body').css('overflow', 'hidden');
+        $('#blackout').click(function () {
 
-                if (infoBlock.has(e.target).length === 0){
-                    $(infoBlock).fadeOut(300);
-                    var scrollPos = $(window).scrollTop();
-                    /* Скрыть окно, когда кликаем вне его области */
-                    //$('.contact_information').hide();
-                    $('#blackout').hide();
-                    $("html,body").css("overflow","auto");
-                    $('html').scrollTop(scrollPos);
-                }
+            $(infoBlock).fadeOut(300);
+            var scrollPos = $(window).scrollTop();
+            /* Скрыть окно, когда кликаем вне его области */
+            //$('.contact_information').hide();
+            $('#blackout').hide();
+            $("html,body").css("overflow", "auto");
+            $('html').scrollTop(scrollPos);
+        });
 
-            });
-            $('.close').click(function() {
+        $('.close').click(function () {
+            $(infoBlock).fadeOut(300);
+            var scrollPos = $(window).scrollTop();
+            /* Скрываем тень и окно, когда пользователь кликнул по X */
+            //$('.contact_information').hide();
+            $('#blackout').hide();
+            $("html,body").css("overflow", "auto");
+            $('html').scrollTop(scrollPos);
+        });
+
+        $(window).keydown(function (e) {
+            if (e.which == 27) {
                 $(infoBlock).fadeOut(300);
                 var scrollPos = $(window).scrollTop();
                 /* Скрываем тень и окно, когда пользователь кликнул по X */
                 //$('.contact_information').hide();
                 $('#blackout').hide();
-                $("html,body").css("overflow","auto");
+                $("html,body").css("overflow", "auto");
                 $('html').scrollTop(scrollPos);
-            }); });
+            }
+        });
 
-
+    })
 
 }
 function js_blackoutShow() {
@@ -144,12 +155,22 @@ $(document).ready(function(){
     });
 });
 
-function js_showOrHideMyCom($id) // появление обсуждения предложений
+function js_showOrHideMyCom($offerId) // появление обсуждения предложений
 {
-    var trigger = document.getElementById('triger'+$id+'');
-    var myComSend = document.getElementById('myComSend'+$id+'');
-    $('#'+myComSend.id).slideDown(300); $('#trigger'+$id).slideUp(0);
-    //$('#chk'+$id).on("click", function(event){$('#'+elem.id).slideUp(300);});
+    //var trigger = ('#triger'+$offerId+'');
+    var sendForm = ('#myComSend'+$offerId+'');
+    var textArea = ('#myCom_text'+$offerId);
+    $(sendForm).slideDown(300,function () {
+    $(textArea).focus();
+});
+
+}
+
+function js_toComment($offerId) // появление обсуждения предложений
+{
+    js_showOrHideMyCom($offerId);
+    $('#myCom_text'+$offerId).val('');
+    $('#answer_for_'+$offerId).val(0);
 }
 
 function js_answer($offerId)  // ф-я ответа на коммент
@@ -158,10 +179,9 @@ function js_answer($offerId)  // ф-я ответа на коммент
     js_showOrHideMyCom($offerId);
     var $textArea = document.getElementById('myCom_text'+$offerId);
     var $whome = document.getElementById('author_'+$id);
-    $textArea.focus();
     $('#myCom_text'+$offerId).val($("#author_"+$id).html()+', ');
     $('#answer_for_'+$offerId).val($id);
-    //alert($('#answer_for_'+$offerId).val());
+
 }
 
 function js_echo_comments($comments,$offerId) {

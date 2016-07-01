@@ -96,7 +96,7 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
     padding: 2%;
     z-index: 11;
     background-color: #d8eeeb;
-    max-height:50%;
+    max-height:40%;
     overflow-y: auto;
     position:absolute;
     /*width:50%;
