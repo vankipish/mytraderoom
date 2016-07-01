@@ -79,26 +79,29 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 .a_for_comment a{float: right}
 
 #blackout {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.2);
     position: absolute;
     top: 0;
 
     overflow: hidden;
-    z-index: 999999;
+    z-index: 10;
     left: 0;
     display: none;
 }
 .contact_information {
+    border: solid 2px #c9d7f5;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
     padding: 2%;
-
-    z-index: 9999999;
+    z-index: 11;
     background-color: #d8eeeb;
-    max-height:70%;
+    max-height:50%;
     overflow-y: auto;
     position:absolute;
-    width:50%;
+    /*width:50%;
     top:15%;
-    left:35%;
+    left:35%;*/
 }
 .popup-box .close {
     position: absolute;

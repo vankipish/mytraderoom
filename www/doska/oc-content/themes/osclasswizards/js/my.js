@@ -7,7 +7,7 @@ function js_showOrHideChkbox($id)
 }
 
 function centerBox() {
-    var boxWidth = 400;
+    var boxWidth = 500;
     /* определяем нужные данные */
     var winWidth = $(window).width();
     var winHeight = $(document).height();
@@ -16,7 +16,7 @@ function centerBox() {
     /* Вычисляем позицию */
 
     var disWidth = (winWidth - boxWidth) / 2;
-    var disHeight = scrollPos + 150;
+    var disHeight = scrollPos - 100;
 
     /* Добавляем стили к блокам */
     $('.contact_information').css({'width' : boxWidth+'px', 'left' : disWidth+'px', 'top' : disHeight+'px'});
@@ -27,35 +27,43 @@ function centerBox() {
 
 function js_showOrHideDiv($id) // появление pop-up окна "подробно"
 {
+    var infoBlock = $('#el'+$id);
     js_blackoutShow();
     $('#blackout').fadeIn(100);
     $(window).resize(centerBox);
     $(window).scroll(centerBox);
     centerBox();
-    var elem = document.getElementById('el'+$id+'');
-    $('#'+elem.id).fadeIn(300);
+
+    $(infoBlock).fadeIn(300,function()
+        { $('html,body').css('overflow', 'hidden');
+            $(document).mouseup(function(e) {
+
+                if (infoBlock.has(e.target).length === 0){
+                    $(infoBlock).fadeOut(300);
+                    var scrollPos = $(window).scrollTop();
+                    /* Скрыть окно, когда кликаем вне его области */
+                    //$('.contact_information').hide();
+                    $('#blackout').hide();
+                    $("html,body").css("overflow","auto");
+                    $('html').scrollTop(scrollPos);
+                }
+
+            });
+            $('.close').click(function() {
+                $(infoBlock).fadeOut(300);
+                var scrollPos = $(window).scrollTop();
+                /* Скрываем тень и окно, когда пользователь кликнул по X */
+                //$('.contact_information').hide();
+                $('#blackout').hide();
+                $("html,body").css("overflow","auto");
+                $('html').scrollTop(scrollPos);
+            }); });
 
 
-    $('html,body').css('overflow', 'hidden');
-        $('html').click(function() {
-            var scrollPos = $(window).scrollTop();
-            /* Скрыть окно, когда кликаем вне его области */
-            $('.contact_information').hide();
-            $('#blackout').hide();
-            $("html,body").css("overflow","auto");
-            $('html').scrollTop(scrollPos);
-        });
-        $('.close').click(function() {
-            var scrollPos = $(window).scrollTop();
-            /* Скрываем тень и окно, когда пользователь кликнул по X */
-            $('.contact_information').hide();
-            $('#blackout').hide();
-            $("html,body").css("overflow","auto");
-            $('html').scrollTop(scrollPos);
-        });
+
 }
 function js_blackoutShow() {
-    $('body').append('<div id="blackout"></div>');
+    if ($("div").is($('#blackout'))==false) {$('body').append('<div id="blackout"></div>')}
 }
 function js_showZakazchikField($id) 
 {
