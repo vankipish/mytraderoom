@@ -11,7 +11,7 @@ include_once "$path./oc-includes/osclass/model/myCom.php";
 $myComNI = myCom::newInstance();
 ?>
 
-<?php MyComForm::js_validation(osc_comment_id()); ?>
+<?php MyComForm::js_validation(osc_comment_id());  ?>
 
 
 <div class="myCom_form">

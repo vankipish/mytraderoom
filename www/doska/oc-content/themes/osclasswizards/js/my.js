@@ -230,6 +230,7 @@ function js_mark_comment(comment,$offerId) {
 function js_delMyCom($idMyCom) {
     $(document).ready(function ()
     {$('#comForOfferID'+$idMyCom).remove();
+        debugger;
         $.ajax
         ({
                 type: "POST",
