@@ -4,7 +4,7 @@
  * User: Пользователь
  * Date: 01.07.2016
  * Time: 11:53
- */?>
+ */?> 
 
 <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
     <div class="close">X</div>
@@ -28,21 +28,18 @@
     <?php } else { ?>
         <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
     <?php }?>
+
+    <?php if((osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id())) {?>
     <h5 style="margin: 0px"> <i class="fa fa-envelope"></i> <?php echo "". osc_comment_author_email(); ?>  </h5>
     <?php
     if (osc_comment_author_phone() or (osc_comment_author_phone() && osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()))) { ?>
         <h6 style="margin-bottom: 6px"> <?php echo osc_comment_author_phone(); ?></h6>
-
-    <?php } else {
-
-        // Alternate code
-    }{ ?>
-
-    <?php }   ?>
+    <?php }?>
+    <?php } ?>
 
     <p><?php echo nl2br( osc_comment_body() ); ?> </p>
     <!-- Добавлю сюда комменты -->
-    <?php //var_dump(myCom::newInstance()->getId(osc_comment_id()))?>
+    
     <?php include "$path/oc-content/plugins/myCom/my_comments.php";?>
 
 
