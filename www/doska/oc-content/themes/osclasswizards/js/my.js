@@ -205,7 +205,7 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
         else
         {
             $('#comForOfferID'+value['answer_for']).append
-            ('<ul id="#comForOfferID'+value['com_id']+'" style="margin-left: 10%">' +
+                ('<ul id="comForOfferID'+value['com_id']+'" style="margin-left: 10%">' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
                 '<li id="myComText'+value['com_id']+'">'+value.com_text+'</li>' + action +
                 '<div style="clear:both;"></div>'+
@@ -229,8 +229,7 @@ function js_mark_comment(comment,$offerId) {
 
 function js_delMyCom($idMyCom) {
     $(document).ready(function ()
-    {$('#comForOfferID'+$idMyCom).remove();
-        debugger;
+    {
         $.ajax
         ({
                 type: "POST",
@@ -241,8 +240,7 @@ function js_delMyCom($idMyCom) {
                       },
                 response: 'text',
                 success: function () {
-
-
+                    $('#comForOfferID'+$idMyCom).remove();
                 }
     })
     });
