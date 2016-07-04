@@ -219,12 +219,19 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
 
 
 function js_mark_comment(comment,$offerId) {
-    $('#comForOfferID'+comment['com_id']).fadeIn(300);
-    $('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 200, 255, 219, 0.9 )"}, 500);
-    $('#comForOfferID'+comment['com_id']).animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 500);
-    top = $('#comForOfferID'+comment['com_id']).offset().top;
-    //анимируем переход на расстояние - top за 1500 мс
-    $('div.comments_list').delay(50).animate({scrollTop: top }, 1500);
+    var newComment = $('#comForOfferID'+comment['com_id']);
+    var parent = $('#el'+$offerId);
+    newComment.fadeIn(300);
+    newComment.animate({ backgroundColor: "rgba( 200, 255, 219, 0.9 )"}, 500);
+    newComment.animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 500);
+
+    a= $('#comForCom'+$offerId).offset().top;
+    b=$('#comForOfferID'+comment.com_id).offset().top ;
+    c=  $('#el'+$offerId).offset().top;
+    $difference = b +900;
+    //$position = newComment.position().top;
+    parent.delay(100).animate({scrollTop: $difference }, 500);
+
 }
 
 function js_delMyCom($idMyCom) {

@@ -35,7 +35,7 @@ $myComNI = myCom::newInstance();
                             Оставить коммент
                         </button>
                     </div>
-                    <div style="margin-top: 15px"  class="errorMyCom" id="errorMyCom<?php echo osc_comment_id()?>"></div>
+                    <div  class="errorMyCom" id="errorMyCom<?php echo osc_comment_id()?>"></div>
        </div>
                    <div class="a_for_comment">
                     <a id="trigger<?php echo osc_comment_id()?>" onClick="js_toComment('<?php echo osc_comment_id()?>')" >Комменировать</a>

@@ -23,7 +23,7 @@ class MyComForm extends Form
     {
         ?>
         <script type="text/javascript">
-            $(document).ready(function () 
+            $(document).ready(function ()
             {
                 // Code for form validation
                 $("#myCom_form<?php echo $id?>").validate({
@@ -102,9 +102,6 @@ class MyComForm extends Form
                                         '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+comment.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
                                         '</div><div style="clear:both;"></div>' +
                                         '</ul>');
-                                    js_mark_comment(comment,$offerId);
-
-                                    
                                 }
                                 else
                                 {
@@ -115,11 +112,10 @@ class MyComForm extends Form
                                         '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+comment.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>' +
                                         '</div><div style="clear:both;"></div>' +
                                         '</ul>');
-                                    js_mark_comment(comment,$offerId);
                                 }
-                                //Прокручиваем чат до самого конца
-                                $("#comForCom<?php echo $id?>").scrollTop(2000);
+                                js_mark_comment(comment,$offerId);
                                 //$("#button<?php echo $id?>").html('Комент отправлен');
+
                             }
                         })
                     }
