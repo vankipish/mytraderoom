@@ -55,11 +55,12 @@ if( osc_item_country() !== '' ) {
 }
 
 osc_current_web_theme_path('header.php');
+
 $path = dirname(dirname(dirname(__DIR__)));
 include_once "$path/oc-includes/osclass/model/userRaty.php";
 include_once "$path/oc-includes/osclass/frm/MyCom.form.class.php";
 include_once "$path/oc-includes/osclass/model/myCom.php";
-
+echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" type="text/javascript"></script>';
 
 ?>
 
@@ -72,6 +73,7 @@ include_once "$path/oc-includes/osclass/model/myCom.php";
 </script>
 
 <div class="row" >
+    
     <div class="col-sm-7 col-md-8">
         <div id="item-content" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
             <?php if((osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id()) && ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 0)) { ?>

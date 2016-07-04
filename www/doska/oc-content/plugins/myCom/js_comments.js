@@ -75,7 +75,7 @@ function js_showOrHideMyCom($offerId) // появление обсуждения
     //var trigger = ('#triger'+$offerId+'');
     var sendForm = ('#myComSend'+$offerId+'');
     var textArea = ('#myCom_text'+$offerId);
-    $(sendForm).slideDown(300,function () {
+    $(sendForm).slideDown(100,function () {
         $(textArea).focus();
     });
 
