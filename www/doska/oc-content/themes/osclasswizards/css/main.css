@@ -899,26 +899,26 @@ a:hover, a:active, a:focus, .listings ul li.last a, .listings h2 a:hover, .sorti
     height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #0d88b6;
+    background: #15b3ee;
     border: 1px solid #203ee6;
     border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #0e5fd8;
+    background: #0f97ca;
 }
 ::-webkit-scrollbar-thumb:active {
-    background: #09449d;
+    background: #0c79a3;
 }
 ::-webkit-scrollbar-track {
-    background: #b5f4f0;
+    background: #eefdfc;
     border: 1px solid #0f35bb;
     border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-    background: #76ebe2;
+    background: #d1faf7;
 }
 ::-webkit-scrollbar-track:active {
-    background: #1ecec1;
+    background: #a7f5ef;
 }
 ::-webkit-scrollbar-corner {
     background: transparent;

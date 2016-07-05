@@ -100,6 +100,8 @@ function js_answer($offerId)  // ф-я ответа на коммент
 }
 
 function js_echo_comments($comments,$offerId,$userLoggedEmail) {
+    if ($comments==0) {$('#All_for_com'+$offerId).hide() } else {
+        alert($comments);
     $.each($comments, function(index, value)
     {
         if (value['author_email'] == $userLoggedEmail) {var action = '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>'}
@@ -128,7 +130,7 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
 
     });
 
-
+    }
 }
 
 
