@@ -888,3 +888,38 @@ a:hover, a:active, a:focus, .listings ul li.last a, .listings h2 a:hover, .sorti
     border-radius: 3px;
     vertical-align: top;
 }
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #15b3ee;
+    border: 1px solid #203ee6;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0f97ca;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #0c79a3;
+}
+::-webkit-scrollbar-track {
+    background: #eefdfc;
+    border: 1px solid #0f35bb;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #d1faf7;
+}
+::-webkit-scrollbar-track:active {
+    background: #a7f5ef;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

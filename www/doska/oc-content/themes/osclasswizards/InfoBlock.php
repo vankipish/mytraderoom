@@ -4,7 +4,8 @@
  * User: Пользователь
  * Date: 01.07.2016
  * Time: 11:53
- */?> 
+ */
+?> 
 
 <div style="display: none" class="contact_information" id="el<?php echo osc_comment_id(); ?>">
     <div class="close">X</div>
