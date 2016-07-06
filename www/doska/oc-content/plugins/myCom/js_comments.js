@@ -69,22 +69,35 @@ function js_blackoutShow() {
     if ($("div").is($('#blackout'))==false) {$('body').append('<div id="blackout"></div>')}
 }
 
-function js_showOrHideMyCom($offerId) // появление обсуждения предложений
+function js_showOrHideMyCom($offerId) // выезд формы для ввода комента
 {
-    //var trigger = ('#triger'+$offerId+'');
-    var sendForm = ('#myComSend'+$offerId+'');
-    var textArea = ('#myCom_text'+$offerId);
-    $(sendForm).slideDown(100,function () {
-        $(textArea).focus();
-    });
+    var sendForm = $('#myComSend'+$offerId+'');
+    var textArea = $('#myCom_text'+$offerId);
+    var AllForCom = $('#All_for_com'+$offerId);
+    var infoBlock = $('#el'+$offerId);
+    var pointOfDestination = AllForCom.height();
 
+    infoBlock.delay(0).animate({scrollTop: pointOfDestination }, 300);
+    if(sendForm.css('display') == 'none') {sendForm.slideDown(300)}
+    textArea.focus();
 }
 
-function js_toComment($offerId) // появление обсуждения предложений
+function clearText(field)
 {
+    if(field.defaultValue == field.value)field.value = '';else if(field.value == '')field.value = field.defaultValue;
+}
+
+function js_toComment($offerId) // отправка нового коммента
+{
+    var sendForm = $('#myComSend'+$offerId+'');
+    var textArea = $('#myCom_text'+$offerId);
+    var AllForCom = $('#All_for_com'+$offerId);
+    var infoBlock = $('#el'+$offerId);
+    var pointOfDestination = AllForCom.height();
     js_showOrHideMyCom($offerId);
-    $('#myCom_text'+$offerId).val('');
+    textArea.val('');
     $('#answer_for_'+$offerId).val(0);
+
 }
 
 function js_answer($offerId)  // ф-я ответа на коммент
@@ -98,9 +111,19 @@ function js_answer($offerId)  // ф-я ответа на коммент
 
 }
 
+function sendCommentByKey($offerId) {
+    if (event.keyCode==13)
+    {
+        event.preventDefault();
+        $('#button'+$offerId).click();
+        js_toComment($offerId);
+    }
+}
+
 function js_echo_comments($comments,$offerId,$userLoggedEmail) {
-    if ($comments==0) {$('#All_for_com'+$offerId).hide() } else {
-        alert($comments);
+    if ($comments==0) {$('#All_for_com'+$offerId).hide() } else
+    {
+
     $.each($comments, function(index, value)
     {
         if (value['author_email'] == $userLoggedEmail) {var action = '<div><a class="myComDelete" rel="nofollow" onclick="js_delMyCom('+value.com_id+')" title="Удалить Ваш комментарий">Удалить</a></div>'}
@@ -137,7 +160,8 @@ function js_mark_comment(comment,$offerId) {
     var newComment = $('#comForOfferID'+comment['com_id']);
     var infoBlock = $('#el'+$offerId);
     var parent = $('#comForCom'+$offerId);
-    newComment.fadeIn(300);
+    var textArea = $('#myCom_text'+$offerId);
+    newComment.fadeIn(500);
     newComment.animate({ backgroundColor: "rgba( 200, 255, 219, 0.9 )"}, 500);
     newComment.animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 500);
 
@@ -145,8 +169,8 @@ function js_mark_comment(comment,$offerId) {
     b=newComment.offset().top ;
     c=newComment.height();
         $distance = b-a +c/2;
-    infoBlock.delay(100).animate({scrollTop: $distance }, 300);
-
+    infoBlock.delay(0).animate({scrollTop: $distance }, 300);
+    textArea.val('');
 }
 
 function js_delMyCom($idMyCom) {
