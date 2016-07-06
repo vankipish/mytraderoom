@@ -26,9 +26,9 @@ $myComNI = myCom::newInstance();
 
                    <?php include "$path/oc-content/plugins/myCom/show_comments.php"; ?>
        <div class="myComSend" id="myComSend<?php echo osc_comment_id()?>" style="display: none">
-        <input id="myCom_name<?php echo osc_comment_id()?>" type="text" name="myCom_name" value="<?php if (osc_logged_user_name() !== "") {echo osc_logged_user_name();} else {echo "Имя (Обязательно)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
-        <input id="myCom_email<?php echo osc_comment_id()?>" type="text" name="myCom_email" value="<?php if (osc_logged_user_email() !== "") {echo osc_logged_user_email();} else {echo "Почта (Обязательно, не публикуется)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
-        <textarea id="myCom_text<?php echo osc_comment_id()?>" name="myCom_text" onfocus="clearText(this)" onblur="clearText(this)"></textarea>
+        <input id="myCom_name<?php echo osc_comment_id()?>" <?php if (osc_logged_user_email() !== "") {echo 'hidden';}?> type="text" name="myCom_name" value="<?php if (osc_logged_user_name() !== "") {echo osc_logged_user_name();} else {echo "Имя (Обязательно)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
+        <input id="myCom_email<?php echo osc_comment_id()?>" <?php if (osc_logged_user_email() !== "") {echo 'hidden';}?>  type="text" name="myCom_email" value="<?php if (osc_logged_user_email() !== "") {echo osc_logged_user_email();} else {echo "Почта (Обязательно, не публикуется)";} ?>" maxlength="60" onfocus="clearText(this)" onblur="clearText(this)"/>
+        <textarea id="myCom_text<?php echo osc_comment_id()?>" name="myCom_text"  onkeydown="sendCommentByKey(<?php echo osc_comment_id()?>)"></textarea>
 
                     <div style="margin-top: 10px">
                         <button id="button<?php echo osc_comment_id()?>" type="submit" class="btn btn-success">

@@ -10,7 +10,7 @@ $jsonComments = json_encode($comments);
 $offerId = osc_comment_id();
 $jsonMail = json_encode(osc_logged_user_email());
  ?>
-<div id="All_for_com <?php echo osc_comment_id() ?>">
+<div id="All_for_com<?php echo osc_comment_id() ?>">
 <h3 style="margin-left: 5%"> Комментарии к предложению:</h3>
       <input hidden id='answer_for_<?php echo osc_comment_id() ?>' value = '0'>
 <div class="comForCom" id="comForCom<?php echo osc_comment_id() ?>">

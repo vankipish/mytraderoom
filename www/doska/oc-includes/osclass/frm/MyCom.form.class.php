@@ -35,8 +35,7 @@ class MyComForm extends Form
                         },
                         myCom_email: {
                             required: true,
-                            minlength: 3,
-                            maxlength: 30
+                            email: true
                         },
                         myCom_text: {
                             required: true,
@@ -52,8 +51,7 @@ class MyComForm extends Form
                         },
                         myCom_email: {
                             required: "Введите email!",
-                            minlength: "Это не email",
-                            maxlength: "Воу воу, краткость - сестра таланта"
+                            email: "Неверно введен email!"
                         },
                         myCom_text: {
                             required: "Введите комментарий!",
