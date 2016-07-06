@@ -214,7 +214,6 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
 
         });
 
-
 }
 
 

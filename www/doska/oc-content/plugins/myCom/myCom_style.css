@@ -69,9 +69,10 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
 
     /* Text-Shadow */
     text-shadow: 0px 0px 0px #000;}
-.comForCom ul{
+.comForCom ul:not(.firstClassCom)  {
     border-top: 1px solid #a5bcc0;
 }
+
 .myComAnswer, .myComDelete {
     float: right;
 }

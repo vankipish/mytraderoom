@@ -64,7 +64,6 @@ function js_showOrHideDiv($id) // появление pop-up окна "подро
         });
 
     })
-
 }
 function js_blackoutShow() {
     if ($("div").is($('#blackout'))==false) {$('body').append('<div id="blackout"></div>')}
@@ -106,11 +105,12 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
         else {
             if (value['answer_for']==0){var action = '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a></div>'}
             else {{var action = ''}}}
+        if (index==0) {var firstClassCom = 'class="firstClassCom"'}
 
         if (value['answer_for']==0)
         {
             $('#comForCom'+$offerId).append
-            ('<ul id="comForOfferID'+value['com_id']+'">' +
+            ('<ul id="comForOfferID'+value['com_id']+ '"' +firstClassCom + '>' +
                 '<li><a id="author_'+value['com_id']+'">'+value.author_name+' </a>('+value.pub_date+'):</li>' +
                 '<li id="myComText'+value['com_id']+'">'+value.com_text+'</li>' + action +
                 '<div style="clear:both;"></div>' +
@@ -125,26 +125,24 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
                 '<div style="clear:both;"></div>'+
                 '</ul>');
         }
-
     });
-
 
 }
 
 
 function js_mark_comment(comment,$offerId) {
     var newComment = $('#comForOfferID'+comment['com_id']);
-    var parent = $('#el'+$offerId);
+    var infoBlock = $('#el'+$offerId);
+    var parent = $('#comForCom'+$offerId);
     newComment.fadeIn(300);
     newComment.animate({ backgroundColor: "rgba( 200, 255, 219, 0.9 )"}, 500);
     newComment.animate({ backgroundColor: "rgba( 0, 0, 0, 0 )"}, 500);
 
-    a= $('#comForCom'+$offerId).offset().top;
-    b=$('#comForOfferID'+comment.com_id).offset().top ;
-    c=  $('#el'+$offerId).offset().top;
-    $difference = b +900;
-    //$position = newComment.position().top;
-    parent.delay(100).animate({scrollTop: $difference }, 500);
+    a= parent.offset().top;
+    b=newComment.offset().top ;
+    c=newComment.height();
+        $distance = b-a +c/2;
+    infoBlock.delay(100).animate({scrollTop: $distance }, 300);
 
 }
 
