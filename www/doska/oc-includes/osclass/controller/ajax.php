@@ -143,7 +143,10 @@
                     };
                     $myComArray['com_id'] = $MyComID;
                     array_push($myComArray,$ComId);
+                    osc_run_hook('hook_email_newCom', $myComArray);
                     echo json_encode($myComArray);
+                    
+
                 break;
 
                 case 'myComDel':
@@ -158,7 +161,7 @@
                     myCom::newInstance()->deleteComment($IdMycom);
                     myCom::newInstance()->deleteChild($IdMycom);
 
-                    //osc_run_hook('hook_email_choice_made', $aComment);
+
                     //osc_add_flash_ok_message( _m('Коммент удален!' ) );
 
                 break;
