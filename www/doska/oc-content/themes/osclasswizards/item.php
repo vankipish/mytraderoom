@@ -73,7 +73,9 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
 </script>
 
 <div class="row" >
-    
+    <?php var_dump(Item::newInstance()->getTitle(osc_item_id()))?>
+    <?php var_dump(myCom::newInstance()->findByPrimaryKey(82))?>
+
     <div class="col-sm-7 col-md-8">
         <div id="item-content" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
             <?php if((osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id()) && ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 0)) { ?>
@@ -218,7 +220,6 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                     <?php while ( osc_has_item_comments() ) { ?>
                         <div class="comment" style="border-bottom: ridge">
                             <h4 style="margin-bottom: 3px; margin-top: 10px; font-size: large "><?php echo (float) osc_comment_title() ;echo  osc_item_currency_symbol();?>
-
                                 <span style="float: right; font-size: 80%"> <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id()) == 0) && (((osc_logged_user_id() == osc_user_id())) && (osc_user_id() !== 0) && osc_logged_user_id() !== 0 )) {?>
                                         <a rel="nofollow" href="<?php echo osc_make_choice_url(); ?>" title="<?php echo osc_esc_html(__('Выбрать автора этого предложения исполнителем Вашей заявки', OSCLASSWIZARDS_THEME_FOLDER)); ?>">
                                             <?php _e('Выбрать исполнителем', OSCLASSWIZARDS_THEME_FOLDER); ?>

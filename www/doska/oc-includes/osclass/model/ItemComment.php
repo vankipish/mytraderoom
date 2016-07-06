@@ -100,6 +100,20 @@
             return $result->result();
         }
 
+        function getOfferByID($id)
+        {
+            $this->dao->select();
+            $this->dao->from($this->getTableName());
+            $this->dao->where('pk_i_id', $id);
+            $result = $this->dao->get();
+
+            if($result == false) {
+                return array();
+            }
+            $result = $result->result();
+            return $result[0];
+        }
+
         /**
          * Searches for comments information, given an item id, page and comments per page.
          *

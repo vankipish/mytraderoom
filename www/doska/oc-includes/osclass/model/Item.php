@@ -382,6 +382,34 @@
             return $this->dao->insert(DB_TABLE_PREFIX.'t_item_description', $array_set);
         }
 
+        public function getTitle($id)
+        {
+            $this->dao->select('s_title');
+            $this->dao->from(DB_TABLE_PREFIX.'t_item_description');
+            $this->dao->where('fk_i_item_id', $id);
+            $result = $this->dao->get();
+
+            if($result == false) {
+                return array();
+            }
+            $result=$result->result();
+            return $result[0]['s_title'];
+        }
+
+        public function getDescription($id)
+        {
+            $this->dao->select('s_description');
+            $this->dao->from(DB_TABLE_PREFIX.'t_item_description');
+            $this->dao->where('fk_i_item_id', $id);
+            $result = $this->dao->get();
+
+            if($result == false) {
+                return array();
+            }
+            $result=$result->result();
+            return $result[0]['s_description'];
+        }
+
         /**
          * Find items belong to an user given its id
          *
