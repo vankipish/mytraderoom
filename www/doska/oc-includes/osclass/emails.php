@@ -786,19 +786,19 @@ function fn_email_choice_made($aComment) {
 osc_add_hook('hook_email_choice_made', 'fn_email_choice_made');
 
 
-function fn_email_newCom($aComment) {
-
+function fn_email_newCom($aComment)
+{
+    osc_add_flash_ok_message( sprintf(_m('фя запущена,  %s'), 'true') );
     /* Собираем информацию из коммента */
-    $authorName  = trim(strip_tags($aComment['author_name']));
+    $authorName = trim(strip_tags($aComment['author_name']));
     $authorEmail = trim(strip_tags($aComment['author_email']));
-    $body        = trim($aComment['com_text']);
-    $itemId      = $aComment['item_id'];
-    $offerId     = $aComment['parent_com_id'];
-
+    $body = trim($aComment['com_text']);
+    $itemId = $aComment['item_id'];
+    $offerId = $aComment['parent_com_id'];
+    //osc_add_flash_ok_message( sprintf(_m('фя запущена, тело комента %s'), $body) );
     /*Проверка - не ответ ли это?*/
-    if ($aComment['answer_for'] !== 0)
-    {
-        $itsAnswerForId = $aComment['answer_for'] ;
+    if ($aComment['answer_for'] !== 0) {
+        $itsAnswerForId = $aComment['answer_for'];
         $ParentCom = myCom::newInstance()->findByPrimaryKey($itsAnswerForId);
         $ParentComAuthor = $ParentCom['author_name'];
         $ParentComEmail = $ParentCom['author_email'];
@@ -807,7 +807,7 @@ function fn_email_newCom($aComment) {
 
     /* Собираем информацию из предложения к которому коммент */
     $aOffer = ItemComment::newInstance()->getOfferByID($offerId);
-    $offerAuthorName  = $aOffer['s_author_name'];
+    $offerAuthorName = $aOffer['s_author_name'];
     $offerAuthorEmail = $aOffer['s_author_email'];
     $offerPrice = $aOffer['s_title'];
     $offerText = $aOffer['s_body'];
@@ -816,7 +816,7 @@ function fn_email_newCom($aComment) {
     $admin_email = osc_contact_email();
     $aItem = Item::newInstance()->findByPrimaryKey($itemId);
     $itemURL = osc_item_url();
-    $itemURL = '<a href="'.$itemURL.'" >'.$itemURL.'</a>';
+    $itemURL = '<a href="' . $itemURL . '" >' . $itemURL . '</a>';
     $itemTitle = $aItem['s_title'];
     $itemAuthor = $aItem['s_contact_name'];
     $itemAuthorEmail = $aItem['s_contact_email'];
@@ -826,13 +826,13 @@ function fn_email_newCom($aComment) {
     $aPage = $mPages->findByInternalName('email_new_com');
     $locale = osc_current_user_locale();
 
-    if(isset($aPage['locale'][$locale]['s_title'])) {
+    if (isset($aPage['locale'][$locale]['s_title'])) {
         $content = $aPage['locale'][$locale];
     } else {
         $content = current($aPage['locale']);
     }
 
-    $words   = array();
+    $words = array();
     $words[] = array(
         '{COMMENT_AUTHOR}',
         '{COMMENT_EMAIL}',
@@ -860,40 +860,80 @@ function fn_email_newCom($aComment) {
         $itemURL,
         $itemAuthor,
         $itemAuthorEmail
-
     );
+
+
     $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
     $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
 
     /* Уведомление для автора заявки*/
     $emailParams = array(
-        'from'      => osc_contact_email(),
-        'to'        => $itemAuthorEmail,
-        'to_name'   => $itemAuthor,
-        'subject'   => $title_email,
-        'body'      => $body_email,
-        'alt_body'  => $body_email
+        'from' => osc_contact_email(),
+        'to' => $itemAuthorEmail,
+        'to_name' => $itemAuthor,
+        'subject' => $title_email,
+        'body' => $body_email,
+        'alt_body' => $body_email
     );
-    osc_sendMail($emailParams);
-    //osc_add_flash_ok_message( _m('Автору предложения отправленно уведомление о новом комментарии %s') );
+    if ($itemAuthorEmail !== $authorEmail) {
+        osc_sendMail($emailParams);
+        osc_add_flash_ok_message( _m('Автору предложения отправленно уведомление о новом комментарии') );
+    }
 
-    /* Уведомление для кого написан ответный коммент*/
-    $emailParams = array(
-        'from'      => osc_contact_email(),
-        'to'        => $itemAuthorEmail,
-        'to_name'   => $itemAuthor,
-        'subject'   => $title_email,
-        'body'      => $body_email,
-        'alt_body'  => $body_email
-    );
-    osc_sendMail($emailParams);
+    if ($aComment['answer_for'] !== 0) {
+        $words[] = array(
+            '{COMMENT_AUTHOR}',
+            '{COMMENT_EMAIL}',
+            '{COMMENT_TEXT}',
+            '{OFFER_AUTHOR_NAME}',
+            '{OFFER_AUTHOR_EMAIL}',
+            '{OFFER_PRICE}',
+            '{OFFER_TEXT}',
+            '{ITEM_ID}',
+            '{ITEM_TITLE}',
+            '{ITEM_URL}',
+            '{ITEM_AUTHOR}',
+            '{ITEM_AUTHOR_EMAIL}',
+            '{PARENT_COM_AUTHOR}',
+            '{PARENT_COM_EMAIL}',
+            '{PARENT_COM_TEXT}',
 
-    if ($aComment['answer_for'] !== 0)
-    {}
+        );
+        $words[] = array(
+            $authorName,
+            $authorEmail,
+            $body,
+            $offerAuthorName,
+            $offerAuthorEmail,
+            $offerPrice,
+            $offerText,
+            $itemId,
+            $itemTitle,
+            $itemURL,
+            $itemAuthor,
+            $itemAuthorEmail,
+            $ParentComAuthor,
+            $ParentComEmail,
+            $ParentComText
+        );
+        $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
+        $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
 
+        /* Уведомление для автора коммента в случае ответа*/
+        $emailParams = array(
+            'from' => osc_contact_email(),
+            'to' => $ParentComEmail,
+            'to_name' => $ParentComAuthor,
+            'subject' => $title_email,
+            'body' => $body_email,
+            'alt_body' => $body_email
+        );
+        osc_sendMail($emailParams);
+        osc_add_flash_ok_message( _m('Автору комментария отправлено уведомление о вашем ответе ') );
+
+    }
+    osc_add_hook('hook_email_newCom', 'fn_email_newCom');
 }
-osc_add_hook('hook_email_newCom', 'fn_email_newCom');
-
 
 
 

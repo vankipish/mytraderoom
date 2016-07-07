@@ -73,8 +73,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
 </script>
 
 <div class="row" >
-    <?php var_dump(Item::newInstance()->getTitle(osc_item_id()))?>
-    <?php var_dump(myCom::newInstance()->findByPrimaryKey(82))?>
+    
 
     <div class="col-sm-7 col-md-8">
         <div id="item-content" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
