@@ -28,14 +28,13 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
     padding: 5px 10px;
     overflow:hidden;
     /* Border */
-    border-bottom: 1px solid #a5bcc0;
-    border-left: 1px solid #a5bcc0;
-    border-right: 1px solid #a5bcc0;
+
+    border: 1px solid #a5bcc0;
 
     /* Border-Radius */
-    -webkit-border-radius: 0px 0px 5px 5px;
-    -moz-border-radius: 0px 0px 5px 5px;
-    border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 }
 .myComSend input{margin: 2px 0 2px 0}
 .comForCom {/* Border */
@@ -99,9 +98,9 @@ h2 {font-size: 18px; font-weight:bold; color:#133b5e; padding:4px; margin-bottom
     background-color: #d8eeeb;
     overflow-y: auto;
     position:fixed;
-    /*width:50%;
-    top:15%;
-    left:35%;*/
+    box-shadow:  10px -10px 10px -4px rgba(0,0,0,.2);
+    -webkit-box-shadow:  10px -10px 10px -4px rgba(0,0,0,.2);
+    -moz-box-shadow:  10px -10px 10px -4px rgba(0,0,0,.2);
 }
 .popup-box .close {
     position: absolute;

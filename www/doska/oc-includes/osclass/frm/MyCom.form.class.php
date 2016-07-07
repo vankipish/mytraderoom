@@ -90,7 +90,9 @@ class MyComForm extends Form
                             success: function (data) {
                                 var comment = JSON.parse(data);
                                 var $offerId = <?php echo $id?>;
-                                   
+                                var comForCom = $("#comForCom"+$offerId);
+                                if (comForCom.children("ul").length == 0) {var $checkFirstCom = 1}
+
                                 if (comment['answer_for']==0)
                                 {
                                     $('#comForCom'+$offerId).append
@@ -111,6 +113,9 @@ class MyComForm extends Form
                                         '</div><div style="clear:both;"></div>' +
                                         '</ul>');
                                 }
+                                $('#All_for_com'+$offerId).fadeIn(300);
+                                if (comForCom.children("ul").length >0) {$('#myComSend'+$offerId+'').css({"border-top" : "none", "-webkit-border-radius" : "0px 0px 5px 5px", "-moz-border-radius" : "0px 0px 5px 5px", "border-radius" : "0px 0px 5px 5px"})}
+                                if ($checkFirstCom == 1) {$('#comForOfferID'+comment['com_id']).css({"border-top" : "none"})}
                                 js_mark_comment(comment,$offerId);
                                 //$("#button<?php echo $id?>").html('Комент отправлен');
 

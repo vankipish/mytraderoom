@@ -80,6 +80,8 @@ function js_showOrHideMyCom($offerId) // выезд формы для ввода
     infoBlock.delay(0).animate({scrollTop: pointOfDestination }, 300);
     if(sendForm.css('display') == 'none') {sendForm.slideDown(300)}
     textArea.focus();
+
+    if ($("#comForCom"+$offerId).children("ul").length !== 0)  {sendForm.css({"border-top" : "none", "-webkit-border-radius" : "0px 0px 5px 5px", "-moz-border-radius" : "0px 0px 5px 5px", "border-radius" : "0px 0px 5px 5px"})}
 }
 
 function clearText(field)
@@ -131,6 +133,7 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
             if (value['answer_for']==0){var action = '<div><a id="answer_'+value['com_id']+'" class="myComAnswer" onclick="js_answer('+$offerId+')">Ответить</a></div>'}
             else {{var action = ''}}}
         if (index==0) {var firstClassCom = 'class="firstClassCom"'}
+        
 
         if (value['answer_for']==0)
         {
@@ -157,6 +160,8 @@ function js_echo_comments($comments,$offerId,$userLoggedEmail) {
 
 
 function js_mark_comment(comment,$offerId) {
+   $(document).ready(function () {
+
     var newComment = $('#comForOfferID'+comment['com_id']);
     var infoBlock = $('#el'+$offerId);
     var parent = $('#comForCom'+$offerId);
@@ -171,6 +176,7 @@ function js_mark_comment(comment,$offerId) {
         $distance = b-a +c/2;
     infoBlock.delay(0).animate({scrollTop: $distance }, 300);
     textArea.val('');
+   })
 }
 
 function js_delMyCom($idMyCom) {
