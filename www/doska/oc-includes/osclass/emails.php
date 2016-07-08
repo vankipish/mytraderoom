@@ -723,6 +723,7 @@
 
 function fn_email_choice_made($aComment) {
 
+    osc_add_flash_ok_message( sprintf(_m('аякс должен передать ,  %s'), $aComment) );
     $authorName  = trim(strip_tags($aComment['s_author_name']));
     $authorEmail = trim(strip_tags($aComment['s_author_email']));
     $body        = trim($aComment['s_body']);
@@ -788,7 +789,7 @@ osc_add_hook('hook_email_choice_made', 'fn_email_choice_made');
 
 function fn_email_newCom($aComment)
 {
-    osc_add_flash_ok_message( sprintf(_m('фя запущена,  %s'), 'true') );
+    //osc_add_flash_ok_message( sprintf(_m('фя запущена,  %s'), 'true') );
     /* Собираем информацию из коммента */
     $authorName = trim(strip_tags($aComment['author_name']));
     $authorEmail = trim(strip_tags($aComment['author_email']));
@@ -815,9 +816,9 @@ function fn_email_newCom($aComment)
     /* Собираем информацию общую информацию */
     $admin_email = osc_contact_email();
     $aItem = Item::newInstance()->findByPrimaryKey($itemId);
-    $itemURL = osc_item_url();
-    $itemURL = '<a href="' . $itemURL . '" >' . $itemURL . '</a>';
     $itemTitle = $aItem['s_title'];
+    $itemLink = osc_item_url();
+    $itemURL = '<a'.$itemLink.$itemTitle.'</a>';
     $itemAuthor = $aItem['s_contact_name'];
     $itemAuthorEmail = $aItem['s_contact_email'];
     //$itemDescription = $aItem['s_description'];
@@ -877,7 +878,7 @@ function fn_email_newCom($aComment)
     );
     if ($itemAuthorEmail !== $authorEmail) {
         osc_sendMail($emailParams);
-        osc_add_flash_ok_message( _m('Автору предложения отправленно уведомление о новом комментарии') );
+        //osc_add_flash_ok_message( _m('Автору предложения отправленно уведомление о новом комментарии') );
     }
 
     if ($aComment['answer_for'] !== 0) {
@@ -932,8 +933,9 @@ function fn_email_newCom($aComment)
         osc_add_flash_ok_message( _m('Автору комментария отправлено уведомление о вашем ответе ') );
 
     }
-    osc_add_hook('hook_email_newCom', 'fn_email_newCom');
 }
+osc_add_hook('hook_email_newCom', 'fn_email_newCom');
+
 
 
 

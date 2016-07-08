@@ -143,8 +143,8 @@
                     };
                     $myComArray['com_id'] = $MyComID;
                     array_push($myComArray,$ComId);
-                    osc_run_hook('hook_email_newCom', $myComArray);
                     echo json_encode($myComArray);
+                    osc_run_hook('hook_email_newCom', $myComArray);
                     
 
                 break;
