@@ -480,7 +480,7 @@ DEFINES
                 'class' => 'opt_alerts'
             );
             $options[] = array(
-                'name'  => __('Account', OSCLASSWIZARDS_THEME_FOLDER),
+                'name'  => __('Настройки', OSCLASSWIZARDS_THEME_FOLDER),
                 'url'   => osc_user_profile_url(),
                 'class' => 'opt_account'
             );
@@ -495,7 +495,7 @@ DEFINES
                 'class' => 'opt_change_username'
             );
             $options[] = array(
-                'name'  => __('Change password', OSCLASSWIZARDS_THEME_FOLDER),
+                'name'  => __('Изменить пароль', OSCLASSWIZARDS_THEME_FOLDER),
                 'url'   => osc_change_user_password_url(),
                 'class' => 'opt_change_password'
             );

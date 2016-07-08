@@ -7,8 +7,10 @@
  * Time: 9:50
  */
 $path = dirname(dirname(dirname(__DIR__)));
+$path = osc_base_path();
 include_once "$path./oc-includes/osclass/model/myCom.php";
 $myComNI = myCom::newInstance();
+
 ?>
 
 <?php MyComForm::js_validation(osc_comment_id());  ?>

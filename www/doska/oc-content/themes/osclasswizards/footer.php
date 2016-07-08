@@ -70,11 +70,11 @@
         }
         ?>
         <li> <a href="<?php echo osc_contact_url(); ?>">
-          <?php _e('Обратная связь', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          <?php _e('Contact', OSCLASSWIZARDS_THEME_FOLDER); ?>
           </a> </li>
         <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
         <li class="publish"> <a href="<?php echo osc_item_post_url_in_category(); ?>">
-          <?php _e("Publish your ad for free", OSCLASSWIZARDS_THEME_FOLDER);?>
+          <?php _e("Опубликовать заявку", OSCLASSWIZARDS_THEME_FOLDER);?>
           </a> </li>
         <?php } ?>
       </ul>

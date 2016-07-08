@@ -241,7 +241,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                                 <b style="font-weight: bold; font-size: larger "><?php echo osc_comment_author_name(); ?></b>
                             <?php }?>
                             <br><a class="chk" style="margin: 1px" id="chk<?php echo osc_comment_id(); ?>" onclick="js_showOrHideDiv(<?php echo osc_comment_id(); ?>)">подробнее</a>
-                                <?php osc_current_web_theme_path('infoBlock.php')?>
+                                <?php include "$path/oc-content/themes/osclasswizards/InfoBlock.php";?>
                             <?php ?>
                             <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
                                 <p style="margin: 1px"> <a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title="<?php echo osc_esc_html(__('Delete your comment', OSCLASSWIZARDS_THEME_FOLDER)); ?>">

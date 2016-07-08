@@ -1,5 +1,5 @@
 function centerBox($id) {
-    var boxWidth = 500;
+    var boxWidth = 400;
     /* определяем нужные данные */
     var winWidth = $(window).width();
     var winHeight = $(window).height();

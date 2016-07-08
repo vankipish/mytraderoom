@@ -271,11 +271,11 @@
            </div>
              <script> js_showOrHideDiv(1)</script>
           <div class="form-group">
-            <?php if( osc_recaptcha_items_enabled() ) { ?>
-            <div class="recap">
-              <?php osc_show_recaptcha(); ?>
-            </div>
-            <?php }?>
+            
+            
+              <?php anr_captcha_form_field();?>
+            
+            
             <div class="controls">
               <button type="submit" class="btn btn-success">
               <?php if($edit) { _e("Update", OSCLASSWIZARDS_THEME_FOLDER); } else { _e("Publish", OSCLASSWIZARDS_THEME_FOLDER); } ?>

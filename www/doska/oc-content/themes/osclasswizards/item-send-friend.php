@@ -106,6 +106,9 @@
           <div class="form-group">
             <div class="controls">
               <?php osc_run_hook('contact_form'); ?>
+              
+          	<?php anr_captcha_form_field(); ?>
+              
               <button type="submit" class="btn btn-success">
               <?php _e("Send", OSCLASSWIZARDS_THEME_FOLDER);?>
               </button>

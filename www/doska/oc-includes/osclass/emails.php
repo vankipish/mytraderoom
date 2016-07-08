@@ -722,7 +722,7 @@
     osc_add_hook('hook_email_new_comment_admin', 'fn_email_new_comment_admin');
 
 function fn_email_choice_made($aComment) {
-    
+
     $authorName  = trim(strip_tags($aComment['s_author_name']));
     $authorEmail = trim(strip_tags($aComment['s_author_email']));
     $body        = trim($aComment['s_body']);

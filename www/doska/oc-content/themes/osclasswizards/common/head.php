@@ -55,9 +55,9 @@ osc_register_script('js_comments', "./oc-content/plugins/myCom/js_comments.js");
 
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title><?php echo osc_esc_html(meta_title()) ; ?></title>
+<title><?php echo osc_item_title() ; ?></title>
 <?php if( meta_description() != '' ) { ?>
-<meta name="description" content="<?php echo osc_esc_html(meta_description()); ?>" />
+<meta name="description" content="<?php echo osc_item_description(); ?>" />
 <?php } ?>
 <?php if( meta_keywords() != '' ) { ?>
 <meta name="keywords" content="<?php echo osc_esc_html(meta_keywords()); ?>" />

@@ -111,7 +111,7 @@
                 break;
                 case 'myCom':
 
-                    $path = dirname(dirname(dirname(__DIR__)));
+                    $path = osc_base_path();
                     include_once "$path./oc-includes/osclass/model/myCom.php";
                     $myComNI = myCom::newInstance();
                    // osc_add_flash_ok_message( sprintf(_m('!! %s'), $myComNI) );
@@ -151,7 +151,7 @@
 
                 case 'myComDel':
 
-                    $path = dirname(dirname(dirname(__DIR__)));
+                    $path = osc_base_path();
                     include_once "$path/oc-includes/osclass/model/myCom.php";
 
                     $IdMycom    = Params::getParam('myCom_Id');
