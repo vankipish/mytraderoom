@@ -56,7 +56,7 @@ if( osc_item_country() !== '' ) {
 
 osc_current_web_theme_path('header.php');
 
-$path = dirname(dirname(dirname(__DIR__)));
+$path = osc_base_path();
 include_once "$path/oc-includes/osclass/model/userRaty.php";
 include_once "$path/oc-includes/osclass/frm/MyCom.form.class.php";
 include_once "$path/oc-includes/osclass/model/myCom.php";

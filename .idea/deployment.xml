@@ -17,7 +17,6 @@
             <excludedPath path="/config_reserve.php" />
             <excludedPath path="/Doska.zip" />
             <excludedPath path="/favicon.ico" />
-            <excludedPath path="/index.php" />
             <excludedPath path="/licenses.txt" />
             <excludedPath path="/oc-admin.zip" />
             <excludedPath path="/oc-load.php" />
