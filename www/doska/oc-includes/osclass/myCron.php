@@ -17,12 +17,7 @@ $cron = MyCron::newInstance()->getCronByType('MINUTLY');
 if(is_array($cron)) {
     $i_next = strtotime($cron['d_next_exec']);
 
-    // update the next execution time in t_cron
-    $d_next = date('Y-m-d H:i:s', $i_now + (60));
-    MyCron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
-        array('e_type'      => 'MINUTLY'));
-
-
+    //Alerts for new comments
     $AllComments = myCom::newInstance()->allAllComments();
     $t= MyCron::newInstance()->showLastExecTime('MINUTLY');
     foreach ($AllComments as $comment)
@@ -32,6 +27,11 @@ if(is_array($cron)) {
             osc_run_hook('hook_email_newCom', $comment);
         }
     }
+
+    // update the next execution time in t_cron
+    $d_next = date('Y-m-d H:i:s', $i_now + (60));
+    MyCron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
+        array('e_type'      => 'MINUTLY'));
 
     /*
         // Run cron AFTER updating the next execution time to avoid double run of cron

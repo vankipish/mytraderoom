@@ -74,6 +74,48 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
 
 <div class="row" >
 
+    <?php
+
+    include_once "$path/oc-includes/osclass/model/myCron.php";
+    $d_now = date('Y-m-d H:i:s');
+    $i_now = strtotime($d_now);
+    if ( ! defined('CLI')) {
+        define('CLI', (PHP_SAPI==='cli'));
+    }
+
+    // Minutly crons
+    $cron = MyCron::newInstance()->getCronByType('MINUTLY');
+    if(is_array($cron)) {
+        $i_next = strtotime($cron['d_next_exec']);
+
+        $AllComments = myCom::newInstance()->allAllComments();
+        $t= MyCron::newInstance()->showLastExecTime('MINUTLY');
+        foreach ($AllComments as $comment)
+        {   var_dump('время публикации'.$comment['pub_date']);
+            var_dump($t['d_last_exec']);
+            if ($comment['pub_date'] > $t['d_last_exec'])
+            {
+                var_dump($comment);
+                //osc_run_hook('hook_email_newCom', $comment);
+            }
+        }
+
+        // update the next execution time in t_cron
+        $d_next = date('Y-m-d H:i:s', $i_now + (60));
+        MyCron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
+            array('e_type'      => 'MINUTLY'));
+        /*
+            // Run cron AFTER updating the next execution time to avoid double run of cron
+            $purge = osc_purge_latest_searches();
+            if( $purge == 'week' ) {
+                LatestSearches::newInstance()->purgeDate( date('Y-m-d H:i:s', ( time() - (7 * 24 * 3600) ) ) );
+            }
+            osc_run_hook('cron_weekly');
+         */
+    }
+    ?>
+
+
     <div class="col-sm-7 col-md-8">
         <div id="item-content" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
             <?php if((osc_is_web_user_logged_in() && osc_logged_user_id()==osc_item_user_id()) && ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 0)) { ?>
