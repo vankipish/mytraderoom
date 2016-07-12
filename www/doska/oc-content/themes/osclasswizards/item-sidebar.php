@@ -37,15 +37,7 @@
     <p class="alert_user">
       <?php _e("It's your own listing, you can't contact the publisher.", OSCLASSWIZARDS_THEME_FOLDER); ?>
     </p>
-    <?php } else if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
-    <p class="alert_user">
-      <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>
-    </p>
-    <p class="contact_button"> <strong><a href="<?php echo osc_user_login_url(); ?>">
-      <?php _e('Login', OSCLASSWIZARDS_THEME_FOLDER); ?>
-      </a></strong> <strong><a href="<?php echo osc_register_account_url(); ?>">
-      <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?>
-      </a></strong> </p>
+
     <?php } else { ?>
     <?php if( osc_item_user_id() != null ) { ?>
         <div class="user-card">
@@ -58,6 +50,18 @@
     <?php } else { ?>
     <h3 class="name"><i class="fa fa-user"></i><?php printf('%s', osc_item_contact_name()); ?></h3>
     <?php } ?>
+
+    <?php if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
+      <p class="alert_user">
+        <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>
+      </p>
+      <p class="contact_button"> <strong><a href="<?php echo osc_user_login_url(); ?>">
+            <?php _e('Login', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a></strong> <strong><a href="<?php echo osc_register_account_url(); ?>">
+            <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a></strong> </p>
+    <?php } else { ?>
+
     <?php if( osc_item_show_email() ) { ?>
     <p class="email" style="margin: 0px"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
     <?php } ?>
@@ -151,6 +155,7 @@ div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
       </div>
     </form>
     <?php ContactForm::js_validation(); ?>
+    <?php } ?>
     <?php } ?>
   </div>
   <?php } ?>

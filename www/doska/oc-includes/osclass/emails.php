@@ -723,7 +723,6 @@
 
 function fn_email_choice_made($aComment) {
 
-    osc_add_flash_ok_message( sprintf(_m('аякс должен передать ,  %s'), $aComment) );
     $authorName  = trim(strip_tags($aComment['s_author_name']));
     $authorEmail = trim(strip_tags($aComment['s_author_email']));
     $body        = trim($aComment['s_body']);
@@ -818,7 +817,7 @@ function fn_email_newCom($aComment)
     $aItem = Item::newInstance()->findByPrimaryKey($itemId);
     $itemTitle = $aItem['s_title'];
     $itemURL = osc_item_url();
-    $itemURL = '<a href="'.$itemURL.$itemId.'" >'.$itemURL.$itemId.'</a>';
+    $itemURL = $itemURL.$itemId;
     $itemAuthor = $aItem['s_contact_name'];
     $itemAuthorEmail = $aItem['s_contact_email'];
     //$itemDescription = $aItem['s_description'];
