@@ -817,8 +817,8 @@ function fn_email_newCom($aComment)
     $admin_email = osc_contact_email();
     $aItem = Item::newInstance()->findByPrimaryKey($itemId);
     $itemTitle = $aItem['s_title'];
-    $itemLink = osc_item_url();
-    $itemURL = '<a'.$itemLink.$itemTitle.'</a>';
+    $itemURL = osc_item_url();
+    $itemURL = '<a href="'.$itemURL.$itemId.'" >'.$itemURL.$itemId.'</a>';
     $itemAuthor = $aItem['s_contact_name'];
     $itemAuthorEmail = $aItem['s_contact_email'];
     //$itemDescription = $aItem['s_description'];

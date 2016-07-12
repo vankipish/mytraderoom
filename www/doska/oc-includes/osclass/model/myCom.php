@@ -104,6 +104,21 @@ class myCom extends DAO
         return $resArr;
     }
 
+    function allAllComments()
+    {
+        $this->dao->select();
+        $this->dao->from($this->getTableName());
+        
+        $result = $this->dao->get();
+        $this->dao->orderBy("pub_date",'ASC');
+        $resArr = $result->result();
+        if (empty($resArr))
+            return 0;
+        else
+            return $resArr;
+    }
+    
+
     function getId($parentCommId)
     {
         $this->dao->select('com_id');
