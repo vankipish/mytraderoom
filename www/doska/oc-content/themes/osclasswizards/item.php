@@ -315,7 +315,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
 
                                 <div class="form-group">
                                     <label class="control-label" for="authorPhone">
-                                        Ваш номер телефона (будет доступен только заказчику)
+                                        Ваш номер телефона (не обязательно. Будет доступен только заказчику)
                                     </label>
                                     <div class="controls">
                                         <?php CommentForm::phone_input_text(); ?>

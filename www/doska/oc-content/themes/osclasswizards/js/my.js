@@ -84,6 +84,13 @@ $(document).ready(function(){
     });
 });
 
+function slideMove(obj) {
+    event.preventDefault();
+    var id  = $(obj).attr('href'),
+        top = $(id).offset().top;
+    $("body").delay(100).animate({scrollTop: top -200}, 500);
+}
+
 $(document).ready(function(){
     $("#menu1").on("click","a", function (event) {
         event.preventDefault();

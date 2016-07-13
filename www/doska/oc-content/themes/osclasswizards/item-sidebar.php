@@ -53,7 +53,7 @@
 
     <?php if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
       <p class="alert_user">
-        <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>
+        <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>, но <a id="to_discuss" href="#vk_comments" onclick="slideMove(this)" >задать вопросы</a> <a id="to_makeOffer2" href="#here" onclick="slideMove(this)"> , оставить свое ценовое предложение</a> и затем обсудить его Вы можете без регистрации
       </p>
       <p class="contact_button"> <strong><a href="<?php echo osc_user_login_url(); ?>">
             <?php _e('Login', OSCLASSWIZARDS_THEME_FOLDER); ?>
