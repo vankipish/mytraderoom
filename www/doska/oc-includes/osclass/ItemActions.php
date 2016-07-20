@@ -407,7 +407,7 @@
                     //$aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
                     if (Params::getParam('showPhoneLogged'))
                     {
-                        $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
+                        $aItem['contactPhone'] = Params::getParam('contactPhone');
                     }
                 } else {
                     $aItem['userId']      = NULL;
@@ -1140,7 +1140,7 @@
                 //Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
                 if (Params::getParam('showPhoneLogged'))
                 {
-                    $aItem['contactPhone'] = Params::getParam('contactPhoneLogged');
+                    $aItem['contactPhone'] = Params::getParam('contactPhone');
                 }
             } else {
                 $aItem['contactName']   = Params::getParam('contactName');

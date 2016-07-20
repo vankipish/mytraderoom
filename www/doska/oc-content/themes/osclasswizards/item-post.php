@@ -92,24 +92,34 @@
                           <?php ItemForm::contact_email_text(); ?>
                       </div>
                   </div>
+                  <div>
+                      <input type = 'checkbox' name="showPhoneLogged" id = 'chkPhone' >
+                      <label class="control-label" for="contactPhoneLogged"><b>Показывать номер телефона </b></label>
 
+                      <div id="elPhone" style="display: none; margin-bottom: 7px">
+                          <input name="contactPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                      </div>
+                  </div>
+                  <script>js_showOrHideChkbox('Phone')</script>
+            <!--
                   <div class="control-group" style="margin-bottom: 10px">
                       <label class="control-label" for="contactPhone"><?php echo "Номер телефона"?></label>
                       <div class="controls">
                           <?php ItemForm::contact_phone_text(); ?>
                       </div>
                   </div>
+                  -->
 
                   <div class="form-group">
                       <div class="controls checkbox">
                           <?php ItemForm::show_email_checkbox(); ?>
                           <label for="showEmail">
-                              <?php _e('Show e-mail on the listing page', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                              <?php _e('Показывать электронную почту в заявке', OSCLASSWIZARDS_THEME_FOLDER); ?>
                           </label>
                       </div>
                   </div>
             
-                  <div class="form-group">
+                <!--  <div class="form-group">
                       <div class="controls checkbox">
                           <?php ItemForm::show_phone_checkbox(); ?>
                           <label for="showPhone">
@@ -117,6 +127,7 @@
                           </label>
                       </div>
                   </div>
+                  -->
 
               </div>
               <?php
@@ -185,15 +196,7 @@
               </ul>
             </div>
           </div>
-                <div>
-                  <input type = 'checkbox' name="showPhoneLogged" id = 'chkPhone' >
-                  <label class="control-label" for="contactPhoneLogged"><b>Оставить номер телефона </b></label>
 
-                  <div id="elPhone" style="display: none">
-                      <input name="contactPhoneLogged" value="<?php echo " ". osc_logged_user_phone();?>" />
-                  </div>
-                </div>
-              <script>js_showOrHideChkbox('Phone')</script>
           <?php } ?>
           <div class="chk_post" id="chk1" style="cursor: pointer; margin-bottom: 10px">Добавить фото, адрес</div>
            <div name="add_information" id="el1" style="display: none">
