@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="mytraderoom">
+  <component name="PublishConfigData" serverName="mytraderoom" compareModeInSync="TIMESTAMP" showNewOnTargetInSync="false">
     <serverData>
       <paths name="mytraderoom">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="mytraderoom/doska/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/www/doska" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/.idea" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/.htaccess reserve" />
+            <excludedPath path="/CHANGELOG.txt" />
+            <excludedPath path="/config-sample.php" />
+            <excludedPath path="/config.php" />
+            <excludedPath path="/config_reserve.php" />
+            <excludedPath path="/Doska.zip" />
+            <excludedPath path="/favicon.ico" />
+            <excludedPath path="/licenses.txt" />
+            <excludedPath path="/oc-admin.zip" />
+            <excludedPath path="/oc-load.php" />
+            <excludedPath path="/PHP_errors.log" />
+            <excludedPath path="/phpinfo.php" />
+            <excludedPath path="/readme.txt" />
+            <excludedPath path="/robots.txt" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/oc-admin" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

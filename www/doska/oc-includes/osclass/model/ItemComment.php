@@ -67,11 +67,13 @@
                 's_author_name',
                 's_author_email',
                 's_author_phone',
+                's_show_phone',
                 's_body',
                 'b_enabled',
                 'b_active',
                 'b_spam',
-                'fk_i_user_id'
+                'fk_i_user_id',
+                'b_choice'
             );
             $this->setFields($array_fields);
         }
@@ -96,6 +98,20 @@
             }
 
             return $result->result();
+        }
+
+        function getOfferByID($id)
+        {
+            $this->dao->select();
+            $this->dao->from($this->getTableName());
+            $this->dao->where('pk_i_id', $id);
+            $result = $this->dao->get();
+
+            if($result == false) {
+                return array();
+            }
+            $result = $result->result();
+            return $result[0];
         }
 
         /**
@@ -127,7 +143,9 @@
                                 'b_enabled'     => 1);
             $this->dao->where($conditions);
           //Добавил сюда сортировку комментов по цене предложений(в ячейке s_title)
+            $this->dao->orderBy("b_choice",'DESC');
             $this->dao->orderBy("s_title",'ASC');
+            $this->dao->orderBy("dt_pub_date",'ASC');
 
             if( $page !== 'all' && $commentsPerPage > 0 ) {
                 $this->dao->limit(($page*$commentsPerPage), $commentsPerPage);
@@ -275,6 +293,85 @@
         }
 
         /**
+         * @param $id
+         * @return mixed
+         */
+        function get_min_price($id)  // для класса коментов, $id - получаю для текущего объекта
+        {
+            $result = array();
+
+            $this->dao->select('s_title');  // здесь хранится цена предложения
+            $this->dao->from($this->getTableName()); //обращается к таблице с коментами
+            $conditions = array('fk_i_item_id'  => $id,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1,  //проверка комент активен
+                                'b_enabled'     => 1);  //проверка коменты включены
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $allprices = $result->result(); //делает нормальный массив из запроса (многомерный)
+            $prices = array(); //создаю новый массив где будут только цифры цен
+                    foreach ($allprices as $price){
+                        array_push($prices,$price['s_title']);  //записываю в созданый массив цены предложений
+                    }
+          if (!$prices == 0) {
+            $minPrice=min($prices);                     //вычисляю минимальную цену предложения
+            $array_set = array('min_Price' => $minPrice);   //даю имя ячейке с этой ценой
+            $array_conditions = array('pk_i_id' => $id);    //создаю условие для where - для id объекта = текущему id..
+            $this->dao->update(DB_TABLE_PREFIX.'t_item', $array_set, $array_conditions); //обновляется значение min_Price в базе
+
+            return $minPrice;
+          }
+          else
+            return 0;
+        }
+
+        /**
+         * @param $idItem, $idComment
+         * @return mixed
+         */
+        function check_choice($idItem,$idComment)
+        {
+            $result = array();
+            $this->dao->select('b_choice');
+            $this->dao->from($this->getTableName());
+            $conditions = array('fk_i_item_id'  => $idItem,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1,  //проверка комент активен
+                                'pk_i_id'     => $idComment);  //id в таблице = id коммента
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $massive = $result->result();
+            $choices = array();
+            foreach ($massive as $choice){
+                array_push($choices,$choice['b_choice']);
+            }
+            return $choices[0]; //выводится 1 если это предложение выбрано заказчиком
+        }
+        /**
+         * @param $idItem, $idComment
+         * @return mixed
+         */
+        function has_choice($idItem,$idComment)
+        {
+            $result = array();
+            $this->dao->select('b_choice');
+            $this->dao->from($this->getTableName());
+            $conditions = array('fk_i_item_id'  => $idItem,  //id в таблице = id объекта текущего вида
+                                'b_active'      => 1);  //проверка комент активен
+            $this->dao->where($conditions);  //для этих условий..
+            $result = $this->dao->get();//получить данные из базы
+            $massive = $result->result();
+            $choices = array();
+            foreach ($massive as $choice)
+                {
+                array_push($choices,$choice['b_choice']);
+                if ($choice['b_choice'] == 1) {   return 1; break; }
+                }
+
+            return 0;
+
+        }
+
+        
+        /**
          * Extends an array of comments with title / description
          *
          * @access private
@@ -315,6 +412,11 @@
             }
             return $results;
         }
+
+        /**
+         * @param $item
+         */
+        
 
         /**
          * Return comments on command

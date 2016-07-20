@@ -24,10 +24,11 @@
   <?php if( osc_get_preference('sidebar-300x250', 'osclasswizards_theme') != '') {?>
   <div class="ads_300"> <?php echo osc_get_preference('sidebar-300x250', 'osclasswizards_theme'); ?> </div>
   <?php } ?>
+  <?php if( ( osc_logged_user_id() !== osc_item_user_id() ) || osc_logged_user_id() == 0 ) { ?>
   <h1 class="title">
     <?php _e("Contact publisher", OSCLASSWIZARDS_THEME_FOLDER); ?>
   </h1>
-  <div id="contact" class="widget-box form-container form-vertical">
+  <div id="contact" class="widget-box form-container form-vertical" <?php if ((ItemComment::newInstance() ->has_choice(osc_item_id(),osc_comment_id())) == 1) echo 'style="background-color: #effff4; border-color: #d1eada"'?>>
     <?php if( osc_item_is_expired () ) { ?>
     <p class="alert_user">
       <?php _e("The listing is expired. You can't contact the publisher.", OSCLASSWIZARDS_THEME_FOLDER); ?>
@@ -36,35 +37,44 @@
     <p class="alert_user">
       <?php _e("It's your own listing, you can't contact the publisher.", OSCLASSWIZARDS_THEME_FOLDER); ?>
     </p>
-    <?php } else if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
-    <p class="alert_user">
-      <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>
-    </p>
-    <p class="contact_button"> <strong><a href="<?php echo osc_user_login_url(); ?>">
-      <?php _e('Login', OSCLASSWIZARDS_THEME_FOLDER); ?>
-      </a></strong> <strong><a href="<?php echo osc_register_account_url(); ?>">
-      <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?>
-      </a></strong> </p>
+
     <?php } else { ?>
     <?php if( osc_item_user_id() != null ) { ?>
-    <div class="user-card">
-      <figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure>
-    </div>
+        <div class="user-card">
+          <div style="width: 100px; margin: 10px 0 20px 0; border: solid 2px"><?php profile_picture_show(); ?></div>
+          <!--<figure><img class="img-responsive" src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( osc_user_email() ) ) ); ?>?s=400&d=<?php echo osc_current_web_theme_url('images/default.gif') ; ?>" /></figure>-->
+        </div>
     <h3 class="name">
 	  <i class="fa fa-user"></i>
       <a href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>" ><?php echo osc_item_contact_name(); ?></a></h3>
     <?php } else { ?>
     <h3 class="name"><i class="fa fa-user"></i><?php printf('%s', osc_item_contact_name()); ?></h3>
     <?php } ?>
+
+    <?php if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
+      <p class="alert_user">
+        <?php _e("You must log in or register a new account in order to contact the advertiser", OSCLASSWIZARDS_THEME_FOLDER); ?>, но <a id="to_discuss" href="#vk_comments" onclick="slideMove(this)" >задать вопросы</a> <a id="to_makeOffer2" href="#here" onclick="slideMove(this)"> , оставить свое ценовое предложение</a> и затем обсудить его Вы можете без регистрации
+      </p>
+      <p class="contact_button"> <strong><a href="<?php echo osc_user_login_url(); ?>">
+            <?php _e('Login', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a></strong> <strong><a href="<?php echo osc_register_account_url(); ?>">
+            <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?>
+          </a></strong> </p>
+    <?php } else { ?>
+
     <?php if( osc_item_show_email() ) { ?>
-    <p class="email"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
+    <p class="email" style="margin: 0px"><?php printf(__('E-mail: %s', OSCLASSWIZARDS_THEME_FOLDER), osc_item_contact_email()); ?></p>
     <?php } ?>
-    <?php if ( osc_user_phone() != '' ) { ?>
-    <p class="phone"><i class="fa fa-phone"></i><?php printf('%s', osc_user_phone()); ?></p>
-    <?php } ?>
+        <?php// var_dump()?>
+      <?php if( osc_item_show_phone() ) {
+        $phoneuser = osc_item_contact_phone();
+      if ($phoneuser != "") { ?>
+        <i class="fa fa-phone" style="margin-top: 0px"></i><a><?php echo"  ". $phoneuser; ?></a>
+      <?php }} ?>
+        
     <ul id="error_list">
     </ul>
-    <form action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" id="contact_form" <?php if(osc_item_attachment()) { echo 'enctype="multipart/form-data"'; };?> >
+    <form style="margin-top: 15px" action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" id="contact_form" <?php if(osc_item_attachment()) { echo 'enctype="multipart/form-data"'; };?> >
       <?php osc_prepare_user_info(); ?>
       <input type="hidden" name="action" value="contact_post" />
       <input type="hidden" name="page" value="item" />
@@ -72,7 +82,7 @@
       <div class="form-group">
         <label class="control-label" for="yourName">
           <?php _e('Your name', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          :</label>
+          :<sup>*</sup></label>
         <div class="controls">
           <?php ContactForm::your_name(); ?>
         </div>
@@ -80,7 +90,7 @@
       <div class="form-group">
         <label class="control-label" for="yourEmail">
           <?php _e('Your e-mail address', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          :</label>
+          :<sup>*</sup></label>
         <div class="controls">
           <?php ContactForm::your_email(); ?>
         </div>
@@ -98,7 +108,7 @@
       <div class="form-group">
         <label class="control-label" for="message">
           <?php _e('Message', OSCLASSWIZARDS_THEME_FOLDER); ?>
-          :</label>
+          :<sup>*</sup></label>
         <div class="controls textarea">
           <?php ContactForm::your_message(); ?>
         </div>
@@ -146,7 +156,9 @@ div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
     </form>
     <?php ContactForm::js_validation(); ?>
     <?php } ?>
+    <?php } ?>
   </div>
+  <?php } ?>
   
     <?php 
 	if( osc_get_preference('facebook-showitem', 'osclasswizards_theme') == "1"){

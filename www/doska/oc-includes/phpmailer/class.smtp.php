@@ -61,14 +61,14 @@ class SMTP {
    *  Debug output level; 0 for no output
    *  @var int
    */
-  public $do_debug = 0;
+  public $do_debug = 1;
 
   /**
    * Sets the function/method to use for debugging output.
    * Right now we only honor 'echo', 'html' or 'error_log'
    * @var string
    */
-  public $Debugoutput     = 'echo';
+  public $Debugoutput     = 'error_log';
 
   /**
    *  Sets VERP use on/off (default is off)

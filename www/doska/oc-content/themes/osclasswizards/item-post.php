@@ -32,6 +32,7 @@
     }
 	
     ?>
+
 <?php osc_current_web_theme_path('header.php') ; ?>
 <?php 
 	echo '<script>osclasswizards.item_edit = '.(($edit)? "1":"0");
@@ -51,15 +52,95 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="wraps">
+        <?php if(osc_user_registration_enabled()&&(osc_logged_user_id()==0)) { ?>
+            <ul><li>
+                    <span>Для более быстрого и удобного размещения заявок, а так же для возможности оценивать исполнителей рекомендуем</span>
+                    <a style="text-transform: lowercase" href="<?php echo osc_register_account_url() ; ?>">
+                    <?php _e('Register for a free account', OSCLASSWIZARDS_THEME_FOLDER); ?><br><br>
+                    </a>
+                </li>
+            </ul>
+        <?php }; ?>
       <div class="title">
         <h1>
-          <?php _e('Publish a listing', OSCLASSWIZARDS_THEME_FOLDER); ?>
+            <h1><?php _e('Publish a listing', OSCLASSWIZARDS_THEME_FOLDER); ?></h1>
         </h1>
       </div>
       <ul id="error_list">
       </ul>
       <form name="item" action="<?php echo osc_base_url(true);?>" method="post" enctype="multipart/form-data" id="item-post">
-        <fieldset>
+
+          <!-- seller info -->
+          <?php if(!osc_is_web_user_logged_in() ) { ?>
+              <div class="box seller_info">
+                  <h2>
+                      Ваши контакты
+                  </h2>
+                  <div class="form-group">
+                      <label class="control-label" for="contactName">
+                          <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
+                      </label>
+                      <div class="controls">
+                          <?php ItemForm::contact_name_text(); ?>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label" for="contactEmail">
+                          <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
+                      </label>
+                      <div class="controls">
+                          <?php ItemForm::contact_email_text(); ?>
+                      </div>
+                  </div>
+                  <div>
+                      <input type = 'checkbox' name="showPhoneLogged" id = 'chkPhone' >
+                      <label class="control-label" for="contactPhoneLogged"><b>Показывать номер телефона </b></label>
+
+                      <div id="elPhone" style="display: none; margin-bottom: 7px">
+                          <input name="contactPhone" value="<?php echo " ". osc_logged_user_phone();?>" />
+                      </div>
+                  </div>
+                  <script>js_showOrHideChkbox('Phone')</script>
+            <!--
+                  <div class="control-group" style="margin-bottom: 10px">
+                      <label class="control-label" for="contactPhone"><?php echo "Номер телефона"?></label>
+                      <div class="controls">
+                          <?php ItemForm::contact_phone_text(); ?>
+                      </div>
+                  </div>
+                  -->
+
+                  <div class="form-group">
+                      <div class="controls checkbox">
+                          <?php ItemForm::show_email_checkbox(); ?>
+                          <label for="showEmail">
+                              <?php _e('Показывать электронную почту в заявке', OSCLASSWIZARDS_THEME_FOLDER); ?>
+                          </label>
+                      </div>
+                  </div>
+            
+                <!--  <div class="form-group">
+                      <div class="controls checkbox">
+                          <?php ItemForm::show_phone_checkbox(); ?>
+                          <label for="showPhone">
+                              Показывать номер телефона в заявке
+                          </label>
+                      </div>
+                  </div>
+                  -->
+
+              </div>
+              <?php
+          }
+
+          if($edit) {
+              ItemForm::plugin_edit_item();
+          } else {
+              ItemForm::plugin_post_item();
+          }
+          ?>
+
+          <fieldset>
           <input type="hidden" name="action" value="<?php echo $action; ?>" />
           <input type="hidden" name="page" value="item" />
           <?php if($edit){ ?>
@@ -71,7 +152,7 @@
           </h2>
           <div class="form-group">
             <label class="control-label" for="select_1">
-              <?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php  if ( osc_count_categories() ) { ?>
@@ -85,7 +166,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="title[<?php echo osc_current_user_locale(); ?>]">
-              <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Title', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php ItemForm::title_input('title',osc_current_user_locale(), osc_esc_html( osclasswizards_item_title() )); ?>
@@ -93,7 +174,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="description[<?php echo osc_current_user_locale(); ?>]">
-              <?php _e('Description', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Description', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php ItemForm::description_textarea('description',osc_current_user_locale(), osc_esc_html( osclasswizards_item_description() )); ?>
@@ -102,7 +183,7 @@
           <?php if( osc_price_enabled_at_items() ) { ?>
           <div class="form-group form-group-price">
             <label class="control-label" for="price">
-              <?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?> (по желанию можете указать цену, на которую расчитываете)
             </label>
             <div class="controls">
               <ul class="row">
@@ -115,8 +196,11 @@
               </ul>
             </div>
           </div>
+
           <?php } ?>
-          <?php 
+          <div class="chk_post" id="chk1" style="cursor: pointer; margin-bottom: 10px">Добавить фото, адрес</div>
+           <div name="add_information" id="el1" style="display: none">
+              <?php
 			if( osc_images_enabled_at_items() ) {
                 ItemForm::ajax_photos();
             } ?>
@@ -187,52 +271,14 @@
               </div>
             </div>
           </div>
-          <!-- seller info -->
-          <?php if(!osc_is_web_user_logged_in() ) { ?>
-          <div class="box seller_info">
-            <h2>
-              <?php _e("Seller's information", OSCLASSWIZARDS_THEME_FOLDER); ?>
-            </h2>
-            <div class="form-group">
-              <label class="control-label" for="contactName">
-                <?php _e('Name', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </label>
-              <div class="controls">
-                <?php ItemForm::contact_name_text(); ?>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="contactEmail">
-                <?php _e('E-mail', OSCLASSWIZARDS_THEME_FOLDER); ?>
-              </label>
-              <div class="controls">
-                <?php ItemForm::contact_email_text(); ?>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="controls checkbox">
-                <?php ItemForm::show_email_checkbox(); ?>
-                <label for="showEmail">
-                  <?php _e('Show e-mail on the listing page', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </label>
-              </div>
-            </div>
-          </div>
-          <?php
-                        }
-		
-                        if($edit) {
-                            ItemForm::plugin_edit_item();
-                        } else {
-                            ItemForm::plugin_post_item();
-                        }
-                        ?>
+           </div>
+             <script> js_showOrHideDiv(1)</script>
           <div class="form-group">
-            <?php if( osc_recaptcha_items_enabled() ) { ?>
-            <div class="recap">
-              <?php osc_show_recaptcha(); ?>
-            </div>
-            <?php }?>
+            
+            
+              <?php anr_captcha_form_field();?>
+            
+            
             <div class="controls">
               <button type="submit" class="btn btn-success">
               <?php if($edit) { _e("Update", OSCLASSWIZARDS_THEME_FOLDER); } else { _e("Publish", OSCLASSWIZARDS_THEME_FOLDER); } ?>

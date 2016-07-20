@@ -721,6 +721,223 @@
     }
     osc_add_hook('hook_email_new_comment_admin', 'fn_email_new_comment_admin');
 
+function fn_email_choice_made($aComment) {
+
+    $authorName  = trim(strip_tags($aComment['s_author_name']));
+    $authorEmail = trim(strip_tags($aComment['s_author_email']));
+    $body        = trim($aComment['s_body']);
+    // only \n -> <br/>
+    $body        = nl2br(strip_tags($body));
+    $title       = $aComment['s_title'];
+    $itemId      = $aComment['fk_i_item_id'];
+    $admin_email = osc_contact_email();
+
+    //$item = Item::newInstance()->findByPrimaryKey($itemId);
+    //View::newInstance()->_exportVariableToView('item', $item);
+    $itemURL = osc_item_url();
+    $itemURL = '<a href="'.$itemURL.'" >'.$itemURL.'</a>';
+    $itemTitle = osc_item_title();
+
+    $mPages = new Page();
+    $aPage = $mPages->findByInternalName('email_choice_offer');
+    $locale = osc_current_user_locale();
+
+    if(isset($aPage['locale'][$locale]['s_title'])) {
+        $content = $aPage['locale'][$locale];
+    } else {
+        $content = current($aPage['locale']);
+    }
+
+    $words   = array();
+    $words[] = array(
+        '{COMMENT_AUTHOR}',
+        '{COMMENT_EMAIL}',
+        '{COMMENT_TITLE}',
+        '{COMMENT_TEXT}',
+        '{ITEM_TITLE}',
+        '{ITEM_ID}',
+        '{ITEM_URL}',
+        '{ITEM_LINK}'
+    );
+    $words[] = array(
+        $authorName,
+        $authorEmail,
+        $title,
+        $body,
+        $itemTitle,
+        $itemId,
+        $itemURL,
+        $itemURL
+    );
+    $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
+    $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
+
+    $emailParams = array(
+        'from'      => osc_contact_email(),
+        'to'        => $authorEmail,
+        'to_name'   => $authorName,
+        'subject'   => $title_email,
+        'body'      => $body_email,
+        'alt_body'  => $body_email
+    );
+    osc_sendMail($emailParams);
+    osc_add_flash_ok_message( sprintf(_m('Уведомление о Вашем решении отправленно исполнителю %s'), $authorName) );
+}
+osc_add_hook('hook_email_choice_made', 'fn_email_choice_made');
+
+
+function fn_email_newCom($aComment)
+{
+    //osc_add_flash_ok_message( sprintf(_m('фя запущена,  %s'), 'true') );
+    /* Собираем информацию из коммента */
+    $authorName = trim(strip_tags($aComment['author_name']));
+    $authorEmail = trim(strip_tags($aComment['author_email']));
+    $body = trim($aComment['com_text']);
+    $itemId = $aComment['item_id'];
+    $offerId = $aComment['parent_com_id'];
+    //osc_add_flash_ok_message( sprintf(_m('фя запущена, тело комента %s'), $body) );
+    /*Проверка - не ответ ли это?*/
+    if ($aComment['answer_for'] !== 0) {
+        $itsAnswerForId = $aComment['answer_for'];
+        $ParentCom = myCom::newInstance()->findByPrimaryKey($itsAnswerForId);
+        $ParentComAuthor = $ParentCom['author_name'];
+        $ParentComEmail = $ParentCom['author_email'];
+        $ParentComText = $ParentCom['com_text'];
+    }
+
+    /* Собираем информацию из предложения к которому коммент */
+    $aOffer = ItemComment::newInstance()->getOfferByID($offerId);
+    $offerAuthorName = $aOffer['s_author_name'];
+    $offerAuthorEmail = $aOffer['s_author_email'];
+    $offerPrice = $aOffer['s_title'];
+    $offerText = $aOffer['s_body'];
+
+    /* Собираем информацию общую информацию */
+    $admin_email = osc_contact_email();
+    $aItem = Item::newInstance()->findByPrimaryKey($itemId);
+    $itemTitle = $aItem['s_title'];
+    $itemURL = osc_item_url();
+    $itemURL = $itemURL.$itemId;
+    $itemAuthor = $aItem['s_contact_name'];
+    $itemAuthorEmail = $aItem['s_contact_email'];
+    //$itemDescription = $aItem['s_description'];
+
+    $mPages = new Page();
+    $aPage = $mPages->findByInternalName('email_new_com');
+    $locale = osc_current_user_locale();
+
+    if (isset($aPage['locale'][$locale]['s_title'])) {
+        $content = $aPage['locale'][$locale];
+    } else {
+        $content = current($aPage['locale']);
+    }
+
+    $words = array();
+    $words[] = array(
+        '{COMMENT_AUTHOR}',
+        '{COMMENT_EMAIL}',
+        '{COMMENT_TEXT}',
+        '{OFFER_AUTHOR_NAME}',
+        '{OFFER_AUTHOR_EMAIL}',
+        '{OFFER_PRICE}',
+        '{OFFER_TEXT}',
+        '{ITEM_ID}',
+        '{ITEM_TITLE}',
+        '{ITEM_URL}',
+        '{ITEM_AUTHOR}',
+        '{ITEM_AUTHOR_EMAIL}'
+    );
+    $words[] = array(
+        $authorName,
+        $authorEmail,
+        $body,
+        $offerAuthorName,
+        $offerAuthorEmail,
+        $offerPrice,
+        $offerText,
+        $itemId,
+        $itemTitle,
+        $itemURL,
+        $itemAuthor,
+        $itemAuthorEmail
+    );
+
+
+    $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
+    $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
+
+    /* Уведомление для автора заявки*/
+    $emailParams = array(
+        'from' => osc_contact_email(),
+        'to' => $itemAuthorEmail,
+        'to_name' => $itemAuthor,
+        'subject' => $title_email,
+        'body' => $body_email,
+        'alt_body' => $body_email
+    );
+    if ($itemAuthorEmail !== $authorEmail) {
+        osc_sendMail($emailParams);
+        //osc_add_flash_ok_message( _m('Автору предложения отправленно уведомление о новом комментарии') );
+    }
+
+    if ($aComment['answer_for'] !== 0) {
+        $words[] = array(
+            '{COMMENT_AUTHOR}',
+            '{COMMENT_EMAIL}',
+            '{COMMENT_TEXT}',
+            '{OFFER_AUTHOR_NAME}',
+            '{OFFER_AUTHOR_EMAIL}',
+            '{OFFER_PRICE}',
+            '{OFFER_TEXT}',
+            '{ITEM_ID}',
+            '{ITEM_TITLE}',
+            '{ITEM_URL}',
+            '{ITEM_AUTHOR}',
+            '{ITEM_AUTHOR_EMAIL}',
+            '{PARENT_COM_AUTHOR}',
+            '{PARENT_COM_EMAIL}',
+            '{PARENT_COM_TEXT}',
+
+        );
+        $words[] = array(
+            $authorName,
+            $authorEmail,
+            $body,
+            $offerAuthorName,
+            $offerAuthorEmail,
+            $offerPrice,
+            $offerText,
+            $itemId,
+            $itemTitle,
+            $itemURL,
+            $itemAuthor,
+            $itemAuthorEmail,
+            $ParentComAuthor,
+            $ParentComEmail,
+            $ParentComText
+        );
+        $title_email = osc_apply_filter('email_new_comment_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_comment_admin_title', $content['s_title'], $aItem)), $words), $aItem);
+        $body_email = osc_apply_filter('email_new_comment_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_comment_admin_description', $content['s_text'], $aItem)), $words), $aItem);
+
+        /* Уведомление для автора коммента в случае ответа*/
+        $emailParams = array(
+            'from' => osc_contact_email(),
+            'to' => $ParentComEmail,
+            'to_name' => $ParentComAuthor,
+            'subject' => $title_email,
+            'body' => $body_email,
+            'alt_body' => $body_email
+        );
+        osc_sendMail($emailParams);
+        osc_add_flash_ok_message( _m('Автору комментария отправлено уведомление о вашем ответе ') );
+
+    }
+}
+osc_add_hook('hook_email_newCom', 'fn_email_newCom');
+
+
+
+
     function fn_email_item_validation($item) {
         View::newInstance()->_exportVariableToView('item', $item);
         $contactEmail   = $item['s_contact_email'];

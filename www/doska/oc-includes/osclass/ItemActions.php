@@ -79,6 +79,7 @@
             $aItem['price']    = !is_null($aItem['price']) ? strip_tags( trim( $aItem['price'] ) ) : $aItem['price'];
             $contactName       = strip_tags( trim( $aItem['contactName'] ) );
             $contactEmail      = strip_tags( trim( $aItem['contactEmail'] ) );
+            $contactPhone      = strip_tags(trim( $aItem['contactPhone'] ) );
             $aItem['cityArea'] = osc_sanitize_name( strip_tags( trim( $aItem['cityArea'] ) ) );
             $aItem['address']  = osc_sanitize_name( strip_tags( trim( $aItem['address'] ) ) );
 
@@ -175,7 +176,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = NULL;
+                    $aItem['currency'] = $aItem['currency'];
                 }
 
                 $this->manager->insert(array(
@@ -186,10 +187,12 @@
                     'fk_c_currency_code'    => $aItem['currency'],
                     's_contact_name'        => $contactName,
                     's_contact_email'       => $contactEmail,
+                    's_contact_phone'       => $contactPhone,
                     's_secret'              => $code,
                     'b_active'              => ($active=='ACTIVE'?1:0),
                     'b_enabled'             => $enabled,
                     'b_show_email'          => $aItem['showEmail'],
+                    'b_show_phone'          => $aItem['showPhone'],
                     'b_spam'                => $is_spam,
                     's_ip'                  => $aItem['s_ip']
                 ));
@@ -401,6 +404,11 @@
                     $aItem['userId']      = $aItem['userId'];
                     $aItem['contactName'] = $user['s_name'];
                     $aItem['contactEmail'] = $user['s_email'];
+                    //$aItem['contactPhone'] = ($user['s_phone_mobile'])? $user['s_phone_mobile'] : $user['s_phone_land'];
+                    if (Params::getParam('showPhoneLogged'))
+                    {
+                        $aItem['contactPhone'] = Params::getParam('contactPhone');
+                    }
                 } else {
                     $aItem['userId']      = NULL;
                 }
@@ -408,7 +416,7 @@
                 if($aItem['price']!='') {
                     $aItem['currency'] = $aItem['currency'];
                 } else {
-                    $aItem['currency'] = NULL;
+                    $aItem['currency'] = $aItem['currency']; //было NULL
                 }
 
                 $aUpdate = array(
@@ -417,6 +425,8 @@
                     ,'i_price'            => $aItem['price']
                     ,'fk_c_currency_code' => $aItem['currency']
                     ,'b_show_email'       => $aItem['showEmail']
+                    ,'b_show_phone'       => $aItem['showPhone']
+                    ,'s_contact_phone'    => $aItem['contactPhone']
                 );
 
                 // only can change the user if you're an admin
@@ -424,6 +434,10 @@
                     $aUpdate['fk_i_user_id']    = $aItem['userId'];
                     $aUpdate['s_contact_name']  = $aItem['contactName'];
                     $aUpdate['s_contact_email'] = $aItem['contactEmail'];
+                    $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
+                    $aUpdate['b_show_phone']    = $aItem['showPhone'];
+                    $aUpdate['s_contact_phone'] = $aItem['contactPhone'];
+
 
                 } else {
                     $aUpdate['s_ip'] = $aItem['s_ip'];
@@ -486,6 +500,7 @@
          * @param type $newIsExpired
          * @param type $location
          */
+
         private function _updateStats($result, $old_item, $oldIsExpired, $old_item_location, $aItem, $newIsExpired, $location)
         {
             if($result==1 && $old_item['b_enabled']==1 && $old_item['b_active']==1 && $old_item['b_spam']==0) {
@@ -886,7 +901,6 @@
          */
         public function add_comment()
         {
-
             if(!osc_comments_enabled()) {
                 return 7;
                             }
@@ -896,6 +910,7 @@
             $authorName     = trim(strip_tags($aItem['authorName']));
             $authorEmail    = trim(strip_tags($aItem['authorEmail']));
             $authorPhone    = trim(strip_tags($aItem['authorPhone']));
+            $showPhone      = $aItem['showPhone'];
             $body           = trim(strip_tags($aItem['body']));
             $title          = trim(strip_tags($aItem['title']));
             $itemId         = $aItem['id'];
@@ -933,12 +948,12 @@
                 return 3;
             }
 
-            if( ($body == '') ) {
-                Session::newInstance()->_setForm('commentAuthorName', $authorName);
-                Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
-                Session::newInstance()->_setForm('commentTitle', $title);
-                return 4;
-            }
+           // if( ($body == '') ) {
+            //    Session::newInstance()->_setForm('commentAuthorName', $authorName);
+           //     Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
+            //    Session::newInstance()->_setForm('commentTitle', $title);
+            //    return 4;
+          //  }
 
             $num_moderate_comments = osc_moderate_comments();
             if($userId==null) {
@@ -969,13 +984,23 @@
                     $status_num = 5;
                 }
             }
-
+            if( (osc_recaptcha_private_key() != '') ) {
+                if( !osc_check_recaptcha() ) {
+                    osc_add_flash_error_message( _m('The Recaptcha code is wrong'));
+                    Session::newInstance()->_setForm('commentAuthorName', $authorName);
+                    Session::newInstance()->_setForm('commentTitle', $title);
+                    Session::newInstance()->_setForm('commentAuthorEmail', $authorEmail);
+                    Session::newInstance()->_setForm('commentBody', $body);
+                    return 8;
+                }
+            }
             $mComments = ItemComment::newInstance();
             $aComment  = array('dt_pub_date'    => date('Y-m-d H:i:s')
                               ,'fk_i_item_id'   => $itemId
                               ,'s_author_name'  => $authorName
                               ,'s_author_email' => $authorEmail
                               ,'s_author_phone' => $authorPhone
+                                    ,'s_show_phone' => $showPhone
                               ,'s_title'        => $title
                               ,'s_body'         => $body
                               ,'b_active'       => ($status=='ACTIVE' ? 1 : 0)
@@ -1061,7 +1086,11 @@
                     View::newInstance()->_exportVariableToView('item', $aItem['item']);
                     $aItem['authorName']     = Params::getParam('authorName');
                     $aItem['authorEmail']    = Params::getParam('authorEmail');
-                    $aItem['authorPhone']    = Params::getParam('authorPhone');
+                        if (osc_logged_user_id()>0){
+                            $aItem['showPhone']     = (Params::getParam('showPhone') != '') ? 1 : 0;}
+                        else $aItem['showPhone']=1;
+                        if ($aItem['showPhone']==1){
+                        $aItem['authorPhone']    = Params::getParam('authorPhone');}
                     $aItem['body']           = Params::getParam('body');
                     //поменял Title на Newprice
                     $aItem['title']          = Params::getParam('Newprice');
@@ -1108,9 +1137,15 @@
                 $aItem['contactEmail']  = $data['s_email'];
                 Params::setParam('contactName', $data['s_name']);
                 Params::setParam('contactEmail', $data['s_email']);
+                //Params::setParam('contactPhone', ($data['s_phone_mobile'])? $data['s_phone_mobile'] : $data['s_phone_land']);
+                if (Params::getParam('showPhoneLogged'))
+                {
+                    $aItem['contactPhone'] = Params::getParam('contactPhone');
+                }
             } else {
                 $aItem['contactName']   = Params::getParam('contactName');
                 $aItem['contactEmail']  = Params::getParam('contactEmail');
+                $aItem['contactPhone']  = Params::getParam('contactPhone');
             }
             $aItem['userId']        = $userId;
 
@@ -1162,6 +1197,7 @@
             $aItem['address']       = Params::getParam('address');
             $aItem['currency']      = Params::getParam('currency');
             $aItem['showEmail']     = (Params::getParam('showEmail') != '') ? 1 : 0;
+            $aItem['showPhone']     = (Params::getParam('showPhoneLogged') != '') ? 1 : 0;
             $aItem['title']         = Params::getParam('title');
             $aItem['description']   = Params::getParam('description');
             $aItem['photos']        = Params::getFiles('photos');
@@ -1277,9 +1313,9 @@
                 $aItem['catId'] = 0;
             }
 
-            if( $aItem['currency'] == '' ) {
-                $aItem['currency'] = null;
-            }
+            //if( $aItem['currency'] == '' ) {
+            //    $aItem['currency'] = null;
+            //}
 
             $this->data = $aItem;
         }

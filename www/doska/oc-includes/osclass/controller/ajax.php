@@ -61,6 +61,111 @@
                     $cities = City::newInstance()->ajax(Params::getParam("term"), Params::getParam("region"));
                     echo json_encode($cities);
                 break;
+                case 'rating':
+                    $path = dirname(dirname(dirname(__DIR__)));
+                    include_once "$path./oc-includes/osclass/model/userRaty.php";
+                    $mRaty = userRaty::newInstance();
+
+                    $idexecutor = strip_tags($_POST['idexecutor']);
+                    $executor = strip_tags($_POST['executor']);
+                    $rating = $_POST['score'];
+                    $userId = strip_tags($_POST['r_of_user']);
+                    $userName = strip_tags($_POST['r_user_name']);
+                    $rComment = strip_tags($_POST['rComment']);
+                    $r_pub_date = strip_tags($_POST['r_pub_date']);
+                    
+                    if (userRaty::newInstance()->checking(osc_logged_user_id()) == 1)
+                        {
+                    // создание новой оценки
+                        $aRaty = array(
+                          'r_pub_date' => date('Y-m-d H:i:s')
+                        , 'id_executor'=> $idexecutor
+                        , 'r_executor' => $executor
+                        , 'r_rating'   => $rating
+                        , 'r_of_user'  => $userId
+                        , 'r_user_name'=> $userName
+                        , 'r_comment'  => $rComment)
+                        ;
+                        if ($mRaty->insert($aRaty)) {
+                            $ratyID = $mRaty->dao->insertedId();
+                        }
+    
+                        if(isset($_POST['score'])) {
+                            header("Content-type: text/txt; charset=UTF-8");
+                            if($_POST['score']>'0') {echo "Ваша оценка принята!";}}
+                        }
+                    // обновление оценки
+                    else {$aRaty = array(   
+                          'r_pub_date' => date('Y-m-d H:i:s')
+                        , 'id_executor'=> $idexecutor
+                        , 'r_executor' => $executor
+                        , 'r_rating'   => $rating
+                        , 'r_of_user'  => $userId
+                        , 'r_user_name'=> $userName
+                        , 'r_comment'  => $rComment)
+                    ; $mRaty->update($aRaty,array('r_of_user' =>$userId));
+                        echo "Ваша оценка изменена!";
+                       
+                    }
+
+                break;
+                case 'myCom':
+
+                    $path = osc_base_path();
+                    include_once "$path./oc-includes/osclass/model/myCom.php";
+                    $myComNI = myCom::newInstance();
+                   // osc_add_flash_ok_message( sprintf(_m('!! %s'), $myComNI) );
+                    $myCom_name = strip_tags($_POST['myCom_name']);
+                    $item_id = $_POST['item_id'];
+                    $parent_com_id = $_POST['parent_com_id'];
+                    $myCom_email = strip_tags($_POST['myCom_email']);
+                    $myCom_time = date('Y-m-d H:i:s');
+                    $myCom_text = strip_tags($_POST['myCom_text']);
+                    $answer_for = $_POST['answer_for'];
+
+                    // Добавляем комментарий
+
+                    $myComArray = array(
+                        'author_name'      => $myCom_name,
+                        'item_id'          => $item_id,
+                        'parent_com_id'    => $parent_com_id,
+                        'author_email'     => $myCom_email,
+                        'pub_date'         => $myCom_time,
+                        'com_text'         => $myCom_text,
+                        'author_phone'     => '',
+                        'show_phone'       => '',
+                        'b_enabled'        => '',
+                        'author_id'        => '',
+                        'answer_for'       => $answer_for
+                        );
+                    if ($myComNI->insert($myComArray)) {
+                        $MyComID = $myComNI->dao->insertedId();
+                    };
+                    $myComArray['com_id'] = $MyComID;
+                    array_push($myComArray,$ComId);
+                    echo json_encode($myComArray);
+                    //osc_run_hook('hook_email_newCom', $myComArray);
+
+
+                break;
+
+                case 'myComDel':
+
+                    $path = osc_base_path();
+                    include_once "$path/oc-includes/osclass/model/myCom.php";
+
+                    $IdMycom    = Params::getParam('myCom_Id');
+                    //$IdMyText    = Params::getParam('myCom_text');
+
+
+                    myCom::newInstance()->deleteComment($IdMycom);
+                    myCom::newInstance()->deleteChild($IdMycom);
+
+
+                    //osc_add_flash_ok_message( _m('Коммент удален!' ) );
+
+                break;
+
                 case 'delete_image': // Delete images via AJAX
                     $ajax_photo = Params::getParam('ajax_photo');
                     $id         = Params::getParam('id');

@@ -77,8 +77,8 @@
                                     custom_theme_widget: 'recaptcha_widget'
                                 };
                             </script>
-          <style type="text/css"> 
-div#recaptcha_widget, div#recaptcha_image > img { width:280px; } 
+          <style type="text/css">
+div#recaptcha_widget, div#recaptcha_image > img { width:280px; }
 </style>
           <div id="recaptcha_widget">
             <div id="recaptcha_image"><img /></div>

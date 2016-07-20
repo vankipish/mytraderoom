@@ -448,6 +448,10 @@
         return (int) $page;
     }
 
+    function osc_premium_contact_phone() {
+        return (string) osc_premium_field("s_contact_phone");
+        }
+
     //////////////////////////
     // HELPERS FOR PREMIUMS //
     //////////////////////////

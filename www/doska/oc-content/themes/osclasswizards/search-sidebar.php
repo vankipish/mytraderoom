@@ -24,150 +24,227 @@
      }
 
 ?>
+<style>
+  ul.sub {
+    padding-left: 20px;
+  }
+  .chbx{
+    width:15px; height:15px;
+    display: inline;
+    padding:8px 3px;
+    background-repeat:no-repeat;
+    cursor: pointer;
 
+
+
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('li.parent').each(function() {
+      var totalInputSub = $(this).find('ul.sub>li>input').size();
+      var totalInputSubChecked = $(this).find('ul.sub>li>input:checked').size();
+      $(this).find('ul.sub>li>input').each(function(){
+        $(this).hide();
+        var id = $(this).attr('id');
+        id = id+'_';
+        if( $(this).is(':checked') ){
+          var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+          $(this).before(aux);
+        } else {
+          var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+          $(this).before(aux);
+        }
+      });
+
+      var input = $(this).find('input.parent');
+      $(input).hide();
+      var id = $(input).attr('id');
+      id = id+'_';
+      if(totalInputSub == totalInputSubChecked) {
+        if(totalInputSub == 0) {
+          if( $(this).find("input[name='sCategory[]']:checked").size() > 0) {
+            var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+            $(input).before(aux);
+          } else {
+            var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+            $(input).before(aux);
+          }
+        } else {
+          var aux = $('<div class="chbx checked"><span></span></div>').attr('id', id);
+          $(input).before(aux);
+        }
+      }else if(totalInputSubChecked == 0) {
+        // no input checked
+        var aux = $('<div class="chbx"><span></span></div>').attr('id', id);
+        $(input).before(aux);
+      }else if(totalInputSubChecked < totalInputSub) {
+        var aux = $('<div class="chbx semi-checked"><span></span></div>').attr('id', id);
+        $(input).before(aux);
+      }
+    });
+
+    $('li.parent').prepend('<span style="width:6px;display:inline-block; color: #4e6d80" class="toggle">+</span>');
+    $('ul.sub').toggle();
+
+    $('span.toggle').click(function(){
+      $(this).parent().find('ul.sub').toggle();
+      if($(this).text()=='+'){
+        $(this).html('-');
+      } else {
+        $(this).html('+');
+      }
+    });
+
+    $("li input[name='sCategory[]']").change( function(){
+      var id = $(this).attr('id');
+      $(this).click();
+      $('#'+id+'_').click();
+    });
+
+    $('div.chbx').click( function() {
+      var isChecked       = $(this).hasClass('checked');
+      var isSemiChecked   = $(this).hasClass('semi-checked');
+
+      if(isChecked) {
+        $(this).removeClass('checked');
+        $(this).next('input').prop('checked', false);
+      } else if(isSemiChecked) {
+        $(this).removeClass('semi-checked');
+        $(this).next('input').prop('checked', false);
+      } else {
+        $(this).addClass('checked');
+        $(this).next('input').prop('checked', true);
+      }
+
+      // there are subcategories ?
+      if($(this).parent().find('ul.sub').size()>0) {
+        if(isChecked){
+          $(this).parent().find('ul.sub>li>div.chbx').removeClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', false);
+        } else if(isSemiChecked){
+          // if semi-checked -> check-all
+          $(this).parent().find('ul.sub>li>div.chbx').removeClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', false);
+          $(this).removeClass('semi-checked');
+        } else {
+          $(this).parent().find('ul.sub>li>div.chbx').addClass('checked');
+          $(this).parent().find('ul.sub>li>input').prop('checked', true);
+        }
+      } else {
+        // is subcategory checkbox or is category parent without subcategories
+        var parentLi = $(this).closest('li.parent');
+
+        // subcategory
+        if($(parentLi).find('ul.sub').size() > 0) {
+          var totalInputSub           = $(parentLi).find('ul.sub>li>input').size();
+          var totalInputSubChecked    = $(parentLi).find('ul.sub>li>input:checked').size();
+
+          var input    = $(parentLi).find('input.parent');
+          var divInput = $(parentLi).find('div.chbx').first();
+
+          $(input).prop('checked', false);
+          $(divInput).removeClass('checked');
+          $(divInput).removeClass('semi-checked');
+
+          if(totalInputSub == totalInputSubChecked) {
+            $(divInput).addClass('checked');
+            $(input).prop('checked', true);
+          }else if(totalInputSubChecked == 0) {
+            // no input checked;
+          }else if(totalInputSubChecked < totalInputSub) {
+            $(divInput).addClass('semi-checked');
+          }
+        } else {
+          // parent category
+        }
+      }
+    });
+  });
+</script>
 <div class="col-sm-4 col-md-3">
-  <aside id="sidebar" class="sidebar_search">
-    <h2 id="show_filters">
-      <?php _e('Show Filters', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-      <i class="fa fa-th-list"></i> </h2>
-    <div id="filters_shown">
-      <div class="block">
-        <h2>
-          <?php _e('Advanced Search', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-        </h2>
-        <section>
-          <div class="filters">
-            <form action="<?php echo osc_base_url(true); ?>" method="get" class="nocsrf">
-              <input type="hidden" name="page" value="search"/>
-              <input type="hidden" name="sOrder" value="<?php echo osc_search_order(); ?>" />
-              <input type="hidden" name="iOrderType" value="<?php $allowedTypesForSorting = Search::getAllowedTypesForSorting() ; echo $allowedTypesForSorting[osc_search_order_type()]; ?>" />
-              <?php foreach(osc_search_user() as $userId) { ?>
-              <input type="hidden" name="sUser[]" value="<?php echo $userId; ?>"/>
-              <?php } ?>
-              <fieldset class="first">
-                <h3>
-                  <?php _e('Your search', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </h3>
-                <div class="row">
-                  <input class="input-text" type="text" name="sPattern"  id="query" value="<?php echo osc_esc_html(osc_search_pattern()); ?>" />
-                </div>
-              </fieldset>
-			  <?php if(osc_get_preference('show_search_country', 'osclasswizards_theme') == '1'){?>
-              <fieldset>
-                <h3>
-                  <?php _e('Country', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </h3>
-                <div>
-				 <?php osclasswizards_countries_select('sCountry', 'sCountry', __('Select a country', OSCLASSWIZARDS_THEME_FOLDER), osc_esc_html(Params::getParam('sCountry')));?>
-                </div>
-              </fieldset>
-			  <?php } ?>
-			    <fieldset>
-                <h3>
-                  <?php _e('Region', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </h3>
-                <div>
-					<?php osclasswizards_regions_select('sRegion', 'sRegion', __('Select a region', OSCLASSWIZARDS_THEME_FOLDER), osc_esc_html(osc_search_region())) ; ?>
-                </div>
-              </fieldset>
-			  <fieldset>
-                <h3>
-                  <?php _e('City', OSCLASSWIZARDS_THEME_FOLDER); ?>
-                </h3>
-                <div>
-                    <?php osclasswizards_cities_select('sCity', 'sCity', __('Select a city', OSCLASSWIZARDS_THEME_FOLDER), osc_esc_html(osc_search_city())) ; ?>
-                </div>
-              </fieldset>
+  <div id="sidebar">
+    <div class="filters">
+      <form action="<?php echo osc_base_url(true); ?>" method="get" onsubmit="return doSearch()" class="nocsrf">
+        <input hidden name="page" value="search" />
+        <input hidden name="sOrder" value="<?php echo osc_esc_html(osc_search_order()); ?>" />
+        <input hidden name="iOrderType" value="<?php $allowedTypesForSorting = Search::getAllowedTypesForSorting(); echo osc_esc_html($allowedTypesForSorting[osc_search_order_type()]); ?>" />
+        <?php foreach(osc_search_user() as $userId) { ?>
+          <input type="hidden" name="sUser[]" value="<?php echo osc_esc_html($userId); ?>" />
+        <?php } ?>
+        <fieldset class="box location">
+          <h3><strong><?php _e('Your search', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+          <div class="row one_input">
+            <input type="text" name="sPattern" id="query" value="<?php echo osc_esc_html( osc_search_pattern() ); ?>" />
+            <div id="search-example"></div>
+          </div>
+          <h3><strong><?php _e('City', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+          <div class="row one_input">
 
-              <?php if( osc_images_enabled_at_items() ) { ?>
-              <fieldset>
-                <h3>
-                  <?php _e('Show only', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                </h3>
-                <div class="checkbox">
-                  <input type="checkbox" name="bPic" id="withPicture" value="1" <?php echo (osc_search_has_pic() ? 'checked' : ''); ?> />
-                  <label for="withPicture">
-                    <?php _e('listings with pictures', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                  </label>
-                </div>
-              </fieldset>
-              <?php } ?>
-              <?php if( osc_price_enabled_at_items() ) { ?>
-              <fieldset>
-                <div class="price-slice">
-                  <h3>
-                    <?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                  </h3>
-                  <ul class="row">
-                    <li class="col-md-6"> <span>
-                      <?php _e('Min', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                      :</span>
-                      <input class="input-text" type="text" id="priceMin" name="sPriceMin" value="<?php echo osc_esc_html(osc_search_price_min()); ?>" size="6" maxlength="6" />
-                    </li>
-                    <li class="col-md-6"> <span>
-                      <?php _e('Max', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                      :</span>
-                      <input class="input-text" type="text" id="priceMax" name="sPriceMax" value="<?php echo osc_esc_html(osc_search_price_max()); ?>" size="6" maxlength="6" />
-                    </li>
-                  </ul>
-                </div>
-              </fieldset>
-              <?php } ?>
-              <div class="plugin-hooks">
-                <?php
-            if(osc_search_category_id()) {
-                osc_run_hook('search_form', osc_search_category_id()) ;
-            } else {
-                osc_run_hook('search_form') ;
-            }
-            ?>
-              </div>
-              <?php
-        $aCategories = osc_search_category();
-        foreach($aCategories as $cat_id) { ?>
-              <input type="hidden" name="sCategory[]" value="<?php echo osc_esc_html($cat_id); ?>"/>
-              <?php } ?>
-              <div class="actions">
-                <button type="submit" class="btn btn-success">
-                <?php _e('Apply', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-                </button>
-              </div>
-            </form>
+            <input type="text" id="sCity" name="sCity" value="<?php echo osc_esc_html( osc_search_city() ); ?>" />
+            <input type="hidden" id="sRegion" name="sRegion" value="" />
           </div>
-        </section>
-      </div>
-      <div class="block mobile_hide_cat">
-        <h2>
-          <?php _e('Refine category', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-        </h2>
-        <section>
-          <div class="search_filter">
-            <?php osclasswizards_sidebar_category_search($category['pk_i_id']); ?>
-          </div>
-        </section>
-      </div>
+        </fieldset>
+
+        <fieldset class="box show_only">
+          <?php if( osc_images_enabled_at_items() ) { ?>
+            <!--<h3><strong><?php _e('Show only', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+            <div class="row checkboxes">
+              <ul>
+                <li>
+                  <input type="checkbox" name="bPic" id="withPicture" value="1" <?php echo (osc_search_has_pic() ? 'checked="checked"' : ''); ?> />
+                  <label for="withPicture"><?php _e('Show only listings with pictures', OSCLASSWIZARDS_THEME_FOLDER); ?></label>
+                </li>
+              </ul>
+            </div>
+            -->
+          <?php } ?>
+          <?php if( osc_price_enabled_at_items() ) { ?>
+            <div class="row two_input">
+              <h3><strong><?php _e('Price', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+              <div><?php _e('Min', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
+              <input type="text" id="priceMin" name="sPriceMin" value="<?php echo osc_esc_html(osc_search_price_min()); ?>" size="6" maxlength="6" />
+              <div><?php _e('Max', OSCLASSWIZARDS_THEME_FOLDER); ?>.</div>
+              <input type="text" id="priceMax" name="sPriceMax" value="<?php echo osc_esc_html(osc_search_price_max()); ?>" size="6" maxlength="6" />
+            </div>
+          <?php } ?>
+          <?php  osc_get_non_empty_categories(); ?>
+          <?php  if ( osc_count_categories() ) { ?>
+            <div class="row checkboxes">
+              <h3><strong><?php _e('Category', OSCLASSWIZARDS_THEME_FOLDER); ?></strong></h3>
+              <ul>
+                <?php // RESET CATEGORIES IF WE USED THEN IN THE HEADER ?>
+                <?php osc_goto_first_category(); ?>
+                <?php while(osc_has_categories()) { ?>
+                  <li class="parent">
+                    <input class="parent" type="checkbox" id="cat<?php echo osc_esc_html(osc_category_id()); ?>" name="sCategory[]" value="<?php echo osc_esc_html(osc_category_id()); ?>" <?php $parentSelected=false; if (in_array(osc_category_id(), osc_search_category()) || in_array(osc_category_slug()."/", osc_search_category()) || in_array(osc_category_slug(), osc_search_category()) || count(osc_search_category())==0 ){ echo 'checked="checked"'; $parentSelected=true;} ?> /> <label for="cat<?php echo osc_esc_html(osc_category_id()); ?>"><strong><?php echo osc_category_name(); ?></strong></label>
+                    <?php if(osc_count_subcategories() > 0) { ?>
+                      <ul class="sub">
+                        <?php while(osc_has_subcategories()) { ?>
+                          <li>
+                            <input type="checkbox" id="cat<?php echo osc_esc_html(osc_category_id()); ?>" name="sCategory[]" value="<?php echo osc_esc_html(osc_category_id()); ?>"  <?php if( $parentSelected || in_array(osc_category_id(), osc_search_category()) || in_array(osc_category_slug()."/", osc_search_category()) || in_array(osc_category_slug(), osc_search_category()) || count(osc_search_category())==0 ){echo 'checked="checked"';} ?> />
+                            <label for="cat<?php echo osc_esc_html(osc_category_id()); ?>"><strong><?php echo osc_category_name(); ?></strong></label>
+                          </li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+                  </li>
+                <?php } ?>
+              </ul>
+            </div>
+          <?php } //osclasswizards_footer_js() ?> <!-- подключаю ihelper, который сидит в хуке footer-->
+        </fieldset>
+        <?php
+        if(osc_search_category_id()) {
+          osc_run_hook('search_form', osc_search_category_id());
+        } else {
+          osc_run_hook('search_form');
+        }
+        ?>
+        <button type="submit" class="apply"><?php _e('Apply', OSCLASSWIZARDS_THEME_FOLDER); ?></button>
+      </form>
+      <?php osc_alert_form(); ?>
     </div>
-    <div class="block mobile_hide">
-      <h2>
-        <?php _e('Subscribe to this search', OSCLASSWIZARDS_THEME_FOLDER) ; ?>
-      </h2>
-      <section>
-        <?php osc_alert_form(); ?>
-      </section>
-    </div>
-    <?php 
-	if( osc_get_preference('facebook-showsearch', 'osclasswizards_theme') == "1"){
-		?>
-    <div class="block mobile_hide">
-      <section>
-        <div class="fb_box">
-          <?php
-		osclasswizards_facebook_like_box();?>
-        </div>
-      </section>
-    </div>
-    <?php
-	}
-  ?>
-  </aside>
+  </div>
 </div>

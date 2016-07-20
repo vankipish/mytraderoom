@@ -20,7 +20,8 @@
      */
 ?>
 <?php
-    $js_lang = array(
+
+$js_lang = array(
         'delete' => __('Delete', OSCLASSWIZARDS_THEME_FOLDER),
         'cancel' => __('Cancel', OSCLASSWIZARDS_THEME_FOLDER)
     );
@@ -28,7 +29,14 @@
 	osc_register_script('jquery', osc_current_web_theme_js_url('jquery.min.js'));
     osc_enqueue_script('jquery');
     osc_enqueue_script('jquery-ui');
-	osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
+osc_register_script('icheck', osc_current_web_theme_js_url('icheck-1.x/icheck.js'),'jquery');
+osc_enqueue_script('icheck');
+osc_register_script('maskedinput', osc_current_web_theme_js_url('jquery.maskedinput.js'));
+osc_enqueue_script('maskedinput');
+osc_register_script('raty', osc_current_web_theme_js_url('raty/lib/jquery.raty.js'));
+osc_enqueue_script('raty');
+osc_register_script('jquery-uniform', osc_current_web_theme_js_url('jquery.uniform.js'), 'jquery');
+    osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
     osc_enqueue_style('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.css'));
     osc_enqueue_script('fancybox');
 	osc_register_script('jquery-validate', osc_current_web_theme_js_url('jquery.validate.min.js'));
@@ -40,11 +48,16 @@
     osc_register_script('global-theme-js', osc_current_web_theme_js_url('global.js'), 'jquery');
     osc_register_script('delete-user-js', osc_current_web_theme_js_url('delete_user.js'), 'jquery-ui');
     osc_enqueue_script('global-theme-js');
+osc_register_script('my', osc_current_web_theme_js_url('my.js'));
+osc_enqueue_script('my');
+osc_register_script('js_comments', "./oc-content/plugins/myCom/js_comments.js");
+//osc_enqueue_script('js_comments');
+
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title><?php echo osc_esc_html(meta_title()) ; ?></title>
+<title><?php echo osc_item_title() ; ?></title>
 <?php if( meta_description() != '' ) { ?>
-<meta name="description" content="<?php echo osc_esc_html(meta_description()); ?>" />
+<meta name="description" content="<?php echo osc_item_description(); ?>" />
 <?php } ?>
 <?php if( meta_keywords() != '' ) { ?>
 <meta name="keywords" content="<?php echo osc_esc_html(meta_keywords()); ?>" />
@@ -86,4 +99,12 @@
 <?php } ?>
 <?php $color_mode = osclasswizards_theme_color_mode(); ?>
 <link href="<?php echo osc_current_web_theme_url('css/apps-'.$color_mode.'.css') ; ?>" rel="stylesheet" type="text/css" />
+
+
+
+<link href="./oc-content/themes/osclasswizards/js/icheck-1.x/skins/all.css" rel="stylesheet">
+<!--<script src="./oc-content/themes/osclasswizards/js/icheck-1.x/icheck.js"></script>  вроде уже не нужно, но на всякий случай оставил-->
+<link href="./oc-content/themes/osclasswizards/js/raty/lib/jquery.raty.css" rel="stylesheet">
+<link href="./oc-content/plugins/myCom/myCom_style.css" rel="stylesheet">
+
 <?php osc_run_hook('header') ; ?>

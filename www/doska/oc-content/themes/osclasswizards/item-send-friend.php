@@ -48,7 +48,7 @@
           <?php } else { ?>
           <div class="form-group">
             <label class="control-label" for="yourName">
-              <?php _e("Your name",OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e("Your name",OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls ">
               <?php SendFriendForm::your_name(); ?>
@@ -56,7 +56,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="yourEmail">
-              <?php _e("Your e-mail",OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e("Your e-mail",OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls ">
               <?php SendFriendForm::your_email(); ?>
@@ -65,7 +65,7 @@
           <?php } ?>
           <div class="form-group">
             <label class="control-label" for="friendName">
-              <?php _e("Your friend's name",OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e("Your friend's name",OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls">
               <?php SendFriendForm::friend_name(); ?>
@@ -73,7 +73,7 @@
           </div>
           <div class="form-group">
             <label for="friendEmail">
-              <?php _e("Your friend's e-mail address", OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e("Your friend's e-mail address", OSCLASSWIZARDS_THEME_FOLDER); ?><sup style="color: red">*</sup>
             </label>
             </label>
             <div class="controls">
@@ -90,7 +90,7 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="message">
-              <?php _e('Message', OSCLASSWIZARDS_THEME_FOLDER); ?>
+              <?php _e('Message', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
             </label>
             <div class="controls textarea">
               <?php SendFriendForm::your_message(); ?>
@@ -106,6 +106,9 @@
           <div class="form-group">
             <div class="controls">
               <?php osc_run_hook('contact_form'); ?>
+              
+          	<?php anr_captcha_form_field(); ?>
+              
               <button type="submit" class="btn btn-success">
               <?php _e("Send", OSCLASSWIZARDS_THEME_FOLDER);?>
               </button>

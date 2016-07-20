@@ -83,6 +83,9 @@
         </div>
         <div class="form-group">
           <div class="controls">
+          
+          <?php anr_captcha_form_field(); ?>
+          
             <button type="submit" class="btn btn-success">
             <?php _e("Create An Account", OSCLASSWIZARDS_THEME_FOLDER); ?>
             </button>

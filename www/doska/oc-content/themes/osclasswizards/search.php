@@ -1,3 +1,32 @@
+    <style>
+    ul.sub {
+        padding-left: 20px;
+    }
+
+
+    .chbx{
+        width:15px; height:15px;
+        display: inline;
+        padding:8px 3px;
+        background-repeat:no-repeat;
+        cursor: pointer;
+    }
+    .chbx span{
+        width:15px; height:15px;
+        display: inline-block;
+        border:solid 1px #bababa;
+        border-radius:2px;
+        -moz-border-radius:2px;
+        -webkit-border-radius:2px;
+    }
+    .chbx.checked{
+        background-image:url('<?php echo osc_current_web_theme_url('images/checkmark.png'); ?>');
+    }
+    .chbx.semi-checked{
+        background-image:url('<?php echo osc_current_web_theme_url('images/checkmark-partial.png'); ?>');
+    }
+</style>
+
 <?php
     /*
      *      Osclass – software for creating and publishing online classified
@@ -19,7 +48,8 @@
      * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
 
-    // meta tag robots
+
+// meta tag robots
     if( osc_count_items() == 0 || stripos($_SERVER['REQUEST_URI'], 'search') ) {
         osc_add_hook('header','osclasswizards_nofollow_construct');
     } else {
@@ -27,7 +57,7 @@
     }
 
     osclasswizards_add_body_class('category');
-	
+
 	if(osclasswizards_show_as() == 'gallery'){
         $loop_template	=	'loop-search-grid.php';
 		$listClass = 'listing-grid';
@@ -37,13 +67,14 @@
 		$listClass = '';
 		$buttonClass = '';
 	}
-	
+
     osc_add_hook('before-main','sidebar');
     function sidebar(){
         osc_current_web_theme_path('search-sidebar.php');
     }
     osc_add_hook('footer','autocompleteCity');
     function autocompleteCity(){ ?>
+
 <script type="text/javascript">
     $(function() {
                     function log( message ) {
@@ -71,11 +102,12 @@
 <div class="row">
   <?php osc_current_web_theme_path('search-sidebar.php') ; ?>
   <div class="col-sm-8 col-md-9">
-    <div class="title">
+      <div class="ad_list">
+      <div class="title">
       <h1><?php echo (search_title() != "")? search_title() : '&nbsp;'; ?></h1>
     </div>
     <div class="toolbar">
-      <div class="sorting"> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'list'))); ?>" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'gallery'))); ?>" class="grid-button <?php if(osclasswizards_show_as()=='gallery')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i> </span></a> </div>
+      <div hidden class="sorting"> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'list'))); ?>" class="list-button <?php if(osclasswizards_show_as()=='list')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-list"></i> </span></a> <a href="<?php echo osc_esc_html(osc_update_search_url(array('sShowAs'=> 'gallery'))); ?>" class="grid-button <?php if(osclasswizards_show_as()=='gallery')echo "active"; ?>" data-class-toggle="listing-grid" data-destination="#listing-card-list"><span> <i class="fa fa-th-large"></i> </span></a> </div>
       <?php osc_run_hook('search_ads_listing_top'); ?>
       <?php if(osc_count_items() == 0) { ?>
       <p class="empty" ><?php printf(__('There are no results matching "%s"', OSCLASSWIZARDS_THEME_FOLDER), osc_search_pattern()) ; ?></p>
@@ -86,33 +118,25 @@
                 printf(__('%1$d - %2$d of %3$d listings', OSCLASSWIZARDS_THEME_FOLDER), $search_number['from'], $search_number['to'], $search_number['of']);
             ?>
       </span>
-      <div class="sort"> <span class="see_by">
-        <?php
-              $orders = osc_list_orders();
-              $current = '';
+      <div class="sort"> <p class="see_by">
+              Сортировать по:
+              <?php $i = 0; ?>
+              <?php $orders = osc_list_orders();
               foreach($orders as $label => $params) {
-                  $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1';
-                  if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) {
-                      $current = $label;
-                  }
-              }
-              ?>
-        <?php $i = 0; ?>
-        <ul>
-          <?php
-                  foreach($orders as $label => $params) {
-                      $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
-          <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
-          <li><a class="current" href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a></li>
-          <?php } else { ?>
-          <li><a href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a></li>
-          <?php } ?>
-          <?php $i++; ?>
-          <?php } ?>
-        </ul>
-        </span> </div>
+                  $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
+                  <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
+                      <a class="current" href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a>
+                  <?php } else { ?>
+                      <a href="<?php echo osc_esc_html(osc_update_search_url($params)); ?>"><?php echo $label; ?></a>
+                  <?php } ?>
+                  <?php if ($i != count($orders)-1) { ?>
+                      <span>|</span>
+                  <?php } ?>
+                  <?php $i++; ?>
+              <?php } ?>
+          </p> </div>
       <?php } ?>
-    </div>
+    </div>   <!-- вроде премиум объявл-->
     <?php if( osc_get_preference('search-results-top-728x90', 'osclasswizards_theme') != ""){ ?>
     <div class="ads_search_top"> <?php echo osc_get_preference('search-results-top-728x90', 'osclasswizards_theme'); ?></div>
     <?php } ?>
@@ -122,8 +146,8 @@
             if(osc_count_premiums() > 0) {
             echo '<h5 class="title">'.__('Premium listings',OSCLASSWIZARDS_THEME_FOLDER).'</h5>';
 			?>
-    <?php 
-			
+    <?php
+
             View::newInstance()->_exportVariableToView("listType", 'premiums');
             View::newInstance()->_exportVariableToView("listClass",$listClass.' premium-list');
             osc_current_web_theme_path($loop_template);
@@ -135,8 +159,7 @@
     <?php if(osc_count_items() > 0) {
         echo '<h5 class="title titles">'.__('Listings',OSCLASSWIZARDS_THEME_FOLDER).'</h5>';
 		?>
-    <?php 
-		
+    <?php
         View::newInstance()->_exportVariableToView("listType", 'items');
         View::newInstance()->_exportVariableToView("listClass",$listClass);
             osc_current_web_theme_path($loop_template);
@@ -159,11 +182,18 @@
     </div>
     <?php }
       } ?>
-    <div class="pagination"> <?php echo osc_search_pagination(); ?> </div>
+    <div class="pagination"><?php echo osc_search_pagination(); ?> </div>
     <?php } ?>
     <?php if( osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme') != "" ){ ?>
     <div class="ads_search_bottom"> <?php echo osc_get_preference('search-results-middle-728x90', 'osclasswizards_theme'); ?></div>
     <?php } ?>
   </div>
+  </div>
 </div>
 <?php osc_current_web_theme_path('footer.php') ; ?>
+    <script>
+        $(document).ready(function () {
+            $('input').iCheck('destroy')
+        })
+    </script>
+

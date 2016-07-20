@@ -22,6 +22,16 @@
         define('CLI', (PHP_SAPI==='cli'));
     }
 
+// Instant crons
+
+
+        osc_runAlert('INSTANT', $cron['d_last_exec']);
+
+        osc_run_hook('cron_instant');
+
+
+
+
     // Hourly crons
     $cron = Cron::newInstance()->getCronByType('HOURLY');
     if( is_array($cron) ) {
@@ -32,9 +42,9 @@
             $d_next = date('Y-m-d H:i:s', $i_now + 3600);
             Cron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
                                         array('e_type'      => 'HOURLY'));
-            
+
              osc_runAlert('HOURLY', $cron['d_last_exec']);
-            
+
             // Run cron AFTER updating the next execution time to avoid double run of cron
             $purge = osc_purge_latest_searches();
             if( $purge == 'hour' ) {
@@ -112,9 +122,9 @@
             $d_next = date('Y-m-d H:i:s', $i_now + (7 * 24 * 3600));
             Cron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
                                         array('e_type'      => 'WEEKLY'));
-            
+
              osc_runAlert('WEEKLY', $cron['d_last_exec']);
-            
+
             // Run cron AFTER updating the next execution time to avoid double run of cron
             $purge = osc_purge_latest_searches();
             if( $purge == 'week' ) {

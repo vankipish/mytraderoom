@@ -77,6 +77,10 @@
                             define('__FROM_CRON__', true);
                             require_once(osc_lib_path() . 'osclass/cron.php');
         break;
+        case ('mycron'):      // cron system
+                            define('__FROM_CRON__', true);
+                            require_once(osc_lib_path() . 'osclass/myCron.php');
+        break;
         case ('user'):      // user pages (with security)
                             if(Params::getParam('action')=='change_email_confirm' || Params::getParam('action')=='activate_alert'
                             || (Params::getParam('action')=='unsub_alert' && !osc_is_web_user_logged_in())

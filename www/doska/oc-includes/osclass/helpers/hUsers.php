@@ -344,6 +344,15 @@
         return (string) osc_user_field("s_phone_mobile");
     }
 
+        /**
+         * Gets show phone public of current user
+         *
+         * @return string
+         */
+        function osc_show_phone_public() {
+            return (string) osc_user_field("s_show_phone");
+        }
+
     /**
      * Gets phone_land if exist, else if exist return phone_mobile,
      * else return string blank

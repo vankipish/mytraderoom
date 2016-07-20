@@ -179,7 +179,19 @@
         }
         return (string) $title;
     }
-
+    /**
+     * выбор заказчика
+     *
+     * @param string $logged_user, $item_owner
+     * @return string
+     */
+    function osc_choice() {
+        if (((osc_logged_user_id() == osc_user_id()) && (osc_user_id() !== 0) && (osc_logged_user_id() !==0 )) && 1==1)
+        {
+          $text = 'Выбрать исполнителем';
+        }
+        return (string) $text;
+    }
     /**
      * Gets category from current item
      *
@@ -268,6 +280,12 @@
         if(osc_item_field("i_price")=='') return null;
            if(osc_item_field("i_price")<'') return null;
            else return (float) osc_item_field("i_price");
+    }
+
+    function osc_item_min_price() {
+        if(osc_item_field("min_Price")=='') return null;
+        if(osc_item_field("min_Price")<'') return null;
+        else return (float) ItemComment::newInstance()->get_min_price((osc_item_id()));
     }
 
     /**
@@ -407,6 +425,16 @@
     function osc_item_show_email() {
         return (boolean) osc_item_field("b_show_email");
     }
+
+    /**
+     * Gets true if can show email user at frontend, else return false
+     *
+     * @return boolean
+     */
+    function osc_item_show_phone() {
+        return (boolean) osc_item_field("b_show_phone");
+    }
+
 
     /**
      * Gets zip code of current item
@@ -659,6 +687,10 @@
         }
     }
 
+    function osc_item_contact_phone() {
+        return (string) osc_item_field("s_contact_phone");
+        }
+
     ///////////////////////
     // HELPERS FOR ITEMS //
     ///////////////////////
@@ -668,14 +700,16 @@
     // HELPERS FOR COMMENTS //
     //////////////////////////
 
+
+
     /**
      * Gets id of current comment
      *
      * @return int
      */
     function osc_comment_id() {
-        return (int) osc_comment_field("pk_i_id");
-    }
+    return (int) osc_comment_field("pk_i_id");
+}
 
     /**
      * Gets publication date of current comment
@@ -728,7 +762,8 @@
      * @return string
      */
     function osc_comment_body() {
-        return (string) osc_comment_field("s_body");
+        $comment = preg_replace('/((?:\w+:\/\/|www\.)[\w.\/%\d&?#+=-]+)/i', '<a href="\1">\1</a>',  osc_comment_field("s_body"));
+        return  $comment;
     }
 
     /**
@@ -748,6 +783,16 @@
     function osc_delete_comment_url() {
         return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
+
+    function osc_make_choice_url() {
+        return (string) osc_base_url(true)."?page=item&action=make_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
+
+    function osc_cancel_choice_url() {
+        return (string) osc_base_url(true)."?page=item&action=cancel_choice&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
+
+
 
     //////////////////////////////
     // END HELPERS FOR COMMENTS //
@@ -979,6 +1024,7 @@
         return View::newInstance()->_next('comments');
     }
 
+    
     //////////
     // HOME //
     //////////
@@ -1125,6 +1171,29 @@
         $currencyFormat = str_replace('{CURRENCY}', $symbol, $currencyFormat);
         return osc_apply_filter('item_price', $currencyFormat );
     }
+
+    /**
+     * Функция для формата цены минимального предложения
+     * Formats the price using the appropiate currency.
+     *
+     * @param float $price
+     * @return string
+     */
+    function osc_format_min_price($minPrice, $symbol = null) {
+
+        if ($minPrice === null) return  osc_apply_filter('нет предложений','Вы можете стать первым');
+        if ($minPrice == 0) return ('нет предложений');
+    
+        if($symbol==null) { $symbol = osc_item_currency_symbol(); }
+
+        //$minPrice = $minPrice/1000000;
+
+        $currencyFormat = osc_locale_currency_format();
+        $currencyFormat = str_replace('{NUMBER}', number_format($minPrice, osc_locale_num_dec(), osc_locale_dec_point(), osc_locale_thousands_sep()), $currencyFormat);
+        $currencyFormat = str_replace('{CURRENCY}', $symbol, $currencyFormat);
+        return osc_apply_filter('item_min_Price', $currencyFormat );
+    }
+
 
     /**
      * Gets number of items
