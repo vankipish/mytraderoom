@@ -186,10 +186,11 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                         <li>
                             <?php watchlist(); ?>
                         </li>
-                    <?php } ?>
+                    <?php } if (osc_user_id() !== 0) {?>
                     <li><a class="see_all" href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>">
                             страница заказчика
                         </a> </li>
+                    <?php } ?>
                     <li id="menu1"><a href="#vk_comments" >Обсудить</a></li>
                 </ul>
 
@@ -210,7 +211,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                 </h2>
             <?php }  else if (((osc_logged_user_id() == osc_user_id()) || osc_user_id() == 0) && osc_has_item_comments() == 0) { ?>
                 <h2 class="title" style="margin: 50px 0 50px 0">
-                    Скоро здесь появятся предложения, из которых Вы сможете выбрать подходящее
+                    Скоро здесь появятся предложения, из которых заказчик сможет выбрать подходящее
                 </h2>
             <?php } ?>
             <?php if( osc_count_item_comments() >= 1 ) { ?>

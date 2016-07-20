@@ -724,7 +724,10 @@ a:hover, a:active, a:focus, .listings ul li.last a, .listings h2 a:hover, .sorti
 .table-attributes tr, #description table tr {background: #f5f5f5;padding: 10px;font-weight: 700;display: block;border-bottom: solid 1px #fff;
 }
 #description p {
-    background-color: #fafafa; border: solid; border-width: 1px; border-radius: 2px; padding: 5px; margin-right: 20px; border-color: #d1eada;
+    background-color: #fefefe;
+    border: solid;  border-width: 2px; border-radius: 4px; border-color: #c5e1db;
+    padding: 10px; margin-right: 20px;
+    font-weight: 900; font-size: larger;
 }
 #show_filters .fa {float: right;margin: 3px 0 0;
 }
