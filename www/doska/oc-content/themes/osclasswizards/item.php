@@ -88,7 +88,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                 <li>
                     <?php if( osc_price_enabled_at_items() ) { ?>
                         <i class="fa fa-money"></i>
-                        Начальная цена:
+                        Ориентировочная цена заказчика :
                         <?php echo osc_item_formated_price(); ?>
                     <?php } ?>
                 </li>
@@ -299,7 +299,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                             <?php } else { ?>
                                 <div class="form-group">
                                     <label class="control-label" for="authorName">
-                                        <?php _e('Your name', OSCLASSWIZARDS_THEME_FOLDER); ?><sup>*</sup>
+                                        Ваше имя (или название фирмы)<sup>*</sup>
                                     </label>
                                     <div class="controls">
                                         <?php CommentForm::author_input_text(); ?>
@@ -353,7 +353,7 @@ echo '<script src="'.osc_base_url().'/oc-content/plugins/myCom/js_comments.js" t
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="body">
-                                    Комментарий (так же можете добавить ссылки на Ваши работы):
+                                    Комментарий (так же можете добавить ссылки, например, на Ваши работы):
                                 </label>
                                 <div class="controls textarea">
                                     <?php CommentForm::body_input_textarea(); ?>
