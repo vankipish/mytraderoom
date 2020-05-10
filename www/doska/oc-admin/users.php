@@ -102,6 +102,10 @@
                                             } else {
                                             $actions[] = '<a class="btn btn-red float-left" href="'.osc_admin_base_url(true).'?page=users&action=enable&id[]='.$aUser['pk_i_id'].'&'.$csrf_token.'&value=ENABLE">'.__('Unblock') .'</a>';
                                         }
+                                        $aLocale = $aUser['locale'];
+                                        foreach ($aLocale as $locale => $aInfo) {
+                                            $aUser['locale'][$locale]['s_info'] = osc_apply_filter('admin_user_profile_info', $aInfo['s_info'], $aUser['pk_i_id'], $aInfo['fk_c_locale_code']);
+                                        }
 
                                         $this->_exportVariableToView("actions", $actions);
 
@@ -173,7 +177,7 @@
                                         }
 
                                         osc_add_flash_ok_message($msg, 'admin');
-                                        $this->redirectTo( $_SERVER['HTTP_REFERER'] );
+                                        $this->redirectTo( Params::getServerParam('HTTP_REFERER', false, false) );
                 break;
                 case('deactivate'):     //deactivate
                                         osc_csrf_check();
@@ -198,7 +202,7 @@
                                         }
 
                                         osc_add_flash_ok_message($msg, 'admin');
-                                        $this->redirectTo( $_SERVER['HTTP_REFERER'] );
+                                        $this->redirectTo( Params::getServerParam('HTTP_REFERER', false, false) );
                 break;
                 case('enable'):
                                         osc_csrf_check();
@@ -222,7 +226,7 @@
                                         }
 
                                         osc_add_flash_ok_message($msg, 'admin');
-                                        $this->redirectTo( $_SERVER['HTTP_REFERER'] );
+                                        $this->redirectTo( Params::getServerParam('HTTP_REFERER', false, false) );
                 break;
                 case('disable'):
                                         osc_csrf_check();
@@ -246,7 +250,7 @@
                                         }
 
                                         osc_add_flash_ok_message($msg, 'admin');
-                                        $this->redirectTo( $_SERVER['HTTP_REFERER'] );
+                                        $this->redirectTo( Params::getServerParam('HTTP_REFERER', false, false) );
                 break;
                 case('delete'):         //delete
                                         osc_csrf_check();
@@ -423,7 +427,7 @@
                                             $total = (int)$aData['iTotalDisplayRecords'];
                                             $maxPage = ceil( $total / (int)$aData['iDisplayLength'] );
 
-                                            $url = osc_admin_base_url(true).'?'.$_SERVER['QUERY_STRING'];
+                                            $url = osc_admin_base_url(true).'?'.Params::getServerParam('QUERY_STRING', false, false);
 
                                             if($maxPage==0) {
                                                 $url = preg_replace('/&iPage=(\d)+/', '&iPage=1', $url);
@@ -486,7 +490,7 @@
                                             $total = (int)$aData['iTotalDisplayRecords'];
                                             $maxPage = ceil( $total / (int)$aData['iDisplayLength'] );
 
-                                            $url = osc_admin_base_url(true).'?'.$_SERVER['QUERY_STRING'];
+                                            $url = osc_admin_base_url(true).'?'.Params::getServerParam('QUERY_STRING', false, false);
 
                                             if($maxPage==0) {
                                                 $url = preg_replace('/&iPage=(\d)+/', '&iPage=1', $url);
@@ -616,7 +620,7 @@
                                             $total = (int)$aData['iTotalDisplayRecords'];
                                             $maxPage = ceil( $total / (int)$aData['iDisplayLength'] );
 
-                                            $url = osc_admin_base_url(true).'?'.$_SERVER['QUERY_STRING'];
+                                            $url = osc_admin_base_url(true).'?'.Params::getServerParam('QUERY_STRING', false, false);
 
                                             if($maxPage==0) {
                                                 $url = preg_replace('/&iPage=(\d)+/', '&iPage=1', $url);

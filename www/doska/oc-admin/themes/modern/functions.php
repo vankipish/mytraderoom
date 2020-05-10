@@ -1,5 +1,8 @@
 <?php if ( ! defined('OC_ADMIN')) exit('Direct access is not allowed.');
-
+/*
+ * Changes by osclass.pro:
+ * Deleted osclass.org links. Added osclass.pro and 4osclass.net links.
+ */
 osc_add_filter('admin_body_class', 'admin_modeCompact_class');
 function admin_modeCompact_class($args){
     $compactMode = osc_get_preference('compact_mode','modern_admin_theme');
@@ -19,6 +22,7 @@ function modern_compactmode_actions(){
     echo json_encode($modeStatus);
 }
 
+// favicons
 function admin_header_favicons() {
     $favicons   = array();
     $favicons[] = array(
@@ -48,22 +52,18 @@ function admin_header_favicons() {
     );
 
     $favicons = osc_apply_filter('admin_favicons', $favicons);
-?>
-        <!-- favicons
-        ================================================== -->
-<?php
+
     foreach($favicons as $f) { ?>
         <link <?php if($f['rel'] !== '') { ?>rel="<?php echo $f['rel']; ?>" <?php } if($f['sizes'] !== '') { ?>sizes="<?php echo $f['sizes']; ?>" <?php } ?>href="<?php echo $f['href']; ?>">
     <?php }
 }
 osc_add_hook('admin_header', 'admin_header_favicons');
 
+// admin footer
 function admin_footer_html() { ?>
     <div class="float-left">
-        <?php printf(__('Thank you for using <a href="%s" target="_blank">Osclass</a>'), 'http://osclass.org/'); ?> -
-        <a title="<?php _e('Documentation'); ?>" href="http://doc.osclass.org/" target="_blank"><?php _e('Documentation'); ?></a> &middot;
-        <a title="<?php _e('Forums'); ?>" href="http://forums.osclass.org/" target="_blank"><?php _e('Forums'); ?></a> &middot;
-        <a title="<?php _e('Feedback'); ?>" href="https://osclass.uservoice.com/" target="_blank"><?php _e('Feedback'); ?></a>
+        <a title="<?php _e('Documentation'); ?>" href="https://osclass.pro/dokumentaciya/" target="_blank"><?php _e('Documentation'); ?></a> &middot;
+        <a title="<?php _e('Forums'); ?>" href="https://4osclass.net/" target="_blank"><?php _e('Forums'); ?></a> &middot;
     </div>
     <div class="float-right">
         <strong>Osclass <?php echo preg_replace('|.0$|', '', OSCLASS_VERSION); ?></strong>
@@ -78,9 +78,8 @@ function admin_footer_html() { ?>
        <input type="hidden" name="currency_code" value="USD">
        <input type="hidden" name="lc" value="US" />
     </form>
-    <!-- javascript
-    ================================================== -->
-    <script type="text/javascript">
+
+<script type="text/javascript">
         var $ninja = $('#ninja');
 
         $ninja.click(function(){
@@ -91,16 +90,15 @@ function admin_footer_html() { ?>
 }
 osc_add_hook('admin_content_footer', 'admin_footer_html');
 
-function admin_theme_js() { ?>
-    <!-- scripts
-    ================================================== -->
-    <?php osc_load_scripts();
+// scripts
+function admin_theme_js() {
+    osc_load_scripts();
 }
 osc_add_hook('admin_header', 'admin_theme_js', 9);
-function admin_theme_css() { ?>
-    <!-- styles
-    ================================================== -->
-    <?php osc_load_styles();
+
+// css
+function admin_theme_css() {
+    osc_load_styles();
 }
 osc_add_hook('admin_header', 'admin_theme_css', 9);
 
@@ -115,6 +113,7 @@ function printLocaleTabs($locales = null) {
     echo '</ul></div>';
     };
 }
+
 function printLocaleTitle($locales = null, $item = null) {
     if($locales==null) { $locales = osc_get_locales(); }
     if($item==null) { $item = osc_item(); }
@@ -128,11 +127,14 @@ function printLocaleTitle($locales = null, $item = null) {
                 $title = $title_[$locale['pk_c_code']];
             }
         }
+        $title = osc_apply_filter('admin_item_title', $title, $item, $locale);
+
         $name = 'title'. '[' . $locale['pk_c_code'] . ']';
         echo '<input id="' . $name . '" type="text" name="' . $name . '" value="' . osc_esc_html(htmlentities($title, ENT_COMPAT, "UTF-8")) . '"  />';
         echo '</div>';
     }
 }
+
 function printLocaleTitlePage($locales = null,$page = null) {
     if($locales==null) { $locales = osc_get_locales(); }
     $aFieldsDescription = Session::newInstance()->_getForm("aFieldsDescription");
@@ -149,11 +151,14 @@ function printLocaleTitlePage($locales = null,$page = null) {
         }
         $name = $locale['pk_c_code'] . '#s_title';
 
+        $title = osc_apply_filter('admin_page_title', $title, $page, $locale);
+
         echo '<div class="input-has-placeholder input-title-wide"><label for="title">' . __('Enter title here') . ' *</label>';
         echo '<input id="' . $name . '" type="text" name="' . $name . '" value="' . osc_esc_html(htmlentities($title, ENT_COMPAT, "UTF-8")) . '"  />';
         echo '</div>';
     }
 }
+
 function printLocaleDescription($locales = null, $item = null) {
     if($locales==null) { $locales = osc_get_locales(); }
     if($item==null) { $item = osc_item(); }
@@ -163,15 +168,20 @@ function printLocaleDescription($locales = null, $item = null) {
 
         echo '<div><label for="description">' . __('Description') . ' *</label>';
         $description = (isset($item) && isset($item['locale'][$locale['pk_c_code']]) && isset($item['locale'][$locale['pk_c_code']]['s_description'])) ? $item['locale'][$locale['pk_c_code']]['s_description'] : '';
+
         if( Session::newInstance()->_getForm('description') != "" ) {
             $description_ = Session::newInstance()->_getForm('description');
             if( $description_[$locale['pk_c_code']] != "" ){
                 $description = $description_[$locale['pk_c_code']];
             }
         }
+
+        $description = osc_apply_filter('admin_item_description', $description, $item, $locale);
+
         echo '<textarea id="' . $name . '" name="' . $name . '" rows="10">' . $description . '</textarea></div>';
     }
 }
+
 function printLocaleDescriptionPage($locales = null, $page = null) {
     if($locales==null) { $locales = osc_get_locales(); }
     $aFieldsDescription = Session::newInstance()->_getForm("aFieldsDescription");
@@ -185,6 +195,9 @@ function printLocaleDescriptionPage($locales = null, $page = null) {
         if( isset($aFieldsDescription[$locale['pk_c_code']]) && isset($aFieldsDescription[$locale['pk_c_code']]['s_text']) &&$aFieldsDescription[$locale['pk_c_code']]['s_text'] != '' ) {
             $description = $aFieldsDescription[$locale['pk_c_code']]['s_text'];
         }
+
+        $description = osc_apply_filter('admin_page_description', $description, $page, $locale);
+
         $name = $locale['pk_c_code'] . '#s_text';
         echo '<div><label for="description">' . __('Description') . ' *</label>';
         echo '<textarea id="' . $name . '" name="' . $name . '" rows="10">' . $description . '</textarea></div>';
@@ -216,7 +229,7 @@ function drawMarketItem($item,$color = false){
     }
 
     $downloaded = false;
-    if(in_array($item['s_update_url'], $items_downloaded)) {
+    if(is_array($items_downloaded) && in_array($item['s_update_url'], $items_downloaded)) {
         if (in_array($item['s_update_url'], $items_to_update)) {
             $updateClass = 'has-update';
             $updateData  = ' data-update="true"';
@@ -267,7 +280,7 @@ function drawMarketItem($item,$color = false){
     echo '    <div class="mk-info"><i class="flag"></i>';
     echo '        <h3>'.$item['s_title'].'</h3>';
     echo '        <span class="downloads"><strong>'.$item['i_total_downloads'].'</strong> '.__('downloads').'</span>';
-    echo '        <i>by '.$item['s_contact_name'].'</i>';
+    echo '        <i class="author">by '.$item['s_contact_name'].'</i>';
     echo '        <div class="market-actions">';
     echo '            <span class="more">'.__('View more').'</span>';
     if($item['i_price'] != '' && (float)$item['i_price'] > 0 && $item['b_paid'] == 0) {
@@ -299,6 +312,64 @@ function check_market_compatibility($versions) {
     return false;
 }
 
+function add_market_jsvariables(){
+    $marketPage = Params::getParam("mPage");
+    $version_length = strlen(osc_version());
+    $main_version = substr(osc_version(),0, $version_length-2).".".substr(osc_version(),$version_length-2, 1);
+
+
+    if($marketPage>=1) $marketPage--;
+    $action = Params::getParam("action");
+
+    $js_lang = array(
+        'by'                 => __('by'),
+        'ok'                 => __('Ok'),
+        'error_item'         => __('There was a problem, try again later please'),
+        'wait_download'      => __('Please wait until the download is completed'),
+        'downloading'        => __('Downloading'),
+        'close'              => __('Close'),
+        'download'           => __('Download'),
+        'update'             => __('Update'),
+        'last_update'        => __('Last update'),
+        'downloads'          => __('Downloads'),
+        'requieres_version'  => __('Requires at least'),
+        'compatible_with'    => __('Compatible up to'),
+        'screenshots'        => __('Screenshots'),
+        'preview_theme'      => __('Preview theme'),
+        'download_manually'  => __('Download manually'),
+        'buy'                => __('Buy'),
+        'proceed_anyway'     => sprintf(__('Warning! This package is not compatible with your current version of Osclass (%s)'), $main_version),
+        'sure'               => __('Are you sure?'),
+        'proceed_anyway_btn' => __('Ok, proceed anyway'),
+        'not_compatible'     => sprintf(__('Warning! This theme is not compatible with your current version of Osclass (%s)'), $main_version),
+        'themes'             => array(
+            'download_ok' => __('The theme has been downloaded correctly, proceed to activate or preview it.')
+        ),
+        'plugins'            => array(
+            'download_ok' => __('The plugin has been downloaded correctly, proceed to install and configure.')
+        ),
+        'languages'          => array(
+            'download_ok' => __('The language has been downloaded correctly, proceed to activate.')
+        )
+
+    );
+    ?>
+    <script type="text/javascript">
+        var theme = window.theme || {};
+        theme.adminBaseUrl  = "<?php echo osc_admin_base_url(true); ?>";
+        theme.marketAjaxUrl = "<?php echo osc_admin_base_url(true); ?>?page=ajax&action=market&<?php echo osc_csrf_token_url(); ?>";
+        theme.marketCurrentURL = "<?php echo osc_admin_base_url(true); ?>?page=market&action=<?php echo Params::getParam('action'); ?>";
+        theme.themUrl       = "<?php echo osc_current_admin_theme_url(); ?>";
+        theme.langs         = <?php echo json_encode($js_lang); ?>;
+        theme.CSRFToken     = "<?php echo osc_csrf_token_url(); ?>";
+
+        var osc_market = {};
+        osc_market.main_version = <?php echo $main_version; ?>;
+
+    </script>
+    <?php
+}
+
 function check_version_admin_footer() {
     if( (time() - osc_last_version_check()) > (24 * 3600) ) {
         ?>
@@ -314,7 +385,7 @@ function check_version_admin_footer() {
         <?php
     }
 }
-osc_add_hook('admin_footer', 'check_version_admin_footer');
+//osc_add_hook('admin_footer', 'check_version_admin_footer');
 
 function check_languages_admin_footer() {
     ?>
@@ -329,6 +400,7 @@ function check_languages_admin_footer() {
     </script>
 <?php
 }
+
 function check_themes_admin_footer() {
     ?>
     <script type="text/javascript">
@@ -342,6 +414,7 @@ function check_themes_admin_footer() {
     </script>
 <?php
 }
+
 function check_plugins_admin_footer() {
     ?>
     <script type="text/javascript">
@@ -355,4 +428,5 @@ function check_plugins_admin_footer() {
     </script>
 <?php
 }
+
 /* end of file */

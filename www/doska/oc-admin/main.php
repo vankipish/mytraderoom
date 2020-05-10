@@ -15,6 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ /*
+ Disabled Market connection by osclass.pro
+ */
 
     class CAdminMain extends AdminSecBaseModel
     {
@@ -81,6 +84,9 @@
                                             break;
                                         }
                                     }
+
+
+
 
                                     $this->_exportVariableToView("item_stats", $items);
                                     $this->_exportVariableToView("user_stats", $users);

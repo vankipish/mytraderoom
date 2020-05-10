@@ -99,9 +99,9 @@
             {"format" : date_format},
             function(data){
                 if(data.str_formatted!='') {
-                    $("#custom_date").html(' <?php _e('Preview'); ?>: ' + data.str_formatted)
+                    $("#custom_date").text(' <?php _e('Preview'); ?>: ' + data.str_formatted)
                 } else {
-                    $("#custom_date").html('');
+                    $("#custom_date").text('');
                 }
             }
         );
@@ -113,9 +113,9 @@
             {"format" : time_format},
             function(data){
                 if(data.str_formatted!='') {
-                    $("#custom_time").html(' <?php _e('Preview'); ?>: ' + data.str_formatted)
+                    $("#custom_time").text(' <?php _e('Preview'); ?>: ' + data.str_formatted)
                 } else {
-                    $("#custom_time").html('');
+                    $("#custom_time").text('');
                 }
             }
         );
@@ -166,7 +166,7 @@
                         <div class="form-label"><?php _e('Page description'); ?></div>
                         <div class="form-controls"><input type="text" class="xlarge" name="pageDesc" value="<?php echo osc_esc_html( osc_page_description() ); ?>" /></div></div>
                     <div class="form-row">
-                        <div class="form-label"><?php _e('Admin e-mail'); ?></div>
+                        <div class="form-label"><?php _e('Contact e-mail'); ?></div>
                         <div class="form-controls"><input type="text" class="large" name="contactEmail" value="<?php echo osc_esc_html( osc_contact_email() ); ?>" /></div></div>
                     <div class="form-row">
                         <div class="form-label"><?php _e('Default language'); ?></div>

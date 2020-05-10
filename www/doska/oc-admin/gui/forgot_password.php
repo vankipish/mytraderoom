@@ -17,19 +17,19 @@
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="robots" content="noindex, nofollow, noarchive" />
-        <meta name="googlebot" content="noindex, nofollow, noarchive" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="robots" content="noindex, nofollow, noarchive"/>
+        <meta name="googlebot" content="noindex, nofollow, noarchive"/>
         <title><?php echo osc_page_title(); ?> &raquo; <?php _e('Change your password'); ?></title>
         <script type="text/javascript" src="<?php echo osc_assets_url('js/jquery.min.js'); ?>"></script>
-        <link type="text/css" href="style/backoffice_login.css" media="screen" rel="stylesheet" />
+        <link type="text/css" href="style/backoffice_login.css" media="screen" rel="stylesheet"/>
         <?php osc_run_hook('admin_login_header'); ?>
     </head>
     <body class="forgot">
         <div id="login">
             <h1>
                 <a href="<?php echo View::newInstance()->_get('login_admin_url'); ?>" title="<?php echo View::newInstance()->_get('login_admin_title'); ?>">
-                    <img src="<?php echo View::newInstance()->_get('login_admin_image'); ?>" border="0" title="<?php echo View::newInstance()->_get('login_admin_title'); ?>" alt="<?php echo View::newInstance()->_get('login_admin_title'); ?>" />
+                    <img src="<?php echo View::newInstance()->_get('login_admin_image'); ?>" border="0" title="<?php echo View::newInstance()->_get('login_admin_title'); ?>" alt="<?php echo View::newInstance()->_get('login_admin_title'); ?>"/>
                 </a>
             </h1>
             <?php osc_show_flash_message('admin'); ?>
@@ -37,24 +37,24 @@
                 <?php _e('Type your new password'); ?>.
             </div>
             <form action="<?php echo osc_admin_base_url(true); ?>" method="post" >
-                <input type="hidden" name="page" value="login" />
-                <input type="hidden" name="action" value="forgot_post" />
-                <input type="hidden" name="adminId" value="<?php echo Params::getParam('adminId', true); ?>" />
-                <input type="hidden" name="code" value="<?php echo Params::getParam('code', true); ?>" />
+                <input type="hidden" name="page" value="login"/>
+                <input type="hidden" name="action" value="forgot_post"/>
+                <input type="hidden" name="adminId" value="<?php echo Params::getParam('adminId', true); ?>"/>
+                <input type="hidden" name="code" value="<?php echo Params::getParam('code', true); ?>"/>
                     <p>
                         <label for="new_password">
                             <span><?php _e('New password'); ?></span>
-                            <input id="new_password" type="password" name="new_password" value="" />
+                            <input id="new_password" type="password" name="new_password" value="" autocomplete="off"/>
                         </label>
                     </p>
                     <p>
                         <label for="new_password2">
                             <span><?php _e('Repeat new password'); ?></span>
-                            <input id="new_password2" type="password" name="new_password2" value="" />
+                            <input id="new_password2" type="password" name="new_password2" value="" autocomplete="off"/>
                         </label>
                     </p>
                     <p class="submit">
-                        <input type="submit" name="submit" id="submit" value="<?php echo osc_esc_html( __('Change password')); ?>" tabindex="100" />
+                        <input type="submit" name="submit" id="submit" value="<?php echo osc_esc_html( __('Change password')); ?>"/>
                     </p>
             </form>
             <p id="nav">
@@ -77,7 +77,10 @@
                 $(".ico-close").click(function(){
                     $(this).parent().hide();
                 });
+
+                $("#new_password").focus();
             });
         </script>
+        <?php osc_run_hook('admin_login_footer'); ?>
     </body>
 </html>

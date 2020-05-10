@@ -85,11 +85,11 @@
                 break;
                 case 'categories_order': // Save the order of the categories
                     osc_csrf_check(false);
-                    $aIds        = Params::getParam('list');
-                    $order = array();
+                    $aIds        = json_decode(Params::getParam('list'), true);
+                    $order       = array();
                     $error       = 0;
 
-                    $catManager = Category::newInstance();
+                    $catManager  = Category::newInstance();
                     $aRecountCat = array();
 
                     foreach($aIds as $cat) {
@@ -122,6 +122,8 @@
                     } else {
                         $result = array( 'ok' => __("Order saved"));
                     }
+
+                    osc_run_hook('edited_category_order', $error);
 
                     echo json_encode($result);
                 break;
@@ -343,7 +345,7 @@
                     if($error) {
                         $result = array( 'error' => $message);
                     } else {
-                        $result = array( 'ok' => __("Saved") );
+                        $result = array( 'ok' => $message );
                     }
                     echo json_encode($result);
 
@@ -385,6 +387,8 @@
                             $error = 2;
                         }
                     }
+
+                    osc_run_hook('edited_category', (int)($id), $error);
 
                     if($error==0) {
                         $msg = __("Category updated correctly");
@@ -498,22 +502,24 @@
                     }
                     break;
                 case 'check_version':
-                    $data = osc_file_get_contents('http://osclass.org/latest_version_v1.php?callback=?');
-                    $data = preg_replace('|^\?\((.*?)\);$|', '$01', $data);
-                    $json = json_decode($data);
-                    if(isset($json->version)) {
-                        if ($json->version > osc_version()) {
-                            osc_set_preference('update_core_json', $data);
-                            echo json_encode(array('error' => 0, 'msg' => __('Update available')));
-                        } else {
-                            osc_set_preference('update_core_json', '');
-                            echo json_encode(array('error' => 0, 'msg' => __('No update available')));
-                        }
-                        osc_set_preference( 'last_version_check', time() );
-                    } else { // Latest version couldn't be checked (site down?)
-                        osc_set_preference( 'last_version_check', time()-82800 ); // 82800 = 23 hours, so repeat check in one hour
-                        echo json_encode(array('error' => 1, 'msg' => __('Version could not be checked')));
-                    }
+				    echo json_encode(array('error' => 1, 'msg' => __('Version could not be checked')));
+					return;
+                    //$data = osc_file_get_contents_upd('https://osclass.org/latest_version_v1.php?callback=?');
+                    //$data = preg_replace('|^\?\((.*?)\);$|', '$01', $data);
+                    //$json = json_decode($data);
+                   // if(isset($json->version)) {
+                     //   if ($json->version > osc_version()) {
+                     //       osc_set_preference('update_core_json', $data);
+                    //        echo json_encode(array('error' => 0, 'msg' => __('Update available')));
+                    //    } else {
+                     //       osc_set_preference('update_core_json', '');
+                     //       echo json_encode(array('error' => 0, 'msg' => __('No update available')));
+                    //    }
+                    //    osc_set_preference( 'last_version_check', time() );
+                   // } else { // Latest version couldn't be checked (site down?)
+                    //    osc_set_preference( 'last_version_check', time()-82800 ); // 82800 = 23 hours, so repeat check in one hour
+                    //    echo json_encode(array('error' => 1, 'msg' => __('Version could not be checked')));
+                    //}
                     break;
                 case 'check_languages':
                     $total = _osc_check_languages_update();
@@ -533,12 +539,18 @@
                  ******************************/
                 case 'upgrade': // AT THIS POINT WE KNOW IF THERE'S AN UPDATE OR NOT
                     osc_csrf_check();
-                    $result = osc_do_upgrade();
-                    if(!defined('__FROM_CRON__') || !__FROM_CRON__) {
-                        if($result['error']==0) {
-                            osc_add_flash_ok_message($result['message'], 'admin');
-                        } else if($result['error']==6) {
-                            osc_add_flash_warning_message($result['message'], 'admin');
+                    if( defined('DEMO') ) {
+                        $msg = __("This action cannot be done because it is a demo site");
+                        $result = array("error" => 6, "message" => $msg);
+                        osc_add_flash_warning_message( $msg, 'admin');
+                    } else {
+                        $result = osc_do_upgrade();
+                        if (!defined('__FROM_CRON__') || !__FROM_CRON__) {
+                            if ($result['error'] == 0) {
+                                osc_add_flash_ok_message($result['message'], 'admin');
+                            } else if ($result['error'] == 6) {
+                                osc_add_flash_warning_message($result['message'], 'admin');
+                            }
                         }
                     }
                     echo json_encode($result);
@@ -560,9 +572,10 @@
                      *** CHECK VALID CODE ***
                      ************************/
                     if ($code != '' && $section != '') {
-                        if(stripos($code, "http://")===FALSE) {
+                        if(stripos($code, "http://")===FALSE && stripos($code, "https://")===FALSE) {
                             // OSCLASS OFFICIAL REPOSITORY
-                            $data = json_decode(osc_file_get_contents(osc_market_url($section, $code), array('api_key' => osc_market_api_connect())), true);
+                            // Disable Osclass Market update checking.
+                            // $data = json_decode(osc_file_get_contents(osc_market_url($section, $code), array('api_key' => osc_market_api_connect())), true);
                         } else {
                             // THIRD PARTY REPOSITORY
                             if(osc_market_external_sources()) {
@@ -620,28 +633,6 @@
                     echo 'var market_data = window.market_data || {}; market_data.'.$section.' = '.json_encode($data).';';
 
                     break;
-                case 'local_market': // AVOID CROSS DOMAIN PROBLEMS OF AJAX REQUEST
-                    $marketPage = Params::getParam("mPage");
-                    if($marketPage>=1) $marketPage--;
-
-                    $out    = osc_file_get_contents(osc_market_url(Params::getParam("section"))."page/".$marketPage, array('api_key' => osc_market_api_connect()));
-                    $array  = json_decode($out, true);
-                    // do pagination
-                    $pageActual = $array['page'];
-                    $totalPages = ceil( $array['total'] / $array['sizePage'] );
-                    $params     = array(
-                        'total'    => $totalPages,
-                        'selected' => $pageActual,
-                        'url'      => '#{PAGE}',
-                        'sides'    => 5
-                    );
-                    // set pagination
-                    $pagination = new Pagination($params);
-                    $aux = $pagination->doPagination();
-                    $array['pagination_content'] = $aux;
-                    // encode to json
-                    echo json_encode($array);
-                    break;
                 case 'market_connect':
                     $json = osc_file_get_contents(osc_market_url() . 'connect/', array('s_email' => Params::getParam('s_email'), 's_password' => Params::getParam('s_password')));
                     $data = json_decode($json, true);
@@ -652,43 +643,30 @@
                     }
                     echo $json;
                     break;
+                case 'market_header':
                 case 'dashboardbox_market':
                     $error = 0;
                     // make market call
                     $url = osc_get_preference('marketURL') . 'dashboardbox/';
-
+                    if(Params::getParam("action")=="market_header") {
+                        $url = osc_get_preference('marketURL') . 'market_header/';
+                    }
                     $content = '';
                     if(false===($json=@osc_file_get_contents($url))) {
                         $error = 1;
                     } else {
-                        $content = $json;
+                        $content = json_decode($json, true);
                     }
-
-                    if($error==1) {
+                    if(!isset($content["banner"]) || !isset($content["url"]) || $error==1) {
                         echo json_encode(array('error' => 1));
                     } else {
                         // replace content with correct urls
-                        $content = str_replace('{URL_MARKET_THEMES}'    , osc_admin_base_url(true).'?page=market&action=themes' , $content);
-                        $content = str_replace('{URL_MARKET_PLUGINS}'   , osc_admin_base_url(true).'?page=market&action=plugins', $content);
-                        echo json_encode(array('html' => $content) );
-                    }
-                    break;
-                case 'market_header':
-                    $error = 0;
-                    // make market call
-                    $url = osc_get_preference('marketURL') . 'market_header/';
-
-                    $content = '';
-                    if(false===($json=@osc_file_get_contents($url))) {
-                        $error = 1;
-                    } else {
-                        $content = $json;
-                    }
-
-                    if($error==1) {
-                        echo json_encode(array('error' => 1));
-                    } else {
-                        echo json_encode(array('html' => $content) );
+                        $content["url"] = str_replace('{URL_MARKET_THEMES}'    , osc_admin_base_url(true).'?page=market&action=themes' , $content["url"]);
+                        $content["url"] = str_replace('{URL_MARKET_PLUGINS}'   , osc_admin_base_url(true).'?page=market&action=plugins', $content["url"]);
+                        $content["url"] = osc_esc_html(osc_sanitize_url($content["url"]));
+                        $content["banner"] = osc_esc_html(osc_sanitize_url($content["banner"]));
+                        $content["error"] = 0;
+                        echo json_encode($content);
                     }
                     break;
                 case 'location_stats':

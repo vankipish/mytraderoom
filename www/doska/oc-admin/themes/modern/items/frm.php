@@ -131,7 +131,7 @@ function customPageHeader() { ?>
 <div id="pretty-form">
 <div class="grid-row no-bottom-margin">
     <div class="row-wrapper">
-        <h2 class="render-title"><?php echo customText('subtitle'); ?></h2>
+        <h2 class="render-title"><?php echo customText('subtitle'); ?>  <span style="font-size: small;"><a href="<?php echo osc_item_url(); ?>"><?php _e('View listing on front'); ?></a></span></h2>
     </div>
 </div>
 <div class="grid-row no-bottom-margin float-right">
@@ -212,20 +212,15 @@ function customPageHeader() { ?>
                                     <label><?php _e('E-mail'); ?></label>
                                     <?php ItemForm::contact_email_text(); ?>
                                 </div>
-
-                                <?php if( osc_item_user_id() == null ) { ?>
-                                    <div class="input-has-placeholder input-separate-top">
-                                        <label><?php _e('Телефон'); ?></label>
-                                        <?php ItemForm::contact_phone_text(); ?>
-                                    </div>
-                                <?php } ?>
-
                                 <?php if(!$new_item) { ?>
                                 <div class="input-has-placeholder input-separate-top">
                                     <label><?php _e('Ip Address'); ?></label>
                                     <input id="ipAddress" type="text" name="ipAddress" value="<?php echo osc_item_ip(); ?>" class="valid" readonly="readonly">
                                 </div>
-                                <?php }; ?>
+                                <?php } ?>
+                                <div class="input-separate-top">
+                                    <label><?php ItemForm::show_email_checkbox(); ?><?php _e('Show e-mail'); ?></label>
+                                </div>
                             </div>
                         </div>
 
@@ -263,7 +258,7 @@ function customPageHeader() { ?>
                                 <div class="input-has-placeholder input-separate-top">
                                     <?php ItemForm::expiration_input('add'); ?>
                                 </div>
-                                <label><?php _e('It could be an integer (days from now it will be expired, 0 to never expire) or a date in the format "yyyy-mm-dd hh:mm:ss"'); ?></label>
+                                <label><?php _e('It could be an integer (days from original publishing date it will be expired, 0 to never expire) or a date in the format "yyyy-mm-dd hh:mm:ss"'); ?></label>
                             <?php } else if( !$new_item ) { ?>
                                 <div class="input-separate-top">
                                     <label><input type="checkbox" id="update_expiration" name="update_expiration" style="width: inherit!important;"/> <?php _e('Update expiration?'); ?></label>
@@ -271,7 +266,7 @@ function customPageHeader() { ?>
                                         <div class="input-has-placeholder input-separate-top">
                                             <?php ItemForm::expiration_input('edit'); ?>
                                         </div>
-                                        <label><?php _e('It could be an integer (days from now it will be expired, 0 to never expire) or a date in the format "yyyy-mm-dd hh:mm:ss"'); ?></label>
+                                        <label><?php _e('It could be an integer (days from original publishing date it will be expired, 0 to never expire) or a date in the format "yyyy-mm-dd hh:mm:ss"'); ?></label>
                                     </div>
                                 </div>
                             <?php } ?>

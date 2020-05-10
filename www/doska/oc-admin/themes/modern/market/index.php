@@ -13,74 +13,106 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * Changes by Maxrom:
+ * Added custom banners.
+ * Disabled connection to Closed Market.
  */
+
     function addHelp() {
         echo '<p>' . __('Browse and download available Osclass plugins, from a constantly-updated selection. After downloading a plugin, you have to install it and configure it to get it up and running.') . '</p>';
     }
     osc_add_hook('help_box','addHelp');
     osc_current_admin_theme_path('market/header.php');
 
-    $count      = __get('count');
-    $aPlugins   = __get('aPlugins');
-    $aThemes    = __get('aThemes');
-    $aLanguages = __get('aLanguages');
 
-    $colors = array_merge(gradienColors(),array_merge(gradienColors(),gradienColors()));
-
-    $categories     = __get('market_categories');
 ?>
+
+		<a href="https://osclass-pro.ru/pack9.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" style="margin-right: 30px;">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/bitfinder_responsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Bitfinder+SEO+Плагин оплаты</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/pack9.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
+		 <a href="https://osclass-pro.ru/pack7.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" >
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/fino_respinsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Fino+SEO+Плагин оплаты</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/pack7.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
+		 <a href="https://osclass-pro.ru/pack_pro10.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" style="margin-right: 30px;">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/violet_responsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Violet+SEO+Плагин оплаты</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/pack_pro10.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
+
+
 <div class="grid-market">
-
+    <h2 class="section-title"><?php _e('Recommended themes for You'); ?> </h2>
+		<a href="https://osclass-pro.ru/theme_bitfinder.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" >
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/bitfinder_responsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Bitfinder</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_bitfinder.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
+		 <a href="https://osclass-pro.ru/theme_fino.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" >
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/fino_respinsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Fino</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_fino.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
+		 <a href="https://osclass-pro.ru/theme_violet.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme" >
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/violet_responsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Violet</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_violet.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+         </a>
 </div>
+
 <div class="grid-market">
-    <h2 class="section-title"><?php _e('Recommended plugins for You'); ?><a href="<?php echo osc_admin_base_url(true).'?page=market&action=plugins'; ?>"><?php echo sprintf(__('View all (%s)'), $count['pluginsTotal']); ?></a>
+    <h2 class="section-title"><?php _e('Recommended plugins for You'); ?></h2>
 
-
-        <span class="wrapper_market_categories">
-            <select id="market_categories">
-                    <option section-data="" value="" ><?php _e('Select a category'); ?></option>
-                <?php foreach($categories as $k => $section) { ?>
-                    <option section-data="<?php echo $k; ?>" value="<?php echo $section['value'] ?>" ><?php echo $section['label']; ?></option>
-                    <?php foreach($section['categories'] as $c) { ?>
-                        <option section-data="<?php echo $k; ?>" value="<?php echo $c['value'] ?>" >&nbsp;&nbsp;<?php echo $c['label']; ?></option>
-                    <?php }; ?>
-                <?php }; ?>
-            </select>
-        </span>
-
-
-    </h2>
-    <?php
-    foreach($aPlugins as $item){
-        drawMarketItem($item,$colors[array_rand($colors)]);
-    }
-    if(count($aPlugins)==0) {
-    ?>
-    <p class="flashmessage flashmessage-inline flashmessage-error"><?php _e('The connection with the Osclass market has failed. Try it later.'); ?></p>
-    <?php
-    }
-    ?>
+<a href="https://osclass-pro.ru/russian_ultimate_payments.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/russian_ultimate_paymetns_plugin_new.png);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин оплаты для монетизации</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/russian_ultimate_payments.html" data-type="theme">Посмотреть</span>
+					</div></div></div></a>
+                    <a href="https://osclass-pro.ru/seo_pro_plugin.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/osclass_seo_pro_plugin-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин SEO PRO</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/seo_pro_plugin.html" data-type="theme">Посмотреть</span>
+					</div></div></div></a>
+					<a href="https://osclass-pro.ru/ultimate_social_login.html" target="_blank" class="mk-item-parent is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/social/osclass_ultimate_social_login-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин авторизации через соцсети</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/ultimate_social_login.html" data-type="theme">Посмотреть</span>
+					</div></div></div></a>
 </div>
-<div class="grid-market">
-    <h2 class="section-title"><?php _e('Recommended themes for You'); ?> <a href="<?php echo osc_admin_base_url(true).'?page=market&action=themes'; ?>"><?php echo sprintf(__('View all (%s)'), $count['themesTotal']); ?></a></h2>
-    <?php
-    foreach($aThemes as $item){
-        drawMarketItem($item,$colors[array_rand($colors)]);
-    }
-    if(count($aThemes)==0) {
-    ?>
-    <p class="flashmessage flashmessage-inline flashmessage-error"><?php _e('The connection with the Osclass market has failed. Try it later.'); ?></p>
-    <?php
-    }
-    ?>
-</div>
-<?php if(count($aLanguages)>0) { ?>
-<div class="grid-market">
-    <h2 class="section-title"><?php _e('Languages'); ?> <a href="<?php echo osc_admin_base_url(true).'?page=market&action=languages'; ?>"><?php echo sprintf(__('View all (%s)'), $count['languagesTotal']); ?></a></h2>
-    <?php
-    foreach($aLanguages as $item){
-        drawMarketItem($item,$colors[array_rand($colors)]);
-    } ?>
-</div>
-<?php } ?>
 <?php osc_current_admin_theme_path( 'parts/footer.php' ); ?>

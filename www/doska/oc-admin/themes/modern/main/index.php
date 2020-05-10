@@ -13,16 +13,32 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * Changes by osclass.pro:
+ * Deleted Osclass market code. Advertising of templates and plugins is added.
  */
+
 
     $numItemsPerCategory = __get('numItemsPerCategory');
     $numItems            = __get('numItems');
     $numUsers            = __get('numUsers');
 
+
+    osc_enqueue_script('fancybox');
+    osc_enqueue_style('fancybox', osc_assets_url('js/fancybox/jquery.fancybox.css'));
+
+
     osc_add_filter('render-wrapper','render_offset');
     function render_offset() {
         return 'row-offset';
     }
+
+    osc_add_filter('admin_body_class','addBodyClass');
+    if(!function_exists('addBodyClass')){
+        function addBodyClass($array){
+            $array[] = 'dashboard';
+            return $array;
+        }
+}
 
     osc_add_hook('admin_page_header','customPageHeader');
     function customPageHeader() { ?>
@@ -234,95 +250,103 @@
             </div>
         </div>
     </div>
+    <style>
+        .mk-item {
+            width: 90%;
+            margin:5%;
+            margin-top: 3%;
+        }
+        .mk-item-plugin {
+            height: 225px;
+        }
+        .mk-item .mk-info {
+            width:auto;
+        }
+        .mk-item-plugin .banner ,
+        .mk-item-theme .banner {
+            width: 90%;
+            height: 155px;
+            border-radius: 5px 5px 0 0;
+            -webkit-border-radius: 5px 5px 0 0;
+            -moz-border-radius: 5px 5px 0 0;
+        }
+
+        .mk-item-plugin .mk-info {
+            height: 40px;
+            padding: 170px 15px 15px;
+        }
+
+    </style>
     <div class="grid-row grid-first-row grid-50">
         <div class="row-wrapper">
             <div class="widget-box  widget-box-project">
-                <div class="widget-box-title"><h3><?php _e('Osclass'); ?></h3></div>
-                <div class="widget-box-content widget-box-content-no-wrapp">
-                    <h4 class="first-title"><?php _e('Подписка на новости'); ?></h4>
-                    <form name="subscribe_form" action="http://osclass.org/" method="post" class="dash-widget-form">
-                        <input type="hidden" name="subscribe" value="submit" />
-                        <input type="hidden" name="return_path" value="<?php echo osc_admin_base_url(); ?>" />
-                        <input type="hidden" name="source" value="osclass" />
-                        <fieldset>
-                            <div class="form">
-                                <p>
-                                    <?php _e('Want the latest tips and updates delivered to your inbox? <strong>Sign up now!</strong>'); ?>
-                                </p>
-                                <div class="form-row">
-                                    <div class="form-controls">
-                                        <input type="text" class="xlarge" name="email" value="">
-                                        <input type="submit" class="btn btn-mini" name="submit" value="<?php echo osc_esc_html(__('Subscribe')); ?>" />
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <h4><?php _e('Donate'); ?></h4>
-                    <h5><?php _e('Сказать $пасибо Osclass Rus Team'); ?></h5>
-                    <!-- Сказать $пасибо Osclass Rus Team -->
-                    <form action="https://advisor.wmtransfer.com/Spasibo.aspx" method="post" 
-                        accept-charset=""target="_blank" title="Передать $пасибо! нашему сайту">
-                        <input type="hidden" name="url" value="http://os-class.ru"/>
-                        <input type="image" src="//advisor.wmtransfer.com/img/Spasibo!.png" 
-                        border="0" name="submit"/>
-                    </form>
-                    <br/>
-                    <form name="_xclick" action="https://www.paypal.com/in/cgi-bin/webscr" method="post" class="dash-widget-form">
-                        <input type="hidden" name="cmd" value="_donations">
-                        <input type="hidden" name="rm" value="2">
-                        <input type="hidden" name="business" value="info@osclass.org">
-                        <input type="hidden" name="item_name" value="Osclass project">
-                        <input type="hidden" name="return" value="http://osclass.org/paypal/">
-                        <input type="hidden" name="currency_code" value="USD">
-                        <input type="hidden" name="lc" value="US" />
-                        <input type="hidden" name="custom" value="<?php echo osc_admin_base_url(); ?>?donation=successful&source=dashboard">
-                        <fieldset>
-                            <div class="form">
-                                <p><?php _e('Osclass is a free, open-source project, sustained by the community. Money received from donations will be used to further development and improve the project.'); ?></p>
-                                <div class="form-row">
-                                    <div class="form-controls">
-                                        <select name="amount" class="select-box-medium">
-                                            <option value="50">50$</option>
-                                            <option value="25">25$</option>
-                                            <option value="10" selected>10$</option>
-                                            <option value="5">5$</option>
-                                            <option value=""><?php _e('Custom'); ?></option>
-                                        </select><input type="submit" class="btn btn-mini" name="submit" value="<?php echo osc_esc_html(__('Пожертвовать')); ?>">
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+                <div class="widget-box-title"><h3><?php _e('Премиум шаблоны'); ?></h3></div>
+                    <div class="widget-box-content widget-box-content-no-wrapp">
+                    <a href="https://osclass-pro.ru/theme_bitfinder.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/bitfinder_responsive.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Шаблон Bitfinder</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_bitfinder.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+                    <a href="https://osclass-pro.ru/theme_violet.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/violet_osclass_shablon-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Шаблон Violet</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_violet.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+					<a href="https://osclass-pro.ru/theme_fino.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/osclass_shablon_fino-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Шаблон Fino</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/theme_fino.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+					
+					</div>
             </div>
         </div>
     </div>
     <div class="grid-row grid-50">
         <div class="row-wrapper">
             <div class="widget-box">
-                <div class="widget-box-title"><h3><?php _e('Market'); ?></h3></div>
-                <div class="widget-box-content widget-box-content-no-wrapp">
-                    <div id="banner_market"></div>
-                </div>
+                <div class="widget-box-title"><h3><?php _e('Премиум плагины'); ?></h3></div>
+                                   <div class="widget-box-content widget-box-content-no-wrapp">
+                    <a href="https://osclass-pro.ru/russian_ultimate_payments.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/templates/russian_ultimate_paymetns_plugin_new.png);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин оплаты для монетизации</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/russian_ultimate_payments.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+                    <a href="https://osclass-pro.ru/seo_pro_plugin.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/osclass_seo_pro_plugin-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин SEO PRO</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/seo_pro_plugin.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+					<a href="https://osclass-pro.ru/ultimate_social_login.html" target="_blank" class="  is-featured"><div class="mk-item mk-item-theme">
+					<div class="banner" style="background-image:url(https://osclass-pro.ru/image/cache/catalog/social/osclass_ultimate_social_login-250x250.jpg);"></div>
+					<div class="mk-info"><i class="flag"></i>
+					<h3>Плагин авторизации через соцсети</h3>
+					<i class="author">osclass-pro.ru</i>
+					<div class="market-actions"> 
+					<span class="buy-btn" data-code="https://osclass-pro.ru/ultimate_social_login.html" data-type="theme">Посмотреть</span>
+					</div></div></div>
+					
+					</div>
             </div>
         </div>
     </div>
     <div class="clear"></div>
 </div>
 </div>
-<script type="text/javascript">
-    $(function(){
-        $.getJSON(
-            '<?php echo osc_admin_base_url(true); ?>?page=ajax&action=dashboardbox_market',
-            function(data){
-                if(data.error==1) {
-                    $('<p style="text-align:center; padding-top:15px;"><?php _e('Has been a problem loading the contents, sorry for the inconvenience'); ?></p>').insertAfter('#banner_market');
-                } else {
-                    $(data.html).insertAfter('#banner_market');
-                }
-            });
-        });
-</script>
 
 <?php osc_current_admin_theme_path( 'parts/footer.php' ); ?>

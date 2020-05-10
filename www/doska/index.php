@@ -15,6 +15,9 @@
  * limitations under the License.
  */
 
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
     define('ABS_PATH', str_replace('\\', '/', dirname($_SERVER['SCRIPT_FILENAME']) . '/'));
     if(PHP_SAPI==='cli') {
         define('CLI', true);

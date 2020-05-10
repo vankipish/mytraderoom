@@ -358,14 +358,18 @@
                                 'b_active'      => 1);  //проверка комент активен
             $this->dao->where($conditions);  //для этих условий..
             $result = $this->dao->get();//получить данные из базы
-            $massive = $result->result();
-            $choices = array();
-            foreach ($massive as $choice)
+            if($result)
                 {
-                array_push($choices,$choice['b_choice']);
-                if ($choice['b_choice'] == 1) {   return 1; break; }
+                    $massive = $result->result();
+                    $choices = array();
+                    foreach ($massive as $choice) {
+                        array_push($choices, $choice['b_choice']);
+                        if ($choice['b_choice'] == 1) {
+                            return 1;
+                            break;
+                        }
+                    }
                 }
-
             return 0;
 
         }

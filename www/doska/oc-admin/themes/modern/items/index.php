@@ -23,7 +23,7 @@
     osc_add_hook('help_box','addHelp');
 
     function customPageHeader() { ?>
-        <h1><?php _e('Listing'); ?>
+        <h1><?php _e('Listings'); ?>
             <a href="<?php echo osc_admin_base_url(true); ?>?page=items&amp;action=settings" class="btn ico ico-32 ico-engine float-right"></a>
             <a href="#" class="btn ico ico-32 ico-help float-right"></a>
             <a href="<?php echo osc_admin_base_url(true) . '?page=items&action=post'; ?>" class="btn btn-green ico ico-32 ico-add-white float-right"><?php _e('Add listing'); ?></a>
@@ -297,7 +297,7 @@
             <form method="get" action="<?php echo osc_admin_base_url(true); ?>"  class="inline nocsrf">
                 <?php foreach( Params::getParamsAsArray('get') as $key => $value ) { ?>
                 <?php if( $key != 'iDisplayLength' ) { ?>
-                <input type="hidden" name="<?php echo $key; ?>" value="<?php echo osc_esc_html($value); ?>" />
+                <input type="hidden" name="<?php echo osc_esc_html($key); ?>" value="<?php echo osc_esc_html($value); ?>" />
                 <?php } } ?>
                 <select name="iDisplayLength" class="select-box-extra select-box-medium float-left" onchange="this.form.submit();" >
                     <option value="10"><?php printf(__('%d Listings'), 10); ?></option>

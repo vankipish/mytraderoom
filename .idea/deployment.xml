@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="mytraderoom" compareModeInSync="TIMESTAMP" showNewOnTargetInSync="false">
+  <component name="PublishConfigData" serverName="trutorg.com" compareModeInSync="TIMESTAMP" showNewOnTargetInSync="false">
     <serverData>
-      <paths name="mytraderoom">
+      <paths name="trutorg.com">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/www/doska" web="/" />
+            <mapping deploy="/domains/trutorg.com/public_html" local="$PROJECT_DIR$/www/doska" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/.idea" />
-            <excludedPath path="/.htaccess" />
-            <excludedPath path="/.htaccess reserve" />
-            <excludedPath path="/CHANGELOG.txt" />
-            <excludedPath path="/config-sample.php" />
-            <excludedPath path="/config.php" />
-            <excludedPath path="/config_reserve.php" />
-            <excludedPath path="/Doska.zip" />
-            <excludedPath path="/favicon.ico" />
-            <excludedPath path="/licenses.txt" />
-            <excludedPath path="/oc-admin.zip" />
-            <excludedPath path="/oc-load.php" />
-            <excludedPath path="/PHP_errors.log" />
-            <excludedPath path="/phpinfo.php" />
-            <excludedPath path="/readme.txt" />
-            <excludedPath path="/robots.txt" />
-            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/oc-admin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base.sql" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base - копия.sql" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base.lck" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base.log" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base.properties" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/mytrader_base.script" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/config - копия.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/www/doska/config.php" />
           </excludedPaths>
         </serverdata>
       </paths>
